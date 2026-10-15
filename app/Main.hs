@@ -21,8 +21,10 @@ import qualified Data.Text.IO as T
 import Data.Time.Clock.POSIX
 import GHC.IO.Handle (hDuplicate, hDuplicateTo)
 import StepLoader (loadStep)
+import RemedyMemory (readRemedyRecords, selectFromRecords)
 import ModelConnection (askModel)
-import ContextWindow (prepareContext)
+import ContextWindow (prepareContextWith, latestUserIntent, contextCharacters)
+import qualified Data.Aeson.KeyMap as K
 import System.Directory
 import System.Environment
 import System.Exit
@@ -192,8 +194,19 @@ supervisor = do
           when (T.null (T.strip standing)) $ ioError $ userError $ "Instructions file is empty: " ++ instructionFile
           hasRules <- doesFileExist "AGENTS.md"
           rules <- if hasRules then T.readFile "AGENTS.md" else pure ""
+          remedyResult <- readRemedyRecords "remedy-memory.json"
+          let isFeedback (Object o) = case K.lookup "content" o of
+                Just (String s) -> "Execution feedback:" `T.isPrefixOf` s
+                _ -> False
+              isFeedback _ = False
+              remedyContext = [message "user" (T.pack (latestUserIntent context))] ++ take 1 (reverse (filter isFeedback context))
+              provenance = message "user" "[Remedy provenance: imported from agent-one. All relative evidence paths in these records refer to /workspace on agent-one, NOT this container. Historical advisory only; local applicability/evidence must be reverified. Source snapshot: /workspace/.runs/pair/peer-RemedyMemory.hs.]"
+              selectedRemedies = either (const []) (\rs -> selectFromRecords (1600 - contextCharacters [provenance]) rs remedyContext) remedyResult
+              remedies = if null selectedRemedies then [] else provenance : selectedRemedies
+              boundedContext = prepareContextWith 64000 context remedies
+          events $ object ["context_characters" .= contextCharacters boundedContext, "remedy_status" .= either (const ("unavailable" :: String)) (const "loaded") remedyResult]
           source <- ask endpoint key model (session ++ "/llm-" ++ show n ++ ".request.json")
-            (standing <> "\nProject rules from AGENTS.md:\n" <> rules) (prepareContext context)
+            (standing <> "\nProject rules from AGENTS.md:\n" <> rules) boundedContext
           _ <- atomically $ beginExecution paused generation requestGeneration executionStarted
           record conversation (Just True) $ message "assistant" source
           (feedback, again) <- execute workers file source
