@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxslt1-dev libcurl4-openssl-dev libreadline-dev libncurses-dev \
     gettext zstd 7zip
 COPY agent-one.cabal stack.yaml stack.yaml.lock AGENTS.md SYSTEM.md /opt/agent/
+COPY RequestGate.hs StepLoader.hs ContextWindow.hs ExecutionEvidence.hs NativePreflight.hs /opt/agent/
 COPY app /opt/agent/app
 COPY container-entrypoint.sh /usr/local/bin/agent-one-start
 RUN chmod +x /usr/local/bin/agent-one-start

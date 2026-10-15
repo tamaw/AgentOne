@@ -6,5 +6,10 @@
 !AGENTS.md
 !SYSTEM.md
 !container-entrypoint.sh
+!RequestGate.hs
+!StepLoader.hs
+!ContextWindow.hs
+!ExecutionEvidence.hs
+!NativePreflight.hs
 !app/
 !app/**

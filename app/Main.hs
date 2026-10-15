@@ -3,6 +3,7 @@ module Main where
 import Control.Concurrent
 import Control.Concurrent.Async
 import Control.Concurrent.STM
+import RequestGate (awaitSuperseded, resetIfStarted, beginExecution, finishExecution, failureFeedback, pauseIfCurrent, pauseFeedback)
 import Control.Exception
 import Control.Monad
 import Data.Aeson
@@ -20,7 +21,8 @@ import qualified Data.Text.Encoding.Error as TE
 import qualified Data.Text.IO as T
 import Data.Time.Clock.POSIX
 import GHC.IO.Handle (hDuplicate, hDuplicateTo)
-import Language.Haskell.Interpreter
+import StepLoader (loadStep)
+import ContextWindow (prepareContext)
 import System.Directory
 import System.Environment
 import System.Exit
@@ -67,11 +69,7 @@ worker = do
   forever $ do
     file <- getLine
     outcome <- trySync $ capture (file ++ ".output") $ do
-      compiled <- runInterpreter $ do
-        loadModules [file]
-        setTopLevelModules ["Step"]
-        setImports ["Prelude", "Data.IORef", "Data.Map.Strict"]
-        interpret "Step.step" (as :: Memory -> Actions -> IO Bool)
+      compiled <- loadStep file
       case compiled of
         Left err -> ioError $ userError $ show err
         Right action -> do
@@ -233,33 +231,42 @@ supervisor = do
           pure current
         context <- conversationMessages <$> readMVar conversation
         let file = session ++ "/Step" ++ show n ++ ".hs"
-        outcome <- race (atomically $ readTVar paused >>= check) $ trySync $ do
+        executionStarted <- newTVarIO False
+        outcome <- race (atomically $ awaitSuperseded paused generation requestGeneration) $ trySync $ do
           putStrLn $ "\n[step " ++ show n ++ "]"
           standing <- T.readFile instructionFile
           when (T.null (T.strip standing)) $ ioError $ userError $ "Instructions file is empty: " ++ instructionFile
           hasRules <- doesFileExist "AGENTS.md"
           rules <- if hasRules then T.readFile "AGENTS.md" else pure ""
           source <- ask endpoint key model (session ++ "/llm-" ++ show n ++ ".request.json")
-            (standing <> "\nProject rules from AGENTS.md:\n" <> rules) context
+            (standing <> "\nProject rules from AGENTS.md:\n" <> rules) (prepareContext context)
+          _ <- atomically $ beginExecution paused generation requestGeneration executionStarted
           record conversation (Just True) $ message "assistant" source
           (feedback, again) <- execute workers file source
           record conversation (Just False) $ message "user" $ "Execution feedback:\n" <> feedback <>
             (if again then "\nThe step requested another model call to continue." else "\nThe step is waiting for new user input.")
+          atomically $ finishExecution executionStarted
           events $ object ["step" .= n, "source" .= source, "output" .= feedback, "continue" .= again]
           pure again
         case outcome of
           Left () -> do
-            modifyMVar_ workers $ \w -> stopWorker w >> startWorker
-            putStrLn "[worker restarted; live memory reset]"
-            record conversation (Just False) $ message "user" "User interrupted the step. Worker memory and actions were reset; files remain."
+            reset <- resetIfStarted executionStarted $ modifyMVar_ workers $ \w -> stopWorker w >> startWorker
+            putStrLn $ if reset then "[worker restarted; live memory reset]" else "[request cancelled; worker memory preserved]"
+            record conversation (Just False) $ message "user" $ if reset
+              then "User paused or superseded execution. Worker memory and actions were reset; files remain and effects may be partial."
+              else "User paused or superseded work with no execution awaiting feedback. Worker memory and actions were preserved; previously completed steps may have executed."
             loop workers (n + 1) Nothing
           Right (Left err) -> do
             let detail = T.replace (T.pack key) "[redacted]" $ T.pack $ displayException err
-            T.putStrLn $ "[error; paused]\n" <> detail <> "\n/resume retries; /quit exits."
+            T.putStrLn $ "[error; recovering]\n" <> detail
             events $ object ["step" .= n, "error" .= detail]
             executing <- executionPending <$> readMVar conversation
-            when executing $ record conversation (Just False) $ message "user" $ "Execution failed and may have partially run:\n" <> detail
-            atomically $ writeTVar paused True
+            record conversation (Just False) $ message "user" $ T.pack $ failureFeedback executing (T.unpack detail)
+            reset <- resetIfStarted executionStarted $ modifyMVar_ workers $ \w -> stopWorker w >> startWorker
+            when reset $ record conversation (Just False) $ message "user" "Execution transport failed. Worker restarted; memory and actions were reset. Files persist and effects may be partial."
+            didPause <- atomically $ pauseIfCurrent paused generation requestGeneration
+            putStrLn $ pauseFeedback didPause
+            record conversation Nothing $ message "user" $ T.pack $ pauseFeedback didPause
             loop workers (n + 1) Nothing
           Right (Right again) -> do
             unless again $ putStrLn "[waiting for input; no LLM calls scheduled]"
