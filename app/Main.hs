@@ -21,8 +21,10 @@ import qualified Data.Text.IO as T
 import Data.Time.Clock.POSIX
 import GHC.IO.Handle (hDuplicate, hDuplicateTo)
 import StepLoader (loadStep)
+import LifecycleContext (loadLifecycle, applyLifecycle)
 import ModelConnection (askModel)
-import ContextWindow (prepareContext)
+import ContextWindow (prepareContextWith, latestUserIntent)
+import RemedyMemory (readRemedyRecords, selectFromRecords)
 import System.Directory
 import System.Environment
 import System.Exit
@@ -192,8 +194,20 @@ supervisor = do
           when (T.null (T.strip standing)) $ ioError $ userError $ "Instructions file is empty: " ++ instructionFile
           hasRules <- doesFileExist "AGENTS.md"
           rules <- if hasRules then T.readFile "AGENTS.md" else pure ""
+          remedyStore <- readRemedyRecords "/workspace/remedy-memory.json"
+          let intent = message "user" (T.pack (latestUserIntent context))
+              memories = either (const []) (\rs -> selectFromRecords 1600 rs [intent]) remedyStore
+          case remedyStore of
+            Left category -> events $ object ["remedy_memory_error" .= category]
+            Right _ -> pure ()
+          lifecycle <- loadLifecycle "/workspace/context-lifecycle.json"
+          case lifecycle of
+            Left category -> events $ object ["context_lifecycle_error" .= category]
+            Right _ -> pure ()
+          let scopedContext = either (const context) (\entries -> applyLifecycle entries context) lifecycle
+              workingContext = prepareContextWith 64000 scopedContext memories
           source <- ask endpoint key model (session ++ "/llm-" ++ show n ++ ".request.json")
-            (standing <> "\nProject rules from AGENTS.md:\n" <> rules) (prepareContext context)
+            (standing <> "\nProject rules from AGENTS.md:\n" <> rules) workingContext
           _ <- atomically $ beginExecution paused generation requestGeneration executionStarted
           record conversation (Just True) $ message "assistant" source
           (feedback, again) <- execute workers file source

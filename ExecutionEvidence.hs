@@ -195,11 +195,11 @@ clipFact budget text
 checkAgentSource :: FilePath -> IO LoggedResult
 checkAgentSource logPath =
   runScript InspectOutcome 2400 45 "/workspace" logPath $ unlines
-      [ "before=$(sha256sum app/Main.hs RequestGate.hs StepLoader.hs ContextWindow.hs ExecutionEvidence.hs NativePreflight.hs agent-one.cabal stack.yaml stack.yaml.lock)"
+      [ "before=$(sha256sum app/Main.hs RequestGate.hs StepLoader.hs ContextWindow.hs LifecycleContext.hs IncumbentContext.hs RemedyMemory.hs remedy-memory.json ExecutionEvidence.hs NativePreflight.hs agent-one.cabal stack.yaml stack.yaml.lock)"
       , "printf 'SOURCE SNAPSHOT (SHA-256):\\n%s\\n' \"$before\""
       , "compile_status=0"
       , "stack --allow-different-user exec -- sh -c 'set -eu; printf \"Compiler GHC: \"; ghc --numeric-version; printf \"Compiler target: \"; ghc --print-target-platform; exec ghc -fno-code -Wall -iapp -i. -XOverloadedStrings -XScopedTypeVariables app/Main.hs ExecutionEvidence.hs NativePreflight.hs' || compile_status=$?"
-      , "after=$(sha256sum app/Main.hs RequestGate.hs StepLoader.hs ContextWindow.hs ExecutionEvidence.hs NativePreflight.hs agent-one.cabal stack.yaml stack.yaml.lock)"
+      , "after=$(sha256sum app/Main.hs RequestGate.hs StepLoader.hs ContextWindow.hs LifecycleContext.hs IncumbentContext.hs RemedyMemory.hs remedy-memory.json ExecutionEvidence.hs NativePreflight.hs agent-one.cabal stack.yaml stack.yaml.lock)"
       , "if [ \"$before\" != \"$after\" ]; then printf 'ERROR: source changed during diagnosis\\n'; exit 1; fi"
       , "printf 'Source snapshot unchanged during diagnosis\\n'"
       , "exit \"$compile_status\""

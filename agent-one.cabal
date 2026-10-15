@@ -5,7 +5,7 @@ build-type: Simple
 
 executable agent-one
   main-is: Main.hs
-  other-modules: RequestGate, StepLoader, ContextWindow, ModelConnection
+  other-modules: LifecycleContext, RequestGate, StepLoader, ContextWindow, IncumbentContext, RemedyMemory, ModelConnection
   hs-source-dirs: app .
   default-language: Haskell2010
   default-extensions: OverloadedStrings ScopedTypeVariables
