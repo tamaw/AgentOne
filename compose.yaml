@@ -10,6 +10,7 @@ services:
     env_file: .env
     environment:
       INSTRUCTIONS_FILE: /workspace/SYSTEM.md
+      AGENT_START_PAUSED: "1"
     ports:
       - "3080:3000"
     volumes:
@@ -18,8 +19,28 @@ services:
       - ./SYSTEM.md:/workspace/SYSTEM.md:ro
       - ./AGENTS.md:/workspace/AGENTS.md:ro
 
+  agent-two:
+    build: .
+    image: local/agent-one:haskell
+    container_name: agent-two
+    init: true
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      INSTRUCTIONS_FILE: /workspace/SYSTEM.md
+      AGENT_START_PAUSED: "1"
+    volumes:
+      - work-two:/workspace
+      - stack:/home/tama/.stack
+      - ./SYSTEM.md:/workspace/SYSTEM.md:ro
+      - ./AGENTS.md:/workspace/AGENTS.md:ro
+
 volumes:
   work:
     name: agent-one-work
+  work-two:
+    name: agent-two-work
   stack:
     name: agent-one-stack

@@ -7,7 +7,6 @@ import RequestGate (awaitSuperseded, resetIfStarted, beginExecution, finishExecu
 import Control.Exception
 import Control.Monad
 import Data.Aeson
-import Data.Aeson.Types (Parser, parseMaybe)
 import qualified Data.ByteString as B
 import qualified Data.ByteString.Lazy as BL
 import Data.Char (isSpace, toUpper)
@@ -22,6 +21,7 @@ import qualified Data.Text.IO as T
 import Data.Time.Clock.POSIX
 import GHC.IO.Handle (hDuplicate, hDuplicateTo)
 import StepLoader (loadStep)
+import ModelConnection (askModel)
 import ContextWindow (prepareContext)
 import System.Directory
 import System.Environment
@@ -110,55 +110,8 @@ loadEnv = do
 message :: T.Text -> T.Text -> Value
 message role content = object ["role" .= role, "content" .= content]
 
-ask :: String -> String -> String -> FilePath -> T.Text -> [Value] -> IO T.Text
-ask endpoint key model file instructions history = do
-  started <- getPOSIXTime
-  let redact = T.replace (T.pack key) "[redacted]"
-      emit value = T.putStrLn $ redact $ TE.decodeUtf8 $ BL.toStrict $ encode value
-      elapsed = (round :: POSIXTime -> Integer) . (* 1000) . subtract started <$> getPOSIXTime
-  BL.writeFile file $ encode $ object ["model" .= model, "instructions" .= instructions, "input" .= history, "store" .= False]
-  emit $ object ["event" .= ("llm.request" :: T.Text), "time" .= started, "model" .= model,
-    "messages" .= length history, "latest_message" .= (if null history then Null else last history), "request_file" .= file]
-  let base = T.dropWhileEnd (== '/') $ T.pack endpoint
-      root = if "/api/projects/" `T.isInfixOf` base then fst (T.breakOn "/api/projects/" base) else base
-      url = root <> (if "/v1" `T.isSuffixOf` root then "/responses" else "/openai/v1/responses")
-      config = unlines ["url = " ++ show (T.unpack url), "header = " ++ show ("api-key: " ++ key),
-        "header = \"Content-Type: application/json\"", "data-binary = " ++ show ('@' : file)]
-  outcome <- trySync $ do
-    (code, output, err) <- readProcessWithExitCode "curl" ["--silent", "--show-error", "--fail-with-body", "--max-time", "120", "--config", "-"] config
-    unless (code == ExitSuccess) $ ioError $ userError $ take 2000 $ err ++ output
-    value <- either (ioError . userError) pure $ eitherDecodeStrict' $ TE.encodeUtf8 $ T.pack output
-    BL.writeFile (file ++ ".response.json") $ encode value
-    source <- either (ioError . userError) pure $ parseEitherResponse value
-    duration <- elapsed
-    let field name = parseMaybe (withObject "response" (.: name)) value :: Maybe Value
-    emit $ object ["event" .= ("llm.response" :: T.Text), "duration_ms" .= duration,
-      "id" .= field "id", "status" .= field "status", "usage" .= field "usage"]
-    T.putStrLn $ "[llm code]\n" <> redact source <> "\n[llm code end]"
-    pure source
-  case outcome of
-    Right source -> pure source
-    Left err -> do
-      duration <- elapsed
-      emit $ object ["event" .= ("llm.error" :: T.Text), "duration_ms" .= duration,
-        "error" .= redact (T.pack $ displayException err)]
-      throwIO err
-  where
-    parseEitherResponse value = case parseMaybe parseResponse value of
-      Just source | not (T.null source) -> Right source
-      _ -> Left "Model returned no complete Haskell source."
-    parseResponse = withObject "response" $ \o -> do
-      status <- o .:? "status" .!= ("completed" :: T.Text)
-      when (status /= "completed") $ fail $ T.unpack status
-      items <- o .: "output" :: Parser [Value]
-      chunks <- forM items $ withObject "output" $ \item -> do
-        kind <- item .: "type" :: Parser T.Text
-        if kind /= "message" then pure [] else do
-          parts <- item .: "content"
-          forM parts $ withObject "content" $ \part -> do
-            kind' <- part .: "type" :: Parser T.Text
-            if kind' == "output_text" then part .: "text" else pure ""
-      pure $ T.strip $ T.concat $ concat chunks
+ask :: String -> String -> String -> FilePath -> T.Text -> [Value] -> IO (T.Text, Value)
+ask = askModel
 
 execute :: MVar Worker -> FilePath -> T.Text -> IO (T.Text, Bool)
 execute workers file source = withMVar workers $ \(input, child) -> do
@@ -206,7 +159,8 @@ supervisor = do
     "Conversation restored after supervisor restart. Worker memory and actions were reset; files persist. " <>
     (if executionPending restored then "The previous step was interrupted and may have partially executed; inspect its artifacts before repeating effects. " else "") <>
     "Continue the current task from this conversation; do not repeat completed work."
-  paused <- newTVarIO (not automatic)
+  startPaused <- (== Just "1") <$> lookupEnv "AGENT_START_PAUSED"
+  paused <- newTVarIO (startPaused || not automatic)
   generation <- newTVarIO (0 :: Int)
   when (automatic && restoredCount == 0) $ record conversation Nothing $ message "user" $ "Begin following " <> T.pack instructionFile <> "."
   let events value = BL.appendFile (session ++ "/events.jsonl") $ encode value <> "\n"
@@ -238,10 +192,10 @@ supervisor = do
           when (T.null (T.strip standing)) $ ioError $ userError $ "Instructions file is empty: " ++ instructionFile
           hasRules <- doesFileExist "AGENTS.md"
           rules <- if hasRules then T.readFile "AGENTS.md" else pure ""
-          source <- ask endpoint key model (session ++ "/llm-" ++ show n ++ ".request.json")
+          (source, assistant) <- ask endpoint key model (session ++ "/llm-" ++ show n ++ ".request.json")
             (standing <> "\nProject rules from AGENTS.md:\n" <> rules) (prepareContext context)
           _ <- atomically $ beginExecution paused generation requestGeneration executionStarted
-          record conversation (Just True) $ message "assistant" source
+          record conversation (Just True) assistant
           (feedback, again) <- execute workers file source
           record conversation (Just False) $ message "user" $ "Execution feedback:\n" <> feedback <>
             (if again then "\nThe step requested another model call to continue." else "\nThe step is waiting for new user input.")

@@ -11,5 +11,6 @@
 !ContextWindow.hs
 !ExecutionEvidence.hs
 !NativePreflight.hs
+!ModelConnection.hs
 !app/
 !app/**

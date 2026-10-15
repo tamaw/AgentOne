@@ -11,7 +11,9 @@ content :: Value -> T.Text
 content (Object o) = case K.lookup "content" o of Just (String s) -> s; _ -> ""
 content _ = ""
 contextCharacters :: [Value] -> Int
-contextCharacters = sum . map (T.length . content)
+contextCharacters = sum . map cost
+cost v@(Object o) = T.length (content v) + maybe 0 (fromIntegral . B.length . encode) (K.lookup "provider_output" o)
+cost v = T.length (content v)
 prepareContext :: [Value] -> [Value]
 prepareContext history
   | contextCharacters history <= 400000 = history
