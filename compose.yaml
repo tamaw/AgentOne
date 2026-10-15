@@ -1,0 +1,23 @@
+services:
+  agent:
+    build: .
+    image: local/agent-one:haskell
+    container_name: agent-one
+    init: true
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      INSTRUCTIONS_FILE: /workspace/SYSTEM.md
+    volumes:
+      - work:/workspace
+      - stack:/home/tama/.stack
+      - ./SYSTEM.md:/workspace/SYSTEM.md:ro
+      - ./AGENTS.md:/workspace/AGENTS.md:ro
+
+volumes:
+  work:
+    name: agent-one-work
+  stack:
+    name: agent-one-stack

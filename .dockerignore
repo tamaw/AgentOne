@@ -1,0 +1,10 @@
+*
+!Dockerfile
+!agent-one.cabal
+!stack.yaml
+!stack.yaml.lock
+!AGENTS.md
+!SYSTEM.md
+!container-entrypoint.sh
+!app/
+!app/**

@@ -1,0 +1,276 @@
+module Main where
+
+import Control.Concurrent
+import Control.Concurrent.Async
+import Control.Concurrent.STM
+import Control.Exception
+import Control.Monad
+import Data.Aeson
+import Data.Aeson.Types (Parser, parseMaybe)
+import qualified Data.ByteString as B
+import qualified Data.ByteString.Lazy as BL
+import Data.Char (isSpace, toUpper)
+import Data.IORef
+import Data.List (isInfixOf)
+import Data.Maybe (fromMaybe)
+import qualified Data.Map.Strict as M
+import qualified Data.Text as T
+import qualified Data.Text.Encoding as TE
+import qualified Data.Text.Encoding.Error as TE
+import qualified Data.Text.IO as T
+import Data.Time.Clock.POSIX
+import GHC.IO.Handle (hDuplicate, hDuplicateTo)
+import Language.Haskell.Interpreter
+import System.Directory
+import System.Environment
+import System.Exit
+import System.IO
+import System.IO.Error (isEOFError)
+import System.Posix.Signals
+import System.Process
+import System.Timeout
+import Text.Read (readMaybe)
+
+type Worker = (Handle, ProcessHandle)
+type Memory = IORef (M.Map String String)
+type Actions = IORef (M.Map String (IO ()))
+
+data Conversation = Conversation { conversationMessages :: [Value], executionPending :: Bool }
+instance ToJSON Conversation where
+  toJSON (Conversation history pending) = object ["messages" .= history, "execution_pending" .= pending]
+instance FromJSON Conversation where
+  parseJSON = withObject "conversation" $ \o -> Conversation <$> o .: "messages" <*> o .:? "execution_pending" .!= False
+
+record :: MVar Conversation -> Maybe Bool -> Value -> IO ()
+record conversation pending entry = modifyMVarMasked_ conversation $ \(Conversation history executing) -> do
+  let next = Conversation (history ++ [entry]) (fromMaybe executing pending)
+  BL.writeFile ".runs/conversation.json.tmp" $ encode next
+  renameFile ".runs/conversation.json.tmp" ".runs/conversation.json"
+  pure next
+
+trySync :: IO a -> IO (Either SomeException a)
+trySync = tryJust (\e -> case fromException e :: Maybe SomeAsyncException of Just _ -> Nothing; Nothing -> Just e)
+
+capture :: FilePath -> IO a -> IO a
+capture file action = bracket ((,) <$> hDuplicate stdout <*> hDuplicate stderr)
+  (\(out, err) -> hDuplicateTo out stdout >> hDuplicateTo err stderr >> hClose out >> hClose err) $ \_ ->
+    withFile file WriteMode $ \h -> do
+      hSetBuffering h NoBuffering
+      hDuplicateTo h stdout
+      hDuplicateTo h stderr
+      action `finally` (hFlush stdout >> hFlush stderr)
+
+worker :: IO ()
+worker = do
+  memory <- newIORef M.empty :: IO Memory
+  actions <- newIORef M.empty :: IO Actions
+  forever $ do
+    file <- getLine
+    outcome <- trySync $ capture (file ++ ".output") $ do
+      compiled <- runInterpreter $ do
+        loadModules [file]
+        setTopLevelModules ["Step"]
+        setImports ["Prelude", "Data.IORef", "Data.Map.Strict"]
+        interpret "Step.step" (as :: Memory -> Actions -> IO Bool)
+      case compiled of
+        Left err -> ioError $ userError $ show err
+        Right action -> do
+          finished <- timeout 60000000 (action memory actions)
+          maybe (ioError $ userError "Execution timed out after 60 seconds.") pure finished
+    writeFile (file ++ ".result.tmp") $ either displayException (\again -> if again then "CONTINUE" else "WAIT") outcome
+    renameFile (file ++ ".result.tmp") (file ++ ".result")
+
+startWorker :: IO Worker
+startWorker = do
+  executable <- getExecutablePath
+  environment <- filter (\(name, _) -> not $ any (`isInfixOf` map toUpper name) ["KEY", "TOKEN", "SECRET", "PASSWORD", "LLM_"]) <$> getEnvironment
+  (Just input, _, _, child) <- createProcess (proc executable ["--worker"])
+    { std_in = CreatePipe, create_group = True, env = Just environment }
+  hSetBuffering input LineBuffering
+  pure (input, child)
+
+stopWorker :: Worker -> IO ()
+stopWorker (input, child) = do
+  pid <- getPid child
+  forM_ pid $ \p -> void $ trySync $ signalProcessGroup sigKILL p
+  _ <- trySync $ hClose input
+  void $ waitForProcess child
+
+loadEnv :: IO ()
+loadEnv = do
+  exists <- doesFileExist ".env"
+  when exists $ do
+    content <- readFile ".env"
+    forM_ (lines content) $ \line -> do
+      let (name, rest) = break (== '=') $ dropWhile isSpace line
+      unless (null rest || null name || head name == '#') $ do
+        old <- lookupEnv name
+        let raw = T.unpack $ T.strip $ T.pack $ tail rest
+            value = maybe raw id (readMaybe raw :: Maybe String)
+        when (old == Nothing) $ setEnv name value
+
+message :: T.Text -> T.Text -> Value
+message role content = object ["role" .= role, "content" .= content]
+
+ask :: String -> String -> String -> FilePath -> T.Text -> [Value] -> IO T.Text
+ask endpoint key model file instructions history = do
+  started <- getPOSIXTime
+  let redact = T.replace (T.pack key) "[redacted]"
+      emit value = T.putStrLn $ redact $ TE.decodeUtf8 $ BL.toStrict $ encode value
+      elapsed = (round :: POSIXTime -> Integer) . (* 1000) . subtract started <$> getPOSIXTime
+  BL.writeFile file $ encode $ object ["model" .= model, "instructions" .= instructions, "input" .= history, "store" .= False]
+  emit $ object ["event" .= ("llm.request" :: T.Text), "time" .= started, "model" .= model,
+    "messages" .= length history, "latest_message" .= (if null history then Null else last history), "request_file" .= file]
+  let base = T.dropWhileEnd (== '/') $ T.pack endpoint
+      root = if "/api/projects/" `T.isInfixOf` base then fst (T.breakOn "/api/projects/" base) else base
+      url = root <> (if "/v1" `T.isSuffixOf` root then "/responses" else "/openai/v1/responses")
+      config = unlines ["url = " ++ show (T.unpack url), "header = " ++ show ("api-key: " ++ key),
+        "header = \"Content-Type: application/json\"", "data-binary = " ++ show ('@' : file)]
+  outcome <- trySync $ do
+    (code, output, err) <- readProcessWithExitCode "curl" ["--silent", "--show-error", "--fail-with-body", "--max-time", "120", "--config", "-"] config
+    unless (code == ExitSuccess) $ ioError $ userError $ take 2000 $ err ++ output
+    value <- either (ioError . userError) pure $ eitherDecodeStrict' $ TE.encodeUtf8 $ T.pack output
+    BL.writeFile (file ++ ".response.json") $ encode value
+    source <- either (ioError . userError) pure $ parseEitherResponse value
+    duration <- elapsed
+    let field name = parseMaybe (withObject "response" (.: name)) value :: Maybe Value
+    emit $ object ["event" .= ("llm.response" :: T.Text), "duration_ms" .= duration,
+      "id" .= field "id", "status" .= field "status", "usage" .= field "usage"]
+    T.putStrLn $ "[llm code]\n" <> redact source <> "\n[llm code end]"
+    pure source
+  case outcome of
+    Right source -> pure source
+    Left err -> do
+      duration <- elapsed
+      emit $ object ["event" .= ("llm.error" :: T.Text), "duration_ms" .= duration,
+        "error" .= redact (T.pack $ displayException err)]
+      throwIO err
+  where
+    parseEitherResponse value = case parseMaybe parseResponse value of
+      Just source | not (T.null source) -> Right source
+      _ -> Left "Model returned no complete Haskell source."
+    parseResponse = withObject "response" $ \o -> do
+      status <- o .:? "status" .!= ("completed" :: T.Text)
+      when (status /= "completed") $ fail $ T.unpack status
+      items <- o .: "output" :: Parser [Value]
+      chunks <- forM items $ withObject "output" $ \item -> do
+        kind <- item .: "type" :: Parser T.Text
+        if kind /= "message" then pure [] else do
+          parts <- item .: "content"
+          forM parts $ withObject "content" $ \part -> do
+            kind' <- part .: "type" :: Parser T.Text
+            if kind' == "output_text" then part .: "text" else pure ""
+      pure $ T.strip $ T.concat $ concat chunks
+
+execute :: MVar Worker -> FilePath -> T.Text -> IO (T.Text, Bool)
+execute workers file source = withMVar workers $ \(input, child) -> do
+  status <- getProcessExitCode child
+  when (status /= Nothing) $ ioError $ userError "Worker exited; /pause then /resume to restart it."
+  T.writeFile file source
+  hPutStrLn input file
+  let outputFile = file ++ ".output"
+      resultFile = file ++ ".result"
+      stream offset = do
+        exists <- doesFileExist outputFile
+        next <- if not exists || offset >= 16000 then pure offset else withBinaryFile outputFile ReadMode $ \h -> do
+          hSeek h AbsoluteSeek (fromIntegral offset)
+          bytes <- B.hGetSome h (16000 - offset)
+          B.hPut stdout bytes
+          pure $ offset + B.length bytes
+        ready <- doesFileExist resultFile
+        if ready then pure next else do
+          exit <- getProcessExitCode child
+          when (exit /= Nothing) $ ioError $ userError "Worker crashed; pause/resume to restart."
+          threadDelay 50000
+          stream next
+  completed <- timeout 90000000 $ stream 0
+  when (completed == Nothing) $ ioError $ userError "Worker timed out; pause/resume to restart."
+  result <- T.readFile resultFile
+  when (result /= "CONTINUE" && result /= "WAIT") $ T.putStrLn $ "[execution error] " <> result
+  bytes <- withBinaryFile outputFile ReadMode $ \h -> B.hGet h 16000
+  forM_ completed $ \offset -> B.hPut stdout $ B.drop offset bytes
+  pure (result <> "\n" <> TE.decodeUtf8With TE.lenientDecode bytes <> "\n[Output capped at 16000 bytes.]", result /= "WAIT")
+
+supervisor :: IO ()
+supervisor = do
+  loadEnv
+  [endpoint, key, model] <- mapM getEnv ["LLM_ENDPOINT", "LLM_API_KEY", "LLM_MODEL"]
+  session <- (".runs/haskell-" ++) . show . (floor :: POSIXTime -> Integer) . (* 1000000) <$> getPOSIXTime
+  createDirectoryIfMissing True session
+  instructionFile <- maybe "SYSTEM.md" id <$> lookupEnv "INSTRUCTIONS_FILE"
+  automatic <- doesFileExist instructionFile
+  exists <- doesFileExist ".runs/conversation.json"
+  restored <- if exists then B.readFile ".runs/conversation.json" >>= either (ioError . userError) pure . eitherDecodeStrict'
+    else pure $ Conversation [] False
+  conversation <- newMVar restored
+  let restoredCount = length $ conversationMessages restored
+  when (restoredCount > 0) $ record conversation (Just False) $ message "user" $
+    "Conversation restored after supervisor restart. Worker memory and actions were reset; files persist. " <>
+    (if executionPending restored then "The previous step was interrupted and may have partially executed; inspect its artifacts before repeating effects. " else "") <>
+    "Continue the current task from this conversation; do not repeat completed work."
+  paused <- newTVarIO (not automatic)
+  generation <- newTVarIO (0 :: Int)
+  when (automatic && restoredCount == 0) $ record conversation Nothing $ message "user" $ "Begin following " <> T.pack instructionFile <> "."
+  let events value = BL.appendFile (session ++ "/events.jsonl") $ encode value <> "\n"
+      terminal = do
+        line <- T.strip <$> T.getLine
+        case line of
+          "/quit" -> pure ()
+          "/pause" -> atomically (writeTVar paused True) >> putStrLn "[paused]" >> terminal
+          "/resume" -> atomically (modifyTVar' generation (+ 1) >> writeTVar paused False) >> terminal
+          "" -> terminal
+          _ -> do
+            record conversation Nothing $ message "user" line
+            events $ object ["user" .= line]
+            atomically $ modifyTVar' generation (+ 1) >> writeTVar paused False
+            putStrLn "[message saved]"
+            terminal
+      loop workers n waiting = do
+        requestGeneration <- atomically $ do
+          readTVar paused >>= check . not
+          current <- readTVar generation
+          forM_ waiting $ \previous -> check (current /= previous)
+          pure current
+        context <- conversationMessages <$> readMVar conversation
+        let file = session ++ "/Step" ++ show n ++ ".hs"
+        outcome <- race (atomically $ readTVar paused >>= check) $ trySync $ do
+          putStrLn $ "\n[step " ++ show n ++ "]"
+          standing <- T.readFile instructionFile
+          when (T.null (T.strip standing)) $ ioError $ userError $ "Instructions file is empty: " ++ instructionFile
+          hasRules <- doesFileExist "AGENTS.md"
+          rules <- if hasRules then T.readFile "AGENTS.md" else pure ""
+          source <- ask endpoint key model (session ++ "/llm-" ++ show n ++ ".request.json")
+            (standing <> "\nProject rules from AGENTS.md:\n" <> rules) context
+          record conversation (Just True) $ message "assistant" source
+          (feedback, again) <- execute workers file source
+          record conversation (Just False) $ message "user" $ "Execution feedback:\n" <> feedback <>
+            (if again then "\nThe step requested another model call to continue." else "\nThe step is waiting for new user input.")
+          events $ object ["step" .= n, "source" .= source, "output" .= feedback, "continue" .= again]
+          pure again
+        case outcome of
+          Left () -> do
+            modifyMVar_ workers $ \w -> stopWorker w >> startWorker
+            putStrLn "[worker restarted; live memory reset]"
+            record conversation (Just False) $ message "user" "User interrupted the step. Worker memory and actions were reset; files remain."
+            loop workers (n + 1) Nothing
+          Right (Left err) -> do
+            let detail = T.replace (T.pack key) "[redacted]" $ T.pack $ displayException err
+            T.putStrLn $ "[error; paused]\n" <> detail <> "\n/resume retries; /quit exits."
+            events $ object ["step" .= n, "error" .= detail]
+            executing <- executionPending <$> readMVar conversation
+            when executing $ record conversation (Just False) $ message "user" $ "Execution failed and may have partially run:\n" <> detail
+            atomically $ writeTVar paused True
+            loop workers (n + 1) Nothing
+          Right (Right again) -> do
+            unless again $ putStrLn "[waiting for input; no LLM calls scheduled]"
+            loop workers (n + 1) (if again then Nothing else Just requestGeneration)
+  putStrLn $ "Agent One (Haskell) — type a message. /pause /resume /quit. Ctrl+C exits.\nSession: " ++ session
+  putStrLn $ "[conversation restored: " ++ show restoredCount ++ " messages; .runs/conversation.json]"
+  bracket (newMVar =<< startWorker) (\workers -> withMVar workers stopWorker) $ \workers ->
+    race_ (terminal `catch` \e -> unless (isEOFError e) $ throwIO e) (loop workers (1 :: Int) Nothing)
+
+main :: IO ()
+main = do
+  mapM_ (`hSetBuffering` NoBuffering) [stdout, stderr]
+  args <- getArgs
+  if args == ["--worker"] then worker else supervisor
