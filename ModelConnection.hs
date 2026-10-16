@@ -6,6 +6,7 @@ import Control.Monad
 import Data.Aeson
 import Data.Aeson.Types (Parser, parseEither, parseMaybe)
 import qualified Data.Aeson.KeyMap as K
+import qualified Data.Vector as V
 import qualified Data.ByteString.Lazy as B
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as T
@@ -80,7 +81,7 @@ askModel endpoint key model file instructions history = do
     wire name v@(Object o)
       | K.lookup "provider_model" o == Just (String (T.pack name)),
         K.lookup "provider_source" o == K.lookup "content" o,
-        Just (Array outputs) <- K.lookup "provider_output" o = foldr (:) [] outputs
+        Just (Array outputs) <- K.lookup "provider_output" o = V.toList outputs
       | otherwise = [clean v]
     wire _ v = [clean v]
     synchronous e = case fromException e :: Maybe SomeAsyncException of Just _ -> Nothing; Nothing -> Just e
