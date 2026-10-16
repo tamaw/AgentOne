@@ -112,7 +112,7 @@ loadEnv = do
 message :: T.Text -> T.Text -> Value
 message role content = object ["role" .= role, "content" .= content]
 
-ask :: String -> String -> String -> FilePath -> T.Text -> [Value] -> IO T.Text
+ask :: String -> String -> String -> FilePath -> T.Text -> [Value] -> IO (T.Text, Value)
 ask = askModel
 
 execute :: MVar Worker -> FilePath -> T.Text -> IO (T.Text, Bool)
@@ -206,10 +206,10 @@ supervisor = do
             Right _ -> pure ()
           let scopedContext = either (const context) (\entries -> applyLifecycle entries context) lifecycle
               workingContext = prepareContextWith 64000 scopedContext memories
-          source <- ask endpoint key model (session ++ "/llm-" ++ show n ++ ".request.json")
+          (source, assistant) <- ask endpoint key model (session ++ "/llm-" ++ show n ++ ".request.json")
             (standing <> "\nProject rules from AGENTS.md:\n" <> rules) workingContext
           _ <- atomically $ beginExecution paused generation requestGeneration executionStarted
-          record conversation (Just True) $ message "assistant" source
+          record conversation (Just True) assistant
           (feedback, again) <- execute workers file source
           record conversation (Just False) $ message "user" $ "Execution feedback:\n" <> feedback <>
             (if again then "\nThe step requested another model call to continue." else "\nThe step is waiting for new user input.")

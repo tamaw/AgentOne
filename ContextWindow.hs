@@ -19,12 +19,15 @@ metadata v = any (`T.isPrefixOf` content v) ["User paused or superseded work", "
 latestUserIntent :: [Value] -> String
 latestUserIntent h = case filter (\v -> role v == Just (String "user") && not (feedback v) && not (metadata v)) (reverse h) of v:_ -> T.unpack (content v); _ -> ""
 contextCharacters :: [Value] -> Int
-contextCharacters = sum . map (T.length . content)
+contextCharacters = sum . map costMessage
+costMessage v@(Object o) = T.length (content v) + maybe 0 (fromIntegral . B.length . encode) (K.lookup "provider_output" o)
+costMessage v = T.length (content v)
 msg s = object ["role" .= String "user", "content" .= String s]
 replace (Object o) s = Object (K.insert "content" (String s) o)
 replace _ s = msg s
 reference i = T.pack ("[History index " ++ show i ++ "; exact source/output: recoverHistoryMessage " ++ show i ++ " in ContextWindow; /workspace/.runs/conversation.json. Historical observation, not verified live state.]\n")
 important l = any (`T.isInfixOf` T.toLower l) ["failed","error","refused","timed out","verified","audit","unresolved","exitfailure","exit success","exitsuccess","saved",".hs",".png","bind"]
+packet i v@(Object o) | K.member "provider_output" o = v
 packet i v = replace v (reference i <> body)
  where
   s = content v
@@ -51,7 +54,7 @@ prepareContextWith budget h remedies
   chosen = concat (reverse revChosen)
   choose n (i,v) | protected v = (n,[v])
                  | overflow = (n,[])
-                 | otherwise = let p=packet i v; cost=T.length(content p) in if cost <= n then (n-cost,[p]) else (n,[])
+                 | otherwise = let p=packet i v; cost=costMessage p in if cost <= n then (n-cost,[p]) else (n,[])
   fit n [] = (n,[])
   fit n (v:vs) = let cost=T.length(content v); (r,rest)=fit (if cost<=n then n-cost else n) vs in (r, if cost<=n then v:rest else rest)
 
