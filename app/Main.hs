@@ -22,6 +22,7 @@ import Data.Time.Clock.POSIX
 import GHC.IO.Handle (hDuplicate, hDuplicateTo)
 import StepLoader (loadStep)
 import ModelConnection (askModel)
+import ChatGPTAuth (authCommand)
 import ContextWindow (prepareContext)
 import System.Directory
 import System.Environment
@@ -145,8 +146,10 @@ execute workers file source = withMVar workers $ \(input, child) -> do
 supervisor :: IO ()
 supervisor = do
   loadEnv
-  [endpoint, key, model] <- mapM getEnv ["LLM_ENDPOINT", "LLM_API_KEY", "LLM_MODEL"]
-  session <- (".runs/haskell-" ++) . show . (floor :: POSIXTime -> Integer) . (* 1000000) <$> getPOSIXTime
+  endpoint <- fromMaybe "" <$> lookupEnv "LLM_ENDPOINT"
+  key <- fromMaybe "" <$> lookupEnv "LLM_API_KEY"
+  model <- getEnv "LLM_MODEL"
+  session <- getPOSIXTime >>= makeAbsolute . (".runs/haskell-" ++) . show . (floor :: POSIXTime -> Integer) . (* 1000000)
   createDirectoryIfMissing True session
   instructionFile <- maybe "SYSTEM.md" id <$> lookupEnv "INSTRUCTIONS_FILE"
   automatic <- doesFileExist instructionFile
@@ -211,7 +214,7 @@ supervisor = do
               else "User paused or superseded work with no execution awaiting feedback. Worker memory and actions were preserved; previously completed steps may have executed."
             loop workers (n + 1) Nothing
           Right (Left err) -> do
-            let detail = T.replace (T.pack key) "[redacted]" $ T.pack $ displayException err
+            let detail = (if null key then id else T.replace (T.pack key) "[redacted]") $ T.pack $ displayException err
             T.putStrLn $ "[error; recovering]\n" <> detail
             events $ object ["step" .= n, "error" .= detail]
             executing <- executionPending <$> readMVar conversation
@@ -234,4 +237,8 @@ main :: IO ()
 main = do
   mapM_ (`hSetBuffering` NoBuffering) [stdout, stderr]
   args <- getArgs
-  if args == ["--worker"] then worker else supervisor
+  case args of
+    ["--worker"] -> worker
+    "auth":command -> loadEnv >> authCommand command
+    [] -> supervisor
+    _ -> ioError $ userError "Usage: agent-one [auth COMMAND]"

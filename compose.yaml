@@ -11,11 +11,14 @@ services:
     environment:
       INSTRUCTIONS_FILE: /workspace/SYSTEM.md
       AGENT_START_PAUSED: "1"
+      LLM_OAUTH_BIND: 0.0.0.0
     ports:
       - "3080:3000"
+      - "127.0.0.1:1456:1456"
     volumes:
       - work:/workspace
       - stack:/home/tama/.stack
+      - auth:/root/.config/agent-one
       - ./SYSTEM.md:/workspace/SYSTEM.md:ro
       - ./AGENTS.md:/workspace/AGENTS.md:ro
 
@@ -31,9 +34,14 @@ services:
     environment:
       INSTRUCTIONS_FILE: /workspace/SYSTEM.md
       AGENT_START_PAUSED: "1"
+      LLM_OAUTH_BIND: 0.0.0.0
+      LLM_OAUTH_PORT: "1457"
+    ports:
+      - "127.0.0.1:1457:1457"
     volumes:
       - work-two:/workspace
       - stack:/home/tama/.stack
+      - auth:/root/.config/agent-one
       - ./SYSTEM.md:/workspace/SYSTEM.md:ro
       - ./AGENTS.md:/workspace/AGENTS.md:ro
 
@@ -44,3 +52,5 @@ volumes:
     name: agent-two-work
   stack:
     name: agent-one-stack
+  auth:
+    name: agent-one-auth

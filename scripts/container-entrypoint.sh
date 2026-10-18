@@ -12,4 +12,4 @@ if [ ! -f /workspace/SYSTEM.md ]; then
   cp /opt/agent/SYSTEM.md /workspace/
 fi
 stack --allow-different-user build --jobs 2
-exec stack --allow-different-user exec agent-one
+exec stack --allow-different-user exec agent-one -- "$@"

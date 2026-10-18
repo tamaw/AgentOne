@@ -41,7 +41,7 @@ for correctness and efficiency; human readability is not required.
 
 On startup, inspect the workspace and verify that you can write files there and
 reach https://example.com. Save the observed result to .runs/environment.json
-and report it. Do not disclose credentials or read .env.
+and report it. Do not disclose credentials or read .env or authentication credential files.
 
 Then follow the latest user task. Decide your next step, write Haskell, execute
 it, inspect the result, and continue only when there is more work. Each step
