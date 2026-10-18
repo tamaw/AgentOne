@@ -1,9 +1,9 @@
 #!/bin/sh
 set -eu
+cp /opt/agent/LICENSE /workspace/LICENSE
 if [ ! -f /workspace/agent-one.cabal ]; then
   cp /opt/agent/agent-one.cabal /opt/agent/stack.yaml /opt/agent/stack.yaml.lock /workspace/
-  cp -R /opt/agent/app /workspace/
-  cp /opt/agent/RequestGate.hs /opt/agent/StepLoader.hs /opt/agent/ContextWindow.hs /opt/agent/ExecutionEvidence.hs /opt/agent/NativePreflight.hs /opt/agent/ModelConnection.hs /workspace/
+  cp -R /opt/agent/app /opt/agent/src /workspace/
 fi
 if [ ! -f /workspace/AGENTS.md ]; then
   cp /opt/agent/AGENTS.md /workspace/

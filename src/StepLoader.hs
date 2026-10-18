@@ -14,6 +14,7 @@ loadStep path = do
 
 compileStep :: FilePath -> IO (Either H.InterpreterError StepAction)
 compileStep path = H.runInterpreter $ do
+  H.set [H.searchPath H.:= ["src", "."]]
   H.loadModules [path]
   H.setTopLevelModules ["Step"]
   H.setImports ["Prelude", "Data.IORef", "Data.Map.Strict"]

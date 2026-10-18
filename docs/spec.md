@@ -1,6 +1,7 @@
 # Agent One — recreation specification
 
-This describes the working application as of 2026-10-15. Recreate the current
+This describes the main-branch application as of 2026-10-18. Agent experiment
+branches may contain additional capabilities. Recreate the current
 minimal application first; the final section lists proposed improvements that
 have not been implemented. This specification was explicitly requested as an
 exception to the project's usual no-documentation preference.
@@ -55,12 +56,14 @@ Required files:
 
 ```text
 app/Main.hs                 supervisor and worker in one executable
+src/*.hs                    runtime modules and reusable support code
+docs/                       recreation specification and changelog
 agent-one.cabal             executable/package definition
 stack.yaml                 Stack resolver
 stack.yaml.lock             generated dependency lock
 Dockerfile                 Debian development environment
 compose.yaml               service, input terminal and volumes
-container-entrypoint.sh     seed workspace, build, launch
+scripts/container-entrypoint.sh     seed workspace, build, launch
 SYSTEM.md            live standing task instructions
 AGENTS.md                  project preferences
 .dockerignore              build-context allowlist
@@ -69,11 +72,11 @@ AGENTS.md                  project preferences
 ```
 
 Package: `agent-one`, version `0.1.0.0`, Cabal 2.4, build type Simple, executable
-`agent-one`, `main-is: Main.hs`, `hs-source-dirs: app`, Haskell2010.
+`agent-one`, `main-is: Main.hs`, `hs-source-dirs: app src`, Haskell2010.
 Default extensions: `OverloadedStrings`, `ScopedTypeVariables`.
 GHC options: `-O2 -dynamic -threaded -rtsopts`.
 Dependencies: `base >=4.18 && <5`, `aeson`, `async`, `bytestring`, `containers`,
-`directory`, `hint`, `process`, `stm`, `text`, `time`, `unix`.
+`directory`, `hint`, `process`, `stm`, `text`, `time`, `unix`, `vector`.
 Stack resolver: `lts-22.44` (GHC 9.6.7); packages: `[.]`.
 
 ## Model connection
@@ -86,26 +89,34 @@ win. Required configuration:
 LLM_ENDPOINT=https://YOUR-RESOURCE.openai.azure.com/openai/v1
 LLM_API_KEY=<supply privately>
 LLM_MODEL=gpt-6.1-sol
+LLM_REASONING_EFFORT=high
+LLM_TIMEOUT_SECONDS=900
 ```
 
 Optional `INSTRUCTIONS_FILE` defaults to `SYSTEM.md`; Compose sets it to
 `/workspace/SYSTEM.md`. The deployment/model name must exist on the supplied
-endpoint. No real credential belongs in this specification.
+endpoint. No real credential belongs in this specification. See ../README.md for a
+Foundry configuration example. Authentication uses the resource API key.
 
-Use the Azure OpenAI Responses API through `curl`, not an SDK. Remove trailing
-slashes from the endpoint; strip a `/api/projects/...` suffix if supplied. Append
-`/responses` when the base ends in `/v1`, otherwise append `/openai/v1/responses`.
-Send `api-key` and `Content-Type: application/json` headers. Pass curl configuration
-and credentials through stdin (`--config -`), not process arguments. Use
-`--silent --show-error --fail-with-body --max-time 120`.
+Use the Foundry-hosted Azure OpenAI Responses API through `curl` with an `api-key`
+header and JSON content type. Accept a resource URL, `/openai/v1` base URL, or
+full `/openai/v1/responses` URL. Remove trailing slashes; append `/responses` to
+an existing `/v1` base, otherwise append `/openai/v1/responses`. For legacy
+connection strings containing `/api/projects/`, use the resource prefix.
+Pass curl configuration and credentials through stdin (`--config -`), not process
+arguments. Use `--silent --show-error --fail-with-body` and the configured timeout.
 
-Request JSON contains `model`, `instructions`, `input` and `store: false`.
-`input` is the saved conversation as role/content objects. Instructions combine
-the runtime contract, freshly read `AGENTS.md`, and freshly read standing
-instructions on every call. Parse completed Responses output messages and
-concatenate their `output_text` content. Reject empty source or incomplete status.
-There is no token streaming; stdout shows request metadata immediately and source
-when the full response arrives.
+Responses requests contain `model`, `instructions`, `input`, `store: false`,
+reasoning effort, encrypted-reasoning inclusion and a persistent session cache key.
+Save complete provider output alongside assistant source. Replay it in original
+order only for the same model and unchanged source; otherwise send clean
+role/content messages. Reasoning support depends on the deployed model.
+
+Instructions come from freshly read `SYSTEM.md` (or `INSTRUCTIONS_FILE`),
+including the execution contract, followed by freshly read `AGENTS.md`. Missing or
+empty instructions pause the agent before making a model call. Parse completed output text and reject
+empty source or incomplete status. There is no token streaming; stdout shows
+request metadata immediately and source when the full response arrives.
 
 ## Generated-code contract
 
@@ -176,7 +187,8 @@ Terminal controls:
 - `/quit`: exit the supervisor and stop its worker.
 
 Without a standing instructions file, start paused awaiting input. With one,
-start automatically. Read the existence choice at startup and reread its contents
+start automatically unless `AGENT_START_PAUSED=1`; Compose sets this flag for both
+agents. Read the existence choice at startup and reread its contents
 on each call. An idle process remains alive without repeated LLM calls.
 
 ## Durable conversation and observations
@@ -189,7 +201,7 @@ pending=False afterward. Do not silently discard malformed saved history.
 On restart, restore history and append a message explaining that worker memory and
 actions were reset while files persisted. If execution was pending, explain that
 effects may have partially happened and should be inspected before repeating.
-Do not automatically replay old source. With standing instructions present,
+Do not automatically replay old source. With standing instructions present and without `AGENT_START_PAUSED=1`,
 restart initiates a model turn even if the previous process was idle.
 
 Create `.runs/haskell-<microsecond timestamp>/` per supervisor session:
@@ -205,7 +217,10 @@ available. Print generated source between `[llm code]` markers, relay execution
 output, and explicitly print when waiting. Redact the known API key from model
 logging and supervisor error text. Do not print authentication headers.
 
-Full conversation is currently sent on every call; no context compaction exists.
+The full conversation is saved durably. `ContextWindow.hs` bounds request context
+by eliding bulky older content while retaining protected messages and recent
+exchanges; protected content can still exceed the target. Provider output counts
+toward the context estimate.
 Runtime closures and IORef data are not persisted or automatically restored.
 Saved source/history provide evidence but are not a capability-loading system.
 Credential filtering and instructions are best-effort precautions, not a security
@@ -248,7 +263,7 @@ agent-one-stack -> /home/tama/.stack
 ```
 
 No host Docker socket or host project directory is mounted. Do not include `.env`
-in the build context/image. Allowlist only Dockerfile, app sources, Cabal/Stack
+in the build context/image. Allowlist only Dockerfile, LICENSE, app sources, Cabal/Stack
 files, entrypoint and instruction templates in `.dockerignore`. Ignore `.env`,
 `.runs/` and `.stack-work/` in Git.
 
@@ -308,9 +323,8 @@ improvement in general agent performance.
    preference: these are agent-level experiments.
 3. Archive known working versions and accept replacements only when measurements
    improve. Keep an easy rollback path.
-4. Bound request context while retaining full logs: remove bulky old execution
-   outputs first, summarize older work when necessary, preserve current task and
-   recent failures. Preserve the durable full conversation separately.
+4. Improve the existing request-context bounds when protected histories exceed
+   the target; preserve current tasks, recent failures and durable full history.
 5. Explore a stable improvement operation that reads code and execution traces and
    writes reusable helpers or strategy modules. Add depth only when measurements
    justify it; do not schedule idle self-improvement calls.

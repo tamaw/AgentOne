@@ -19,10 +19,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     postgresql-client redis-tools libssl-dev libsqlite3-dev libxml2-dev \
     libxslt1-dev libcurl4-openssl-dev libreadline-dev libncurses-dev \
     gettext zstd 7zip
-COPY agent-one.cabal stack.yaml stack.yaml.lock AGENTS.md SYSTEM.md /opt/agent/
-COPY RequestGate.hs StepLoader.hs ContextWindow.hs ExecutionEvidence.hs NativePreflight.hs ModelConnection.hs /opt/agent/
+COPY agent-one.cabal stack.yaml stack.yaml.lock LICENSE AGENTS.md SYSTEM.md /opt/agent/
+COPY src /opt/agent/src
 COPY app /opt/agent/app
-COPY container-entrypoint.sh /usr/local/bin/agent-one-start
+COPY scripts/container-entrypoint.sh /usr/local/bin/agent-one-start
 RUN chmod +x /usr/local/bin/agent-one-start
 WORKDIR /workspace
 ENTRYPOINT ["agent-one-start"]

@@ -36,7 +36,7 @@ askModel endpoint key model file instructions history = do
           | "/v1" `T.isSuffixOf` root = root <> "/responses"
           | otherwise = root <> "/openai/v1/responses"
       payload = object ["model" .= model, "instructions" .= instructions, "input" .= concatMap (wire model) history, "store" .= False,
-          "include" .= ["reasoning.encrypted_content" :: T.Text], "reasoning" .= object ["effort" .= effort], "prompt_cache_key" .= session]
+        "include" .= ["reasoning.encrypted_content" :: T.Text], "reasoning" .= object ["effort" .= effort], "prompt_cache_key" .= session]
       redact = T.replace (T.pack key) "[redacted]"
       emit = T.putStrLn . redact . T.decodeUtf8 . B.toStrict . encode
       elapsed = (round :: POSIXTime -> Integer) . (* 1000) . subtract started <$> getPOSIXTime

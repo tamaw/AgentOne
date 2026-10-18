@@ -31,7 +31,8 @@ for the work you perform. Root applies to this container; no host Docker socket
 is mounted.
 
 Work in /workspace, backed by your container's persistent workspace volume. Your
-Haskell source is in /workspace/app/Main.hs. Stack and GHC are available, with
+Haskell entry point is /workspace/app/Main.hs; agent-one.cabal lists the runtime
+source directories. Stack and GHC are available, with
 a separate persistent toolchain cache. Internet access is available through
 Docker's default network. Use Haskell for generated programs.
 
