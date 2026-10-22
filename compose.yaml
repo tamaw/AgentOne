@@ -3,6 +3,7 @@ services:
     build: .
     image: local/agent-one:haskell
     container_name: agent-one
+    command: ["--a2a"]
     init: true
     stdin_open: true
     tty: true
@@ -19,13 +20,18 @@ services:
       - work:/workspace
       - stack:/home/tama/.stack
       - auth:/root/.config/agent-one
+      - shared:/shared
       - ./SYSTEM.md:/workspace/SYSTEM.md:ro
       - ./AGENTS.md:/workspace/AGENTS.md:ro
+    networks:
+      - default
+      - progenitor_network
 
   agent-two:
     build: .
     image: local/agent-one:haskell
     container_name: agent-two
+    command: ["--a2a"]
     init: true
     stdin_open: true
     tty: true
@@ -42,8 +48,12 @@ services:
       - work-two:/workspace
       - stack:/home/tama/.stack
       - auth:/root/.config/agent-one
+      - shared:/shared
       - ./SYSTEM.md:/workspace/SYSTEM.md:ro
       - ./AGENTS.md:/workspace/AGENTS.md:ro
+    networks:
+      - default
+      - progenitor_network
 
 volumes:
   work:
@@ -54,3 +64,12 @@ volumes:
     name: agent-one-stack
   auth:
     name: agent-one-auth
+  # Exchange volume shared with Progenitor (mounted there at /shared too).
+  shared:
+    name: progenitor-shared
+    external: true
+
+networks:
+  # Progenitor reaches the agents over A2A at http://agent-one:8080 / agent-two:8080.
+  progenitor_network:
+    external: true

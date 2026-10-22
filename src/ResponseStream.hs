@@ -51,7 +51,9 @@ readResponseStream handle = loop [] Nothing Nothing M.empty
             if B.length chunk + sum (map B.length parts) > 16777216
               then loop [] completed (Just "Responses stream event exceeded 16 MiB") items
               else loop (chunk:parts) completed failure items
-          else if "{" `B.isPrefixOf` line then case eitherDecodeStrict' line of
-            Right value -> loop parts completed (Just $ message value) items
-            Left _ -> loop parts completed (Just "Invalid Responses stream") items
+          else if "{" `B.isPrefixOf` line then do
+            suffix <- B.hGet handle 1048576
+            case eitherDecodeStrict' (line <> "\n" <> suffix) of
+              Right value -> ioError $ userError $ message value
+              Left _ -> ioError $ userError "Invalid Responses stream"
           else loop parts completed failure items
