@@ -1,0 +1,2 @@
+initial growth 0.155 conservative rib-inclusive radial clearance/r -0.3162661644946705 valid False
+revision growth 0.2038490386609637 conservative rib-inclusive radial clearance/r 0.1423072757674564 valid True

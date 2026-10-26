@@ -1,0 +1,28 @@
+{
+  "tube_fraction": 0.24,
+  "growth": 0.09391401994133698,
+  "growth_per_revolution": 1.8041312793184856,
+  "conservative_coil_clearance_per_radius": 0.12979378926797613,
+  "turns": 2.9,
+  "image": "/workspace/artifacts/wallpaper-challenge/final.png",
+  "size": [
+    3840,
+    2160
+  ],
+  "mode": "RGB",
+  "file_bytes": 6011846,
+  "sha256": "826a3a12a7711497ece421844c0e4c141f2f7cb891967d7ee148e521d9f09b4e",
+  "clip_fraction": 5.0395447530864195e-05,
+  "luminance_percentiles": [
+    13.233799999999999,
+    14.306,
+    90.17540000000001,
+    106.26880999999996,
+    150.0008
+  ],
+  "left_mean_RGB": [
+    7.50468635559082,
+    14.56414794921875,
+    24.076335906982422
+  ]
+}

@@ -1,0 +1,1 @@
+NOISE_AUDIT {"file": "/workspace/artifacts/wallpaper-challenge/final-raw.png", "flat_interior_pixels": 793325, "laplacian_residual_abs_median": 0.8753499999999974, "laplacian_residual_abs_p95": 2.967439999999961, "method": "flat opaque interior only; curvature/texture may contribute, not pure noise estimate"}

@@ -1,0 +1,8 @@
+{
+  "start": 1792114246.9864154,
+  "deadline": 1792114846.9864154,
+  "stopped": 1792114491.9824193,
+  "stopped_early": true,
+  "stop_reason": "OpenCode HTTP402: Upstream request failed: Insufficient account funds",
+  "elapsed_seconds": 244.99600386619568
+}

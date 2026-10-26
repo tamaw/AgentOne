@@ -1,0 +1,93 @@
+{
+  "changed_files": [
+    "ContextWindow.hs",
+    "IncumbentContext.hs",
+    "RemedyMemory.hs",
+    "remedy-memory.json",
+    "app/Main.hs",
+    "agent-one.cabal"
+  ],
+  "peer_memory_origin": "agent-one; evidence paths are relative to agent-one workspace, not asserted to exist locally",
+  "incumbent_snapshot": ".runs/pair/incumbent",
+  "full_history": "unchanged by context preparation; .runs/conversation.json",
+  "active": false,
+  "build": "successful .runs/pair/build-final-integration.log",
+  "limitations": [
+    "character budget, not tokenizer budget",
+    "overflow deliberately falls back to incumbent rather than discarding instructions/current evidence",
+    "equal-budget recency baseline already retains bind failure; advantage is instruction retention/indexed recovery, not demonstrated model task success",
+    "selected lines can omit unrecognized failures; exact history recovery remains essential"
+  ],
+  "sha256": {
+    "ContextWindow.hs": "49444e4ae27b89812ea995504feba236b54f029afd686920e5ac30f847b0a027",
+    "IncumbentContext.hs": "31cdced18adc0f62a8cca749c39e7d05e2e2bb984c28e20b16b7314a6a8490ee",
+    "RemedyMemory.hs": "c8d5ad77b1550151013285929bb18807ecdceb5d8e95caaa6ad3424e26b4774f",
+    "remedy-memory.json": "38c383801421fbfc1556f9db43c83823fecfba7ba6a05a0be7c290df53643ff9",
+    "app/Main.hs": "d62a659295c4d1db2ee57b9be8f12c9fc059b81b2fdbe982ed0a5390a23e74fe",
+    "agent-one.cabal": "10fcaf7da3c51092b2da62f65367ef756d74885f1f6b3b1240c15b19ccb8d8ee"
+  },
+  "installed_sha256": "815e9f7fc39d042c1d38bad372c85425c4c7ed9d492eeabd4e7bb74846ec2c10",
+  "live_supervisor_sha256": "cd64c5b73acb5ba67cf72ea4126a828d59623067a320cea72f78b65d1c06a826",
+  "metadata_check": "appended exact supervisor restart notice preserves substantive intent; recorded evaluation returned True",
+  "provenance": "Main emits source-agent workspace provenance inside 1600-character remedy allowance; peer store/module unchanged",
+  "current_evidence": {
+    "budget": 64000,
+    "exact_history_unchanged_by_preparation": true,
+    "full_history_characters": 494671,
+    "overflow_actual_characters": 61550,
+    "overflow_preserves_all_incumbent_messages": true,
+    "prepared_characters": 63730,
+    "remedy_characters": 887,
+    "remedy_count": 2,
+    "revision_note": "Previous context measurements precede final peer selector update; no claim of rerun. Equal-budget context episode unaffected by imported selector."
+  },
+  "equal_budget_evidence": {
+    "baseline_budget_policy": "chronological prefix clipping to identical8000-character allowance; not current runtime behavior",
+    "episode_last_history_index": 34,
+    "incumbent_raw_characters": 61314,
+    "limitations": "Deterministic evidence availability comparison, not model success or latency; chronological clipping is a specified budget adapter, not a tokenization estimate.",
+    "outcomes": [
+      {
+        "actual_characters": 8000,
+        "budget_characters": 8000,
+        "contains_bind_failure": false,
+        "contains_exact_recovery_reference": false,
+        "latest_feedback_available": false,
+        "variant": "incumbent_equal_budget"
+      },
+      {
+        "actual_characters": 8000,
+        "budget_characters": 8000,
+        "contains_bind_failure": true,
+        "contains_exact_recovery_reference": false,
+        "latest_feedback_available": true,
+        "variant": "recency_equal_budget"
+      },
+      {
+        "actual_characters": 7785,
+        "budget_characters": 8000,
+        "contains_bind_failure": true,
+        "contains_exact_recovery_reference": true,
+        "latest_feedback_available": true,
+        "variant": "candidate_equal_budget"
+      }
+    ]
+  },
+  "installed_binary": ".stack-work/install/x86_64-linux-tinfo6/f4d8ba160ff364d43d140fd20a61b129d3e1825c7fea0980f431362f797867c1/9.6.7/bin/agent-one",
+  "activation": "External restart of agent-two supervisor/worker using built binary required; agent must not terminate supervisor. After restart compare live worker and supervisor hashes with installed_sha256, then inspect first context_characters/remedy_status event.",
+  "rollback": "Restore tracked incumbent ContextWindow.hs, app/Main.hs, agent-one.cabal from .runs/pair/incumbent and Stack rebuild; external restart only. New module files can remain unused.",
+  "final_peer_revision": {
+    "module_sha256": "c8d5ad77b1550151013285929bb18807ecdceb5d8e95caaa6ad3424e26b4774f",
+    "store_sha256": "38c383801421fbfc1556f9db43c83823fecfba7ba6a05a0be7c290df53643ff9",
+    "selector": "at least two whole-word tag overlaps",
+    "errors": "sanitized JSON errors",
+    "verification": "fetched twice, identical; peer final review confirms two-tag selector and source-agent scopes; local served ContextWindow byte-identical"
+  },
+  "peer_replay_report": {
+    "origin": "agent-one final inbox report, not locally replayed",
+    "budget": "640x360,32 samples,45 seconds both variants",
+    "baseline": "unsupported OIDN failed exit2",
+    "remedy": "denoising=False succeeded5.734 seconds",
+    "limit": "known remedy efficacy, not unbiased discovery/model performance"
+  }
+}

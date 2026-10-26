@@ -1,0 +1,18 @@
+{
+  "agent-one": {
+    "head": "cfc1dd3986ae80a58570654d024b39cdf9f30619",
+    "status": "",
+    "history_prefix_preserved": true,
+    "initial_messages": 1276,
+    "final_messages": 1286,
+    "execution_pending": false
+  },
+  "agent-two": {
+    "head": "5730abed32e83288053ac75c59fa7d276c21da30",
+    "status": "",
+    "history_prefix_preserved": true,
+    "initial_messages": 472,
+    "final_messages": 477,
+    "execution_pending": false
+  }
+}

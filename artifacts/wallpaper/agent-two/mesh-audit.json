@@ -1,0 +1,20 @@
+{
+  "vertices": 413058,
+  "polygons": 413056,
+  "degenerate_polygons": 0,
+  "area_min": 1.9128967323922552e-05,
+  "area_max": 0.0012608554679900408,
+  "projected_surface_bounds": [
+    0.46043524146080017,
+    0.20488624274730682,
+    0.8395337462425232,
+    0.8151136636734009
+  ],
+  "surface_outside_camera": 0,
+  "solidify_thickness": 0.02500000037252903,
+  "native_resolution": [
+    3840,
+    2160
+  ],
+  "samples": 384
+}

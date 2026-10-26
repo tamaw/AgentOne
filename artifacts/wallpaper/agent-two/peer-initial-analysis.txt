@@ -1,0 +1,52 @@
+IMAGE artifacts/wallpaper-challenge/peer-initial.png (1280, 720)
+....................................................................................................
+....................................................................................................
+....................................................................................................
+....................................................................................................
+....................................................................................................
+............................,.,,,,,,,,,,,,,,,,,,,,,,,,,,...,,,..,,,,,,,.,...........................
+.................,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.:;,,,,::.,,,.,,,,,,,,,,,,,,,,,,,,,,,,,,.....
+.........,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.:i;r.,,i;.,,,;,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+..,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;;;i;i,.r:.:r:,,,i;,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:;,,,,sr..rX;;r::,r::,,,;i:,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:;irii;,:sssrsrsrr;rr:::,;r;;i,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;:,::,;rXXi.sAiis5i;A:,srri,,i:,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,ii;irrsii:sXsAr25s3iXs,XAi:,:i;,,:,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;r;:,:ssrsXXAr2XAA35A5A:X3r,,r5s;;;;;:::::::,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,;;;:;rAXiiXss2A3535hM3MA25;iiA5Xi;:::;:::::::::::::::::::,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,:;;ri;ssXrXAAA53h5h3hMhh53hXX225X,::::;:::::::::::::::::::::::
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,::::iii;:XXAA5552MM33hh5MM33GMr5Mh2X:;rsr;::::::::::::::::::::::::
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,:::::::::;i:;sAsX25A5M33hHMHhhMMMHHh335X5sAXsri;;;;;::::::::::::::::::::
+,,,,,,,,,,,,,,,,,,,,,,::::::::::::::;i;rsXAXA33hM352hMMMMHHGGHHH3hhh52XXsrii;;ii;;;:::::::::::::::::
+,,,,,,,,,,,,,,,,,::::::::::::::::::;irs;s5XA52hMh523MM5hMGGSGSGh3M5325Xiirsrii;;;;;;;;;;;;;:::::::::
+,,,,,,,,,,,:::::::::::::::::;;;;;;;iss;s5XX35hMMh25hM33hhHHHGSGHhh3332A22Xsr;;;;;;;;;;;;;;;;;;;;;;::
+,,,,,,,::::::::::::::;;;;;;;;;;;;;irX;s5s2553HMM3AhHHhhhMMHMHSHMM553252Xi;;;;;;;;;;;;;;;;;;;;;;;;;;;
+,,::::::::::::::;;;;;;;;;;;;;;iiiirXrsAX255AGMMHh3hhh3hMMMHMHGGM335555XAXXsrrrii;;;;;;;;;;;;;;;;;;;;
+:::::::::::;;;;;;;;;;;;iiiiiiiiiiiXrssA2X35hhMHMM35hh3hHMMMMMHGMh3h552XXsXXsrriiiiiiiii;;;;;;;;;;;;;
+:::::::;;;;;;;;;;iiiiiiiiiiiiiirrrArXs2AXM3hMHhM5M3Mh3h33MMh3HHM355h3252Xriiiiiiiiiiiiiiiiii;;;;;;;;
+:::;;;;;;;;;;iiiiiiiiiirrrrrrrrrrsXssX5s2h3hHh5HhhhGMhhhhh355h35553hh5srXXsriiiiiiiiiiiiiiiiiiiii;;;
+;;;;;;;;;iiiiiiiiirrrrrrrrrrrrrsrXXXs2hX2h33h32MhhhHM353352525225353s55rrXrssrriiiiiiiiiiiiiiiiiiiii
+;;;;;iiiiiiiiirrrrrrrrrrsssssssssAXXs25AA5352323h33hM35522223h5253M25X25Arrrssrrrrrriiiiiiiiiiiiiiii
+;;iiiiiiiirrrrrrrrrssssssssssssXsAAAs23225h5552AMMM353522222335233h53AA2XAssrrrrrrrrrrrrriiiiiiiiiii
+iiiiiiirrrrrrrrsssssssssXXXXXXXXXAAAXAh223h5h55223Mh352AAA2555555X32As2XrAsrrrrrrrrrrrrrrrrrrriiiiii
+iiiirrrrrrrrsssssssXXXXXXXXXXXXAAA22AA5255h32h3h5553hhhh5555h552552A2A2sssArsrrrrrrrrrrrrrrrrrrrrrii
+iirrrrrrrssssssXXXXXXXXXAAAAAAAAAA522A25533h523hh3352553hMMh335555232XXssAXsssssssrrrrrrrrrrrrrrrrrr
+rrrrrrsssssssXXXXXXXAAAAAAAAAA222A252225353555253hhhhh33555255555523XX2AAXssssssssssssrrrrrrrrrrrrrr
+rrrrssssssXXXXXXAAAAAAAA22222222222522555h5553h55553355222A2AAAX22A2XXAXsssssssssssssssssrrrrrrrrrrr
+rrssssssXXXXXXAAAAAA2222222222222225355355333553353335552222A2222XAAXAXXXXssssssssssssssssssssrrrrrr
+rsssssXXXXXXAAAAA222222225555555555553555553333555555522252A2AAAXX2AAXXXXXXXXssssssssssssssssssssrrr
+sssssXXXXXAAAAA2222225555555555555555533555555333535522222252A22A22AXXXXXXXXXXXXsssssssssssssssssssr
+sssXXXXXAAAAA2222255555555533333333335533355555555555552A22AAAA22AXXXXXXXXXXXXXXXXXsssssssssssssssss
+ssXXXXXAAAA22222555555533333333333333333533333355553552252222222AAAAAXXXXXXXXXXXXXXXXXXsssssssssssss
+XXXXXAAAAA222255555533333333333333333333335555335555555522222AAAAAAAAAAXXXXXXXXXXXXXXXXXXXXsssssssss
+XXXXAAAA222225555533333333hhhhhhhhhh333333333555555552222222AAAAAAAAAAAXXXXXXXXXXXXXXXXXXXXXXXssssss
+XXXAAAA222255555333333hhhhhhhhhhhhhhhhh3333333355555522222222AAAAAAAAAAXXXXXXXXXXXXXXXXXXXXXXXXXssss
+XXAAAA2222555533333hhhhhhhhhhhhhhhhhhhhhhh333333555555222222AAAAAAAAAAAAXXXXXXXXXXXXXXXXXXXXXXXXXXss
+XAAAA222555553333hhhhhhhhhMMMMMMMhhhhhhhhhh33333355555222222AAAAAAAAAAAAAXXXXXXXXXXXXXXXXXXXXXXXXXXX
+AAAA222555533333hhhhhhhMMMMMMMMMMMMMMhhhhhhh333335555222222AAAAAAAAAAAAAAAAXXXXXXXXXXXXXXXXXXXXXXXXX
+LIT_BOUNDS (0.0, 0.144, 0.997, 0.994)
+LIT_CENTROID 0.502 0.708
+COVERAGE 0.5455 BRIGHT 0.0245 CLIP 0.0006
+REGION_ROW 0 [(16.8, 26.1, 25.5), (21.2, 30.7, 29.3), (39.9, 48.3, 45.1), (17.5, 28.6, 29.1)]
+REGION_ROW 1 [(27.6, 52.9, 56.8), (79.3, 99.3, 96.8), (140.0, 137.8, 120.9), (32.2, 62.3, 68.0)]
+REGION_ROW 2 [(69.2, 123.1, 137.4), (103.6, 148.4, 158.7), (88.0, 125.1, 130.6), (58.2, 97.3, 105.1)]

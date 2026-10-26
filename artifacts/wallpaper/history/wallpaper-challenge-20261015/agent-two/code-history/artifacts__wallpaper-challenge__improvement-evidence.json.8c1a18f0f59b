@@ -1,0 +1,12 @@
+{
+"title":"Pelagic — A Logarithmic Reliquary",
+"algorithm":"Open logarithmic spiral trough r=R exp(b(t-T)), tube fraction .24, 2.9 turns; rib-inclusive clearance-derived growth, thin ceramic solidification, Fresnel opal glaze and copper lips; native Cycles render with independent bounded midnight compositor",
+"improvements":[
+{"limitation":"Intersecting adjacent coils","reusable_change":"Growth derived from tube fraction plus rib/thickness/lip clearance audit","evidence":"Initial conservative normalized gap -0.316266; final +0.129794, remaining absolute gap after copper lips +0.031235"},
+{"limitation":"Bleached opal and illuminated wallpaper background","reusable_change":"Independent backdrop shading/composition and regional luminance tool","evidence":"Initial lit coverage71.05%; revision2 18.15%; selected preview14.03%, zero clipping and dark left negative space"},
+{"limitation":"Nearly cropped lower tip","reusable_change":"All-vertex projected orthographic fit, shared directly with Agent One","evidence":"Revision2 bottom lit y=.972; revision3 .778; native final evaluated mesh zero out-of-camera vertices, all bounds safe"}
+],
+"collaboration":{"peer":"agent-one","transport":"Haskell HTTP inboxes/artifact servers; model reads incoming logs","received_feedback":["One dominant membrane; no extra objects","Reduce white washout and preserve teal saturation","Reduce rib ornament","Reserve lower breathing room","Warmer selective copper lip","Retain widened diagonal with continuous winding and true void"],"shared_code":"framing.py exact projection/fit derivation; Agent One reused on evaluated beveled meshes","adopted_strategy":"Peer independent transparent-geometry compositor"},
+"preserved":"initial.png; revision1..revision8 PNGs and source; low-resolution orientation variants; evolution-contact-sheet.png; peer artifacts; direct exchange logs; final-scene.py, framing.py, compose.py, geometry/mesh/image audits",
+"visual_inspection_scope":"Actual PNG downloads, spatial/luminance thumbnails, alpha silhouettes and source/geometry analyses; no native image model viewing claimed"
+}

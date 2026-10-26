@@ -1,0 +1,16 @@
+{
+  "start": 1792114246.9864154,
+  "deadline": 1792114846.9864154,
+  "wrap": 1792114726.9864154,
+  "root": "/home/tama/source/AgentOne/artifacts/grok-wallpaper-20261016T013046Z",
+  "agents": {
+    "agent-one": {
+      "initial_messages": 1276,
+      "head": "cfc1dd3986ae80a58570654d024b39cdf9f30619"
+    },
+    "agent-two": {
+      "initial_messages": 472,
+      "head": "5730abed32e83288053ac75c59fa7d276c21da30"
+    }
+  }
+}

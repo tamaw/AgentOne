@@ -1,0 +1,10 @@
+{
+  "inner_centerline_radius": 0.6412845221786598,
+  "outer_centerline_radius": 3.55,
+  "rib_inclusive_radial_clearance_min": 0.08323474813247174,
+  "membrane_thickness": 0.025,
+  "copper_lip_diameter": 0.052,
+  "conservative_gap_after_two_lips": 0.03123474813247174,
+  "clearance_positive": true,
+  "method": "adjacent-turn radial annulus clearance; conservative over t and rib displacement, not a complete arbitrary-surface intersection proof"
+}

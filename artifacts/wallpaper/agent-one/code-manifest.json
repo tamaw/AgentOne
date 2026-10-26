@@ -1,0 +1,12 @@
+{
+  "revision1.py": "d53b17dd567ee832f944362eae1c146e9d9b4ddf9c76c7c4276038dedf61cb8a",
+  "revision3.py": "eced8fd671f7316614e0de4b546c784dc3ddb402489718107bd82bd94d8574c7",
+  "revision4.py": "32fc73b7fc155293b17a93a594c5eefff4c5d1ecfd7be4894e5c0c431896dfa3",
+  "revision5.py": "49157567e5ff97b87286373fe442b8e34f5be6b995f5802debc1a24af00b5159",
+  "final_scene.py": "ab6171a5f53d7fefb0ec947d367831b3e19fcb1a60279f1b3e914c9107fcddc7",
+  "render_support.py": "0798401894bf63d938f2544e8cbde0af07a5ca38bc551f3504bda29448b3a3ad",
+  "frame_geometry.py": "44870609414a9fbcace0e3c324fee37552dcfe540287d1392cc489e7c0df6e81",
+  "compose.py": "4b18b97db50e660148c5389ff9270fe9c4736111c0b42b20f6e670550d908fe8",
+  "quality_audit.py": "81c6f20a8b3c8c6639fc880b8571627986dcc9a7d4dd7f96bc6991b1dc06faca",
+  "hopf_invariants.py": "969bccd851ac4cc545d13be0a7a6268be0d75bb842fc0896feeeef556e80228a"
+}
