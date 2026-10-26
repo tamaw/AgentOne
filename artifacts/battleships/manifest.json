@@ -37,12 +37,24 @@
       "git_blob": "750c23341570f64c7df8fc770b2d012509cd8914"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/final/comparison-game2.log",
+      "git_blob": "2920194fbea6239e856e88f9722c9097a03c4112"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/final/comparison-game3.json",
       "git_blob": "514b9f71d11e0e338948235942d05363747496f6"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/final/comparison-game3.log",
+      "git_blob": "703c8efde661c101be68f0ebedf0c463fc4fc211"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/final/evaluate",
       "git_blob": "00ce8cc40a7231a752bc6038e72299fd247cfa3d"
+    },
+    {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/final/evaluation.log",
+      "git_blob": "abe757f6a7ebfabfb6a7886cc03c883457d0086f"
     },
     {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/final/evidence-before-prize.json",
@@ -89,6 +101,10 @@
       "git_blob": "00ccc8930250af99d8255daa72b13d89667ccb18"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/final/protocol-check.jsonl",
+      "git_blob": "d8d3e1cc50ba83e9215cb72146b96f5829af6b9d"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/final/selection.json",
       "git_blob": "de4fffcfd55f52d28a2fc091d6325ff285d7d5b0"
     },
@@ -101,6 +117,10 @@
       "git_blob": "00ce8cc40a7231a752bc6038e72299fd247cfa3d"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-1/evaluation.log",
+      "git_blob": "abe757f6a7ebfabfb6a7886cc03c883457d0086f"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-1/measurements.json",
       "git_blob": "3d59dfb510f5e248f92c6a8503caa4829397f596"
     },
@@ -109,12 +129,20 @@
       "git_blob": "e4eb1f36957a5cd712a6de9eb6fd056256aacbb9"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-1/protocol-check.jsonl",
+      "git_blob": "d8d3e1cc50ba83e9215cb72146b96f5829af6b9d"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-2/AGENTS.md",
       "git_blob": "7c8cdbbdd0de40e39d8a9d3bf0a60b881478d053"
     },
     {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-2/evaluate",
       "git_blob": "00ce8cc40a7231a752bc6038e72299fd247cfa3d"
+    },
+    {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-2/evaluation.log",
+      "git_blob": "abe757f6a7ebfabfb6a7886cc03c883457d0086f"
     },
     {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-2/feedback.json",
@@ -133,6 +161,10 @@
       "git_blob": "e4eb1f36957a5cd712a6de9eb6fd056256aacbb9"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-2/protocol-check.jsonl",
+      "git_blob": "d8d3e1cc50ba83e9215cb72146b96f5829af6b9d"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-3/AGENTS.md",
       "git_blob": "7c8cdbbdd0de40e39d8a9d3bf0a60b881478d053"
     },
@@ -145,8 +177,16 @@
       "git_blob": "750c23341570f64c7df8fc770b2d012509cd8914"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-3/comparison-game2.log",
+      "git_blob": "2920194fbea6239e856e88f9722c9097a03c4112"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-3/evaluate",
       "git_blob": "00ce8cc40a7231a752bc6038e72299fd247cfa3d"
+    },
+    {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-3/evaluation.log",
+      "git_blob": "abe757f6a7ebfabfb6a7886cc03c883457d0086f"
     },
     {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-3/evidence.json",
@@ -173,6 +213,10 @@
       "git_blob": "e4eb1f36957a5cd712a6de9eb6fd056256aacbb9"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-3/protocol-check.jsonl",
+      "git_blob": "d8d3e1cc50ba83e9215cb72146b96f5829af6b9d"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-3/ready.json",
       "git_blob": "d367df27db5d308e19098bef8fa5048a9035c5bb"
     },
@@ -193,12 +237,24 @@
       "git_blob": "750c23341570f64c7df8fc770b2d012509cd8914"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-4/comparison-game2.log",
+      "git_blob": "2920194fbea6239e856e88f9722c9097a03c4112"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-4/comparison-game3.json",
       "git_blob": "514b9f71d11e0e338948235942d05363747496f6"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-4/comparison-game3.log",
+      "git_blob": "703c8efde661c101be68f0ebedf0c463fc4fc211"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-4/evaluate",
       "git_blob": "00ce8cc40a7231a752bc6038e72299fd247cfa3d"
+    },
+    {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-4/evaluation.log",
+      "git_blob": "abe757f6a7ebfabfb6a7886cc03c883457d0086f"
     },
     {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-4/evidence-game2.json",
@@ -233,6 +289,10 @@
       "git_blob": "00ccc8930250af99d8255daa72b13d89667ccb18"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-4/protocol-check.jsonl",
+      "git_blob": "d8d3e1cc50ba83e9215cb72146b96f5829af6b9d"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-4/ready.json",
       "git_blob": "d367df27db5d308e19098bef8fa5048a9035c5bb"
     },
@@ -253,12 +313,24 @@
       "git_blob": "750c23341570f64c7df8fc770b2d012509cd8914"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-5/comparison-game2.log",
+      "git_blob": "2920194fbea6239e856e88f9722c9097a03c4112"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-5/comparison-game3.json",
       "git_blob": "514b9f71d11e0e338948235942d05363747496f6"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-5/comparison-game3.log",
+      "git_blob": "703c8efde661c101be68f0ebedf0c463fc4fc211"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-5/evaluate",
       "git_blob": "00ce8cc40a7231a752bc6038e72299fd247cfa3d"
+    },
+    {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-5/evaluation.log",
+      "git_blob": "abe757f6a7ebfabfb6a7886cc03c883457d0086f"
     },
     {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-5/evidence-before-prize.json",
@@ -303,6 +375,10 @@
     {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-5/player-before-game3",
       "git_blob": "00ccc8930250af99d8255daa72b13d89667ccb18"
+    },
+    {
+      "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-5/protocol-check.jsonl",
+      "git_blob": "d8d3e1cc50ba83e9215cb72146b96f5829af6b9d"
     },
     {
       "path": "artifacts/battleships/history/battleships-1792358282/agent-one/phase-5/selection.json",
@@ -645,6 +721,10 @@
       "git_blob": "aa5acd345d9d158417aeb879d9630683fd42317a"
     },
     {
+      "path": "artifacts/battleships/history/battleships-1792358282/progress.log",
+      "git_blob": "3e43f51d9e49389f007aef3bee3a3e971bbbfdfe"
+    },
+    {
       "path": "artifacts/battleships/history/battleships-1792358282/result.json",
       "git_blob": "8444788090c708cc0e038089123427d24bd650fa"
     },
@@ -679,6 +759,14 @@
     {
       "path": "artifacts/battleships/history/battleships-1792363073/agent-two/phase-1/player",
       "git_blob": "a84268fb7fae03f220973cf88835a1183016dfbe"
+    },
+    {
+      "path": "artifacts/battleships/history/battleships-1792363073/progress.log",
+      "git_blob": "84b6612d9ef9f2741423b382df9322195aee9417"
+    },
+    {
+      "path": "artifacts/battleships/history/controller.log",
+      "git_blob": "3e43f51d9e49389f007aef3bee3a3e971bbbfdfe"
     },
     {
       "path": "artifacts/battleships/history/latest.txt",

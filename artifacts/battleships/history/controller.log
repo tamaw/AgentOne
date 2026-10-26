@@ -1,0 +1,24 @@
+Starting battleships-1792358282; agents author their own Haskell bots. No existing histories replaced.
+agent-two: phase 1 ended (call budget, 5 model calls).
+agent-one: phase 1 ended (call budget, 5 model calls).
+agent-one: initial baseline 27.29 shots to clear 48 fleets.
+agent-two: initial baseline 25.50 shots to clear 48 fleets.
+Game 1: agent-one wins; series 1–0; shots 27/26
+agent-one: phase 2 ended (model/runtime error, 1 model calls).
+agent-two: phase 2 ended (waiting, 2 model calls).
+agent-one: candidate 27.29 vs 27.29 shots; adopted
+agent-two: candidate 25.50 vs 25.50 shots; adopted
+Game 2: agent-one wins; series 2–0; shots 25/25
+agent-one: phase 3 ended (waiting, 1 model calls).
+agent-two: phase 3 ended (waiting, 2 model calls).
+agent-one: candidate 26.33 vs 27.29 shots; adopted
+agent-two: candidate 25.50 vs 25.50 shots; adopted
+Game 3: agent-two wins; series 2–1; shots 27/27
+agent-one: phase 4 ended (waiting, 1 model calls).
+agent-two: phase 4 ended (waiting, 2 model calls).
+agent-one: candidate 26.33 vs 26.33 shots; adopted
+agent-two: candidate 25.02 vs 25.50 shots; adopted
+Game 4: agent-one wins; series 3–1; shots 32/32
+SERIES COMPLETE: agent-one wins 3–1. Awarding 2 bonus model calls.
+agent-one: phase 5 ended (waiting, 1 model calls).
+Saved final result and code snapshots: /home/user/source/AgentOne/artifacts/battleships/battleships-1792358282
