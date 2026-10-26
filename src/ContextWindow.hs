@@ -1,5 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 module ContextWindow (prepareContext, contextCharacters, recoverHistoryMessage) where
+import System.Environment (lookupEnv)
 import Data.Aeson
 import qualified Data.ByteString.Lazy as B
 import qualified Data.Vector as V
@@ -43,7 +44,8 @@ recoverHistoryMessage index
   | index < 0 = pure (Left "History index must be nonnegative")
   | otherwise = do
       loaded <- try $ do
-        bytes <- B.readFile "/workspace/.runs/conversation.json"
+        path <- maybe "/workspace/.runs/conversation.json" id <$> lookupEnv "AGENT_CONVERSATION_FILE"
+        bytes <- B.readFile path
         pure (eitherDecode bytes :: Either String Value)
       case loaded :: Either IOException (Either String Value) of
         Left _ -> pure (Left "Stored conversation could not be read")

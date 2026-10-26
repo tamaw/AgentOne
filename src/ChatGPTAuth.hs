@@ -1,5 +1,5 @@
 {-# LANGUAGE DeriveGeneric #-}
-module ChatGPTAuth (authCommand, chatGPT, chatGPTAccess) where
+module ChatGPTAuth (authCommand, chatGPT, chatGPTAccess, invalidateChatGPTAccess) where
 
 import Control.Exception
 import Control.Monad
@@ -223,6 +223,12 @@ chatGPTAccess = withVault $ \dir vault -> do
   unless (consentScope `elem` scopes current && not (T.null (access_token current))) $ reject "ChatGPT plan use is not authorized; run agent-one auth login"
   T.putStrLn $ "[ChatGPT account: " <> email current <> " (" <> client_id current <> ")]"
   pure (access_token current,client_id current)
+
+invalidateChatGPTAccess :: T.Text -> IO ()
+invalidateChatGPTAccess expired = withVault $ \dir vault -> do
+  account <- selected vault
+  when (access_token account == expired) $
+    saveVault dir vault { accounts = M.insert (client_id account) (account { expires_at = 0 }) (accounts vault) }
 
 decodeQuery :: String -> [(T.Text,T.Text)]
 decodeQuery = map field . split '&'
