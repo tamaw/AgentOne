@@ -1,0 +1,114 @@
+{
+  "schema": "daily-learning-v1",
+  "run_id": "daily_491a334aba93_m1",
+  "round_index": 0,
+  "transport_parsing": [
+    {
+      "field": "agent-two feedback",
+      "mode": "terminal_json_object",
+      "discarded_prefix_characters": 7502
+    }
+  ],
+  "authoritative_evidence_text": "Round 0\nFill t=60 at blinded close 94.44677397811732; mark t=66 at 99.94891787157827.\nAgent-produced P&L is untrusted. Only this settlement counts.\n| Agent | Cash | Units | Equity | Round return | Cumulative return | Max drawdown | Trades | Failures |\n|---|---:|---:|---:|---:|---:|---:|---:|---|\n|agent-one|1000|0|1000|0|0|0|0||\n|agent-two|315.5724201417289|7.2358441286|1038.7872106827122|0.03878721068271216|0.03878721068271216|0|1||\nBuy-and-hold benchmark: equity 1056.6710223611155, units 10.572110682767013. Bought once at the round-0 fill using the same buy slippage and fees.\nStanding: agent-two leads.\n\nExpanded authoritative scoreboard (drawdown sampled at round marks; holds are not failures):\n{\n  \"round\": 1,\n  \"capital\": 1000,\n  \"benchmark_equity\": 1056.6710223611155,\n  \"benchmark_profit\": 56.67102236111555,\n  \"benchmark_return\": 0.05667102236111554,\n  \"exact_winner\": \"agent-two\",\n  \"cent_winner\": \"agent-two\",\n  \"previous_version_comparison\": {\n    \"status\": \"unavailable\",\n    \"reason\": \"No independent same-window previous-version replay is provided by this engine.\"\n  },\n  \"agents\": {\n    \"agent-one\": {\n      \"equity\": 1000,\n      \"profit\": 0,\n      \"return\": 0,\n      \"round_return\": 0,\n      \"max_round_marked_drawdown\": 0,\n      \"trades\": 0,\n      \"decision_status\": \"valid_hold\",\n      \"failures\": [],\n      \"benchmark_gap\": -56.67102236111555,\n      \"strategy_provenance\": {\n        \"code_ref\": \"/workspace/competition/daily_491a334aba93_m1/round-0/strategy-v1.hs#sha256=7eb5f725e9185e607743fa170a1522ee2c217607d1f677832bbe085228fa9dd1\",\n        \"approach\": \"Public-close-only long/cash trend filter: 20-bar log momentum divided by 20-return sample volatility times sqrt(20) must exceed 0.5; close must exceed SMA20; 7-bar log momentum must be positive. Eligible exposure=min(0.5,0.01/daily volatility); otherwise intentional cash hold. Orders reference last observed close with stated fee and slippage; no future fill is observed. No empirical performance claim.\",\n        \"changes\": \"Initial source version v1; parent=none; effective round=0; exact SHA256 is in code_ref. Hypothesis: positive multi-horizon trends may persist, while noisy/negative trends do not justify round-trip costs. Actual initial parameters: lookbacks 20 and 7, score threshold 0.5, volatility budget 0.01, exposure cap 0.5. No prior settled-round tips supplied, so none adopted or rejected. This is initial implementation, not a tested improvement; no optimization or backtest performed.\"\n      },\n      \"provenance_trust\": \"agent_reported_not_source_verified\"\n    },\n    \"agent-two\": {\n      \"equity\": 1038.7872106827122,\n      \"profit\": 38.78721068271216,\n      \"return\": 0.03878721068271216,\n      \"round_return\": 0.03878721068271216,\n      \"max_round_marked_drawdown\": 0,\n      \"trades\": 1,\n      \"decision_status\": \"traded\",\n      \"failures\": [],\n      \"benchmark_gap\": -17.88381167840339,\n      \"strategy_provenance\": {\n        \"code_ref\": \"/workspace/btc-paper/daily_491a334aba93_m1/round-0/Strategy.hs#sha256:1ce052e14754834378982fce2e85713b59baacdf61edba97310d94d22bbe49bf\",\n        \"approach\": \"Public-close-only regularized log-price AR(1); forecast decision+7 versus decision+1, deduct buy costs, size with forecast variance and a 35%-above-observed-maximum fill stress cash cap. Volume is validated but not a feature. No external observations or peer inputs.\",\n        \"changes\": \"source=sha256:1ce052e14754834378982fce2e85713b59baacdf61edba97310d94d22bbe49bf; parent=none (initial executable v1); effective_round=0. Hypothesis: bounded mean reversion can outweigh entry costs over the six close-to-mark intervals. Initial rules: AR slope prior 0.90 with 10 pseudo-observations, slope clipped [0,0.98], positive forecast edge after fee/slippage, variance penalty 3, allocation ceiling 0.95, stress price 1.35 times maximum supplied close. No previous tips exist; none adopted/rejected. New implementation, not a demonstrated or backtested improvement; no parameter search. One execution, no retry or repair.\"\n      },\n      \"provenance_trust\": \"agent_reported_not_source_verified\"\n    }\n  }\n}\n",
+  "coaching": {
+    "answers": [
+      {
+        "answer": "The embedded excerpts provide no independently evaluated comparison establishing whether trend-following or mean reversion performs better over seven-bar horizons after costs, delayed fills, and drawdown controls. They also contain no relevant out-of-sample performance estimates. Such evidence would require additional material through an authorized operator lookup; this packet cannot supply it. Round 0 does not resolve the comparison.",
+        "question": "Combined question from both agents: What evidence compares short-horizon trend or momentum filters with mean reversion under delayed execution, transaction costs, chronological validation, and drawdown assessment?",
+        "source_paths": [],
+        "evidence_status": "unavailable"
+      },
+      {
+        "answer": "The excerpts do not identify or validate a robust diagnostic for distinguishing mean reversion from a regime shift in a short, noisy history. No particular statistic, threshold, or model-selection procedure can be endorsed from this material. A diagnostic and evidence of its reliability would require additional operator-provided sources.",
+        "question": "Agent-two: What robust diagnostic best distinguishes mean reversion from a regime shift in a short, noisy price history?",
+        "source_paths": [],
+        "evidence_status": "unavailable"
+      },
+      {
+        "answer": "The KB supports cash and cost-matched fill-time buy-and-hold as distinct reference points and explicitly warns that equal initial capital does not mean equal exposure. Partial-exposure controls are proposed analyses, not an installed benchmark. Thus the settled results can describe realized performance relative to these references, but cannot by themselves separate forecasting skill from allocation effects. The excerpts provide no validated decomposition method for settlement-only observations.",
+        "question": "Agent-two: How can forecast quality be separated from allocation effects when only authoritative round settlements are available?",
+        "source_paths": [
+          "/knowledge/paper-trading-strategy-lab/baselines.md"
+        ],
+        "evidence_status": "research_candidate"
+      },
+      {
+        "answer": "The embedded guidance recommends considering one hypothesis or change at a time and preserving parent, version, and effective-round provenance. Source edits, agent-reported tests, accounting checks, and independent replay are different evidence categories. No independent matched replay is available here, and three rounds are weak evidence. Mid-match adaptation remains permitted, and either agent may reject advice; a change or a favorable subsequent score does not establish improvement.",
+        "question": "Combined evaluation question: How should candidate changes be assessed without confusing implementation success or settlement-selected results with demonstrated improvement?",
+        "source_paths": [
+          "/knowledge/paper-trading-strategy-lab/start-here.md",
+          "/knowledge/paper-trading-strategy-lab/evaluation-and-improvement.md"
+        ],
+        "evidence_status": "contract_guidance"
+      }
+    ],
+    "summary": "Identical public coaching for both agents after settled round 0: agent-two leads with equity 1038.7872106827122 and a 3.878721% return; agent-one has equity 1000 and a 0% return from a valid hold. Neither agent has a recorded failure. Cost-matched buy-and-hold reached equity 1056.6710223611155, a 5.667102% return, leaving agent-one and agent-two behind it by approximately 56.67 and 17.88 respectively. Both recorded zero round-marked drawdown. These are settlement outcomes, not evidence that either strategy has a repeatable predictive advantage.",
+    "limitations": [
+      "Only the supplied authoritative settlement is used for accounting. Strategy provenance, execution reports, tests, adoption decisions, and learning claims remain agent-reported and unverified.",
+      "Only the embedded KB excerpts are available; no tools, live search, source inspection, or independent replay were used.",
+      "One settled round cannot establish strategy superiority, diagnose a market regime, or demonstrate improvement over a previous version. No independent same-window previous-version comparison is available.",
+      "Drawdown is sampled at round marks; a zero recorded value does not establish zero intraround risk.",
+      "Daily close/volume inputs, next-close fills, seven-bar decision cadence, and the absence of leverage, shorts, and OHLC stops are supplied current-configuration facts, not empirical KB findings.",
+      "This packet does not execute or request additional matches, tests, source changes, or order actions, and does not share current or future orders."
+    ],
+    "shared_tips": [
+      "Both agents propose chronological walk-forward evaluation with explicit fees, slippage, and next-close execution. Treat this as a research design candidate, keeping parameter selection separate from performance evaluation rather than presenting it as an evaluation already performed.",
+      "Agent-two emphasizes aligning forecast evaluation to the executable fill-to-mark interval. In this settled configuration, next-close execution followed by marking seven bars after the decision leaves six fill-to-mark intervals; movement before the fill is not a tradable holding-period gain.",
+      "Agent-one emphasizes assessing a cash filter against benchmark-relative opportunity cost as well as drawdown. Agent-two likewise recommends both cash and cost-matched passive comparisons. These are complementary evaluation principles, not proof that a filter helps or hurts.",
+      "Account for exposure differences before interpreting a lead as forecasting skill. Partial-exposure comparisons are research candidates only and do not replace or alter the official benchmark.",
+      "Distinguish successful implementation, accounting validity, and predictive evidence. Preserve truthful version provenance when adapting; neither a source edit nor an agent-reported successful run demonstrates improvement.",
+      "Both agents caution against copying a peer's parameters solely because of one favorable settlement. That is a shareable research principle; their reported adoption or rejection decisions are not independently verified."
+    ]
+  },
+  "peer_feedback": {
+    "agent-one": {
+      "review": "Authoritative settlement records unchanged equity of 1000, no trades, and no failures. The valid cash hold avoided trading costs but missed the positive benchmark return, leaving a 56.67 benchmark gap and trailing agent-two by 38.79. One round does not establish that either strategy is superior; no learning or improvement is independently verified.",
+      "hypothesis": "The next settlement's buy-and-hold benchmark round return will be positive, consistent with continuation of this round's advance. A zero or negative round return falsifies this one-round directional hypothesis; it is unvalidated and is not an order recommendation.",
+      "shared_tips": [
+        "Evaluate a cash filter using both authoritative benchmark-relative opportunity cost and marked drawdown, while retaining fees and slippage in comparisons. Rationale: avoiding trades can reduce costs without improving investment outcomes, and one favorable risk-on round cannot establish that risk controls are ineffective. This is a proposed evaluation principle, not a new test or demonstrated improvement."
+      ],
+      "tip_requests": [
+        "Does the knowledge base contain independently evaluated evidence comparing momentum entry filters with mean-reversion signals over similarly short holding windows, including costs, chronological validation, and drawdown? Please distinguish general evidence from results selected after observing this settlement."
+      ],
+      "tip_decisions": [
+        "No prior coaching tips were supplied, so none can be reported as adopted or rejected. The peer's reported mean-reversion rationale is worth considering as a competing hypothesis, but copying its parameters is rejected for now: one profitable settlement is insufficient evidence of robustness, and its provenance is agent-reported rather than source-verified."
+      ]
+    },
+    "agent-two": {
+      "review": "The authoritative settlement puts agent-two ahead with a 3.88% return, but behind buy-and-hold by 17.88 in equity. Agent-one's cash hold was valid, not a failure. One profitable round does not establish forecasting skill or superiority to a previous version; no independent same-window comparison exists. Zero round-marked drawdown does not establish zero intraround risk. Strategy explanations remain agent-reported, not independently verified.",
+      "hypothesis": "Agent-two will have a strictly positive net round return at the next authoritative settlement. A zero or negative round return falsifies this one-round hypothesis; a positive result alone would not establish persistent predictive skill.",
+      "shared_tips": [
+        "For future authorized evaluations, align forecast and scoring horizons with the actual blinded fill-to-mark interval, rather than the last observed close-to-mark interval. This avoids attributing untradeable pre-fill movement to forecasting skill.",
+        "Evaluate net performance against both cash and a cost-matched passive benchmark, and distinguish round-marked drawdown from intraround drawdown. This separates profitable market exposure from incremental strategy value and avoids overstating risk evidence."
+      ],
+      "tip_requests": [
+        "What knowledge-base evidence distinguishes short-horizon log-price mean reversion from trend persistence under delayed fills and transaction costs, using leakage-free out-of-sample evaluation?",
+        "Does the knowledge base describe how to separate forecast quality from allocation effects when only authoritative round settlements are available?"
+      ],
+      "tip_decisions": [
+        "No prior coaching tips were present in the supplied execution history, so none can be claimed as previously adopted or rejected.",
+        "Reject interpreting this single-round lead as grounds for copying a peer or changing parameters: the settlement cannot distinguish repeatable edge from favorable market exposure. This is a review judgment, not an implemented or verified improvement."
+      ]
+    }
+  },
+  "tip_decisions": {
+    "agent-one": {
+      "tip_decisions": [
+        "Adopt for a later decision stage: assess forecasts over the executable fill-to-mark interval with costs and chronological validation, because pre-fill movement is not tradable return.",
+        "Adopt for later assessment: compare against both cash and cost-matched passive exposure, because allocation differences can confound claims of forecasting skill.",
+        "Reject copying peer parameters based on one favorable settlement, because that outcome does not establish repeatable superiority."
+      ],
+      "followup": "Acknowledged the answers and evidence limitations: neither strategy superiority nor a reliable regime diagnostic is established. These are intentions only; no edits, tests, matches, or orders were made, and no tested improvement is claimed."
+    },
+    "agent-two": {
+      "tip_decisions": [
+        "Adopt for a later decision stage: align forecast assessment to the executable fill-to-mark interval, because pre-fill movement is not a tradable holding-period gain.",
+        "Adopt for later evaluation: consider both cash and cost-matched passive references while accounting for exposure differences, because settlement returns alone do not isolate forecasting skill.",
+        "Reject copying peer parameters based on one settlement, because that outcome does not establish repeatable predictive advantage."
+      ],
+      "followup": "Answers acknowledged, including the unavailable comparative and diagnostic evidence. These are intentions only; no edits, tests, matches, or order actions were performed, and no improvement is claimed. No additional followup requested."
+    }
+  },
+  "evidence_status": "agent_reported_not_independently_verified",
+  "chat_budget": "one review and one coaching acknowledgement per agent per settled round; followups recorded, not automatically redispatched"
+}

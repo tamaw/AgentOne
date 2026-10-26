@@ -1,0 +1,52 @@
+{
+  "round": 0,
+  "decision_t": 59,
+  "fill_t": 60,
+  "mark_t": 66,
+  "fill_close": 73.92153296700488,
+  "mark_close": 75.1883081645634,
+  "agents": {
+    "agent-one": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/paper_a6d369369e81/agent-one/Strategy.hs; original=/shared/competition/paper_be01d1611e99/collaboration/agent-one/OriginalStrategy.hs; reviewed=/shared/competition/paper_be01d1611e99/collaboration/agent-one/StrategyV1.hs,/shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/StrategyV2.hs,/shared/competition/agent-two-experiments/9842f3d1-30da-4e90-8516-860919b634cb/cycle3/hypothesis-and-policy.json",
+        "approach": "Preserved OriginalStrategy.hs: long only when trailing 20- and 40-bar log returns are both positive; otherwise cash. Hold existing long while both remain positive, otherwise sell all held units. Fixed buy units use latest public close, 5bps slippage, 10bps fee and max(12%,4*sigma40) next-close reserve. At least 41 closes required, so anonymous 60-bar history suffices; no calendars, real prices or volume signal. Reserve reduces but cannot eliminate unknown-next-close infeasibility. No verified predictive superiority claimed.",
+        "changes": "Selected original agent-one trend heuristic rather than unproven transfer. Signal and sizing unchanged from authorized preserved OriginalStrategy.hs; added public-input checks, structured manifests, exact sell serialization and submission readback validation in isolated competition source. StrategyV1 consensus needs 121 bars and is incompatible. Agent-two experiment hypothesis-and-policy.json identifies weekly calendar-dependent cadence, 200-bar filter and different fill-price sizing: none transplanted. Round 0. Feedback: No previous settlement evidence. Original retained without performance claims."
+      }
+    },
+    "agent-two": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/strategies/paper_a6d369369e81/agent-two/Main.hs",
+        "approach": "Preserve OwnGeneralized dual-horizon momentum: when flat buy only if both 10-bar and 20-bar close returns are positive; when invested sell all only if close is below its 20-bar mean and 10-bar return is negative; otherwise hold. Entry spends at most 90% of decision-close cash including 5bp slippage and 10bp fee, units rounded down to 8 decimals. Uses only anonymous public closes, at least 41 bars, and supplied own account. No calendar, volume signal, long warmup or peer decisions. Unknown next-close buy feasibility cannot be guaranteed: reserve accommodates an approximately 11.11% rise, not larger. Sales use supplied held units; header-only holds require no fill.",
+        "changes": "Selection sources: /shared/competition/paper_be01d1611e99/collaboration/agent-two/OriginalRound0.hs and Revision.hs (OwnGeneralized). Signal thresholds, sell rule and 90% sizing preserved, not optimized. Actual changes are isolated competition paths, public-input/account validation, general round/account arguments, manifest and order readback validation. Reviewed /shared/competition/agent-two-experiments/9842f3d1-30da-4e90-8516-860919b634cb/retained-lessons.json and cycle3/Main.hs: calendar-week variant requires dates and different execution semantics; 200-session filter is infeasible with 60 bars; rejected pullback variant not adopted. No claimed improvement or independent predictive validation. Round-0 has no prior routine feedback. Subsequent decisions use supplied routine feedback; no automatic strategy change. Only official routine settlement counts."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 13.507589846284981,
+    "entry_price": 73.95849373348838,
+    "entry_close": 73.92153296700488,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1015.6128279230027,
+  "winner": null
+}

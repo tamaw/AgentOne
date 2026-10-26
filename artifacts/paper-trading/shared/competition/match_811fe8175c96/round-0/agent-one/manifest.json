@@ -1,0 +1,5 @@
+{
+"code_ref":"/workspace/match_811fe8175c96/Strategy.hs",
+"approach":"Independent long-only trend/regime policy. Require close>SMA20, SMA10>SMA20>SMA40 and positive 21-bar momentum before buying. Favor cash when medium/long trend confirmation is absent; a short rebound alone is not sufficient after the observed large decline. A bullish regime would target at most 85% equity, reserving 15% for next-close price uncertainty; no leverage.",
+"changes":"Initial round: deliberate all-cash hold. Recent rebound considered but does not satisfy trend confirmation. Zero units avoids downside and execution costs while the signal is unconfirmed; it risks missing a continuing rebound. No peer submissions inspected or coordination used."
+}

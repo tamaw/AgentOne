@@ -1,0 +1,5 @@
+{
+  "code_ref": "haskell-step:trend-gate-v1",
+  "approach": "Long-only trend gate using only supplied historical closes. Remain in cash when the 7-bar average is below the 21-bar average and 7-bar momentum is negative. Avoid entering a declining short-term regime and paying execution costs.",
+  "changes": "Initial round: retain the full 1000 cash balance and submit no trades. Reassess using newly published bars next round."
+}

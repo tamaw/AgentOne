@@ -1,0 +1,115 @@
+function generatedRunId(batch,track,index){return 'r_b'+batch.length+'_'+batch+'_t'+track.length+'_'+track+'_m'+index;}
+function normalizeCommon(input){
+const errors = [], errorKeys = new Map();
+function err(code, field, message, detail) {
+  const key = code + ':' + field;
+  if (errorKeys.has(key)) { errorKeys.get(key).occurrences++; return; }
+  const e = {code, field, message, occurrences: 1};
+  if (detail !== undefined) e.detail = detail;
+  errorKeys.set(key, e); errors.push(e);
+}
+const own = (o,k) => Object.prototype.hasOwnProperty.call(o,k);
+const obj = o => o !== null && typeof o === 'object' && !Array.isArray(o);
+const safeId = x => typeof x === 'string' && /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$(?![\s\S])/.test(x);
+const safeRunId = x => typeof x === 'string' && /^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$(?![\s\S])/.test(x);
+const safePath = x => typeof x === 'string' && x.length <= 1024 && /^\/(artifacts\/trading\/market|shared\/market)\/[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*(?:\/[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*)*$(?![\s\S])/.test(x);
+function utc(x) {
+  if (typeof x !== 'string' || !/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]Z$(?![\s\S])/.test(x)) return null;
+  const n = Date.parse(x);
+  return Number.isFinite(n) && new Date(n).toISOString() === x.slice(0,-1) + '.000Z' ? n : null;
+}
+const iso = n => new Date(n).toISOString().replace('.000Z','Z');
+const defaults = {
+  agents: ['agent-one','agent-two'],
+  tracks: ['5m','15m','1h'].map(interval => ({track_id:interval,interval,market:'crypto',symbol:'BTC-USD',data_path:'/artifacts/trading/market/btc-usd-'+interval+'.csv'})),
+  evaluation_start:null, evaluation_end:null, timezone:'UTC', match_count:10, round_count:5,
+  history_bars:60, bars_per_round:7, capital:1000, fee_bps:10, slippage_bps:5,
+  capital_policy:'reset', fill_policy:'next_close', finalization_policy:'mark_to_market',
+  review_enabled:true, review_every_matches:1, evidence_required:true, bonus_rounds:0,
+  tie_policy:'no_bonus', bonus_cash_comparator:'zero_return', execution_timeout_seconds:60,
+  max_retries:0, failure_policy:'fail_closed', validation_only:true, require_matched_replay:true,
+  brief:'paper recursive self improvement'
+};
+const source = typeof input !== 'undefined' && obj(input) ? input : {};
+if (typeof input === 'undefined' || !obj(input)) err('invalid_input','input','Input must be an object.');
+const allowed = new Set(Object.keys(defaults).concat(['batch_id','validation_as_of']));
+for (const k of Object.keys(source)) if (!allowed.has(k) && !['request','context','progress','job','child','child_report','child_status','summary','status','report','more'].includes(k)) err('unknown_property', k, 'Unknown authored input property.');
+const contract = {};
+for (const k of allowed) {
+  if (own(source,k)) contract[k] = source[k];
+  else if (own(defaults,k)) contract[k] = defaults[k];
+}
+function integer(v,lo,hi,p) {
+  const ok = Number.isInteger(v) && v >= lo && v <= hi;
+  if (!ok) err('invalid_integer',p,'Expected an integer in the inclusive bounds.',{minimum:lo,maximum:hi});
+  return ok;
+}
+function number(v,lo,hi,exclusiveLo,exclusiveHi,p) {
+  const ok = typeof v === 'number' && Number.isFinite(v) && (exclusiveLo ? v>lo : v>=lo) && (exclusiveHi ? v<hi : v<=hi);
+  if (!ok) err('invalid_number',p,'Expected a finite number within the contract bounds.');
+  return ok;
+}
+function agents(v,p) {
+  if (!Array.isArray(v) || v.length !== 2 || new Set(v).size !== 2 || !v.every(safeId)) err('invalid_agents',p,'Exactly two unique safe agent names are required.');
+  if (Array.isArray(v) && v.some(a => a !== 'agent-one' && a !== 'agent-two')) err('unsupported_agents',p,'Only agent-one and agent-two are supported; no alternate agent can execute.');
+}
+for (const k of ['batch_id']) if (!safeId(contract[k])) err('invalid_safe_id',k,'A safe ID is required: 1..64 ASCII alphanumeric, underscore or hyphen, starting alphanumeric.');
+for (const [k,lo,hi] of [['match_count',1,10],['round_count',1,5],['history_bars',10,1000],['bars_per_round',1,10000],['review_every_matches',1,10],['bonus_rounds',0,3]]) integer(contract[k],lo,hi,k);
+const capitalOK = number(contract.capital,0,Infinity,true,false,'capital');
+const feeBpsOK = number(contract.fee_bps,0,Infinity,false,false,'fee_bps');
+const slippageBpsOK = number(contract.slippage_bps,0,10000,false,true,'slippage_bps');
+for (const k of ['review_enabled','validation_only','require_matched_replay']) if (typeof contract[k] !== 'boolean') err('invalid_boolean',k,'Expected boolean.');
+for (const [k,v] of Object.entries({timezone:'UTC',fill_policy:'next_close',finalization_policy:'mark_to_market',evidence_required:true,tie_policy:'no_bonus',bonus_cash_comparator:'zero_return',execution_timeout_seconds:60,max_retries:0,failure_policy:'fail_closed'})) if (contract[k] !== v) err('invalid_constant',k,'Fixed contract setting.',{required:v});
+if (!['reset','carry'].includes(contract.capital_policy)) err('invalid_capital_policy','capital_policy','Expected reset or carry.');
+if (contract.capital_policy === 'carry') err('carry_unsupported','capital_policy','Carry is unsupported by the current adapter; no execution.');
+if (typeof contract.bonus_rounds === 'number' && contract.bonus_rounds > 0) err('bonus_rounds_unsupported','bonus_rounds','Bonus rounds are unsupported; no execution.');
+if (typeof contract.brief !== 'string') err('invalid_string','brief','Expected a string.');
+agents(contract.agents,'agents');
+const trackKeys = new Set(['track_id','interval','market','symbol','data_path','history_bars','bars_per_round','agents']);
+function checkTrack(t,p) {
+  if (!obj(t)) { err('invalid_track',p,'Expected a track object.'); return; }
+  for (const k of Object.keys(t)) if (!trackKeys.has(k)) err('unknown_property',p+'.'+k,'Unknown track property.');
+  if (!safeId(t.track_id)) err('invalid_safe_id',p+'.track_id','A safe track ID is required.');
+  if (!['5m','15m','1h'].includes(t.interval)) err('invalid_interval',p+'.interval','Supported intervals are 5m, 15m, 1h only.');
+  for (const [k,max] of [['market',64],['symbol',128]]) if (typeof t[k] !== 'string' || t[k].length<1 || t[k].length>max) err('invalid_string',p+'.'+k,'Expected a nonempty bounded string.');
+  if (!safePath(t.data_path)) err('unsafe_data_path',p+'.data_path','Use an exact safe path under /artifacts/trading/market/ or /shared/market/; no dot segments, backslashes or glob syntax.');
+  if (own(t,'history_bars')) integer(t.history_bars,10,1000,p+'.history_bars');
+  if (own(t,'bars_per_round')) integer(t.bars_per_round,1,10000,p+'.bars_per_round');
+  if (own(t,'agents')) agents(t.agents,p+'.agents');
+}
+if (!Array.isArray(contract.tracks) || contract.tracks.length<1 || contract.tracks.length>3) err('invalid_tracks','tracks','Expected 1..3 tracks.');
+if (Array.isArray(contract.tracks)) {
+  const ids = new Set();
+  contract.tracks.forEach((t,i) => { checkTrack(t,'tracks['+i+']'); if (obj(t)) { if (ids.has(t.track_id)) err('duplicate_track_id','tracks','Track IDs must be unique.'); ids.add(t.track_id); } });
+}
+const start=utc(contract.evaluation_start), end=utc(contract.evaluation_end), asof=utc(contract.validation_as_of);
+for(const k of ['evaluation_start','evaluation_end'])if(contract[k]!==null && utc(contract[k])===null)err('invalid_utc_timestamp',k,'Expected null or a real UTC calendar timestamp YYYY-MM-DDTHH:mm:ssZ.');
+if(asof===null)err('validation_as_of_required','validation_as_of','Explicit valid UTC validation_as_of is required; no wall clock is consulted.');
+if(start!==null && end!==null && start>=end)err('invalid_window_order','evaluation_end','Start must be strictly before end.');
+if(end!==null && asof!==null && end>asof)err('evaluation_after_validation_as_of','evaluation_end','Evaluation end exceeds validation_as_of.');
+if(Array.isArray(contract.tracks))for(let i=0;i<contract.tracks.length;i++){
+  const t=contract.tracks[i];if(!obj(t))continue;
+  const dt=own({'5m':1,'15m':1,'1h':1},t.interval)?({'5m':300000,'15m':900000,'1h':3600000})[t.interval]:null;
+  const bpr=own(t,'bars_per_round')?t.bars_per_round:contract.bars_per_round;
+  if(dt){
+    for(const [k,n] of [['evaluation_start',start],['evaluation_end',end]])if(n!==null && n%dt!==0)err('window_not_interval_aligned','tracks['+i+'].'+k,'Evaluation endpoints must align to the track UTC interval.');
+    if(start!==null && end!==null && Number.isInteger(bpr) && Number.isInteger(contract.round_count) && end-start!==contract.round_count*bpr*dt)err('mismatched_duration','tracks['+i+'].bars_per_round','Window duration must equal round_count * effective bars_per_round * interval_ms.');
+    if(end!==null && asof!==null && end+dt>asof)err('next_fill_after_validation_as_of','tracks['+i+']','The next-fill close must not exceed validation_as_of.');
+  }
+}
+if(Array.isArray(contract.tracks) && Number.isInteger(contract.match_count) && contract.tracks.length*contract.match_count>30)err('batch_job_limit','tracks','At most 30 validation jobs are permitted.');
+if(errors.length)throw new Error('invalid_batch_settings: '+JSON.stringify(errors));
+contract.tracks=contract.tracks.map(t=>{const n=Object.assign({},t);for(const k of ['history_bars','bars_per_round','agents'])if(!own(n,k))n[k]=contract[k];return n;});
+for(const t of contract.tracks)for(let n=1;n<=contract.match_count;n++){
+  const id=generatedRunId(contract.batch_id,t.track_id,n);
+  if(!safeRunId(id))throw new Error('derived_run_id_invalid: '+id+'; combined run ID must fit the per-match 160-character safe-ID bound.');
+}
+return JSON.parse(JSON.stringify(contract));
+}
+const common=normalizeCommon(input), jobs=[];
+for(let match_index=1;match_index<=common.match_count;match_index++)for(const track of common.tracks){
+  const job=Object.assign({},common,{run_id:generatedRunId(common.batch_id,track.track_id,match_index),track,match_index});
+  jobs.push(JSON.parse(JSON.stringify(job)));
+}
+if(jobs.length<1 || jobs.length>30)throw new Error('batch_job_limit');
+return {index:0,jobs,results:[],errors:[]};

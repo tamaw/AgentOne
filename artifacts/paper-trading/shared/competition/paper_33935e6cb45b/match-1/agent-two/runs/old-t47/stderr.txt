@@ -1,0 +1,1 @@
+old: user error (This cash-only version does not submit exposure in a confirmed uptrend; explicit adaptation required)

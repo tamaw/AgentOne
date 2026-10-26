@@ -1,0 +1,2 @@
+Submission and snapshot readback passed. Four explicit peer-tip decisions. Compilation and artifact checks only; no new performance testing or independent verification.
+v5-match4-metadata#sha256=8965d5a27803c110d90fcc4dc590735c0c466a645b2e3c41196bcdff989de313

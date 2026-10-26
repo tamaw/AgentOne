@@ -1,0 +1,68 @@
+{
+  "round": 1,
+  "decision_t": 66,
+  "fill_t": 67,
+  "mark_t": 73,
+  "fill_close": 108.64540720057741,
+  "mark_close": 97.52015255423672,
+  "agents": {
+    "agent-one": {
+      "cash": 564.7662814636726,
+      "units": 4,
+      "equity": 954.8468916806195,
+      "round_return": -0.04515310831938052,
+      "cumulative_return": -0.04515310831938052,
+      "max_drawdown": 0.04515310831938052,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 4,
+          "price": 108.69972990417769,
+          "notional": 434.79891961671075,
+          "fee": 0.43479891961671074
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/pt-v3-dryrun-0ecd98594047-round-1.hs",
+        "approach": "Partial contrarian long after the recent drawdown within a positive full-history trend. Buy four index units and retain the remaining cash. Future fill prices and returns are unknown.",
+        "changes": "Replace the previous cash-only position with a partial long for the final round; reserve substantial cash for next-close execution uncertainty."
+      }
+    },
+    "agent-two": {
+      "cash": 829.5525267809596,
+      "units": 1.5664914363,
+      "equity": 982.317010623841,
+      "round_return": -0.017682989376158958,
+      "cumulative_return": -0.017682989376158958,
+      "max_drawdown": 0.017682989376158958,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 1.5664914363,
+          "price": 108.69972990417769,
+          "notional": 170.27719602301735,
+          "fee": 0.17027719602301736
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "haskell-trend-rebound-v1",
+        "approach": "Maintain mostly cash during negative 20-bar momentum; take a small long rebound position only while the 60-bar return remains positive. Size from 20 percent of cash with a 15 percent next-close price buffer and explicit buy slippage and fees. No leverage.",
+        "changes": "Final round: replace the previous all-cash stance with a small tactical long allocation; preserve the majority of capital in cash."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 8.819053957717264,
+    "entry_price": 113.2775696566417,
+    "entry_close": 113.22095917705319,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 860.0354873406327,
+  "winner": "agent-two"
+}

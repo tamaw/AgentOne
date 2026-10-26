@@ -1,0 +1,9 @@
+{
+"completed_cycles":3,"additional_experiments_authorized_or_planned":0,
+"independent_validation_priority":"Weekly decision cadence only: 6/8 full-year basket blocks beat baseline, but just 2/8 beat buy-and-hold and continuous drawdown worsens. Requires genuinely independent data and fixed cost/execution-policy replication before any adoption.",
+"risk_research_only":"200-session regime filter improves continuous basket drawdown and 2008 loss, but 4/8 full-year blocks beat baseline, continuous basket loses money and just 1/8 beats buy-and-hold. Not a demonstrated return edge.",
+"reject":"Two-session pullback entry gate: negative continuous basket return worse than baseline despite fewer fills. Annual reset win counts/mean differences do not rescue worse continuous compounded wealth; folded and continuous experiments have different starting positions and sleeve weights.",
+"general":"Cost-sensitive dual-horizon momentum has excessive turnover; lower turnover alone does not establish profitable alpha. The three variants share samples, public equities are correlated, GSPC is not directly investable, price adjustments are unverified, and the historical endpoint was chosen by source availability. No sample is certified unseen. Prior AAPL is explicitly already viewed.",
+"next_close_caveat":"Public close-only simulation delays completed-close signals by one session. Fractional target-at-fill sizing is not official precommitted quantity execution. Prior AAPL next-open checks are not official next-close. Legacy trade reason label does not override actual source execution reference.",
+"safety_and_scope":"Isolated research code only; no active strategy files changed, no official reruns, no competition result inferred, no promotion, no transactions."
+}

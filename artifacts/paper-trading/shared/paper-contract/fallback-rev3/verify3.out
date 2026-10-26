@@ -1,0 +1,71 @@
+PASS match body keys valid
+PASS match: all 17 nodes of 643697783a4c byte-equivalent (A2A dispatch, settlement, evidence, finalize)
+PASS match: all 14 revision edges present, +2 gate edges
+PASS match: 20 nodes, entry = gate
+PASS match: required unchanged, additionalProperties=false
+PASS match: admission maxima round_count<=5, history_bars<=1000, bars_per_round<=10000; other props unchanged
+PASS match: gate flags optional, default true
+PASS match: A2A timeout encodings 900.0 preserved
+PASS batch body keys valid, entry unchanged
+PASS batch: only init, prepare, publication, routine-call map, summary changed (node_0a53eccb6e3a,node_81ac4b14b121,node_c47e33d099a6,node_d08c651a9063,node_faed70b2dfd2)
+PASS batch: review split, both review A2A nodes, evidence validator, ready gate, conditions, evals byte-equivalent
+PASS batch node_0a53eccb6e3a: only code/input_map differ (kind, output_key, timeout, filesystem identical)
+PASS batch node_81ac4b14b121: only code/input_map differ (kind, output_key, timeout, filesystem identical)
+PASS batch node_c47e33d099a6: only code/input_map differ (kind, output_key, timeout, filesystem identical)
+PASS batch node_d08c651a9063: only code/input_map differ (kind, output_key, timeout, filesystem identical)
+PASS batch node_faed70b2dfd2: only code/input_map differ (kind, output_key, timeout, filesystem identical)
+PASS batch routine call: callable name + original map kept, +validation_only/+require_matched_replay
+PASS batch: all revision edges except the more-route present unchanged
+PASS batch: more-route true -> review gate (was split); false -> summary unchanged
+PASS batch: 14+3 nodes, +3 edges
+PASS batch: due -> original split; skip -> original ready gate
+PASS new node node_fa8d98e0835a (code) config keys valid
+PASS new node node_a1dc3dd60120 (condition) config keys valid
+PASS new node node_21fb15fcc454 (code) config keys valid
+PASS new node node_37ce03817f1e (code) config keys valid
+PASS new node node_8d45e44b3779 (condition) config keys valid
+PASS new node node_f7e9e17dcb9a (eval) config keys valid
+PASS only parent-generated IDs used
+PASS batch: flags optional, default true (documentation; seed inserts no defaults)
+PASS batch: required = original minus the two flags
+PASS batch: execution_timeout_seconds and tracks have NO schema default
+PASS batch: 29 props, additionalProperties=false (top + tracks.items)
+PASS batch: original timeout encodings preserved (+3 new node timeouts)
+PASS injection guard: no node output_key is an authored input (34 keys)
+PASS flags omitted -> normalized true: execute=false status=validation_only_with_replay_blocker
+PASS legacy explicit false/false: execute=true status=completed_unverified_replay
+PASS review_enabled=false supported: execute=true status=completed_unverified_replay
+PASS review_every_matches=3 supported: execute=true status=completed_unverified_replay
+PASS explicit timeout 60 blocked: execute=false status=blocked_unsupported_config
+PASS track blocked: execute=false status=blocked_unsupported_config
+PASS window blocked: execute=false status=blocked_unsupported_config
+PASS carry blocked: execute=false status=blocked_unsupported_config
+PASS bonus blocked: execute=false status=blocked_unsupported_config
+PASS custom agents blocked: execute=false status=blocked_unsupported_config
+PASS replay required: execute=false status=blocked_replay
+PASS validation omitted -> true: execute=false status=validation_only
+PASS validation-only report exposes review plan only, no review evidence claimed
+PASS init rejects provided non-boolean flags, invalid review settings, duplicate track_id
+PASS prepare throws when flags omitted (normalized true)
+PASS prepare output identical to original for default all-reviewed histories (index 0,1,2)
+PASS prepare: no handoff after skipped review; handoff targets the actually reviewed match path
+PASS publication throws when flags omitted, before any read
+PASS publication after real review still REQUIRES peer improvement + peer_tip_decisions (same failure as original)
+PASS publication after skipped review: no nonexistent improvement reads; authoritative state/settings checks + write-once scoreboard still run
+PASS publication match 1 output and writes identical to original
+PASS review gate defaults (enabled, every 1): always due -> original split
+PASS review gate: disabled -> skipped_due_to_disabled; every 2 -> match1 skipped_not_due, match2 due
+PASS review gate refuses without authoritative publication+more
+PASS skip: advances index/ledger/evidence_history, records truthful skip, no evidence pass/promotion
+PASS skip refuses a due review (cannot bypass validator)
+PASS due path: original evidence validator still blocks advancement on missing review evidence
+PASS match gate: omitted/true -> no dispatch; only explicit false/false continues
+PASS match gate rejects non-boolean
+PASS workflow: id/created_at/ui/title/enabled/paused/version/notify preserved
+PASS workflow: daily formatter + edges removed
+PASS workflow: 29 manual fields each wired once to same-named batch port
+PASS workflow: status/report/message/title edges unchanged
+PASS workflow manual: timeout default 60, 3 default tracks, flags true; additionalProperties=false
+PASS workflow defaults -> blocked_unsupported_config, no child call
+
+69 checks passed

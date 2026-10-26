@@ -1,0 +1,1 @@
+{"hypothesis":"1% entry and -1% exit hysteresis on both horizons reduces momentum whipsaw and transaction drag, possibly delaying rallies and exits.","fixed_before_run":true,"entry":"r7>1% AND r21>1%","exit":"r7<=-1% OR r21<=-1%","parameter_search":false}

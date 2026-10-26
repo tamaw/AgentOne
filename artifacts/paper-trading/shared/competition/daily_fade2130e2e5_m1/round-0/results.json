@@ -1,0 +1,60 @@
+{
+  "round": 0,
+  "decision_t": 59,
+  "fill_t": 60,
+  "mark_t": 66,
+  "fill_close": 130.80338397413658,
+  "mark_close": 130.87260191411164,
+  "agents": {
+    "agent-one": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/btc-daily-fade2130e2e5/Strategy-r0-v1.hs#sha256=095d4809cdb05b195aaf694f0f6362e64858d3cbac953e9484c1dcbcfccd1c6e",
+        "approach": "Long-only trend gate with seven-bar log-momentum, SMA20/SMA28 confirmation, ten-percent extension and momentum caps, and recent/prior volume ratio cap 2.0. No entry during extreme upward extension. Entry sizing uses 80 percent of decision-price cash, not a guaranteed next-fill budget; no such estimate is needed for a hold. Initial cash 1000, units zero. Uses only supplied public t,close,volume.",
+        "changes": "Version r0-v1; source sha256=095d4809cdb05b195aaf694f0f6362e64858d3cbac953e9484c1dcbcfccd1c6e; parent=none; effective round=0. Hypothesis: avoid chasing a recent high-volume jump because seven-bar post-fill reversal risk and round-trip costs can dominate continuation. Initial rules: positive seven-bar log return below 0.10; price>SMA20>SMA28; price/SMA20-1<0.10; last-seven mean volume/prior-twenty mean volume<2.0. All gates required for entry. No prior tips available, so none adopted or rejected. This is an initial implementation, not a tested improvement; no historical performance or superior equity is claimed. No automatic retry or repair."
+      }
+    },
+    "agent-two": {
+      "cash": 254.3937364649581,
+      "units": 5.69166588,
+      "equity": 999.2768594063301,
+      "round_return": -0.0007231405936698821,
+      "cumulative_return": -0.0007231405936698821,
+      "max_drawdown": 0.0007231405936698821,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 5.69166588,
+          "price": 130.86878566612364,
+          "notional": 744.861402132909,
+          "fee": 0.744861402132909
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/btc-paper/round-0/Strategy.hs#sha256=6f9bb9823fe23fd83278c03b84145385ed4ca663b00401330bc7a72b3f7aba17",
+        "approach": "Long-only 10/30-bar log-momentum consensus with close above 20-bar arithmetic mean. Exposure min(0.75,0.025/sample standard deviation of last 20 log returns); cash sizing uses decision close and stated fee/slippage, rounded down to 8 decimals. Unspent cash buffers unknown next-close gaps; feasibility is not guaranteed for arbitrary gaps. Volume is validated but not used. No real trading.",
+        "changes": "Version btc-momentum-v1; exact source SHA256=6f9bb9823fe23fd83278c03b84145385ed4ca663b00401330bc7a72b3f7aba17; parent=none; effective round=0. Hypothesis: multi-horizon momentum may persist across the seven-bar mark after the observed breakout, while volatility scaling limits exposure. Initial implementation: 10/30-bar positive momentum gate, 20-bar mean gate, 20-return sample volatility, daily risk target 0.025, exposure cap 0.75. No prior public coaching or tips were supplied; none adopted or rejected. This is an untested baseline, not evidence of improvement; execution and readback validation are not performance testing."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 7.633607921981337,
+    "entry_price": 130.86878566612364,
+    "entry_close": 130.80338397413658,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 999.0301307418725,
+  "winner": "agent-one"
+}

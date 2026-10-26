@@ -1,0 +1,123 @@
+{
+  "schema": "daily-learning-v1",
+  "run_id": "daily_491a334aba93_m1",
+  "round_index": 1,
+  "transport_parsing": [
+    {
+      "field": "agent-one feedback",
+      "mode": "terminal_json_object",
+      "discarded_prefix_characters": 931
+    },
+    {
+      "field": "agent-two feedback",
+      "mode": "terminal_json_object",
+      "discarded_prefix_characters": 593
+    }
+  ],
+  "authoritative_evidence_text": "Round 1\nFill t=67 at blinded close 96.71698989819568; mark t=73 at 103.63673801836593.\nAgent-produced P&L is untrusted. Only this settlement counts.\n| Agent | Cash | Units | Equity | Round return | Cumulative return | Max drawdown | Trades | Failures |\n|---|---:|---:|---:|---:|---:|---:|---:|---|\n|agent-one|1000|0|1000|0|0|0|0|missing manifest.json; missing submission: orders.csv|\n|agent-two|1014.3520899517492|0|1014.3520899517492|-0.023522739286425814|0.014352089951749235|0.023522739286425814|1||\nBuy-and-hold benchmark: equity 1095.6590651310928, units 10.572110682767013. Bought once at the round-0 fill using the same buy slippage and fees.\nStanding: agent-two leads.\n\nExpanded authoritative scoreboard (drawdown sampled at round marks; holds are not failures):\n{\n  \"round\": 2,\n  \"capital\": 1000,\n  \"benchmark_equity\": 1095.6590651310928,\n  \"benchmark_profit\": 95.6590651310928,\n  \"benchmark_return\": 0.0956590651310929,\n  \"exact_winner\": \"agent-two\",\n  \"cent_winner\": \"agent-two\",\n  \"previous_version_comparison\": {\n    \"status\": \"unavailable\",\n    \"reason\": \"No independent same-window previous-version replay is provided by this engine.\"\n  },\n  \"agents\": {\n    \"agent-one\": {\n      \"equity\": 1000,\n      \"profit\": 0,\n      \"return\": 0,\n      \"round_return\": 0,\n      \"max_round_marked_drawdown\": 0,\n      \"trades\": 0,\n      \"decision_status\": \"rejected\",\n      \"failures\": [\n        \"missing manifest.json\",\n        \"missing submission: orders.csv\"\n      ],\n      \"benchmark_gap\": -95.6590651310928,\n      \"strategy_provenance\": null,\n      \"provenance_trust\": \"agent_reported_not_source_verified\"\n    },\n    \"agent-two\": {\n      \"equity\": 1014.3520899517492,\n      \"profit\": 14.352089951749235,\n      \"return\": 0.014352089951749235,\n      \"round_return\": -0.023522739286425814,\n      \"max_round_marked_drawdown\": 0.023522739286425814,\n      \"trades\": 1,\n      \"decision_status\": \"traded\",\n      \"failures\": [],\n      \"benchmark_gap\": -81.30697517934357,\n      \"strategy_provenance\": {\n        \"code_ref\": \"/workspace/btc-paper/daily_491a334aba93_m1/round-1/Strategy.hs#sha256:b15b05daefaef9f17d2b6a767c623ad7873a24f837c4bbce81df7f541fc1c784\",\n        \"approach\": \"Public-close-only regularized log-price AR(1), unchanged prior and risk parameters; predict decision+7 versus decision+1. Inventory-aware target rebalancing with asymmetric transaction-cost no-trade band; long-only. Buys are cash-capped at 1.35 times maximum observed close with fees/slippage; this stress is not a guaranteed future-price bound. No external data or current peer input.\",\n        \"changes\": \"source=sha256:b15b05daefaef9f17d2b6a767c623ad7873a24f837c4bbce81df7f541fc1c784; parent=/workspace/btc-paper/daily_491a334aba93_m1/round-0/Strategy.hs#sha256:1ce052e14754834378982fce2e85713b59baacdf61edba97310d94d22bbe49bf (v1); version=v2-inventory; effective_round=1. Hypothesis: retain the original bounded mean-reversion forecast without selecting parameters from one favorable settlement; avoid unnecessary turnover by requiring forecast edge to exceed directional execution cost. Actual edits: replace fixed initial 1000 equity and buy-only orders with supplied cash/units, marked-equity target, sell support capped at holdings, incremental buys capped by current cash under the existing 1.35-max-price stress; buy gross-log-edge threshold log(1.0005*1.001), sell threshold log(0.9995*0.999), otherwise hold. Preserve slope prior 0.90, 10 pseudo-observations, slope clip [0,0.98], six fill-to-mark variance intervals, variance penalty 3, exposure ceiling 0.95. Add zero-variance safeguard and finite-volume validation. Adopt settled round-0 coaching on fill-to-mark alignment (already implemented), truthful version provenance, cash/passive comparison and exposure confounding as interpretation constraints, not signal changes. Reject copying peer momentum parameters or treating its directional hypothesis as evidence: one settlement and the coaching packet provide no validated comparative edge. Chronological walk-forward comparison remains an unperformed research suggestion, not an adopted tested improvement. Source edits and execution/readback validation only; no backtest, parameter search, independent replay or demonstrated improvement. Single build/run, no retry or repair/resubmission.\"\n      },\n      \"provenance_trust\": \"agent_reported_not_source_verified\"\n    }\n  }\n}\n",
+  "coaching": {
+    "answers": [
+      {
+        "answer": "The embedded excerpts contain no independently evaluated chronological comparison establishing whether short-horizon momentum or mean reversion performs better with next-close fills, transaction costs, and fill-to-mark scoring. They provide no relevant out-of-sample estimates against cash or passive exposure. Additional operator-provided evidence would be needed; these settlements do not resolve the comparison.",
+        "question": "Both agents: Is there independently evaluated evidence comparing short-horizon momentum and mean reversion under delayed execution and transaction costs, including chronological cash/passive comparisons?",
+        "source_paths": [],
+        "evidence_status": "unavailable"
+      },
+      {
+        "answer": "The excerpts provide no independently evaluated evidence that transaction-cost no-trade bands improve exposure-controlled net performance, nor any findings about the market regimes in which they help. The moving-average candidate includes a retain-target region between entry and exit thresholds, but that is a research proposal, not validation of an inventory-aware, cost-derived band. Evidence for the requested implementation and regime claims requires additional operator-provided sources.",
+        "question": "Agent-two: What evidence supports transaction-cost no-trade bands for short-horizon, inventory-aware forecasts with next-close execution, after controlling for exposure and market regime?",
+        "source_paths": [],
+        "evidence_status": "unavailable"
+      },
+      {
+        "answer": "The excerpts support cash and cost-matched fill-time buy-and-hold as distinct references and warn that equal starting capital does not imply equal exposure. Partial-exposure controls are proposed analyses, not an installed benchmark. They do not establish a method that can identify forecasting gains separately from inventory-management gains using sparse settlements alone. A candidate comparison would hold chronological information cutoffs, starting inventory, execution assumptions, and allocation controls constant while varying one component at a time. That is a research design, not an evaluation performed here or a validated decomposition of these results.",
+        "question": "Agent-two: How can forecasting gains be separated from inventory-management and allocation effects when only sparse round-marked settlements are available?",
+        "source_paths": [
+          "/knowledge/paper-trading-strategy-lab/baselines.md",
+          "/knowledge/paper-trading-strategy-lab/evaluation-and-improvement.md"
+        ],
+        "evidence_status": "research_candidate"
+      },
+      {
+        "answer": "The embedded KB digest does not supply a complete authoritative reference for submission schema, destination, deadline, or acceptance acknowledgment; those details require the current operator-provided contract. Separately, the supplied round brief states that an intentional hold uses a header-only orders.csv with the exact header side,quantity, together with a valid manifest.json containing string fields code_ref, approach, and changes. Missing required artifacts cause rejection, including for no-trade decisions. A file readback or agent-reported execution success is not an authoritative acceptance acknowledgment. No deadline or acknowledgment mechanism can be established from the excerpts.",
+        "question": "Agent-one: What authoritative reference specifies submission schema, destination, deadline, acceptance acknowledgment, and the representation of an intentional hold?",
+        "source_paths": [],
+        "evidence_status": "unavailable"
+      }
+    ],
+    "summary": "Identical public coaching for both agents after settled round 1: agent-two leads with equity 1014.3520899517492, cumulative return +1.435209%, and round return -2.352274%. Its recorded round-marked maximum drawdown is 2.352274%, with one trade and no recorded failures. Agent-one has equity 1000, zero return, zero trades, and zero recorded round-marked drawdown; its decision was rejected for missing manifest.json and orders.csv, not accepted as an intentional hold. Cost-matched buy-and-hold reached equity 1095.6590651310928, a cumulative return of 9.565907%. Agent-one and agent-two trail it by approximately 95.66 and 81.31 respectively. These are authoritative accounting outcomes, not evidence of predictive superiority or improvement.",
+    "limitations": [
+      "Only the supplied settled scoreboard is authoritative for accounting. Agent explanations of execution, source changes, provenance, tip adoption, and reported checks remain unverified.",
+      "Only the embedded excerpts were used. No tools, live search, source inspection, independent replay, tests, matches, or file changes were performed.",
+      "No independent same-window previous-version comparison is available. Neither a source edit, a reported successful check, nor a subsequent score demonstrates improvement; three contest rounds are weak evidence.",
+      "Drawdown is sampled at round marks and does not establish intraround risk. Agent-one's unchanged equity does not validate its unexecuted signal.",
+      "Daily close/volume observations, next-close fills, and the seven-bar decision cadence are supplied current-configuration facts, not empirical KB findings.",
+      "Mid-match adaptation remains permitted, and either agent may challenge or reject coaching. This packet neither directs execution nor shares private state or current/future orders."
+    ],
+    "shared_tips": [
+      "Both agents emphasize separating submission acceptance from investment performance. Rejection and an intentional cash hold can leave identical equity, but they have different operational meanings; neither should automatically prompt a signal-quality conclusion.",
+      "Both agents recommend evaluating the executable fill-to-mark interval rather than decision-close-to-mark movement. Here the settled fill at t=67 and mark at t=73 span six close-to-close intervals; pre-fill movement is not a holding-period gain.",
+      "Combine agent-one's separation of parameter selection from chronological evaluation with agent-two's proposed matched-version comparison: use identical information cutoffs, starting inventory, and execution costs, and report turnover alongside net return. This is a research design candidate, not a test performed or requested by this packet.",
+      "Both agents recommend cash and cost-matched passive comparisons while accounting for exposure differences. Exposure-matched controls may aid interpretation as proposed analyses, but do not replace the official benchmark or establish a decomposition of forecasting skill.",
+      "Preserve parent, version, effective-round, hypothesis, and actual-change provenance. Keep source edits, agent-reported checks, authoritative acceptance, and independent performance evidence distinct; the agents' adoption and implementation claims are unverified.",
+      "Both agents caution against copying peer parameters or retuning from sparse settlements. A lead, a losing round, or a reported no-trade-band implementation does not establish which signal or inventory policy is superior."
+    ]
+  },
+  "peer_feedback": {
+    "agent-one": {
+      "review": "Authoritative settlement leaves agent-one at equity 1000 with no trades, but the decision was rejected for missing required artifacts, not accepted as a deliberate hold. Agent-two leads at 1014.3521 despite a -2.3523% round return. Agent-one trails buy-and-hold by 95.6591. This outcome identifies a submission failure; it does not establish the quality of an unexecuted strategy. No independent learning improvement is demonstrated.",
+      "hypothesis": "For the next round, confirming completeness and published-schema compliance of the required submission artifacts before the deadline will prevent missing-artifact rejection. This hypothesis is falsified if the authoritative settlement still reports either required artifact as missing despite that confirmation.",
+      "shared_tips": [
+        "Separate submission acceptance from investment performance in evaluation. A rejected decision and an intentional cash hold can produce identical equity, but only the former indicates an operational failure; conflating them leads to inappropriate signal changes.",
+        "Align forecast evaluation with the actual fill-to-mark interval and report transaction costs and passive/cash baselines. Decision-time returns or a favorable single settlement can otherwise create misleading evidence of predictive skill."
+      ],
+      "tip_requests": [
+        "What is the authoritative knowledge-base reference for the required submission schema, destination, deadline, and acceptance acknowledgment, including how an intentional hold is represented?",
+        "Does the knowledge base provide any independently verified chronological comparison of fill-to-mark forecasts against cash and passive exposure, rather than agent-reported improvement claims?"
+      ],
+      "tip_decisions": [
+        "Adopt the previously referenced fill-to-mark alignment and cash/passive comparisons as evaluation principles: they address timing mismatch and exposure confounding. This is a review decision, not an implemented or tested strategy change.",
+        "Reject copying peer momentum or mean-reversion parameters from these settlements: sparse outcomes and different exposure do not identify a superior signal.",
+        "Defer chronological walk-forward comparison as a research suggestion only; no review-triggered tests were performed and no improvement is claimed."
+      ]
+    },
+    "agent-two": {
+      "review": "Authoritative settlement: agent-two leads with equity 1014.3521 and cumulative return +1.4352%, despite a -2.3523% round return. It trails buy-and-hold by 81.3070. Agent-one remained at 1000 because required submission artifacts were missing; that rejection is an operational failure, not evidence against its trading signal. One losing round cannot establish whether the reported strategy revisions helped, and no independent previous-version replay is available. Learning and provenance claims remain agent-reported, not independently verified.",
+      "hypothesis": "Agent-two's existing inventory-aware, transaction-cost-aware policy will produce a positive net marked return in the next settled round. A zero or negative authoritative round return falsifies this one-round prediction; a positive result alone would not establish persistent skill or superiority to passive exposure.",
+      "shared_tips": [
+        "Separate submission validity, directional forecasting, exposure and execution costs when interpreting performance. Compare accepted decisions with both cash and passive exposure over identical fill-to-mark intervals: otherwise a market move, reduced exposure or a rejected submission can be mistaken for signal quality.",
+        "For any future authorized version comparison, use identical chronological information cutoffs, initial inventory and execution costs, and report turnover alongside net return. This controls exposure and cost confounding; it is a proposed evaluation method, not a test performed here."
+      ],
+      "tip_requests": [
+        "Does the knowledge base contain independently evaluated evidence that transaction-cost no-trade bands improve net performance after controlling for exposure, and under which market regimes?",
+        "What established methodology separates inventory-management gains from forecasting gains when only sparse round-marked settlements are available?"
+      ],
+      "tip_decisions": [
+        "Accept the prior fill-to-mark alignment advice as an evaluation principle: forecasts and benchmarks must use the actual execution-to-mark horizon. No implementation change or new validation is claimed here.",
+        "Accept truthful version provenance and cash/passive comparisons as reporting principles. The supplied provenance describes edits, but does not demonstrate improvement.",
+        "Reject copying peer momentum parameters or retuning from one settlement: neither supplies independently validated comparative evidence.",
+        "Retain chronological walk-forward comparison as a deferred research suggestion, not an adopted tested improvement. No additional match, replay or test was initiated, and no settled artifacts or strategy source were changed."
+      ]
+    }
+  },
+  "tip_decisions": {
+    "agent-one": {
+      "tip_decisions": [
+        "Adopt for a later decision stage: verify the current submission contract and distinguish authoritative acceptance from file readback and investment performance, because rejection is not an intentional hold.",
+        "Adopt for later evaluation: compare identical chronological cutoffs, starting inventory, execution costs, and fill-to-mark intervals against cash and cost-matched passive exposure, reporting turnover, because sparse settlements cannot isolate forecasting skill.",
+        "Reject retuning or copying peer parameters from this scoreboard because it provides no independently evaluated evidence of signal superiority."
+      ],
+      "followup": "Answers acknowledged, including the unavailable evidence and contract details. These are intentions only; no edits, tests, or new match were performed, and no tested improvement is claimed."
+    },
+    "agent-two": {
+      "tip_decisions": [
+        "Adopt for a later decision stage: distinguish authoritative submission acceptance from investment performance, because rejection and an intentional hold can produce identical equity without representing the same operational outcome.",
+        "Adopt for later evaluation: use executable fill-to-mark returns and chronological, cost-consistent cash/passive comparisons, reporting exposure and turnover because allocation differences can confound apparent forecasting gains.",
+        "Reject retuning from sparse settlements or copying peer parameters: these outcomes do not establish predictive superiority or validate transaction-cost no-trade bands."
+      ],
+      "followup": "Answers acknowledged, including the unavailable independent evidence and the research-only status of the proposed decomposition. These are intentions only; no edits, tests, or new match were performed, and no tested improvement is claimed. No further request."
+    }
+  },
+  "evidence_status": "agent_reported_not_independently_verified",
+  "chat_budget": "one review and one coaching acknowledgement per agent per settled round; followups recorded, not automatically redispatched"
+}

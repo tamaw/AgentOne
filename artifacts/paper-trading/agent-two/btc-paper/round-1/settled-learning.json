@@ -1,0 +1,104 @@
+{
+  "schema": "daily-learning-v1",
+  "run_id": "daily_fade2130e2e5_m1",
+  "round_index": 0,
+  "authoritative_evidence_text": "Round 0\nFill t=60 at blinded close 130.80338397413658; mark t=66 at 130.87260191411164.\nAgent-produced P&L is untrusted. Only this settlement counts.\n| Agent | Cash | Units | Equity | Round return | Cumulative return | Max drawdown | Trades | Failures |\n|---|---:|---:|---:|---:|---:|---:|---:|---|\n|agent-one|1000|0|1000|0|0|0|0||\n|agent-two|254.3937364649581|5.69166588|999.2768594063301|-0.0007231405936698821|-0.0007231405936698821|0.0007231405936698821|1||\nBuy-and-hold benchmark: equity 999.0301307418725, units 7.633607921981337. Bought once at the round-0 fill using the same buy slippage and fees.\nStanding: agent-one leads.\n\nExpanded authoritative scoreboard (drawdown sampled at round marks; holds are not failures):\n{\n  \"round\": 1,\n  \"capital\": 1000,\n  \"benchmark_equity\": 999.0301307418725,\n  \"benchmark_profit\": -0.9698692581274599,\n  \"benchmark_return\": -0.0009698692581274759,\n  \"exact_winner\": \"agent-one\",\n  \"cent_winner\": \"agent-one\",\n  \"previous_version_comparison\": {\n    \"status\": \"unavailable\",\n    \"reason\": \"No independent same-window previous-version replay is provided by this engine.\"\n  },\n  \"agents\": {\n    \"agent-one\": {\n      \"equity\": 1000,\n      \"profit\": 0,\n      \"return\": 0,\n      \"round_return\": 0,\n      \"max_round_marked_drawdown\": 0,\n      \"trades\": 0,\n      \"decision_status\": \"valid_hold\",\n      \"failures\": [],\n      \"benchmark_gap\": 0.9698692581274599,\n      \"strategy_provenance\": {\n        \"code_ref\": \"/workspace/btc-daily-fade2130e2e5/Strategy-r0-v1.hs#sha256=095d4809cdb05b195aaf694f0f6362e64858d3cbac953e9484c1dcbcfccd1c6e\",\n        \"approach\": \"Long-only trend gate with seven-bar log-momentum, SMA20/SMA28 confirmation, ten-percent extension and momentum caps, and recent/prior volume ratio cap 2.0. No entry during extreme upward extension. Entry sizing uses 80 percent of decision-price cash, not a guaranteed next-fill budget; no such estimate is needed for a hold. Initial cash 1000, units zero. Uses only supplied public t,close,volume.\",\n        \"changes\": \"Version r0-v1; source sha256=095d4809cdb05b195aaf694f0f6362e64858d3cbac953e9484c1dcbcfccd1c6e; parent=none; effective round=0. Hypothesis: avoid chasing a recent high-volume jump because seven-bar post-fill reversal risk and round-trip costs can dominate continuation. Initial rules: positive seven-bar log return below 0.10; price>SMA20>SMA28; price/SMA20-1<0.10; last-seven mean volume/prior-twenty mean volume<2.0. All gates required for entry. No prior tips available, so none adopted or rejected. This is an initial implementation, not a tested improvement; no historical performance or superior equity is claimed. No automatic retry or repair.\"\n      },\n      \"provenance_trust\": \"agent_reported_not_source_verified\"\n    },\n    \"agent-two\": {\n      \"equity\": 999.2768594063301,\n      \"profit\": -0.723140593669882,\n      \"return\": -0.0007231405936698821,\n      \"round_return\": -0.0007231405936698821,\n      \"max_round_marked_drawdown\": 0.0007231405936698821,\n      \"trades\": 1,\n      \"decision_status\": \"traded\",\n      \"failures\": [],\n      \"benchmark_gap\": 0.2467286644575779,\n      \"strategy_provenance\": {\n        \"code_ref\": \"/workspace/btc-paper/round-0/Strategy.hs#sha256=6f9bb9823fe23fd83278c03b84145385ed4ca663b00401330bc7a72b3f7aba17\",\n        \"approach\": \"Long-only 10/30-bar log-momentum consensus with close above 20-bar arithmetic mean. Exposure min(0.75,0.025/sample standard deviation of last 20 log returns); cash sizing uses decision close and stated fee/slippage, rounded down to 8 decimals. Unspent cash buffers unknown next-close gaps; feasibility is not guaranteed for arbitrary gaps. Volume is validated but not used. No real trading.\",\n        \"changes\": \"Version btc-momentum-v1; exact source SHA256=6f9bb9823fe23fd83278c03b84145385ed4ca663b00401330bc7a72b3f7aba17; parent=none; effective round=0. Hypothesis: multi-horizon momentum may persist across the seven-bar mark after the observed breakout, while volatility scaling limits exposure. Initial implementation: 10/30-bar positive momentum gate, 20-bar mean gate, 20-return sample volatility, daily risk target 0.025, exposure cap 0.75. No prior public coaching or tips were supplied; none adopted or rejected. This is an untested baseline, not evidence of improvement; execution and readback validation are not performance testing.\"\n      },\n      \"provenance_trust\": \"agent_reported_not_source_verified\"\n    }\n  }\n}\n",
+  "coaching": {
+    "answers": [
+      {
+        "answer": "The embedded excerpts provide no independently verified, leakage-free comparison of continuation versus reversal after unusually large price and volume increases at this execution horizon. They contain no relevant sample sizes, conditional return estimates, or out-of-sample uncertainty estimates. Neither direction is established by this settlement. Answering the empirical question requires additional evidence through an authorized operator lookup; none was performed here.",
+        "question": "Both agents: What evidence distinguishes short-horizon continuation from reversal after unusually large, high-volume moves, with next-close fills, delayed marking, and execution costs?",
+        "source_paths": [],
+        "evidence_status": "unavailable"
+      },
+      {
+        "answer": "Use cash and cost-matched, fill-time buy-and-hold as reference points, while recognizing that equal initial capital does not mean equal exposure. A partial-exposure control is a proposed analysis—not an installed benchmark—and could help investigate whether an apparent advantage reflects entry selection or simply less market exposure. Examine one hypothesis or change at a time and preserve the parent version, exact version, and effective round. Distinguish source edits, agent-reported evaluations, accounting checks, and independent matched replay. These excerpts support an evaluation approach, not a finding that either agent's filters add value.",
+        "question": "Agent-one: How can evaluation distinguish useful entry filtering from merely benefiting from lower exposure during an unfavorable interval?",
+        "source_paths": [
+          "/knowledge/paper-trading-strategy-lab/baselines.md",
+          "/knowledge/paper-trading-strategy-lab/evaluation-and-improvement.md"
+        ],
+        "evidence_status": "research_candidate"
+      },
+      {
+        "answer": "The excerpts warn that even three rounds are weak evidence and that equal capital is not equal exposure. Accordingly, the current single settlement cannot establish the value of volatility scaling or identify a superior exposure level. Preserve version provenance and separate accounting correctness from predictive evidence. Exposure-matched comparisons are research candidates; no independent matched replay is available here. The excerpts supply no quantitative uncertainty model, confidence interval, or validated sizing rule for this small sample.",
+        "question": "Agent-two: What guidance supports uncertainty-aware evaluation of exposure sizing with very few settled rounds?",
+        "source_paths": [
+          "/knowledge/paper-trading-strategy-lab/baselines.md",
+          "/knowledge/paper-trading-strategy-lab/evaluation-and-improvement.md"
+        ],
+        "evidence_status": "research_candidate"
+      }
+    ],
+    "summary": "Identical public coaching packet for both agents after settled round 0. Authoritative equity is 1000 for agent-one, 999.2768594063301 for agent-two, and 999.0301307418725 for buy-and-hold. Agent-one leads by 0.723140593669882. Agent-one recorded a valid hold with zero trades; agent-two recorded one trade; neither had failures. Their settled returns were 0% and approximately -0.0723141%, respectively, versus approximately -0.0969869% for buy-and-hold. The fill-to-mark close increased slightly, but the benchmark's gain before costs did not cover entry costs. This is an accounting observation, not evidence that either approach predicts better.",
+    "limitations": [
+      "Only the embedded KB excerpts were available; no tools, live search, independent replay, or additional evaluation were used.",
+      "One settled round cannot establish forecasting skill, causal filter value, sizing superiority, or predictive improvement. Round-marked drawdown does not describe the full intervening price path.",
+      "Agent descriptions of implementation, execution checks, tip adoption, and hypotheses remain unverified claims. They do not supersede settlement or establish performance improvement.",
+      "Daily close/volume inputs, next-close fills, and seven-bar decision cadence are supplied current-configuration facts, not empirical findings from the KB.",
+      "Mid-match adaptation is permitted, but no strategy is frozen, selected, promoted, or changed by this packet. Both agents may challenge or reject the advice.",
+      "No extra matches, tests, source/runtime changes, or current/future order sharing are included."
+    ],
+    "shared_tips": [
+      "Both agents independently emphasized causal timing: keep signal computation, next-close execution, and delayed equity marking separate. This is shared methodological guidance, not a demonstrated improvement.",
+      "Both agents emphasized distinguishing gross price-direction accuracy from net settled return. Account for fees and slippage consistently; a favorable fill-to-mark move can still produce a loss.",
+      "Agent-one proposed chronological, one-change-at-a-time ablations to investigate filter value. This is a research candidate for any later authorized evaluation, not a request to run one now.",
+      "Agent-two emphasized comparison with both cash and cost-matched buy-and-hold. Combine this with exposure awareness: a benchmark advantage alone does not demonstrate better timing or validate a sizing rule.",
+      "Preserve parent/version/effective-round provenance for any permitted adaptation, and distinguish an edit or successful execution check from an independently verified improvement."
+    ]
+  },
+  "peer_feedback": {
+    "agent-one": {
+      "review": "Authoritative settlement: agent-one held, preserved equity of 1000, and recorded zero trades, zero drawdown and no failures. It leads agent-two by approximately 0.7231 and the buy-and-hold benchmark by approximately 0.9699. The benchmark lost despite the fill-to-mark price increase, illustrating the importance of execution costs. One round does not establish forecasting skill or validate the entry filters.",
+      "hypothesis": "Low-confidence, falsifiable next-round hypothesis: the published buy-and-hold benchmark will have a nonpositive round return. A positive next-round benchmark return falsifies this short-horizon reversal prediction; this settlement alone does not establish its reliability.",
+      "shared_tips": [
+        "For subsequent permitted evaluations, distinguish price movement from net portfolio return and use authoritative fills, costs and marks. A small favorable price move can still lose money after execution costs, as this settlement demonstrates.",
+        "When sufficient settled observations become available, evaluate each proposed filter through a predeclared, chronological ablation against the otherwise identical rule. Changing several gates together prevents attributing any improvement to a particular filter; a single winning interval is insufficient evidence."
+      ],
+      "tip_requests": [
+        "Does the knowledge base contain leakage-free, cost-inclusive evidence distinguishing short-horizon reversal from continuation after unusually large price and volume increases, including sample sizes and out-of-sample uncertainty?",
+        "What public evaluation protocol does the knowledge base recommend for separating useful entry filtering from simply benefiting from lower exposure during one unfavorable interval?"
+      ],
+      "tip_decisions": [
+        "No prior coaching tips were supplied in the available task context, so none can honestly be recorded as adopted or rejected. Retain cost-aware evaluation as a methodological principle, but reject treating this single hold outcome as evidence that the existing strategy is superior. No additional evaluation, source change, or settled-order modification was performed."
+      ]
+    },
+    "agent-two": {
+      "review": "Authoritative settlement: agent-two finished with equity 999.2768594063301, a loss of 0.723140593669882 (0.0723141%), after one trade and no reported failures. It exceeded buy-and-hold equity by 0.2467286644575779 but trailed agent-one's cash-only equity by 0.723140593669882. The fill-to-mark price increase did not cover execution costs. One round does not establish an edge or validate volatility sizing.",
+      "hypothesis": "For the next settled round, the existing positive multi-horizon momentum signal will correctly predict a positive gross fill-to-mark price return. A nonpositive return falsifies this one-round directional hypothesis; a positive return alone would not establish net profitability or statistical reliability.",
+      "shared_tips": [
+        "Separate directional accuracy from execution economics: evaluate gross fill-to-mark movement and net settled return independently. Rationale: a correct price-direction forecast can still lose after fees and slippage, as this settlement illustrates.",
+        "For any later permitted historical evaluation, align decisions, fills and marks with the actual engine timeline and compare against both cash and cost-matched buy-and-hold. Rationale: timing leakage and mismatched benchmark costs can create apparent improvements. No additional evaluation was run here."
+      ],
+      "tip_requests": [
+        "Does the knowledge base contain independently verified evidence comparing momentum persistence and reversal at this decision-to-fill-to-mark horizon after execution costs?",
+        "What knowledge-base guidance supports uncertainty-aware evaluation of exposure sizing when only a small number of settled rounds is available?"
+      ],
+      "tip_decisions": [
+        "The initial strategy provenance reports no prior public coaching tips; none can be credited as adopted or rejected retroactively.",
+        "Adopt prospectively the distinction between gross directional success and net economic success; this round demonstrates why both must be reported. This is an evaluation principle, not a source change or verified performance improvement.",
+        "Reject treating either the small benchmark advantage or the loss to cash as sufficient evidence to retune the strategy: one settled observation cannot identify the causal value of its individual rules."
+      ]
+    }
+  },
+  "tip_decisions": {
+    "agent-one": {
+      "tip_decisions": [
+        "Adopt causal timing and consistent execution-cost accounting as intentions for later decisions: gross price direction alone does not determine net settled return.",
+        "Adopt exposure-aware, one-change-at-a-time evaluation with version provenance for any later authorized analysis: lower exposure can explain an apparent advantage without useful entry selection."
+      ],
+      "followup": "Acknowledged all answers: continuation versus reversal remains unresolved; proposed filter and sizing comparisons are research candidates, not established findings. One settlement does not demonstrate predictive skill or tested improvement. No edits, tests, new matches, or order sharing were performed for this acknowledgement."
+    },
+    "agent-two": {
+      "tip_decisions": [
+        "Adopt causal separation of signal time, next-close fills, and delayed marking for later decisions: this avoids confusing execution timing with predictive evidence.",
+        "Adopt cash and cost-matched buy-and-hold comparisons with explicit exposure awareness: equal initial capital does not imply equal exposure, and benchmark outperformance alone cannot validate sizing.",
+        "Adopt parent/version/effective-round provenance for any later permitted adaptation: accounting checks, source edits, and independent replay support different claims.",
+        "Reject treating this settlement as validation of volatility scaling or either directional hypothesis: one round and the supplied excerpts provide no reliable sizing comparison or leakage-free continuation-versus-reversal evidence."
+      ],
+      "followup": "Acknowledged all three answers and their evidence limitations. These decisions record intentions only; no orders, strategy or runtime edits, tests, or new matches were performed. No tested improvement is claimed. Additional empirical work requires separate authorization; no followup is requested here."
+    }
+  },
+  "evidence_status": "agent_reported_not_independently_verified",
+  "chat_budget": "one review and one coaching acknowledgement per agent per settled round; followups recorded, not automatically redispatched"
+}

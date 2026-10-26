@@ -1,0 +1,9 @@
+{
+"hypothesis":"Fixed +/-1% dual-horizon hysteresis reduces whipsaw and trading costs.",
+"observed":"284 held-out chronological daily bars: return 20.1534%, baseline 16.8723%, buy-and-hold 35.0210%; close-marked max drawdown 6.0347%, baseline 7.4021%, buy-and-hold 18.9206%.",
+"trading":"16 fills (8 buys, 8 sells) versus baseline 32 and buy-and-hold 2; 268 valid no-trade days (141 cash, 127 invested) versus baseline 252 and buy-and-hold 282.",
+"costs":"Variant fees 1630.3547 and slippage 815.1830; baseline fees 3183.2147 and slippage 1591.6127, on initial equity 100000.",
+"learned":"The predeclared buffer halved round trips and improved this baseline's net return by 3.2811 percentage points, with a smaller observed drawdown. It still materially lagged buy-and-hold. Lower fees alone do not establish causality: entry/exit exposures changed too.",
+"failures":"No simulation infeasibility or invalid-bar failure. Public SPY acquisition failed; AAPL fallback and shorter evaluation window are disclosed in provenance.",
+"further_validation":"Worth independent multi-asset, longer-window validation, without retuning on this sample; not deployment-ready or evidence of competition victory."
+}

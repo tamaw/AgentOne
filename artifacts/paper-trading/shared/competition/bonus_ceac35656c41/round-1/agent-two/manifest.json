@@ -1,0 +1,1 @@
+{"code_ref":"synthetic-cash-hold-control","approach":"SYNTHETIC cash-hold baseline; no losing agent contacted","changes":"Synthetic control, not agent-two; no orders or prize eligibility","synthetic":true,"slot_label":"synthetic-cash-hold-baseline"}

@@ -1,0 +1,15 @@
+{
+"source":"https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv",
+"retrieved_utc":"2026-10-24 03:45:50.143180055 UTC",
+"asset":"AAPL",
+"source_role":"Public Plotly example dataset; original vendor not established by this download. Historical and publicly accessible, not unseen competition data. Agent prior exposure cannot be independently established.",
+"failed_sources":"Stooq SPY returned browser verification HTML; Yahoo SPY download produced no file. Neither is used.",
+"price_convention":"OHLC multiplied by Adjusted/Close; adjusted-price total-return proxy, fractional shares. Not a corporate-action cash ledger or point-in-time adjusted feed.",
+"initialization":"2015-02-17 through 2015-12-31, no training/tuning performance selection",
+"evaluation":"2016-01-01 through dataset end 2017-02-16; daily chronological next-open decisions, parameters fixed before simulation",
+"costs":"10bps fee on slipped notional plus adverse 5bps slippage per side, including terminal liquidation",
+"baseline":"Frozen historical extension of preserved positive 7-bar AND 21-bar momentum entry signal; exit when either nonpositive; full cash/full long, no leverage. Preserved submission itself only wrote a cash hold.",
+"bounds":"Exactly two variants; one simulation per variant plus identical baseline and buy-and-hold controls. No tuning or competition reruns.",
+"initial_cash":100000,
+"limitations":"Single short public equity series, no untouched external validation; fixed research endpoint; annual attribution not independent folds; hindsight-adjusted prices, no market impact, spread beyond imposed slippage, taxes or interest; no claim of winning any competition."
+}

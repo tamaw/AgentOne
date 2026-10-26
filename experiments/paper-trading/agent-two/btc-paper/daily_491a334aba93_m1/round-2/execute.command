@@ -1,0 +1,1 @@
+"/workspace/btc-paper/daily_491a334aba93_m1/round-2/strategy" "/shared/competition/daily_491a334aba93_m1/round-2/bars.csv" "/shared/competition/daily_491a334aba93_m1/round-2/agent-two" "/workspace/btc-paper/daily_491a334aba93_m1/round-2/Strategy.hs" "/workspace/btc-paper/daily_491a334aba93_m1/round-2" "b15b05daefaef9f17d2b6a767c623ad7873a24f837c4bbce81df7f541fc1c784"

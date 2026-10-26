@@ -1,0 +1,68 @@
+{
+  "round": 1,
+  "decision_t": 66,
+  "fill_t": 67,
+  "mark_t": 73,
+  "fill_close": 130.47385442321422,
+  "mark_close": 129.23398197948873,
+  "agents": {
+    "agent-one": {
+      "cash": 150.0447537928569,
+      "units": 6.504612,
+      "equity": 990.661663784423,
+      "round_return": -0.009338336215576988,
+      "cumulative_return": -0.009338336215576988,
+      "max_drawdown": 0.009338336215576988,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 6.504612,
+          "price": 130.53909135042582,
+          "notional": 849.106140067076,
+          "fee": 0.849106140067076
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/competition/agent-one/TrendDecision.hs",
+        "approach": "Long-only public-close trend following: buy when last close exceeds the 20-bar mean and the 10-bar mean exceeds the 20-bar mean. Allocate 85 percent of current cash at the decision price after estimated fees and slippage, retaining a next-close execution buffer.",
+        "changes": "Round 1 independent decision using only supplied public bars and current cash 1000 with zero units. No performance improvement claimed; next-close feasibility is not guaranteed by the buffer."
+      }
+    },
+    "agent-two": {
+      "cash": 150.04467279075308,
+      "units": 6.5046126199,
+      "equity": 990.6616628944646,
+      "round_return": -0.009338337105535402,
+      "cumulative_return": -0.009338337105535402,
+      "max_drawdown": 0.009338337105535402,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 6.5046126199,
+          "price": 130.53909135042582,
+          "notional": 849.1062209882587,
+          "fee": 0.8491062209882586
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/competition/agent-two/MomentumV1.hs",
+        "approach": "Long-only public-close momentum: close above 20-bar SMA and positive 7-bar return; allocate 85% of cash at decision price after estimated fees and slippage, retaining a next-close gap reserve. No leverage. Unknown fill can still make a buy infeasible.",
+        "changes": "Independent competition-native momentum revision; no offline AAPL results used as evidence of improvement. Round 1 starts with cash 1000 and zero units."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 8.455199327399143,
+    "entry_price": 118.15227061102253,
+    "entry_close": 118.09322399902302,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1092.699077510086,
+  "winner": "agent-one"
+}

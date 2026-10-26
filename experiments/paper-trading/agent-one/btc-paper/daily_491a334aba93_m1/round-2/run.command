@@ -1,0 +1,1 @@
+/workspace/btc-paper/daily_491a334aba93_m1/round-2/strategy /shared/competition/daily_491a334aba93_m1/round-2/bars.csv /shared/competition/daily_491a334aba93_m1/round-2/agent-one /workspace/btc-paper/daily_491a334aba93_m1/round-2/Strategy-r2-v1.hs /workspace/btc-paper/daily_491a334aba93_m1/round-2

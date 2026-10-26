@@ -1,0 +1,9 @@
+{
+"public_source":"https://raw.githubusercontent.com/plotly/datasets/master/stockdata.csv",
+"public_download":"Fetched this task before simulation; retrieval clock in acquisition-clock.txt; immutable bytes hashed in SHA256SUMS. GitHub master is mutable; archived bytes are authoritative.",
+"public_columns":"MSFT,IBM,SBUX,AAPL,GSPC,Date; 2306 daily rows, 2007-01-03 through 2016-03-01. Close-like prices only; original vendor and adjustment semantics unverified, treated as supplied price proxies, not asserted actual tradeable historical total returns.",
+"prior_source":"Copied unchanged data/prior-aapl-plotly.csv from authorized bonus artifacts. Original URL https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv; preserved original provenance in ../preserved/provenance.json. Adjusted/Close multiplier applied to OHLC as before.",
+"prior_exposure":"Prior AAPL sample definitely viewed. Newly downloaded historical public basket is not certified unseen; no untouched-holdout claim.",
+"private_assets":"None accessed; only task history and explicitly authorized own bonus files and public URL.",
+"failures":"No acquisition failures in this allocation."
+}

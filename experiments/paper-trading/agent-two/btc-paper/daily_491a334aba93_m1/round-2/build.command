@@ -1,0 +1,1 @@
+"ghc" "-O2" "-outputdir" "/workspace/btc-paper/daily_491a334aba93_m1/round-2/build" "/workspace/btc-paper/daily_491a334aba93_m1/round-2/Strategy.hs" "-o" "/workspace/btc-paper/daily_491a334aba93_m1/round-2/strategy"

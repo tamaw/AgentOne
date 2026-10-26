@@ -1,0 +1,56 @@
+{
+  "round": 0,
+  "decision_t": 9,
+  "fill_t": 10,
+  "mark_t": 11,
+  "fill_close": 120,
+  "mark_close": 130,
+  "agents": {
+    "agent-one": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [
+        "malformed orders: quantity must be > 0"
+      ],
+      "manifest_summary": {
+        "code_ref": "handwritten-test",
+        "approach": "deterministic fixture, not a trading agent",
+        "changes": "test fixture"
+      }
+    },
+    "agent-two": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [
+        "malformed orders: quantity must be numeric"
+      ],
+      "manifest_summary": {
+        "code_ref": "handwritten-test",
+        "approach": "deterministic fixture, not a trading agent",
+        "changes": "test fixture"
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 8.242582500008243,
+    "entry_price": 121.2,
+    "entry_close": 120,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 10
+  },
+  "benchmark_equity": 1071.5357250010716,
+  "winner": null
+}

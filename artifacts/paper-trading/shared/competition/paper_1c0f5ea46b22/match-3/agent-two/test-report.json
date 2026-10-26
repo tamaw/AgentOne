@@ -1,0 +1,710 @@
+{
+  "status": "completed",
+  "cases": 32,
+  "method": "Paired prefix-only rolling-origin replay of freshly compiled exact match3 parent and one predeclared no-r21 candidate; same 60 previously public closes, origins 21..52, 22-close warmup, reset cash 1000, fill t+1, mark t+7. Only the positive 21-bar confirmation is removed; budget fixed 500. At fixed 500-dollar entry budget, removing only the positive 21-bar momentum confirmation will improve mean seven-bar marked return by at least 0.0005 (5 basis points of initial capital), while maximum episode marked drawdown stays at or below 0.025 and rejected fills do not increase, on identical public origins 21..52. Otherwise retain the parent.",
+  "limitations": "Small single-path sample; 32 overlapping episodes are dependent, not 32 independent market regimes. This development sample is not held out. Horizons contain only already-public observations, not match-future observations. No volume constraints or market impact; no continuous-position simulation. Liquidation return is a sensitivity metric using identical exit costs. Benchmark is frictionless fill-to-mark buy-and-hold for context, not the scoreboard benchmark path. Independent matched judge replay and independent judge verification are unavailable; this is own-source offline evidence only.",
+  "old_metrics": {
+    "cases": 32,
+    "filled_cases": 5,
+    "rejected_cases": 0,
+    "mean_marked_return": 0.000404844253,
+    "mean_liquidation_return": 0.000286966649,
+    "worst_case_return": -0.017193782216,
+    "best_case_return": 0.031362496507,
+    "maximum_episode_drawdown": 0.019564317289,
+    "mean_final_equity": 1000.404844253228,
+    "profitable_cases": 2,
+    "mean_entry_cost_dollars": 0.117172928478,
+    "mean_gross_buy_hold_return": 0.002952255644,
+    "case_details": [
+      {
+        "decision_bar": 21,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.026941776161,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 22,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.067678782117,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 23,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.046386110065,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 24,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.068402996545,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 25,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.053294193071,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 26,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.023948451488,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 27,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.001858231946,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 28,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.026143086231,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 29,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.008778447792,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 30,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.015073935423,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 31,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.025030222416,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 32,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.010210508132,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 33,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.011830833189,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 34,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.009240121802,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 35,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.007036801321,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 36,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.003902620850,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 37,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.008844780042,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 38,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.004390430227,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 39,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.016735750425,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 40,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.024198752197,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 41,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.031267326486,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 42,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.054212747832,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 43,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.062426362284,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 44,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.069364346159,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 45,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.028411330230,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 46,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.011655474143,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 47,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.000691868040,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 48,
+        "filled": true,
+        "rejected": false,
+        "marked_return": -0.008799658411,
+        "liquidation_return": -0.009546681433,
+        "max_marked_drawdown": 0.018867739123,
+        "benchmark_gross_return": -0.015882520556,
+        "entry_cost_dollars": 0.759585332347
+      },
+      {
+        "decision_bar": 49,
+        "filled": true,
+        "rejected": false,
+        "marked_return": -0.017193782216,
+        "liquidation_return": -0.017934073440,
+        "max_marked_drawdown": 0.019564317289,
+        "benchmark_gross_return": -0.032204841792,
+        "entry_cost_dollars": 0.765435650338
+      },
+      {
+        "decision_bar": 50,
+        "filled": true,
+        "rejected": false,
+        "marked_return": -0.013771023143,
+        "liquidation_return": -0.014498284130,
+        "max_marked_drawdown": 0.017920793940,
+        "benchmark_gross_return": -0.026150709935,
+        "entry_cost_dollars": 0.747288103311
+      },
+      {
+        "decision_bar": 51,
+        "filled": true,
+        "rejected": false,
+        "marked_return": 0.021356983366,
+        "liquidation_return": 0.020594131316,
+        "max_marked_drawdown": 0.005345496570,
+        "benchmark_gross_return": 0.045386178321,
+        "entry_cost_dollars": 0.730218940834
+      },
+      {
+        "decision_bar": 52,
+        "filled": true,
+        "rejected": false,
+        "marked_return": 0.031362496507,
+        "liquidation_return": 0.030567840462,
+        "max_marked_drawdown": 0.004068752762,
+        "benchmark_gross_return": 0.064497913525,
+        "entry_cost_dollars": 0.747005684457
+      }
+    ]
+  },
+  "new_metrics": {
+    "cases": 32,
+    "filled_cases": 8,
+    "rejected_cases": 0,
+    "mean_marked_return": -0.000572840796,
+    "mean_liquidation_return": -0.000760560141,
+    "worst_case_return": -0.035322913799,
+    "best_case_return": 0.031362496507,
+    "maximum_episode_drawdown": 0.035322913799,
+    "mean_final_equity": 999.427159203658,
+    "profitable_cases": 3,
+    "mean_entry_cost_dollars": 0.188421354458,
+    "mean_gross_buy_hold_return": 0.002952255644,
+    "case_details": [
+      {
+        "decision_bar": 21,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.026941776161,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 22,
+        "filled": true,
+        "rejected": false,
+        "marked_return": -0.035322913799,
+        "liquidation_return": -0.036036740039,
+        "max_marked_drawdown": 0.035322913799,
+        "benchmark_gross_return": -0.067678782117,
+        "entry_cost_dollars": 0.766154700267
+      },
+      {
+        "decision_bar": 23,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.046386110065,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 24,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.068402996545,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 25,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.053294193071,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 26,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.023948451488,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 27,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.001858231946,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 28,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.026143086231,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 29,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.008778447792,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 30,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.015073935423,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 31,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.025030222416,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 32,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.010210508132,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 33,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.011830833189,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 34,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.009240121802,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 35,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.007036801321,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 36,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": -0.003902620850,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 37,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.008844780042,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 38,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.004390430227,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 39,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.016735750425,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 40,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.024198752197,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 41,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.031267326486,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 42,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.054212747832,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 43,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.062426362284,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 44,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.069364346159,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 45,
+        "filled": false,
+        "rejected": false,
+        "marked_return": 0E-12,
+        "liquidation_return": 0E-12,
+        "max_marked_drawdown": 0E-12,
+        "benchmark_gross_return": 0.028411330230,
+        "entry_cost_dollars": 0E-12
+      },
+      {
+        "decision_bar": 46,
+        "filled": true,
+        "rejected": false,
+        "marked_return": 0.005139264214,
+        "liquidation_return": 0.004371547086,
+        "max_marked_drawdown": 0.015709801760,
+        "benchmark_gross_return": 0.011655474143,
+        "entry_cost_dollars": 0.759378196701
+      },
+      {
+        "decision_bar": 47,
+        "filled": true,
+        "rejected": false,
+        "marked_return": -0.001102272001,
+        "liquidation_return": -0.001855664350,
+        "max_marked_drawdown": 0.018151618791,
+        "benchmark_gross_return": -0.000691868040,
+        "entry_cost_dollars": 0.754416734394
+      },
+      {
+        "decision_bar": 48,
+        "filled": true,
+        "rejected": false,
+        "marked_return": -0.008799658411,
+        "liquidation_return": -0.009546681433,
+        "max_marked_drawdown": 0.018867739123,
+        "benchmark_gross_return": -0.015882520556,
+        "entry_cost_dollars": 0.759585332347
+      },
+      {
+        "decision_bar": 49,
+        "filled": true,
+        "rejected": false,
+        "marked_return": -0.017193782216,
+        "liquidation_return": -0.017934073440,
+        "max_marked_drawdown": 0.019564317289,
+        "benchmark_gross_return": -0.032204841792,
+        "entry_cost_dollars": 0.765435650338
+      },
+      {
+        "decision_bar": 50,
+        "filled": true,
+        "rejected": false,
+        "marked_return": -0.013771023143,
+        "liquidation_return": -0.014498284130,
+        "max_marked_drawdown": 0.017920793940,
+        "benchmark_gross_return": -0.026150709935,
+        "entry_cost_dollars": 0.747288103311
+      },
+      {
+        "decision_bar": 51,
+        "filled": true,
+        "rejected": false,
+        "marked_return": 0.021356983366,
+        "liquidation_return": 0.020594131316,
+        "max_marked_drawdown": 0.005345496570,
+        "benchmark_gross_return": 0.045386178321,
+        "entry_cost_dollars": 0.730218940834
+      },
+      {
+        "decision_bar": 52,
+        "filled": true,
+        "rejected": false,
+        "marked_return": 0.031362496507,
+        "liquidation_return": 0.030567840462,
+        "max_marked_drawdown": 0.004068752762,
+        "benchmark_gross_return": 0.064497913525,
+        "entry_cost_dollars": 0.747005684457
+      }
+    ]
+  },
+  "costs": {
+    "initial_cash": 1000.000000000000,
+    "old_entry_budget_at_decision_close": 500.000000000000,
+    "new_entry_budget_at_decision_close": 500.000000000000,
+    "fee_rate_each_side": 0.001000000000,
+    "adverse_slippage_rate_each_side": 0.000500000000,
+    "primary_mark_exit_cost": 0E-12
+  },
+  "fill_policy": "Fixed emitted quantity, buy at next public close * 1.0005 plus 0.001 proportional fee; all-or-none reject if cash insufficient, no quantity clipping, no shorting or leverage. Mark at decision+7 public close with no forced sale. Secondary liquidation applies 5bps adverse exit slippage and 10bps exit fee. Both versions identical.",
+  "warmup_closes": 22,
+  "data_path": "/shared/competition/paper_1c0f5ea46b22/match-3/agent-two/public-bars.csv",
+  "data_provenance": "Byte-for-byte copy of /workspace/paper-agent-two/m2/public-bars.csv, the public input saved for match2 round0 before its outcome. No hidden judge path or subsequent market observations used.",
+  "old_source_path": "/shared/competition/paper_1c0f5ea46b22/match-3/agent-two/old.hs",
+  "new_source_path": "/shared/competition/paper_1c0f5ea46b22/match-3/agent-two/new.hs",
+  "hypothesis": "At fixed 500-dollar entry budget, removing only the positive 21-bar momentum confirmation will improve mean seven-bar marked return by at least 0.0005 (5 basis points of initial capital), while maximum episode marked drawdown stays at or below 0.025 and rejected fills do not increase, on identical public origins 21..52. Otherwise retain the parent.",
+  "selection": {
+    "decision": "retain",
+    "criterion_passed": false,
+    "interpretation": "Hypothesis falsified on reused public development data. Removing r21>0 increases filled cases 5 to 8, but mean marked return falls from 0.000404844253 to -0.000572840796 (delta -0.000977685049, about -9.777 basis points); maximum episode drawdown rises from 0.019564317289 to 0.035322913799, exceeding the 0.025 cap. Zero rejections for both. Retain the exact parent; no further tuning in this stage."
+  },
+  "compilation": {
+    "status": "completed",
+    "compiler_options": "ghc -O2, separate output directories for exact old.hs, proposed new.hs and OfflineReplay.hs",
+    "execution": "Both freshly compiled executables invoked for all 32 identical prefixes by compiled Haskell replay harness; 64 strategy runs total."
+  },
+  "source_hashes": {
+    "old_sha256": "86e17559a57b80d04a7c9c1e4782936e11e45c5ecd923ac11639aa43529bd9ca",
+    "new_sha256": "80ef71d7b1dea8ae257b21f5b7aa1f9436a5abeda550f414edcc23da750918b3"
+  },
+  "data_sha256": "e42c82c802b311c4e7486400fea8aaba1485b573daf7bc2ecb16d8d343347c7f",
+  "independent_judge_verification": false,
+  "matched_judge_replay": "unavailable"
+}

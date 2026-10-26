@@ -1,0 +1,1 @@
+"ghc" "-O2" "-outputdir" "/workspace/competition/daily_491a334aba93_m1/round-0" "-o" "/workspace/competition/daily_491a334aba93_m1/round-0/strategy-v1" "/workspace/competition/daily_491a334aba93_m1/round-0/strategy-v1.hs"

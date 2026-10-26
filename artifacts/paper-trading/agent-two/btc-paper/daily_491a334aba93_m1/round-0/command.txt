@@ -1,0 +1,1 @@
+runghc "/workspace/btc-paper/daily_491a334aba93_m1/round-0/Strategy.hs" "/workspace/btc-paper/daily_491a334aba93_m1/round-0/bars.csv" "/shared/competition/daily_491a334aba93_m1/round-0/agent-two" "/workspace/btc-paper/daily_491a334aba93_m1/round-0/Strategy.hs" "/workspace/btc-paper/daily_491a334aba93_m1/round-0"

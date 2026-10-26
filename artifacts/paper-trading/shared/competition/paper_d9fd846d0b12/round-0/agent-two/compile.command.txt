@@ -1,0 +1,2 @@
+ghc -O2 -outputdir /workspace/paper_d9fd846d0b12-agent-two/round-0/build -o /workspace/paper_d9fd846d0b12-agent-two/round-0/strategy /shared/competition/paper_d9fd846d0b12/round-0/agent-two/Strategy.hs
+exit_status=ExitSuccess

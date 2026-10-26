@@ -1,0 +1,9 @@
+{
+"hypothesis":"Negative two-session return gates entries into otherwise-positive dual-horizon momentum; exit unchanged.",
+"public_basket":{"initial_cash":500000,"candidate_profit":-81969.6181788580,"candidate_return_pct":-16.3939236358,"baseline_return_pct":-13.9888858035,"buy_hold_return_pct":207.4562290698,"candidate_drawdown_pct":19.9606419486,"baseline_drawdown_pct":20.8860265492,"buy_hold_drawdown_pct":49.9044974752,"candidate_fills":964,"candidate_turnover_initial_equity":171.0377127358},
+"already_viewed_AAPL":{"candidate_return_pct":20.0583828518,"baseline_return_pct":16.8722646847,"buy_hold_return_pct":35.0209963545,"candidate_drawdown_pct":7.5813781721},
+"assessment":"Reject pullback gating as a return improvement: lower basket profit than unchanged baseline despite fewer fills. Already-viewed AAPL gains do not rescue broad failure. No parameter adjustment or promotion.",
+"failures":"Zero simulation failures; negative economic result retained.",
+"ledger_reason_caveat":"Inherited reason signal_at_next_open is not actual timing for public data: public fills are at cl(t), prior AAPL at op(t), explicitly set in frozen source.",
+"provenance_and_limitations":"See task plan.json and data/provenance.json; source in Main.hs dispatch cycle=3 and common/Engine.hs. Shared dependent sample, retrospective unverified adjustments, GSPC proxy, no untouched holdout."
+}

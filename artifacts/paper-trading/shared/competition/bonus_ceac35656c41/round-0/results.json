@@ -1,0 +1,60 @@
+{
+  "round": 0,
+  "decision_t": 59,
+  "fill_t": 60,
+  "mark_t": 66,
+  "fill_close": 133.599633262121,
+  "mark_close": 131.14370803943729,
+  "agents": {
+    "agent-one": {
+      "cash": 86.37197770276859,
+      "units": 6.828306,
+      "equity": 981.8613461707065,
+      "round_return": -0.018138653829293503,
+      "cumulative_return": -0.018138653829293503,
+      "max_drawdown": 0.018138653829293503,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 6.828306,
+          "price": 133.66643307875205,
+          "notional": 912.7153069902412,
+          "fee": 0.9127153069902412
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/solo-paper-bonus/Round0.hs",
+        "approach": "Public-close trend filter: buy only when 20-bar return is positive and latest close exceeds its trailing 20-bar mean. Size using 90 percent of initial cash at latest close with multiplicative 5 bp slippage and 10 bp fee; six-decimal units rounded down. The remaining cash provides an approximately 11.1 percent next-close upward-gap buffer, not a guaranteed fill-price bound. Long only; seven-bar evaluation horizon and carried positions acknowledged.",
+        "changes": "Initial round-0 offline strategy authored for this solo paper evaluation from the supplied public bars and rules. No prior strategy or feedback was available; no backtest, private data, peer submissions, baseline files, or infrastructure modifications used. Starting cash 1000 and units zero."
+      }
+    },
+    "agent-two": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "synthetic-cash-hold-control",
+        "approach": "SYNTHETIC cash-hold baseline; no losing agent contacted",
+        "changes": "Synthetic control, not agent-two; no orders or prize eligibility"
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 7.473835996000726,
+    "entry_price": 133.66643307875205,
+    "entry_close": 133.599633262121,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 980.1465657941561,
+  "winner": "agent-two"
+}

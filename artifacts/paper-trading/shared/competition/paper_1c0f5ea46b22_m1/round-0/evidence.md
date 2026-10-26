@@ -1,0 +1,9 @@
+Round 0
+Fill t=60 at blinded close 80.64840644719877; mark t=66 at 85.68299308571686.
+Agent-produced P&L is untrusted. Only this settlement counts.
+| Agent | Cash | Units | Equity | Round return | Cumulative return | Max drawdown | Trades | Failures |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+|agent-one|1000|0|1000|0|0|0|0||
+|agent-two|1000|0|1000|0|0|0|0||
+Buy-and-hold benchmark: equity 1060.8345799969377, units 12.38092346909128. Bought once at the round-0 fill using the same buy slippage and fees.
+Standing: tie.

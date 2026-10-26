@@ -1,0 +1,52 @@
+{
+  "round": 3,
+  "decision_t": 80,
+  "fill_t": 81,
+  "mark_t": 87,
+  "fill_close": 82.7700862845173,
+  "mark_close": 87.02230048098279,
+  "agents": {
+    "agent-one": {
+      "cash": 136.0141049587272,
+      "units": 10.8918639312,
+      "equity": 1083.849160777592,
+      "round_return": 0.022086556444902945,
+      "cumulative_return": 0.08384916077759204,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/competition-paper_a6d369369e81/agent-one/round-3/OriginalSelected.hs; preserved source /shared/competition/paper_be01d1611e99/collaboration/agent-one/OriginalStrategy.hs; prior selection /workspace/competition-paper_a6d369369e81/agent-one/round-2/OriginalSelected.hs",
+        "approach": "Retain preserved OriginalStrategy unchanged: require positive trailing 20- and 40-bar log returns to hold a long, otherwise exit. Enter only when flat, with max(12%,4*sigma40) price reserve and stated fees/slippage. No rebalancing while long. The supplied 81 closes suffice for the 41-close minimum; anonymous indices require neither dates nor external prices. Volume unused. Current cash=136.0141049587272; units=10.8918639312. Both momentum signals remain positive, so hold existing units and cash; header-only orders require no next-close price assumption.",
+        "changes": "No trading logic or parameter changes; isolated round-3 source changes only manifest metadata. Official round-2 evidence reports one trade, no failures, cash=136.0141049587272, units=10.8918639312, equity=1060.4279588095908, cumulative return=0.060427958809590794; benchmark equity=1146.4156424386579. This feedback verifies the prior entry settled, not future predictive superiority. Benchmark lag is not sufficient evidence for forced additional buying or parameter refitting. Retain the compatible strategy, without forced adaptation. Prior selection reviewed published collaboration strategies and agent-two experiment 9842f3d1-30da-4e90-8516-860919b634cb completion.json/retained-lessons.json; no calendar-dependent, long-warmup or different-execution variant transplanted. No proven improvement claimed. No current peer orders or private assets accessed; no engine changes, official reruns, extra rounds or real transactions."
+      }
+    },
+    "agent-two": {
+      "cash": 225.8686382298434,
+      "units": 9.75911008,
+      "equity": 1075.1288480385913,
+      "round_return": 0.019907534346258027,
+      "cumulative_return": 0.07512884803859128,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/artifacts/paper_a6d369369e81/agent-two/round-3/Submission.hs",
+        "approach": "Preserved dual-horizon momentum entry gate: positive 7-bar and 21-bar completed-close returns. At t=80 close=84.871961281380, r7=3.689705% and r21=14.049509%; both remain positive. Already long 9.75911008 units following the round-2 entry: retain existing position and cash=225.8686382298434, without pyramiding or repeatedly deploying the execution buffer. Submit header-only no-trade orders. No cash or unit feasibility risk from this hold; no future fill price required. All 81 supplied anonymous index observations are sufficient for the 22-close calculation; no calendar or long-warmup rule used.",
+        "changes": "Source references: /shared/competition/agent-two-experiments/9842f3d1-30da-4e90-8516-860919b634cb/preserved/preserved-baseline-submission.hs; /shared/competition/agent-two-experiments/9842f3d1-30da-4e90-8516-860919b634cb/retained-lessons.json; /workspace/artifacts/paper_a6d369369e81/agent-two/round-2/Submission.hs; /shared/competition/paper_a6d369369e81/round-2/evidence.md. No signal thresholds changed. Isolated round-3 source recalculates the preserved entry gate and handles an already-held position with a hold, not a fresh entry or cash top-up. Round-2 routine settlement accepted one buy with no failures and reports own cash=225.8686382298434, units=9.75911008, equity=1054.1434510803267; benchmark equity=1146.4156424386579. The benchmark shortfall and reported trailing standing do not establish a better rule and do not justify forced trades or parameter retuning. The previous 20% observed-price entry buffer remains cash; it was a delayed-fill affordability precaution, not a recurring deployment instruction or proven alpha. No calendar-weekly or 200-session experimental transplant, optimization, backtest, or claim of improvement. No current peer orders inspected, decision coordination, private asset access, infrastructure/state edits, real trades, extra rounds, or official reruns. Only routine settlement counts."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 13.507589846284981,
+    "entry_price": 73.95849373348838,
+    "entry_close": 73.92153296700488,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1175.4615423772839,
+  "winner": "agent-one"
+}

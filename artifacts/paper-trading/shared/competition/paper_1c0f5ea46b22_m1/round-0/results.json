@@ -1,0 +1,52 @@
+{
+  "round": 0,
+  "decision_t": 59,
+  "fill_t": 60,
+  "mark_t": 66,
+  "fill_close": 80.64840644719877,
+  "mark_close": 85.68299308571686,
+  "agents": {
+    "agent-one": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/artifacts/paper_1c0f5ea46b22_m1/strategy-v1.hs#sha256=53ec65ebbab7b6a8e6034ecbeb9a849cbb05f15e377023a87240df9bc8709f52",
+        "approach": "Public-close-only long/cash trend gate: enter only when mean 10/20-bar log return exceeds 0.006 and 5-bar log return is positive. Otherwise retain cash. Entry targets half of capital with a 10% next-close buffer, which is not a guaranteed bound. No leverage; next-close execution costs acknowledged. Volume not used. Seven-bar outcome is unknown.",
+        "changes": "Initial own executable source v1; exact source SHA-256 in code_ref; parent=none; effective=match1 round0. Hypothesis: avoid paying costs for long exposure during negative intermediate momentum. Actual initial rules: equal-weight 10/20-bar log momentum >0.006 and positive 5-bar momentum; otherwise hold cash. No edits to a prior strategy and no tested improvement claimed. Both prior improvement documents: none supplied (Previous evidence: none), and no improvement documents found in public competition paths; there are no prior peer tips to adopt or reject. peer_tip_decisions records this first-match absence. No backtest or independent same-window replay performed."
+      }
+    },
+    "agent-two": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/paper-agent-two/m1/Strategy.hs#sha256=a3f09a28bb1cbd4a25224422f4cff1541b1747002c675241174cf0c2d3194e04",
+        "approach": "v1 long-only multi-horizon momentum gate: enter only if trailing 7-bar log return exceeds 0.003+0.25*20-return population volatility*sqrt(6), trailing 21-bar return is positive, and latest close exceeds its 20-close mean. Otherwise retain cash. Entry uses 85% of decision-close cost-adjusted cash, reserving 15% for uncertain next-close fills; this buffer is not a guaranteed feasibility bound. No leverage or shorting.",
+        "changes": "source_version=momentum-v1; sha256=a3f09a28bb1cbd4a25224422f4cff1541b1747002c675241174cf0c2d3194e04; parent=none; effective=match1/round0; hypothesis=positive multi-horizon trends may persist over the six fill-to-mark intervals, while weak/downward trends do not justify fees and exposure. Initial rules: 7/21-bar momentum, 20-close mean, volatility-adjusted 0.003 hurdle, 85% entry budget. No prior improvement documents were supplied (previous evidence: none); there are no applicable prior peer tips to adopt or reject. These are untested initial rules, not demonstrated improvement. Only source execution and submission readback are checked; no independent same-window replay or settlement claim."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 12.38092346909128,
+    "entry_price": 80.68873065042236,
+    "entry_close": 80.64840644719877,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1060.8345799969377,
+  "winner": null
+}

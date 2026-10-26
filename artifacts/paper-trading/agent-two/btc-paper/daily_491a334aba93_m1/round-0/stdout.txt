@@ -1,0 +1,3 @@
+Manifest JSON and required string fields verified.
+Orders and manifest written once and readback-checked; source and input snapshots retained.
+Executable source SHA256: 1ce052e14754834378982fce2e85713b59baacdf61edba97310d94d22bbe49bf

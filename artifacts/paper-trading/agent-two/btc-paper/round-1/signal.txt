@@ -1,0 +1,7 @@
+momentum10=2.996130651297213e-3
+momentum30=0.22425243666479042
+sigma20=2.6102297700227328e-2
+targetExposure=0.75
+currentExposure=0.7454221679704528
+side=hold
+quantity=0.0

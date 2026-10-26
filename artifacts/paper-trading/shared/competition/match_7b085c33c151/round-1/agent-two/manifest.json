@@ -1,0 +1,5 @@
+{
+  "code_ref": "/workspace/competition/agent-two/MomentumV1.hs",
+  "approach": "Long-only public-close momentum: close above 20-bar SMA and positive 7-bar return; allocate 85% of cash at decision price after estimated fees and slippage, retaining a next-close gap reserve. No leverage. Unknown fill can still make a buy infeasible.",
+  "changes": "Independent competition-native momentum revision; no offline AAPL results used as evidence of improvement. Round 1 starts with cash 1000 and zero units."
+}

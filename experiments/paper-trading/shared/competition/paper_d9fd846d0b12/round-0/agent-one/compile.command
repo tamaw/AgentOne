@@ -1,0 +1,1 @@
+ghc -O2 -fforce-recomp -i/shared/competition/paper_d9fd846d0b12/round-0/agent-one -outputdir /shared/competition/paper_d9fd846d0b12/round-0/agent-one/build -o /shared/competition/paper_d9fd846d0b12/round-0/agent-one/submission /shared/competition/paper_d9fd846d0b12/round-0/agent-one/Submission.hs

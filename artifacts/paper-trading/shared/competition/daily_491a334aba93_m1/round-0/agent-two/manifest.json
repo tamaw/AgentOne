@@ -1,0 +1,5 @@
+{
+  "code_ref": "/workspace/btc-paper/daily_491a334aba93_m1/round-0/Strategy.hs#sha256:1ce052e14754834378982fce2e85713b59baacdf61edba97310d94d22bbe49bf",
+  "approach": "Public-close-only regularized log-price AR(1); forecast decision+7 versus decision+1, deduct buy costs, size with forecast variance and a 35%-above-observed-maximum fill stress cash cap. Volume is validated but not a feature. No external observations or peer inputs.",
+  "changes": "source=sha256:1ce052e14754834378982fce2e85713b59baacdf61edba97310d94d22bbe49bf; parent=none (initial executable v1); effective_round=0. Hypothesis: bounded mean reversion can outweigh entry costs over the six close-to-mark intervals. Initial rules: AR slope prior 0.90 with 10 pseudo-observations, slope clipped [0,0.98], positive forecast edge after fee/slippage, variance penalty 3, allocation ceiling 0.95, stress price 1.35 times maximum supplied close. No previous tips exist; none adopted/rejected. New implementation, not a demonstrated or backtested improvement; no parameter search. One execution, no retry or repair."
+}

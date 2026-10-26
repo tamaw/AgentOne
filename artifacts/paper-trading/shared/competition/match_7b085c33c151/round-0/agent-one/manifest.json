@@ -1,0 +1,1 @@
+{"code_ref":"/workspace/competition/TrendV1.hs","approach":"Long-only trend filter using public trailing 10/20-bar means and 10-bar momentum; hold cash when trend is negative. Next-close execution is uncertain; no performance improvement asserted.","changes":"Independent initial strategy. Orders determined solely from public bars and own current cash/units."}

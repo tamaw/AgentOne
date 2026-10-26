@@ -1,0 +1,60 @@
+{
+  "round": 2,
+  "decision_t": 73,
+  "fill_t": 74,
+  "mark_t": 80,
+  "fill_close": 81.90255493910321,
+  "mark_close": 79.18171070197026,
+  "agents": {
+    "agent-one": {
+      "cash": 32.57571089971581,
+      "units": 12,
+      "equity": 982.756239323359,
+      "round_return": -0.03760290104131895,
+      "cumulative_return": -0.017243760676641046,
+      "max_drawdown": 0.03760290104131895,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 2,
+          "price": 81.94350621657276,
+          "notional": 163.88701243314551,
+          "fee": 0.16388701243314552
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/match_811fe8175c96/Round2.hs",
+        "approach": "Independent recovery-trend add: buy 2 units, increasing holdings from 10 to 12. Positive 5/10/20/30/40-bar momentum and a new 20-bar closing high support continued recovery; latest volume is 1.16 times its trailing-20-bar average. At the public decision close, estimated post-fee stock exposure is 96.92%, leaving approximately 31.47 cash. This is an intentional high long exposure to maximize expected final equity, not guaranteed outperformance. No leverage; the cash reserve tolerates approximately 19% next-close price appreciation before affordability becomes an issue. A reversal remains the principal risk.",
+        "changes": "Increase exposure from 80.74% rather than retain the prior partial allocation: 30-bar momentum has turned positive and the close has advanced to 82.45280049. Historical positive 5/10-bar signals had negative mean forward returns, while positive 20/30-bar signals had positive means; only one joint positive-5/10/20 observation was eligible, so historical support is weak and overlapping. Broader recovery confirmation, not a fitted historical rule or copying an opponent, motivates this add. Only public bars, previous routine settlement and own previous manifest were inspected. Unknown next-close fill remains unverified. No bonus work authorized or executed."
+      }
+    },
+    "agent-two": {
+      "cash": 116.28927137982396,
+      "units": 11,
+      "equity": 987.2880891014968,
+      "round_return": -0.03516372511086984,
+      "cumulative_return": -0.01271191089850322,
+      "max_drawdown": 0.03516372511086984,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/competition-811fe8175c96/agent-two/Round2.hs",
+        "approach": "Deliberate hold: retain 11 units and 116.28927137982396 cash. At public t=73 close 82.45280049239189, 14-bar momentum is +5.0299 percent; close exceeds 14- and 30-bar means and the preceding 30-bar high. Continue the long rather than incur an exit cost. Current allocation is 88.6355 percent, already close to the 90 percent exposure target. A one-unit top-up would raise exposure to approximately 96.7 percent at the observed close, increasing gap and reversal risk; reject that increase despite positive momentum. No leverage or new fill-price affordability risk.",
+        "changes": "Retain prior positive-trend stance and 90 percent sizing preference. Extend entry-only sizing to account for existing holdings: floor(0.90 * marked portfolio equity / fee-and-slippage-adjusted observed close) gives 11 total units, not an additional cash-only allocation. Stronger breakout evidence supports holding but not relaxing the risk budget. Considered a one-unit addition and full exit independently; chose neither. Round-1 settlement showed equity 1023.2700767961347 versus benchmark 1067.0582876008111; no claim of final outperformance. Final-round acceptance, fills and settlement remain unverified. No bonus work."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 12.941443847007612,
+    "entry_price": 77.19393684438026,
+    "entry_close": 77.15535916479787,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1024.7256627595498,
+  "winner": "agent-two"
+}

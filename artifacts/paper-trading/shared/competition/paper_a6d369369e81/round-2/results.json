@@ -1,0 +1,68 @@
+{
+  "round": 2,
+  "decision_t": 73,
+  "fill_t": 74,
+  "mark_t": 80,
+  "fill_close": 79.20512338430213,
+  "mark_close": 84.87196128137981,
+  "agents": {
+    "agent-one": {
+      "cash": 136.0141049587272,
+      "units": 10.8918639312,
+      "equity": 1060.4279588095908,
+      "round_return": 0.060427958809590794,
+      "cumulative_return": 0.060427958809590794,
+      "max_drawdown": 0,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 10.8918639312,
+          "price": 79.24472594599428,
+          "notional": 863.1227722690038,
+          "fee": 0.8631227722690039
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/competition-paper_a6d369369e81/agent-one/round-2/OriginalSelected.hs; preserved source /shared/competition/paper_be01d1611e99/collaboration/agent-one/OriginalStrategy.hs; prior selection /workspace/competition-paper_a6d369369e81/agent-one/round-1-submission.json",
+        "approach": "Retain preserved OriginalStrategy unchanged: long only when both trailing 20- and 40-bar log returns are positive; exit otherwise. Fixed-unit buys reserve max(12%,4*sigma40), with 5bps slippage and 10bps fee included. Supplied 74 closes suffice for its 41-close minimum; anonymous indices require neither dates nor external prices. Volume unused. Cash=1000 and units=0. Unknown next-close prices prevent guaranteed buy feasibility; reserve limits but does not eliminate rejection risk.",
+        "changes": "No trading logic or parameter changes. Isolated round-2 source differs only in manifest metadata; no other task source modified. Official round-1 evidence: cash=1000, units=0, equity=1000, no trades or failures; benchmark equity=1105.6214724983752. Benchmark outperformance is observed opportunity cost, not sufficient evidence to force entry or refit parameters. Both current 20- and 40-bar momentum are now positive, so the unchanged rule enters with its existing execution reserve. Prior review of published collaboration strategies and agent-two experiment 9842f3d1-30da-4e90-8516-860919b634cb completion.json/retained-lessons.json found calendar/long-warmup/execution incompatibilities; none transplanted. No proven improvement claimed, no peer current orders or private assets accessed, and no official rerun or additional competition requested."
+      }
+    },
+    "agent-two": {
+      "cash": 225.8686382298434,
+      "units": 9.75911008,
+      "equity": 1054.1434510803267,
+      "round_return": 0.05414345108032671,
+      "cumulative_return": 0.05414345108032671,
+      "max_drawdown": 0,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 9.75911008,
+          "price": 79.24472594599428,
+          "notional": 773.3580037663902,
+          "fee": 0.7733580037663902
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/artifacts/paper_a6d369369e81/agent-two/round-2/Submission.hs",
+        "approach": "Preserved dual-horizon momentum: require positive 7-bar and 21-bar completed-close returns. At t=73 close=81.851868844127, r7=8.862496% and r21=6.719539%; both gates pass. Buy 9.75911008 units from current cash=1000, units=0. Quantity uses an 800 cash budget at the observed close including 5bps buy slippage and 10bps fee, rounded down to eight decimals. Fixed quantity costs fit 1000 if the unknown next close is at most 102.314836080518 (25% above decision close, approximately); feasibility is conditional, not guaranteed. No future price accessed. Supplied 74 observations suffice for the 22-close rule; no dates or long warmup used.",
+        "changes": "Source references: /shared/competition/agent-two-experiments/9842f3d1-30da-4e90-8516-860919b634cb/preserved/preserved-baseline-submission.hs; /shared/competition/agent-two-experiments/9842f3d1-30da-4e90-8516-860919b634cb/retained-lessons.json; /workspace/artifacts/paper_a6d369369e81/agent-two/round-1/Submission.hs. Preserve the actual baseline's stated 7/21 entry gate, recalculated on current public bars. Previous executable only handled holds; this isolated round source adds fixed-unit buy sizing at 80% of observed-price cash capacity, leaving 20% cash at unchanged fill. This is an execution-risk buffer for delayed unknown-price fills, not a proven alpha improvement or a target-at-fill order. Round-1 routine feedback: no failures, cash=1000, units=0, equity=1000; benchmark equity=1105.6214724983752. The missed rebound does not justify retuning gates: entry now follows the unchanged signal, not forced benchmark chasing. Calendar weekly and 200-session experimental variants remain incompatible and unproven here; no transplant, backtest, parameter optimization, or superiority claim. No current peer orders, private assets, engine/state edits, real trades, extra rounds or official reruns. Only routine settlement counts."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 13.507589846284981,
+    "entry_price": 73.95849373348838,
+    "entry_close": 73.92153296700488,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1146.4156424386579,
+  "winner": "agent-one"
+}

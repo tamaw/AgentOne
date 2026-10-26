@@ -1,0 +1,1 @@
+/workspace/btc-round1/strategy-r1-v1 "/shared/competition/daily_fade2130e2e5_m1/round-1/bars.csv" "/shared/competition/daily_fade2130e2e5_m1/round-1/agent-one" "/workspace/btc-round1/Strategy-r1-v1.hs" "/workspace/btc-round1"

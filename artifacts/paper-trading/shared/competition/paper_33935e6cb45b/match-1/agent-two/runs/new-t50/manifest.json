@@ -1,0 +1,5 @@
+{
+  "code_ref": "/shared/competition/paper_33935e6cb45b/match-1/agent-two/CandidateV2.hs",
+  "approach": "Offline cash-only baseline: compute momentum diagnostics without using them to forecast returns. Preserve initial cash and zero units for every valid public history. Positive momentum does not abort or authorize a trade. This robustness revision has no claimed economic alpha.",
+  "changes": "agent-two-v2-offline-cash-total; parent agent-two-v1. Offline-only candidate: remove positive-momentum abort and require an explicit offline root. Keep zero exposure; no promotion, future orders, private future data, or profit claim. Historical tests are exploratory agent-reported reliability checks."
+}
