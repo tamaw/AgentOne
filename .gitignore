@@ -43,3 +43,16 @@ __pycache__/
 *~
 .DS_Store
 Thumbs.db
+
+*.jsonl
+*.stdout
+*.stderr
+*.output
+*.result
+*.pid
+conversation*.json
+*-conversation*.json
+*-traces.json
+*.request.json
+*.response.json
+model-session-id
