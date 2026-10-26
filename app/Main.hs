@@ -20,8 +20,9 @@ import qualified Data.Text.Encoding.Error as TE
 import qualified Data.Text.IO as T
 import Data.Time.Clock.POSIX
 import GHC.IO.Handle (hDuplicate, hDuplicateTo)
-import StepLoader (loadStep)
+import ExecutionRuntime
 import ModelConnection (askModel)
+import qualified A2A
 import ChatGPTAuth (authCommand)
 import ContextWindow (prepareContext)
 import System.Directory
@@ -33,67 +34,6 @@ import System.Posix.Signals
 import System.Process
 import System.Timeout
 import Text.Read (readMaybe)
-
-type Worker = (Handle, ProcessHandle)
-type Memory = IORef (M.Map String String)
-type Actions = IORef (M.Map String (IO ()))
-
-data Conversation = Conversation { conversationMessages :: [Value], executionPending :: Bool }
-instance ToJSON Conversation where
-  toJSON (Conversation history pending) = object ["messages" .= history, "execution_pending" .= pending]
-instance FromJSON Conversation where
-  parseJSON = withObject "conversation" $ \o -> Conversation <$> o .: "messages" <*> o .:? "execution_pending" .!= False
-
-record :: MVar Conversation -> Maybe Bool -> Value -> IO ()
-record conversation pending entry = modifyMVarMasked_ conversation $ \(Conversation history executing) -> do
-  let next = Conversation (history ++ [entry]) (fromMaybe executing pending)
-  BL.writeFile ".runs/conversation.json.tmp" $ encode next
-  renameFile ".runs/conversation.json.tmp" ".runs/conversation.json"
-  pure next
-
-trySync :: IO a -> IO (Either SomeException a)
-trySync = tryJust (\e -> case fromException e :: Maybe SomeAsyncException of Just _ -> Nothing; Nothing -> Just e)
-
-capture :: FilePath -> IO a -> IO a
-capture file action = bracket ((,) <$> hDuplicate stdout <*> hDuplicate stderr)
-  (\(out, err) -> hDuplicateTo out stdout >> hDuplicateTo err stderr >> hClose out >> hClose err) $ \_ ->
-    withFile file WriteMode $ \h -> do
-      hSetBuffering h NoBuffering
-      hDuplicateTo h stdout
-      hDuplicateTo h stderr
-      action `finally` (hFlush stdout >> hFlush stderr)
-
-worker :: IO ()
-worker = do
-  memory <- newIORef M.empty :: IO Memory
-  actions <- newIORef M.empty :: IO Actions
-  forever $ do
-    file <- getLine
-    outcome <- trySync $ capture (file ++ ".output") $ do
-      compiled <- loadStep file
-      case compiled of
-        Left err -> ioError $ userError $ show err
-        Right action -> do
-          finished <- timeout 60000000 (action memory actions)
-          maybe (ioError $ userError "Execution timed out after 60 seconds.") pure finished
-    writeFile (file ++ ".result.tmp") $ either displayException (\again -> if again then "CONTINUE" else "WAIT") outcome
-    renameFile (file ++ ".result.tmp") (file ++ ".result")
-
-startWorker :: IO Worker
-startWorker = do
-  executable <- getExecutablePath
-  environment <- filter (\(name, _) -> not $ any (`isInfixOf` map toUpper name) ["KEY", "TOKEN", "SECRET", "PASSWORD", "LLM_"]) <$> getEnvironment
-  (Just input, _, _, child) <- createProcess (proc executable ["--worker"])
-    { std_in = CreatePipe, create_group = True, env = Just environment }
-  hSetBuffering input LineBuffering
-  pure (input, child)
-
-stopWorker :: Worker -> IO ()
-stopWorker (input, child) = do
-  pid <- getPid child
-  forM_ pid $ \p -> void $ trySync $ signalProcessGroup sigKILL p
-  _ <- trySync $ hClose input
-  void $ waitForProcess child
 
 loadEnv :: IO ()
 loadEnv = do
@@ -108,40 +48,7 @@ loadEnv = do
             value = maybe raw id (readMaybe raw :: Maybe String)
         when (old == Nothing) $ setEnv name value
 
-message :: T.Text -> T.Text -> Value
-message role content = object ["role" .= role, "content" .= content]
-
-ask :: String -> String -> String -> FilePath -> T.Text -> [Value] -> IO (T.Text, Value)
-ask = askModel
-
-execute :: MVar Worker -> FilePath -> T.Text -> IO (T.Text, Bool)
-execute workers file source = withMVar workers $ \(input, child) -> do
-  status <- getProcessExitCode child
-  when (status /= Nothing) $ ioError $ userError "Worker exited; /pause then /resume to restart it."
-  T.writeFile file source
-  hPutStrLn input file
-  let outputFile = file ++ ".output"
-      resultFile = file ++ ".result"
-      stream offset = do
-        exists <- doesFileExist outputFile
-        next <- if not exists || offset >= 16000 then pure offset else withBinaryFile outputFile ReadMode $ \h -> do
-          hSeek h AbsoluteSeek (fromIntegral offset)
-          bytes <- B.hGetSome h (16000 - offset)
-          B.hPut stdout bytes
-          pure $ offset + B.length bytes
-        ready <- doesFileExist resultFile
-        if ready then pure next else do
-          exit <- getProcessExitCode child
-          when (exit /= Nothing) $ ioError $ userError "Worker crashed; pause/resume to restart."
-          threadDelay 50000
-          stream next
-  completed <- timeout 90000000 $ stream 0
-  when (completed == Nothing) $ ioError $ userError "Worker timed out; pause/resume to restart."
-  result <- T.readFile resultFile
-  when (result /= "CONTINUE" && result /= "WAIT") $ T.putStrLn $ "[execution error] " <> result
-  bytes <- withBinaryFile outputFile ReadMode $ \h -> B.hGet h 16000
-  forM_ completed $ \offset -> B.hPut stdout $ B.drop offset bytes
-  pure (result <> "\n" <> TE.decodeUtf8With TE.lenientDecode bytes <> "\n[Output capped at 16000 bytes.]", result /= "WAIT")
+record = recordAt ".runs/conversation.json"
 
 supervisor :: IO ()
 supervisor = do
@@ -191,19 +98,12 @@ supervisor = do
         executionStarted <- newTVarIO False
         outcome <- race (atomically $ awaitSuperseded paused generation requestGeneration) $ trySync $ do
           putStrLn $ "\n[step " ++ show n ++ "]"
-          standing <- T.readFile instructionFile
-          when (T.null (T.strip standing)) $ ioError $ userError $ "Instructions file is empty: " ++ instructionFile
-          hasRules <- doesFileExist "AGENTS.md"
-          rules <- if hasRules then T.readFile "AGENTS.md" else pure ""
-          (source, assistant) <- ask endpoint key model (session ++ "/llm-" ++ show n ++ ".request.json")
-            (standing <> "\nProject rules from AGENTS.md:\n" <> rules) (prepareContext context)
-          _ <- atomically $ beginExecution paused generation requestGeneration executionStarted
-          record conversation (Just True) assistant
-          (feedback, again) <- execute workers file source
-          record conversation (Just False) $ message "user" $ "Execution feedback:\n" <> feedback <>
-            (if again then "\nThe step requested another model call to continue." else "\nThe step is waiting for new user input.")
+          result <- modelStep (ModelConfig endpoint key model instructionFile) workers context file (session ++ "/llm-" ++ show n ++ ".request.json")
+            (void $ atomically $ beginExecution paused generation requestGeneration executionStarted)
+            (record conversation (Just True)) (record conversation (Just False))
+          let feedback = executionFeedback result; again = executionContinue result
           atomically $ finishExecution executionStarted
-          events $ object ["step" .= n, "source" .= source, "output" .= feedback, "continue" .= again]
+          events $ object ["step" .= n, "source_file" .= file, "output" .= feedback, "continue" .= again]
           pure again
         case outcome of
           Left () -> do
@@ -239,6 +139,8 @@ main = do
   args <- getArgs
   case args of
     ["--worker"] -> worker
+    ["--a2a"] -> loadEnv >> A2A.serve
+    ["--a2a-call",url,method,params] -> A2A.clientMain url method params
     "auth":command -> loadEnv >> authCommand command
     [] -> supervisor
     _ -> ioError $ userError "Usage: agent-one [auth COMMAND]"

@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module ModelConnection (askModel) where
 
-import ChatGPTAuth (chatGPT, chatGPTAccess)
+import ChatGPTAuth (chatGPT, chatGPTAccess, invalidateChatGPTAccess)
 import ResponseStream (readResponseStream)
 import Control.Concurrent.Async
 import Control.Exception
@@ -23,7 +23,10 @@ import System.IO.Error
 import System.Process
 
 askModel :: String -> String -> String -> FilePath -> T.Text -> [Value] -> IO (T.Text, Value)
-askModel endpoint configuredKey model file instructions history = do
+askModel = askModelAttempt False
+
+askModelAttempt :: Bool -> String -> String -> String -> FilePath -> T.Text -> [Value] -> IO (T.Text, Value)
+askModelAttempt retried endpoint configuredKey model file instructions history = do
   oauth <- chatGPT
   (key,account) <- if oauth then do (token,client) <- chatGPTAccess; pure (T.unpack token,client) else pure (configuredKey, "")
   when (null key) $ ioError $ userError "LLM_API_KEY is empty"
@@ -95,7 +98,9 @@ askModel endpoint configuredKey model file instructions history = do
       duration <- elapsed
       let problem = redact (T.pack (displayException err))
       emit $ object ["event" .= ("llm.error" :: T.Text), "duration_ms" .= duration, "error" .= problem]
-      ioError $ userError $ T.unpack problem
+      if oauth && not retried && "authentication token is expired" `T.isInfixOf` T.toLower problem
+        then invalidateChatGPTAccess (T.pack key) >> askModelAttempt True endpoint configuredKey model file instructions history
+        else ioError $ userError $ T.unpack problem
   where
     clean (Object o) = Object $ K.filterWithKey (\k _ -> k `elem` ["role", "content"]) o
     clean v = v
