@@ -1,0 +1,1244 @@
+{
+  "files": [
+    {
+      "path": "artifacts/wallpaper/agent-one/artwork-audit.json",
+      "git_blob": "8bc9a47f541a0871272b3d583f9127f9007f7033"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/code-manifest.json",
+      "git_blob": "dc0bd73a05d1e56006278ecd0241479f88ac51ed"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/evolution-contact-sheet.png",
+      "git_blob": "d4083ed5c1c1d1e5b7b7f421a67ee8f64fc6e4e3"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/final-alpha.png",
+      "git_blob": "f63c2da56675854de8badff382da1e599c3a5e0a"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/final-quality.json",
+      "git_blob": "419d7dd719df747bc86cab69e527e6a9acb32e70"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/final-thumb.png",
+      "git_blob": "8852fd5fb3fab923ad4d126ad199ebefb4f8c6e2"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/final.blend",
+      "git_blob": "4713a076560dc896f295e5652953af17b19dac7d"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/final.png",
+      "git_blob": "1ca4e92fce6932b30f4785cd4413288fa61a955a"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/initial-thumb.png",
+      "git_blob": "16f771a26f4980b13c54c166109f10b2d9eff940"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/initial.blend",
+      "git_blob": "ddd48bcb99e21e1a1b0c243ce6912c6ef670326f"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/initial.blend1",
+      "git_blob": "18029e8dced3213a9b1d4701d5e63f161b908ada"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/initial.png",
+      "git_blob": "a20b590fd35b46b1c4d4d3b1749da3cccd7e5d5b"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/pair/remedy-memory.json",
+      "git_blob": "dc16626aa464de39636e3ab4345e6791adedbf2c"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-axial-alpha.png",
+      "git_blob": "561d04d849212f20d46954bc63f7e8f197063fb0"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-axial-thumb.png",
+      "git_blob": "12a407afae1f9fdac7df80e71ddac0bc071322b5"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-axial.blend",
+      "git_blob": "7a3e22d51417e08d6097d40ad77ce3929d11dba8"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-axial.png",
+      "git_blob": "12a407afae1f9fdac7df80e71ddac0bc071322b5"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-diagonal-alpha.png",
+      "git_blob": "e4ee2f75d4207239d9267705f1dd8c252db9f7f6"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-diagonal-thumb.png",
+      "git_blob": "efe65d0843304a724b4087beb65ef81de3af65d3"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-diagonal.blend",
+      "git_blob": "619eb661df3382c4d360c07f69972993441c1c35"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-diagonal.png",
+      "git_blob": "efe65d0843304a724b4087beb65ef81de3af65d3"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-oblique-alpha.png",
+      "git_blob": "cab00104be0e2180f893c868d426cdfa7e325819"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-oblique-thumb.png",
+      "git_blob": "23617f89d395aa44c1812102cb8cd1c1c1865775"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-oblique.blend",
+      "git_blob": "353bd5ca16ff6bd229afaffc635ead9ef46876a9"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/palette-oblique.png",
+      "git_blob": "23617f89d395aa44c1812102cb8cd1c1c1865775"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-current-thumb.png",
+      "git_blob": "0eb6e9164e0f852f0637c48daee4b2bdd99b2f5b"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-current.png",
+      "git_blob": "5f2c57535f1d224806cafc2b75410c22ce395afc"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-final-thumb.png",
+      "git_blob": "b9cd8d1f95a0ec007d0972244e6d5695c3c92856"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-final.png",
+      "git_blob": "e20704301fdacbaf0711fe36d90685d6619002ba"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-initial-thumb.png",
+      "git_blob": "bb3042026f4c54ebcae6d4bb4ced4e9d51fc6468"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-initial.png",
+      "git_blob": "66083db4f3c61505d52c58ab764ff31db8a46c76"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision2-thumb.png",
+      "git_blob": "50387deda73e05a5bf062d7caec0a70be4041e83"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision2.png",
+      "git_blob": "c6d8689239a853500a979e5841d0f42df8b1dfa3"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision3-thumb.png",
+      "git_blob": "0294e01a1dc60954688f1678f94013bf261f4d4c"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision3.png",
+      "git_blob": "2310970a2bc5449c7066b97651b26ebf8c9577f4"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision4-thumb.png",
+      "git_blob": "88ff611feb9509db84f9197e2f17c1437d0310ca"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision4.png",
+      "git_blob": "eab75a5898a4cfeb09dacf30eb9e30e5d89e8f02"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision5-thumb.png",
+      "git_blob": "ef57490b6f477643ba534dc28acb69a36ede82f5"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision5.png",
+      "git_blob": "df83b07136705abc55ae5a2011f5d136566cc9fe"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision6-thumb.png",
+      "git_blob": "ef57490b6f477643ba534dc28acb69a36ede82f5"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision6.png",
+      "git_blob": "df83b07136705abc55ae5a2011f5d136566cc9fe"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision8-thumb.png",
+      "git_blob": "432f2c90a7aaa420552ee7fc029d753c04059561"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/peer-revision8.png",
+      "git_blob": "3424b4c54543857bf58999820fe5a88b7f78323a"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision1-alpha.png",
+      "git_blob": "2446b67dc6a8e9c9c38a385fe02caa9f21ce8032"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision1-thumb.png",
+      "git_blob": "f9fc51148ce5c453a8d85a51119b2bd021e8b019"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision1.blend",
+      "git_blob": "fafbfeaed2c53ce346c1744f352b1de051939fe2"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision1.png",
+      "git_blob": "211f15fb0b79ae307c66db869d08ccc97523e1fb"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision2-alpha.png",
+      "git_blob": "3b266164e86e454fe302c1b9c38d1c039a8e399c"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision2-thumb.png",
+      "git_blob": "326c91b3d38249b4c50ba128906e6d1fb8d1efdc"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision2.blend",
+      "git_blob": "1194b6780fb135092aefe3830513a3fce314d4d8"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision2.png",
+      "git_blob": "b9ca40c48ccda1d602a7ca725b0fa8d2f3feec00"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision3-alpha.png",
+      "git_blob": "862e959a9f6dc19f46e58be88a3be48b4dea01e4"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision3-thumb.png",
+      "git_blob": "6ef2d8e26bfc8effddb92ca309804020f82a182e"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision3.blend",
+      "git_blob": "6f4cf7e54f6a4783576f186bf1ab9079ac39ffab"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision3.png",
+      "git_blob": "7d3e85a9f6dea3506072c69d722dfff6ba1c1776"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision4-alpha.png",
+      "git_blob": "55b20f165defb1e6adb8412170d9484cbb4e48de"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision4-thumb.png",
+      "git_blob": "a612a2547176483c05fd543413a2038d2f85db43"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision4.blend",
+      "git_blob": "1de8c8e468f26127f84ad85a8dba94a4ca3bc343"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision4.png",
+      "git_blob": "fbd8833e18f6cb085aa50c68bd8a59cb97b2e86c"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision5-alpha.png",
+      "git_blob": "3ca98629d61c0cfd7edf06503c2b17138d50edd5"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision5-thumb.png",
+      "git_blob": "f39527930a6c171c1b7444e83b73a4af0926eea1"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision5.blend",
+      "git_blob": "e42da539b81c333ac3e56ae7e78b921055521e42"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-one/revision5.png",
+      "git_blob": "e6cc032ef19ceb214288e8801bac18b28d5bc538"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/analysis.txt",
+      "git_blob": "47cdcda42ffe612de41e504be000f2a75d8237e6"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/artifact-server",
+      "git_blob": "6866f60be247b774d42958b6b00e1458764a0b1f"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/artifact-server-expanded",
+      "git_blob": "552d4df8666485def166520e13f2b8f105f2e482"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/clearance-audit.json",
+      "git_blob": "dc10198eddd06733f77aa408c70a3991abd0bb2b"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/evolution-contact-sheet.png",
+      "git_blob": "267aee481d5d7f6cb73db968b48b2d0672a7e841"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/final-audit.json",
+      "git_blob": "e41c7dcc1b9de7747f74819e4ff0bfee70f21bdb"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/final-noise-audit.txt",
+      "git_blob": "94b97c4cf7d735ddd7ec6d06359891fd975684b8"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/final-raw-crop-inner.png",
+      "git_blob": "0233111332297357d50d023163735b936e8c20a2"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/final-raw-crop-lip.png",
+      "git_blob": "5499bc2fc52fb7fa97f387b1632cf754aa024013"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/final-raw-crop-outer.png",
+      "git_blob": "d0222261fd78c28773a7a0fd04ec4c0d8dcdb92d"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/final-raw.png",
+      "git_blob": "6821c70b9c1dfece533f118586a1c71738b211ca"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/final.png",
+      "git_blob": "e20704301fdacbaf0711fe36d90685d6619002ba"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/geometry-evidence.txt",
+      "git_blob": "05b080204201fc61df3e61fe7c5f94cf7073991a"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/improvement-evidence.json",
+      "git_blob": "1b9068a621049ca758edc224bad4f88a4d45ae06"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/initial-analysis.txt",
+      "git_blob": "319f3fe5fb5f22d1aeb2a028bc03d549f979a0fb"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/initial.png",
+      "git_blob": "66083db4f3c61505d52c58ab764ff31db8a46c76"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/mesh-audit.json",
+      "git_blob": "a96d2257d344bac934632d43a5c085711ac5c942"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/pair-result.json",
+      "git_blob": "254d785bdfdf3393f97d87654c118e9348d878bb"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-final-analysis.txt",
+      "git_blob": "fe425f5f977a90f808fc1d5a8e78a32c66a544d4"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-final.png",
+      "git_blob": "1ca4e92fce6932b30f4785cd4413288fa61a955a"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-inbox-verification.txt",
+      "git_blob": "f2c995251214d8ca1e1e77937725259a516ba764"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-initial-analysis.txt",
+      "git_blob": "401eb7d9975466a92668d0ddb75c3036b4c14df8"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-initial.png",
+      "git_blob": "a20b590fd35b46b1c4d4d3b1749da3cccd7e5d5b"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-palette-analysis.txt",
+      "git_blob": "0f52fea89df544f6732c616ef502327cddf80502"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-palette-oblique.png",
+      "git_blob": "23617f89d395aa44c1812102cb8cd1c1c1865775"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-revision1-analysis.txt",
+      "git_blob": "cafac56e7bc02b77059c81fd97c7741781c2074e"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-revision1.png",
+      "git_blob": "211f15fb0b79ae307c66db869d08ccc97523e1fb"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-revision2.png",
+      "git_blob": "b9ca40c48ccda1d602a7ca725b0fa8d2f3feec00"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-revision3-analysis.txt",
+      "git_blob": "529d44dccc8054ccca33531da162880feb5afa0d"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-revision3.png",
+      "git_blob": "7d3e85a9f6dea3506072c69d722dfff6ba1c1776"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-revision5-analysis.txt",
+      "git_blob": "cd5dda211a918d49d4c794e8023d612ec11589d9"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/peer-revision5.png",
+      "git_blob": "e6cc032ef19ceb214288e8801bac18b28d5bc538"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/preflight-audit.json",
+      "git_blob": "932293089af7d18a015a44ead74fd0b0f7021342"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/preview-noise-audit.txt",
+      "git_blob": "899bd6f5954552157abf607817eba0504204fa6a"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/preview.png",
+      "git_blob": "c6658d092ee5201a9164d6176c45d8369da524e2"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision1-analysis.txt",
+      "git_blob": "d11bb0ea5fc1b846fb80c9384d0086173ea479a1"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision1.png",
+      "git_blob": "e75974d118ec87b022503ffd6e601f786698a903"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision2-analysis.txt",
+      "git_blob": "907990116310788d061dffe9c775c3075cbfd6d0"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision2.png",
+      "git_blob": "c6d8689239a853500a979e5841d0f42df8b1dfa3"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision3-analysis.txt",
+      "git_blob": "b9ab66c78db3a4d3782f203684b72d666b8a179e"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision3.png",
+      "git_blob": "2310970a2bc5449c7066b97651b26ebf8c9577f4"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision4-analysis.txt",
+      "git_blob": "9f4a756034136ffd1af212c453dcb63768931695"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision4-raw.png",
+      "git_blob": "98a307242d6ce40813e5fea4683b68a48149d52c"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision4.png",
+      "git_blob": "eab75a5898a4cfeb09dacf30eb9e30e5d89e8f02"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision5-analysis.txt",
+      "git_blob": "86e7f87b5835cee8edd6045444bce94d3f25c157"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision5-raw.png",
+      "git_blob": "134bb9bbe94cd0c9670b7ccc2aa79c274880d4d7"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision5.png",
+      "git_blob": "06a831333edd779b5949912a23668d7ac4c6b23a"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision6-analysis.txt",
+      "git_blob": "03e6029201193bb0906a7adf519d6105d9b77cbb"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision6-raw.png",
+      "git_blob": "26885cdfb60ca2d28b5659cc62c472f1611ec52e"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision6.png",
+      "git_blob": "df83b07136705abc55ae5a2011f5d136566cc9fe"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision7-analysis.txt",
+      "git_blob": "fdc4437f53c85bbad242c0229cce52e0e7c22307"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision7-raw.png",
+      "git_blob": "78fa17062a44b44cdc4ca65d329e42c8a0e6e2fd"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision7.png",
+      "git_blob": "5f2c57535f1d224806cafc2b75410c22ce395afc"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision8-analysis.txt",
+      "git_blob": "435aa1c97c0f532c3e006720780d37daa50ef29e"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision8-raw-crop-inner.png",
+      "git_blob": "fd1b42a31e4195a5f3e570cb78b1b38cacd3c7cf"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision8-raw-crop-lip.png",
+      "git_blob": "4553466010a3781731379c75cb66350ddf565fb7"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision8-raw-crop-outer.png",
+      "git_blob": "e20d74a69f368e01ba759e572047b48dd1ece6cd"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision8-raw.png",
+      "git_blob": "df4ca973d4b8eab11c2c9e300222a8c77664c6b3"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/revision8.png",
+      "git_blob": "3424b4c54543857bf58999820fe5a88b7f78323a"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v0.blend",
+      "git_blob": "459eda7cf7c604362c4db673c192ce847ec437d6"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v0.blend1",
+      "git_blob": "759f7b3213d0c9ae8b61b5cc2b7179ae704e758c"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v1.blend",
+      "git_blob": "03206013095f44bc351418f1da801eb3a6d2187b"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v10.blend",
+      "git_blob": "e518b78053202870fc6af4d1813e88edc3815401"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v2.blend",
+      "git_blob": "a998ae4a5a9e2799e0fe1c15ccf9ac75769c8c91"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v3.blend",
+      "git_blob": "e62d470d25956fa3581291b9d759fdf15b8e3906"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v4.blend",
+      "git_blob": "edbf05a54fc57102240f934d12e712a18585578a"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v5.blend",
+      "git_blob": "18ece78a52c943b0aa786b5162f3f6d880bba0ee"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v6.blend",
+      "git_blob": "d57a2afcd7d28f9693d38438fff2041ce21edf1c"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v7.blend",
+      "git_blob": "f9b01e18c354f8a9eb54db3351a9de2e1239f269"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v8.blend",
+      "git_blob": "38b95f3ed6b491e867bc073997dc1684ac610d9c"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/scene-v9.blend",
+      "git_blob": "b03feb1f9681621bebf438533bd5e3e3aeb6ff3f"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/variant-0-raw.png",
+      "git_blob": "abe92ab3dfa9583bd8ff1e6d568875cf3b5f27c4"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/variant-0.png",
+      "git_blob": "fc1f079b3da06ed13166ec8fa264bba6986ce868"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/variant-1-raw.png",
+      "git_blob": "1b261296536acd2735d24ec39215ff0d002f2bdb"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/variant-1.png",
+      "git_blob": "f005467e43bb9554d5ed2218af189101b00664f4"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/variant-2-raw.png",
+      "git_blob": "e59dc010112b616fcc574cdf687338843f0ab0cf"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/variant-2.png",
+      "git_blob": "b2644f04475b09b7a1d23d9a3285c9f5378a941c"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/variant-3-raw.png",
+      "git_blob": "7df2892d8b1ec024a148fa5023acb3a49d73d548"
+    },
+    {
+      "path": "artifacts/wallpaper/agent-two/variant-3.png",
+      "git_blob": "147a45c7255179fa2c22b8ccc63cdf2d653679d1"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/agent-one/code-versions/context-lifecycle.json.95ef0d8e0972cea3",
+      "git_blob": "8b9082c72452cf383c02bdf8335122f358643a8e"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/agent-one/code-versions/remedy-memory.json.38c383801421fbfc",
+      "git_blob": "dc16626aa464de39636e3ab4345e6791adedbf2c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/agent-one/current-images.json",
+      "git_blob": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/agent-one/source-after.tar.gz",
+      "git_blob": "0cac64235cb16665dc40f537adf6a44691aef326"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/agent-one/source-before.tar.gz",
+      "git_blob": "0cac64235cb16665dc40f537adf6a44691aef326"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/agent-two/code-versions/remedy-memory.json.38c383801421fbfc",
+      "git_blob": "dc16626aa464de39636e3ab4345e6791adedbf2c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/agent-two/current-images.json",
+      "git_blob": "0637a088a01e8ddab3bf3fa98dbe804cbde1a0dc"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/agent-two/source-after.tar.gz",
+      "git_blob": "2837fa98c2514f5690436d8fad101ca1a215d15e"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/agent-two/source-before.tar.gz",
+      "git_blob": "2837fa98c2514f5690436d8fad101ca1a215d15e"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/final-state.json",
+      "git_blob": "bab49903595ee29ea02e0ccae72fa56a39deed68"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/initial-state.json",
+      "git_blob": "90a72e78eba3dba0bd8bac17c2731fa0a9a79d53"
+    },
+    {
+      "path": "artifacts/wallpaper/history/grok-wallpaper-20261016T013046Z/timing.json",
+      "git_blob": "0383870ebbfa06ac6c7831fbdb274e21617b0a63"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one-final.png",
+      "git_blob": "1ca4e92fce6932b30f4785cd4413288fa61a955a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one-initial.png",
+      "git_blob": "a20b590fd35b46b1c4d4d3b1749da3cccd7e5d5b"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one-revision2.png",
+      "git_blob": "b9ca40c48ccda1d602a7ca725b0fa8d2f3feec00"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one-source-before.tar.gz",
+      "git_blob": "affdc4c108c6ae36ff2a1bd4cdf85b9348185d11"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/code-history/artifacts__wallpaper-challenge__artwork-audit.json.5b699cf3f42f",
+      "git_blob": "8bc9a47f541a0871272b3d583f9127f9007f7033"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/code-history/artifacts__wallpaper-challenge__code-manifest.json.11ad3747b48a",
+      "git_blob": "dc0bd73a05d1e56006278ecd0241479f88ac51ed"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/code-history/artifacts__wallpaper-challenge__final-quality.json.8fb1b6bef5bf",
+      "git_blob": "419d7dd719df747bc86cab69e527e6a9acb32e70"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/artwork-audit.json",
+      "git_blob": "8bc9a47f541a0871272b3d583f9127f9007f7033"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/code-manifest.json",
+      "git_blob": "dc0bd73a05d1e56006278ecd0241479f88ac51ed"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/evolution-contact-sheet.png",
+      "git_blob": "d4083ed5c1c1d1e5b7b7f421a67ee8f64fc6e4e3"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/final-alpha.png",
+      "git_blob": "f63c2da56675854de8badff382da1e599c3a5e0a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/final-quality.json",
+      "git_blob": "419d7dd719df747bc86cab69e527e6a9acb32e70"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/final-thumb.png",
+      "git_blob": "8852fd5fb3fab923ad4d126ad199ebefb4f8c6e2"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/final.blend",
+      "git_blob": "4713a076560dc896f295e5652953af17b19dac7d"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/final.png",
+      "git_blob": "1ca4e92fce6932b30f4785cd4413288fa61a955a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/initial-thumb.png",
+      "git_blob": "16f771a26f4980b13c54c166109f10b2d9eff940"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/initial.blend",
+      "git_blob": "ddd48bcb99e21e1a1b0c243ce6912c6ef670326f"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/initial.blend1",
+      "git_blob": "18029e8dced3213a9b1d4701d5e63f161b908ada"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/initial.png",
+      "git_blob": "a20b590fd35b46b1c4d4d3b1749da3cccd7e5d5b"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-axial-alpha.png",
+      "git_blob": "561d04d849212f20d46954bc63f7e8f197063fb0"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-axial-thumb.png",
+      "git_blob": "12a407afae1f9fdac7df80e71ddac0bc071322b5"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-axial.blend",
+      "git_blob": "7a3e22d51417e08d6097d40ad77ce3929d11dba8"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-axial.png",
+      "git_blob": "12a407afae1f9fdac7df80e71ddac0bc071322b5"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-diagonal-alpha.png",
+      "git_blob": "e4ee2f75d4207239d9267705f1dd8c252db9f7f6"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-diagonal-thumb.png",
+      "git_blob": "efe65d0843304a724b4087beb65ef81de3af65d3"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-diagonal.blend",
+      "git_blob": "619eb661df3382c4d360c07f69972993441c1c35"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-diagonal.png",
+      "git_blob": "efe65d0843304a724b4087beb65ef81de3af65d3"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-oblique-alpha.png",
+      "git_blob": "cab00104be0e2180f893c868d426cdfa7e325819"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-oblique-thumb.png",
+      "git_blob": "23617f89d395aa44c1812102cb8cd1c1c1865775"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-oblique.blend",
+      "git_blob": "353bd5ca16ff6bd229afaffc635ead9ef46876a9"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/palette-oblique.png",
+      "git_blob": "23617f89d395aa44c1812102cb8cd1c1c1865775"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-current-thumb.png",
+      "git_blob": "0eb6e9164e0f852f0637c48daee4b2bdd99b2f5b"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-current.png",
+      "git_blob": "5f2c57535f1d224806cafc2b75410c22ce395afc"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-final-thumb.png",
+      "git_blob": "b9cd8d1f95a0ec007d0972244e6d5695c3c92856"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-final.png",
+      "git_blob": "e20704301fdacbaf0711fe36d90685d6619002ba"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-initial-thumb.png",
+      "git_blob": "bb3042026f4c54ebcae6d4bb4ced4e9d51fc6468"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-initial.png",
+      "git_blob": "66083db4f3c61505d52c58ab764ff31db8a46c76"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision2-thumb.png",
+      "git_blob": "50387deda73e05a5bf062d7caec0a70be4041e83"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision2.png",
+      "git_blob": "c6d8689239a853500a979e5841d0f42df8b1dfa3"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision3-thumb.png",
+      "git_blob": "0294e01a1dc60954688f1678f94013bf261f4d4c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision3.png",
+      "git_blob": "2310970a2bc5449c7066b97651b26ebf8c9577f4"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision4-thumb.png",
+      "git_blob": "88ff611feb9509db84f9197e2f17c1437d0310ca"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision4.png",
+      "git_blob": "eab75a5898a4cfeb09dacf30eb9e30e5d89e8f02"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision5-thumb.png",
+      "git_blob": "ef57490b6f477643ba534dc28acb69a36ede82f5"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision5.png",
+      "git_blob": "df83b07136705abc55ae5a2011f5d136566cc9fe"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision6-thumb.png",
+      "git_blob": "ef57490b6f477643ba534dc28acb69a36ede82f5"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision6.png",
+      "git_blob": "df83b07136705abc55ae5a2011f5d136566cc9fe"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision8-thumb.png",
+      "git_blob": "432f2c90a7aaa420552ee7fc029d753c04059561"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/peer-revision8.png",
+      "git_blob": "3424b4c54543857bf58999820fe5a88b7f78323a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision1-alpha.png",
+      "git_blob": "2446b67dc6a8e9c9c38a385fe02caa9f21ce8032"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision1-thumb.png",
+      "git_blob": "f9fc51148ce5c453a8d85a51119b2bd021e8b019"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision1.blend",
+      "git_blob": "fafbfeaed2c53ce346c1744f352b1de051939fe2"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision1.png",
+      "git_blob": "211f15fb0b79ae307c66db869d08ccc97523e1fb"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision2-alpha.png",
+      "git_blob": "3b266164e86e454fe302c1b9c38d1c039a8e399c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision2-thumb.png",
+      "git_blob": "326c91b3d38249b4c50ba128906e6d1fb8d1efdc"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision2.blend",
+      "git_blob": "1194b6780fb135092aefe3830513a3fce314d4d8"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision2.png",
+      "git_blob": "b9ca40c48ccda1d602a7ca725b0fa8d2f3feec00"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision3-alpha.png",
+      "git_blob": "862e959a9f6dc19f46e58be88a3be48b4dea01e4"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision3-thumb.png",
+      "git_blob": "6ef2d8e26bfc8effddb92ca309804020f82a182e"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision3.blend",
+      "git_blob": "6f4cf7e54f6a4783576f186bf1ab9079ac39ffab"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision3.png",
+      "git_blob": "7d3e85a9f6dea3506072c69d722dfff6ba1c1776"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision4-alpha.png",
+      "git_blob": "55b20f165defb1e6adb8412170d9484cbb4e48de"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision4-thumb.png",
+      "git_blob": "a612a2547176483c05fd543413a2038d2f85db43"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision4.blend",
+      "git_blob": "1de8c8e468f26127f84ad85a8dba94a4ca3bc343"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision4.png",
+      "git_blob": "fbd8833e18f6cb085aa50c68bd8a59cb97b2e86c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision5-alpha.png",
+      "git_blob": "3ca98629d61c0cfd7edf06503c2b17138d50edd5"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision5-thumb.png",
+      "git_blob": "f39527930a6c171c1b7444e83b73a4af0926eea1"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision5.blend",
+      "git_blob": "e42da539b81c333ac3e56ae7e78b921055521e42"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-one/work-output/revision5.png",
+      "git_blob": "e6cc032ef19ceb214288e8801bac18b28d5bc538"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two-final.png",
+      "git_blob": "e20704301fdacbaf0711fe36d90685d6619002ba"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two-initial.png",
+      "git_blob": "66083db4f3c61505d52c58ab764ff31db8a46c76"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two-revision2.png",
+      "git_blob": "c6d8689239a853500a979e5841d0f42df8b1dfa3"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two-source-before.tar.gz",
+      "git_blob": "affdc4c108c6ae36ff2a1bd4cdf85b9348185d11"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/code-history/artifacts__wallpaper-challenge__clearance-audit.json.4dcf1bf73eb5",
+      "git_blob": "dc10198eddd06733f77aa408c70a3991abd0bb2b"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/code-history/artifacts__wallpaper-challenge__final-audit.json.2f57001d2c1b",
+      "git_blob": "e41c7dcc1b9de7747f74819e4ff0bfee70f21bdb"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/code-history/artifacts__wallpaper-challenge__improvement-evidence.json.8c1a18f0f59b",
+      "git_blob": "1b9068a621049ca758edc224bad4f88a4d45ae06"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/code-history/artifacts__wallpaper-challenge__mesh-audit.json.e10fffb520cb",
+      "git_blob": "a96d2257d344bac934632d43a5c085711ac5c942"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/code-history/artifacts__wallpaper-challenge__preflight-audit.json.7d0d1a97c85d",
+      "git_blob": "932293089af7d18a015a44ead74fd0b0f7021342"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/artifact-server",
+      "git_blob": "6866f60be247b774d42958b6b00e1458764a0b1f"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/artifact-server-expanded",
+      "git_blob": "552d4df8666485def166520e13f2b8f105f2e482"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/clearance-audit.json",
+      "git_blob": "dc10198eddd06733f77aa408c70a3991abd0bb2b"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/evolution-contact-sheet.png",
+      "git_blob": "267aee481d5d7f6cb73db968b48b2d0672a7e841"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/final-audit.json",
+      "git_blob": "e41c7dcc1b9de7747f74819e4ff0bfee70f21bdb"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/final-noise-audit.txt",
+      "git_blob": "94b97c4cf7d735ddd7ec6d06359891fd975684b8"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/final-raw-crop-inner.png",
+      "git_blob": "0233111332297357d50d023163735b936e8c20a2"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/final-raw-crop-lip.png",
+      "git_blob": "5499bc2fc52fb7fa97f387b1632cf754aa024013"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/final-raw-crop-outer.png",
+      "git_blob": "d0222261fd78c28773a7a0fd04ec4c0d8dcdb92d"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/final-raw.png",
+      "git_blob": "6821c70b9c1dfece533f118586a1c71738b211ca"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/final.png",
+      "git_blob": "e20704301fdacbaf0711fe36d90685d6619002ba"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/geometry-evidence.txt",
+      "git_blob": "05b080204201fc61df3e61fe7c5f94cf7073991a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/improvement-evidence.json",
+      "git_blob": "1b9068a621049ca758edc224bad4f88a4d45ae06"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/initial-analysis.txt",
+      "git_blob": "319f3fe5fb5f22d1aeb2a028bc03d549f979a0fb"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/initial.png",
+      "git_blob": "66083db4f3c61505d52c58ab764ff31db8a46c76"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/mesh-audit.json",
+      "git_blob": "a96d2257d344bac934632d43a5c085711ac5c942"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-final-analysis.txt",
+      "git_blob": "fe425f5f977a90f808fc1d5a8e78a32c66a544d4"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-final.png",
+      "git_blob": "1ca4e92fce6932b30f4785cd4413288fa61a955a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-inbox-verification.txt",
+      "git_blob": "f2c995251214d8ca1e1e77937725259a516ba764"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-initial-analysis.txt",
+      "git_blob": "401eb7d9975466a92668d0ddb75c3036b4c14df8"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-initial.png",
+      "git_blob": "a20b590fd35b46b1c4d4d3b1749da3cccd7e5d5b"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-palette-analysis.txt",
+      "git_blob": "0f52fea89df544f6732c616ef502327cddf80502"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-palette-oblique.png",
+      "git_blob": "23617f89d395aa44c1812102cb8cd1c1c1865775"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-revision1-analysis.txt",
+      "git_blob": "cafac56e7bc02b77059c81fd97c7741781c2074e"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-revision1.png",
+      "git_blob": "211f15fb0b79ae307c66db869d08ccc97523e1fb"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-revision2.png",
+      "git_blob": "b9ca40c48ccda1d602a7ca725b0fa8d2f3feec00"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-revision3-analysis.txt",
+      "git_blob": "529d44dccc8054ccca33531da162880feb5afa0d"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-revision3.png",
+      "git_blob": "7d3e85a9f6dea3506072c69d722dfff6ba1c1776"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-revision5-analysis.txt",
+      "git_blob": "cd5dda211a918d49d4c794e8023d612ec11589d9"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/peer-revision5.png",
+      "git_blob": "e6cc032ef19ceb214288e8801bac18b28d5bc538"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/preflight-audit.json",
+      "git_blob": "932293089af7d18a015a44ead74fd0b0f7021342"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/preview-noise-audit.txt",
+      "git_blob": "899bd6f5954552157abf607817eba0504204fa6a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/preview.png",
+      "git_blob": "c6658d092ee5201a9164d6176c45d8369da524e2"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision1-analysis.txt",
+      "git_blob": "d11bb0ea5fc1b846fb80c9384d0086173ea479a1"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision1.png",
+      "git_blob": "e75974d118ec87b022503ffd6e601f786698a903"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision2-analysis.txt",
+      "git_blob": "907990116310788d061dffe9c775c3075cbfd6d0"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision2.png",
+      "git_blob": "c6d8689239a853500a979e5841d0f42df8b1dfa3"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision3-analysis.txt",
+      "git_blob": "b9ab66c78db3a4d3782f203684b72d666b8a179e"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision3.png",
+      "git_blob": "2310970a2bc5449c7066b97651b26ebf8c9577f4"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision4-analysis.txt",
+      "git_blob": "9f4a756034136ffd1af212c453dcb63768931695"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision4-raw.png",
+      "git_blob": "98a307242d6ce40813e5fea4683b68a48149d52c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision4.png",
+      "git_blob": "eab75a5898a4cfeb09dacf30eb9e30e5d89e8f02"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision5-analysis.txt",
+      "git_blob": "86e7f87b5835cee8edd6045444bce94d3f25c157"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision5-raw.png",
+      "git_blob": "134bb9bbe94cd0c9670b7ccc2aa79c274880d4d7"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision5.png",
+      "git_blob": "06a831333edd779b5949912a23668d7ac4c6b23a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision6-analysis.txt",
+      "git_blob": "03e6029201193bb0906a7adf519d6105d9b77cbb"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision6-raw.png",
+      "git_blob": "26885cdfb60ca2d28b5659cc62c472f1611ec52e"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision6.png",
+      "git_blob": "df83b07136705abc55ae5a2011f5d136566cc9fe"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision7-analysis.txt",
+      "git_blob": "fdc4437f53c85bbad242c0229cce52e0e7c22307"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision7-raw.png",
+      "git_blob": "78fa17062a44b44cdc4ca65d329e42c8a0e6e2fd"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision7.png",
+      "git_blob": "5f2c57535f1d224806cafc2b75410c22ce395afc"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision8-analysis.txt",
+      "git_blob": "435aa1c97c0f532c3e006720780d37daa50ef29e"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision8-raw-crop-inner.png",
+      "git_blob": "fd1b42a31e4195a5f3e570cb78b1b38cacd3c7cf"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision8-raw-crop-lip.png",
+      "git_blob": "4553466010a3781731379c75cb66350ddf565fb7"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision8-raw-crop-outer.png",
+      "git_blob": "e20d74a69f368e01ba759e572047b48dd1ece6cd"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision8-raw.png",
+      "git_blob": "df4ca973d4b8eab11c2c9e300222a8c77664c6b3"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/revision8.png",
+      "git_blob": "3424b4c54543857bf58999820fe5a88b7f78323a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v0.blend",
+      "git_blob": "459eda7cf7c604362c4db673c192ce847ec437d6"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v0.blend1",
+      "git_blob": "759f7b3213d0c9ae8b61b5cc2b7179ae704e758c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v1.blend",
+      "git_blob": "03206013095f44bc351418f1da801eb3a6d2187b"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v10.blend",
+      "git_blob": "e518b78053202870fc6af4d1813e88edc3815401"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v2.blend",
+      "git_blob": "a998ae4a5a9e2799e0fe1c15ccf9ac75769c8c91"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v3.blend",
+      "git_blob": "e62d470d25956fa3581291b9d759fdf15b8e3906"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v4.blend",
+      "git_blob": "edbf05a54fc57102240f934d12e712a18585578a"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v5.blend",
+      "git_blob": "18ece78a52c943b0aa786b5162f3f6d880bba0ee"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v6.blend",
+      "git_blob": "d57a2afcd7d28f9693d38438fff2041ce21edf1c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v7.blend",
+      "git_blob": "f9b01e18c354f8a9eb54db3351a9de2e1239f269"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v8.blend",
+      "git_blob": "38b95f3ed6b491e867bc073997dc1684ac610d9c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/scene-v9.blend",
+      "git_blob": "b03feb1f9681621bebf438533bd5e3e3aeb6ff3f"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/variant-0-raw.png",
+      "git_blob": "abe92ab3dfa9583bd8ff1e6d568875cf3b5f27c4"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/variant-0.png",
+      "git_blob": "fc1f079b3da06ed13166ec8fa264bba6986ce868"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/variant-1-raw.png",
+      "git_blob": "1b261296536acd2735d24ec39215ff0d002f2bdb"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/variant-1.png",
+      "git_blob": "f005467e43bb9554d5ed2218af189101b00664f4"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/variant-2-raw.png",
+      "git_blob": "e59dc010112b616fcc574cdf687338843f0ab0cf"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/variant-2.png",
+      "git_blob": "b2644f04475b09b7a1d23d9a3285c9f5378a941c"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/variant-3-raw.png",
+      "git_blob": "7df2892d8b1ec024a148fa5023acb3a49d73d548"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/agent-two/work-output/variant-3.png",
+      "git_blob": "147a45c7255179fa2c22b8ccc63cdf2d653679d1"
+    },
+    {
+      "path": "artifacts/wallpaper/history/wallpaper-challenge-20261015/results.json",
+      "git_blob": "200a9233f4518c8feeeb41bf1177cd02fc707c4c"
+    }
+  ]
+}
