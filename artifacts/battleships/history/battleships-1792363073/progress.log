@@ -1,0 +1,4 @@
+Starting battleships-1792363073; agents author their own Haskell bots. No existing histories replaced.
+agent-two: phase 1 ended (call budget, 5 model calls, 2 Haskell errors).
+agent-one: phase 1 ended (call budget, 5 model calls, 6 Haskell errors).
+STOPPED: stopped after repeated Haskell generation errors
