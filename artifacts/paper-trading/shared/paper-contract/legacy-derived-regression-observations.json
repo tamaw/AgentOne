@@ -1,0 +1,188 @@
+{
+  "label": "SYNTHETIC IN-MEMORY REGRESSION OBSERVATIONS AGAINST EXACT RELAYED JS 3.2",
+  "baseline_source": "e8220d5f75c291ebbdb51df2c6fd76e048bc43fd6667bb1f64fba78e337b2447",
+  "candidate_source": "7cbcaf5d783ff76619c417384a4ec8314e74f110de7f2814803c49aef19b873d",
+  "parent_reported_203_assertions": "not independently reproduced; accounting-test-v3.2 source was not relayed",
+  "production_cutover_approved": false,
+  "canonical_saves": 0,
+  "competitor_launches": 0,
+  "actual_trading_dispatches": 0,
+  "actual_completed_matches": 0,
+  "real_filesystem_accounting_writes": 0,
+  "independent_replay": false,
+  "native_QuickJS_certified": false,
+  "harness_limitation": "Executable gates were removed only in an ephemeral local function string to exercise accounting with memory-only tool adapters. No such bypass exists in delivered candidate source. These observations are not independent replay evidence.",
+  "observations": [
+    {
+      "label": "relayed 3.2 helpers retained",
+      "simulate_body_identical": true,
+      "parseOrders_body_identical": true,
+      "submission_manifest_body_identical": true,
+      "accounting_comparisons": 180,
+      "mismatches": 0
+    },
+    {
+      "label": "production candidate validation-only",
+      "status": "validation_passed_execution_blocked",
+      "passed": true,
+      "contract_global_history": 60,
+      "effective_track_history": 10,
+      "contract_global_bars_per_round": 7,
+      "effective_track_bars_per_round": 2,
+      "writes": 0,
+      "deletes": 0
+    },
+    {
+      "label": "validation-only",
+      "blocked": true,
+      "reason": "validation_only_forbids_dispatch_and_writes",
+      "writes": 0
+    },
+    {
+      "label": "required replay absent",
+      "blocked": true,
+      "reason": "independent_replay_unavailable; candidate_cutover_unverified; namespace_reservation_and_scope_unavailable",
+      "writes": 0
+    },
+    {
+      "label": "replay not proof",
+      "blocked": true,
+      "reason": "replay_gate_bypass_forbidden",
+      "writes": 0
+    },
+    {
+      "label": "instrumented accounting-only memory settlement; NOT dispatched paper matches",
+      "baseline_and_candidate_final_balances_identical": false,
+      "balances": {
+        "agent-one": {
+          "cash": 844.5724225000001,
+          "units": 1.5,
+          "equity": 1054.5724225000001,
+          "round_return": 0.034229246977176116,
+          "cumulative_return": 0.05457242250000013,
+          "max_drawdown": 0,
+          "trades_applied": 1,
+          "trades": [
+            {
+              "side": "sell",
+              "quantity": 0.5,
+              "price": 129.935,
+              "notional": 64.9675,
+              "fee": 0.0649675
+            }
+          ],
+          "failures": [],
+          "manifest_summary": {
+            "code_ref": "synthetic/strategy-v1",
+            "approach": "synthetic accounting only",
+            "changes": "none"
+          }
+        },
+        "agent-two": {
+          "cash": 1000,
+          "units": 0,
+          "equity": 1000,
+          "round_return": 0,
+          "cumulative_return": 0,
+          "max_drawdown": 0,
+          "trades_applied": 0,
+          "trades": [],
+          "failures": [],
+          "manifest_summary": {
+            "code_ref": "synthetic/strategy-v1",
+            "approach": "synthetic accounting only",
+            "changes": "none"
+          }
+        }
+      },
+      "expected_agent_one_equity": 1054.5724225,
+      "equity_error": 2.2737367544323206e-13,
+      "partial_infeasible_agent_submission_applied_no_trades": true,
+      "round_one_cash_carried": 779.6698900000001,
+      "final_units_retained": 1.5,
+      "public_OHLCV_header": "timestamp,open,high,low,close,volume,closed",
+      "initial_history_has_no_future": true,
+      "drawdown_sampling": "round_marks_only",
+      "per_agent_account_snapshots": 4
+    },
+    {
+      "label": "isolated next-match capital reset",
+      "cash": 1000,
+      "units": 0,
+      "separate_namespace": true
+    },
+    {
+      "label": "synthetic pointer-loss recovery",
+      "injected_error": "synthetic private pointer write fault",
+      "replayed_from_immutable_journal": true,
+      "cash": 889.8349450000001,
+      "units": 1,
+      "trades_applied_once": true
+    },
+    {
+      "label": "same-path data mutation rejected",
+      "reason": "Market data changed after match initialization",
+      "no_writes": true
+    },
+    {
+      "label": "exists fails closed even on matching incomplete glob",
+      "blocked": true,
+      "reason": "Incomplete glob result: /artifacts/trading/fixture"
+    },
+    {
+      "label": "exists fails closed even on matching incomplete glob",
+      "blocked": true,
+      "reason": "Incomplete glob result: /artifacts/trading/fixture"
+    }
+  ],
+  "legacy_blinding_removal_numeric_observation": {
+    "baseline": {
+      "cash": 844.5724225,
+      "units": 1.5,
+      "equity": 1054.5724225,
+      "round_return": 0.034229246977176005
+    },
+    "candidate": {
+      "cash": 844.5724225000001,
+      "units": 1.5,
+      "equity": 1054.5724225000001,
+      "round_return": 0.034229246977176116
+    },
+    "absolute_differences": {
+      "cash": 1.1368683772161603e-13,
+      "units": 0,
+      "equity": 2.2737367544323206e-13,
+      "round_return": 1.1102230246251565e-16
+    },
+    "all_within_1e_minus_10": true,
+    "bitwise_identity_expected": false,
+    "reason": "Legacy close/base_close*100 introduces rounding even with base_close 100. Candidate settles the absolute close; simulate itself is byte-identical."
+  },
+  "additive_guard_observation": {
+    "label": "SYNTHETIC additive-guard smoke; no native routine execution",
+    "batch_status": "validation_only_blocked_replay",
+    "execute": false,
+    "completed_matches": 0,
+    "trading_dispatches": 0,
+    "validated_jobs": 6,
+    "track_statuses": [
+      {
+        "track_id": "5m",
+        "validation_status": "validation_passed"
+      },
+      {
+        "track_id": "15m",
+        "validation_status": "validation_passed"
+      },
+      {
+        "track_id": "1h",
+        "validation_status": "validation_passed"
+      }
+    ],
+    "cached_glob_calls": 3,
+    "cached_read_calls": 3,
+    "competitor_launches": 0,
+    "reviews_performed": 0,
+    "filesystem_trading_writes": 0
+  }
+}

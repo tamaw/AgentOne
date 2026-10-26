@@ -1,0 +1,2 @@
+STOPPED: stopped after repeated Haskell generation errors
+Artifacts: /home/tama/source/AgentOne/artifacts/battleships/battleships-1792363073

@@ -1,0 +1,5 @@
+{
+  "code_ref": "/workspace/competition/daily_491a334aba93_m1/round-0/strategy-v1.hs#sha256=7eb5f725e9185e607743fa170a1522ee2c217607d1f677832bbe085228fa9dd1",
+  "approach": "Public-close-only long/cash trend filter: 20-bar log momentum divided by 20-return sample volatility times sqrt(20) must exceed 0.5; close must exceed SMA20; 7-bar log momentum must be positive. Eligible exposure=min(0.5,0.01/daily volatility); otherwise intentional cash hold. Orders reference last observed close with stated fee and slippage; no future fill is observed. No empirical performance claim.",
+  "changes": "Initial source version v1; parent=none; effective round=0; exact SHA256 is in code_ref. Hypothesis: positive multi-horizon trends may persist, while noisy/negative trends do not justify round-trip costs. Actual initial parameters: lookbacks 20 and 7, score threshold 0.5, volatility budget 0.01, exposure cap 0.5. No prior settled-round tips supplied, so none adopted or rejected. This is initial implementation, not a tested improvement; no optimization or backtest performed."
+}

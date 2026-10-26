@@ -1,0 +1,52 @@
+{
+  "round": 1,
+  "decision_t": 66,
+  "fill_t": 67,
+  "mark_t": 73,
+  "fill_close": 120.80676369666253,
+  "mark_close": 123.61368724858983,
+  "agents": {
+    "agent-one": {
+      "cash": 116.58421319510609,
+      "units": 7.3733448024,
+      "equity": 1028.0305515749951,
+      "round_return": 0.043083174686589794,
+      "cumulative_return": 0.028030551574995115,
+      "max_drawdown": 0.014430894368627378,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/paper_be01d1611e99/agent-one/round-1/Strategy.hs; unchanged trading logic from /workspace/paper_be01d1611e99/agent-one/round-0/Strategy.hs; public inputs and submission preserved in /workspace/paper_be01d1611e99/agent-one/round-1",
+        "approach": "Retain the original long-only 20-/40-bar momentum heuristic: hold the existing position while both trailing log returns are positive, liquidate otherwise. Both signals remain positive at t=66, so submit no orders and retain 7.3733448024 units and 116.58421319510609 cash. Do not top up existing holdings. Volume is unused; there is no established predictive relationship. Avoiding unnecessary turnover also avoids additional fees and slippage. This is a heuristic, not a validated forecast.",
+        "changes": "No trading-rule or parameter changes from round 0; only the manifest is updated for this round. Public authoritative round-0 settlement reports equity 985.5691056313726, return -1.4430894368627378%, versus benchmark equity 983.6646632489777. The slightly smaller loss primarily reflects retained cash, not evidence of forecasting skill or self-improvement. The new short-term decline does not overturn the original positive 20-/40-bar trend rule. Preserve the original code and this round's executable source and inputs for review."
+      }
+    },
+    "agent-two": {
+      "cash": 109.51688699881703,
+      "units": 7.43233156,
+      "equity": 1028.2547959844808,
+      "round_return": 0.04343292770616694,
+      "cumulative_return": 0.02825479598448078,
+      "max_drawdown": 0.01454634152197309,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/artifacts/paper_be01d1611e99/round-1/Strategy.hs",
+        "approach": "Apply the prior 20-bar SMA / 10-bar momentum long-only filter to public closes only. At t=66, close=117.8549105900, SMA20=117.1864755978, 10-bar return=0.578398%, and 7-bar return=-2.527654%. Sell existing units only when close is below SMA20 and 10-bar momentum is negative; otherwise retain the position without adding exposure. Current cash=109.51688699881703 and units=7.43233156. The joint bearish condition does not hold: submit no trade and avoid turnover costs. Avoiding a new buy also avoids infeasibility from an unknown next-close fill. No future prices or competitor submissions were used.",
+        "changes": "Reused the filter definition preserved in /workspace/pt-v3-dryrun-0ecd98594047-round0.hs; this is not the current competition's round-0 strategy artifact. Adapted its cash-only entry example into an exit/retain rule for this round's existing position, with no additional buying. Authoritative round-0 evidence reports equity 985.4536584780269 and a -1.454634152197309% round return. The new seven bars soften short-term momentum but one adverse settlement does not establish that a new strategy improves outcomes. No optimization, validated self-improvement, or performance guarantee is claimed."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 8.346403712194963,
+    "entry_price": 119.69238889575337,
+    "entry_close": 119.63257260944864,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1031.7297381297374,
+  "winner": "agent-two"
+}

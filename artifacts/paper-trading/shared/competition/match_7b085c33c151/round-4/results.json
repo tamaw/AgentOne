@@ -1,0 +1,60 @@
+{
+  "round": 4,
+  "decision_t": 87,
+  "fill_t": 88,
+  "mark_t": 94,
+  "fill_close": 127.03731274974612,
+  "mark_close": 130.0166149210192,
+  "agents": {
+    "agent-one": {
+      "cash": 970.4173722340736,
+      "units": 0,
+      "equity": 970.4173722340736,
+      "round_return": 0,
+      "cumulative_return": -0.029582627765926416,
+      "max_drawdown": 0.029582627765926416,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/competition/agent-one/TrendDecision.hs",
+        "approach": "Long-only public-close trend: last close above 20-bar mean and 10-bar mean above 20-bar mean. Target 85 percent marked equity when bullish, cash otherwise; a 5 percent equity no-rebalance band limits turnover. Buys retain at least 15 percent of cash as a next-close execution buffer, not a guarantee.",
+        "changes": "Round 4: retain the round-2 portfolio-aware trend strategy and turnover band unchanged; refresh signals from the current public bars and use supplied current cash and units. Uses only public bars and own holdings. No verified improvement claimed."
+      }
+    },
+    "agent-two": {
+      "cash": 975.1341009036234,
+      "units": 0,
+      "equity": 975.1341009036234,
+      "round_return": 0.004441426343579106,
+      "cumulative_return": -0.024865899096376553,
+      "max_drawdown": 0.029177734680499726,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "sell",
+          "quantity": 6.5046126199,
+          "price": 126.97379409337125,
+          "notional": 825.9153434563267,
+          "fee": 0.8259153434563267
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/strategies/agent-two/trend-hold-v1.hs",
+        "approach": "Independent long-only trend persistence with a two-condition downside exit: sell existing units only when the public close is below its 20-bar mean and 20-bar momentum is negative; otherwise retain the portfolio without trading.",
+        "changes": "Competition-native next-close decision using only published index bars and current holdings. No offline AAPL performance assumptions, no new buys, and no improvement claim."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 8.455199327399143,
+    "entry_price": 118.15227061102253,
+    "entry_close": 118.09322399902302,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1099.316395030915,
+  "winner": "agent-two"
+}

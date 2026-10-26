@@ -1,0 +1,52 @@
+{
+  "round": 0,
+  "decision_t": 59,
+  "fill_t": 60,
+  "mark_t": 66,
+  "fill_close": 77.15535916479787,
+  "mark_close": 80.54711462404424,
+  "agents": {
+    "agent-one": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/match_811fe8175c96/Strategy.hs",
+        "approach": "Independent long-only trend/regime policy. Require close>SMA20, SMA10>SMA20>SMA40 and positive 21-bar momentum before buying. Favor cash when medium/long trend confirmation is absent; a short rebound alone is not sufficient after the observed large decline. A bullish regime would target at most 85% equity, reserving 15% for next-close price uncertainty; no leverage.",
+        "changes": "Initial round: deliberate all-cash hold. Recent rebound considered but does not satisfy trend confirmation. Zero units avoids downside and execution costs while the signal is unconfirmed; it risks missing a continuing rebound. No peer submissions inspected or coordination used."
+      }
+    },
+    "agent-two": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/competition-agent-two-r0.hs",
+        "approach": "Independent cost-aware dual-horizon momentum: require positive 7-bar and 21-bar returns before initiating a long. Current 7-bar return +8.1433%, 21-bar return -3.4806%; retain 100% cash. No leverage or fill-price feasibility risk on this hold.",
+        "changes": "Initial strategy. Considered a faster rebound-only entry, but rejected it: six overlapping historical rebound signals averaged -3.064% after estimated round-trip costs; this tiny dependent sample is not proof. Recent rebound has slowed and does not yet overcome the broader decline. No peer submissions inspected; no strategy coordination."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 12.941443847007612,
+    "entry_price": 77.19393684438026,
+    "entry_close": 77.15535916479787,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1042.3959609455542,
+  "winner": null
+}

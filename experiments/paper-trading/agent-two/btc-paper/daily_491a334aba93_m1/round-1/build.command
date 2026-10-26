@@ -1,0 +1,1 @@
+ghc -O2 -outputdir /workspace/btc-paper/daily_491a334aba93_m1/round-1/build -o /workspace/btc-paper/daily_491a334aba93_m1/round-1/strategy-v2 /workspace/btc-paper/daily_491a334aba93_m1/round-1/Strategy.hs

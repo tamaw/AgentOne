@@ -1,0 +1,9 @@
+{
+"hypothesis":"Weekly-only decision cadence reduces costly dual-momentum churn, but can delay exits.",
+"public_basket":{"initial_cash":500000,"candidate_profit":19512.8795551995,"candidate_return_pct":3.9025759110,"baseline_return_pct":-13.9888858035,"buy_hold_return_pct":207.4562290698,"candidate_drawdown_pct":27.2831526556,"baseline_drawdown_pct":20.8860265492,"buy_hold_drawdown_pct":49.9044974752,"candidate_fills":656,"candidate_turnover_initial_equity":125.7668701159},
+"already_viewed_AAPL":{"candidate_return_pct":28.0254677734,"baseline_return_pct":16.8722646847,"buy_hold_return_pct":35.0209963545,"candidate_drawdown_pct":7.9772055428},
+"assessment":"Cadence change merits independent validation for cost reduction, not automatic adoption: positive but small basket profit, increased drawdown versus baseline and extreme opportunity cost versus buy-and-hold. AAPL improvement is already-viewed evidence, not confirmation.",
+"failures":"Zero simulation failures. Lower decision frequency does not guarantee lower risk.",
+"ledger_reason_caveat":"Inherited signal_at_next_open reason text is used even for public close fills; actual fill reference is cl(t) for public data and op(t) only for prior AAPL, as frozen source/plan specify.",
+"provenance_and_limitations":"See task plan.json and data/provenance.json; source in Main.hs dispatch cycle=2 and common/Engine.hs. Shared dependent samples and correlated folds, no prospective evidence. summary.csv preserves annual blocks and individual symbols."
+}

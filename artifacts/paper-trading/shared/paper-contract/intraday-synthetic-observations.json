@@ -1,0 +1,428 @@
+{
+  "label": "SYNTHETIC IN-MEMORY ACCOUNTING AND VALIDATION OBSERVATIONS ONLY",
+  "runtime": "Node.js; native QuickJS not certified",
+  "legacy_source_available": false,
+  "legacy_regression_equivalence_verified": false,
+  "independent_replay": false,
+  "competitor_launches": 0,
+  "orders_placed": 0,
+  "filesystem_artifact_writes": 0,
+  "canonical_api_saves": 0,
+  "schemas": [
+    {
+      "name": "paper-trading-batch",
+      "flat": true,
+      "all_properties_described": true,
+      "costs": true
+    },
+    {
+      "name": "paper-trading-match",
+      "flat": true,
+      "all_properties_described": true,
+      "run_id_max": 160,
+      "costs": true
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "glob",
+      "args": {
+        "path": "/shared/market/",
+        "pattern": "nested/synthetic-fixture"
+      }
+    },
+    {
+      "tool": "readFile",
+      "args": {
+        "file_path": "/shared/market/nested/synthetic-fixture",
+        "offset": 0,
+        "limit": 10000
+      }
+    },
+    {
+      "tool": "glob",
+      "args": {
+        "path": "/shared/market/",
+        "pattern": "nested/synthetic-fixture"
+      }
+    },
+    {
+      "tool": "readFile",
+      "args": {
+        "file_path": "/shared/market/nested/synthetic-fixture",
+        "offset": 0,
+        "limit": 10000
+      }
+    },
+    {
+      "tool": "glob",
+      "args": {
+        "path": "/shared/market/",
+        "pattern": "nested/synthetic-fixture"
+      }
+    },
+    {
+      "tool": "glob",
+      "args": {
+        "path": "/shared/market/",
+        "pattern": "nested/synthetic-fixture"
+      }
+    },
+    {
+      "tool": "readFile",
+      "args": {
+        "file_path": "/shared/market/nested/synthetic-fixture",
+        "offset": 0,
+        "limit": 10000
+      }
+    },
+    {
+      "tool": "glob",
+      "args": {
+        "path": "/shared/market/",
+        "pattern": "nested/synthetic-fixture"
+      }
+    },
+    {
+      "tool": "readFile",
+      "args": {
+        "file_path": "/shared/market/nested/synthetic-fixture",
+        "offset": 0,
+        "limit": 10000
+      }
+    },
+    {
+      "tool": "glob",
+      "args": {
+        "path": "/shared/market/",
+        "pattern": "nested/synthetic-fixture"
+      }
+    },
+    {
+      "tool": "readFile",
+      "args": {
+        "file_path": "/shared/market/nested/synthetic-fixture",
+        "offset": 0,
+        "limit": 10000
+      }
+    }
+  ],
+  "observations": [
+    {
+      "label": "validation-only preflight",
+      "status": "validation_passed_execution_blocked",
+      "passed": true,
+      "errors": [],
+      "execute": false,
+      "engine_state": null
+    },
+    {
+      "label": "overspend rejected atomically",
+      "rejected": true,
+      "reason": "insufficient_cash"
+    },
+    {
+      "label": "oversell rejected",
+      "rejected": true,
+      "reason": "insufficient_position"
+    },
+    {
+      "label": "end-boundary order forbidden",
+      "rejected": true,
+      "reason": "order_timestamp_outside_round_or_duplicate"
+    },
+    {
+      "label": "synthetic two-round accounting only",
+      "positions_carried": 2,
+      "initial_public_history": 10,
+      "no_future_initial_history": true,
+      "no_peer_account_in_public": true,
+      "rejected_input_state_not_mutated": true,
+      "results": [
+        {
+          "batch_id": "synthetic-intraday",
+          "run_id": "r_b18_synthetic-intraday_t2_5m_m1",
+          "track_id": "5m",
+          "match_index": 1,
+          "agent": "agent-one",
+          "initial_capital": 1000,
+          "cash": 844.5724225,
+          "units": 1.5,
+          "mark_close": "2025-01-01T01:20:00Z",
+          "mark_price": 140,
+          "equity": 1054.5724225,
+          "pnl": 54.5724224999999,
+          "return_fraction": 0.05457242249999994,
+          "realized_pnl": 9.820005000000009,
+          "unrealized_pnl": 44.75241750000001,
+          "fees": 0.2850775,
+          "slippage_cost": 0.14249999999998408,
+          "max_marked_drawdown": 0.00033010999999999056,
+          "forced_liquidation": false,
+          "exit_fee": 0,
+          "trades_applied": 2
+        },
+        {
+          "batch_id": "synthetic-intraday",
+          "run_id": "r_b18_synthetic-intraday_t2_5m_m1",
+          "track_id": "5m",
+          "match_index": 1,
+          "agent": "agent-two",
+          "initial_capital": 1000,
+          "cash": 1000,
+          "units": 0,
+          "mark_close": "2025-01-01T01:20:00Z",
+          "mark_price": 140,
+          "equity": 1000,
+          "pnl": 0,
+          "return_fraction": 0,
+          "realized_pnl": 0,
+          "unrealized_pnl": 0,
+          "fees": 0,
+          "slippage_cost": 0,
+          "max_marked_drawdown": 0,
+          "forced_liquidation": false,
+          "exit_fee": 0,
+          "trades_applied": 0
+        }
+      ],
+      "expected_equity": 1054.5724225,
+      "equity_absolute_error": 0,
+      "pnl_accounting_identity_error": 1.1368683772161603e-13,
+      "no_forced_liquidation": true
+    },
+    {
+      "label": "next match reset",
+      "cash": 1000,
+      "units": 0,
+      "namespaces_distinct": true
+    },
+    {
+      "label": "injective legacy collision pair",
+      "run_ids": [
+        "r_b3_a_b_t1_c_m1",
+        "r_b1_a_t3_b_c_m1"
+      ],
+      "distinct": true
+    },
+    {
+      "label": "mapped child collection and full-state projections",
+      "status": "validation_only_blocked_replay",
+      "index": 2,
+      "actual_completed_matches": 0,
+      "trading_dispatches": 0,
+      "review": {
+        "enabled": true,
+        "every_matches": 1,
+        "planned_after_matches": [
+          1
+        ],
+        "per_track": [
+          {
+            "track_id": "5m",
+            "planned_after_matches": [
+              1
+            ]
+          }
+        ],
+        "state": "not_run",
+        "performed": false
+      }
+    },
+    {
+      "label": "nan benchmark",
+      "rejected": true,
+      "reason": "child_benchmark_nonfinite_number"
+    },
+    {
+      "label": "negative benchmark units",
+      "rejected": true,
+      "reason": "child_benchmark_invalid_number"
+    },
+    {
+      "label": "incorrect pnl",
+      "rejected": true,
+      "reason": "child_benchmark_arithmetic_mismatch"
+    },
+    {
+      "label": "wrong cost identity",
+      "rejected": true,
+      "reason": "child_benchmark_contract_linkage_mismatch"
+    },
+    {
+      "label": "wrong close linkage",
+      "rejected": true,
+      "reason": "child_benchmark_contract_linkage_mismatch"
+    },
+    {
+      "label": "unknown benchmark field",
+      "rejected": true,
+      "reason": "unsupported_field: child.report.comparators.buy_and_hold.made_up"
+    },
+    {
+      "label": "missing completeness reason",
+      "blocked": true,
+      "read_prevented": true,
+      "codes": [
+        "glob_truncated",
+        "missing_decision_start_bar",
+        "missing_first_fill_bar",
+        "missing_next_fill_bar",
+        "insufficient_contiguous_coverage"
+      ]
+    },
+    {
+      "label": "non-null truncation reason",
+      "blocked": true,
+      "read_prevented": true,
+      "codes": [
+        "glob_truncated",
+        "missing_decision_start_bar",
+        "missing_first_fill_bar",
+        "missing_next_fill_bar",
+        "insufficient_contiguous_coverage"
+      ]
+    },
+    {
+      "label": "truncated exact match",
+      "blocked": true,
+      "read_prevented": true,
+      "codes": [
+        "glob_truncated",
+        "missing_decision_start_bar",
+        "missing_first_fill_bar",
+        "missing_next_fill_bar",
+        "insufficient_contiguous_coverage"
+      ]
+    },
+    {
+      "label": "real tool message retained",
+      "messages": [
+        "Read-only tool call failed: synthetic bridge read denied; no retry or execution attempted."
+      ]
+    },
+    {
+      "label": "exact selected track membership",
+      "blocked": true,
+      "codes": [
+        "selected_track_mismatch",
+        "insufficient_contiguous_coverage"
+      ]
+    },
+    {
+      "label": "nonvalidation pre-dispatch replay gate",
+      "require_matched_replay": true,
+      "execute": false,
+      "engine_state": null,
+      "blockers": [
+        "namespace_reservation_unavailable",
+        "independent_replay_unavailable"
+      ]
+    },
+    {
+      "label": "nonvalidation pre-dispatch replay gate",
+      "require_matched_replay": false,
+      "execute": false,
+      "engine_state": null,
+      "blockers": [
+        "namespace_reservation_unavailable",
+        "replay_gate_bypass_forbidden"
+      ]
+    },
+    {
+      "label": "incomplete bar",
+      "rejected": true,
+      "reason": "incomplete_future_or_noncontiguous_bar"
+    },
+    {
+      "label": "daily relabel",
+      "rejected": true,
+      "reason": "incomplete_future_or_noncontiguous_bar"
+    },
+    {
+      "label": "missing next fill",
+      "rejected": true,
+      "reason": "insufficient_contiguous_coverage"
+    },
+    {
+      "label": "review cadence routing only; no agents invoked",
+      "cadence_due": {
+        "review_due": true,
+        "execute_review": false,
+        "agents": [
+          "agent-one",
+          "agent-two"
+        ],
+        "track_id": "5m",
+        "after_match": 1,
+        "scope": "same_track_between_matches",
+        "evidence_required": true,
+        "independent_replay_available": false
+      },
+      "disabled": {
+        "review_due": false,
+        "execute_review": false,
+        "agents": [
+          "agent-one",
+          "agent-two"
+        ],
+        "track_id": "5m",
+        "after_match": 1,
+        "scope": "same_track_between_matches",
+        "evidence_required": true,
+        "independent_replay_available": false
+      },
+      "last_match_bypass": {
+        "review_due": false,
+        "execute_review": false,
+        "agents": [
+          "agent-one",
+          "agent-two"
+        ],
+        "track_id": "5m",
+        "after_match": 1,
+        "scope": "same_track_between_matches",
+        "evidence_required": true,
+        "independent_replay_available": false
+      }
+    }
+  ],
+  "final_candidate_recheck": {
+    "current_preflight_status": "validation_passed_execution_blocked",
+    "validation_passed": true,
+    "execute": false,
+    "judge_state_not_exposed": true,
+    "additional_observations": [
+      {
+        "label": "exclusive 2MiB",
+        "blocked": true,
+        "codes": [
+          "file_byte_limit",
+          "missing_decision_start_bar",
+          "missing_first_fill_bar",
+          "missing_next_fill_bar",
+          "insufficient_contiguous_coverage"
+        ]
+      },
+      {
+        "label": "exclusive 10000 lines",
+        "blocked": true,
+        "codes": [
+          "file_line_limit",
+          "missing_decision_start_bar",
+          "missing_first_fill_bar",
+          "missing_next_fill_bar",
+          "insufficient_contiguous_coverage"
+        ]
+      },
+      {
+        "label": "old costs",
+        "rejected": true
+      },
+      {
+        "label": "unknown authored setting",
+        "rejected": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+sha256sum /workspace/btc-paper/round-0/Strategy.hs

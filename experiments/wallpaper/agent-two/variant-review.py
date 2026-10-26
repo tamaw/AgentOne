@@ -1,0 +1,8 @@
+import os,subprocess
+from PIL import Image
+p='/workspace/artifacts/wallpaper-challenge/'
+for k in range(4):
+ raw=p+'variant-%d-raw.png'%k;out=p+'variant-%d.png'%k
+ if os.path.exists(raw):
+  subprocess.run(['python3',p+'compose.py',raw,out],check=True)
+  subprocess.run(['python3',p+'image-audit.py',out],check=True)

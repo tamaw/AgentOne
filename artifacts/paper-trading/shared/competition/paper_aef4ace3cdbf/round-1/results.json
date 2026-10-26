@@ -1,0 +1,52 @@
+{
+  "round": 1,
+  "decision_t": 66,
+  "fill_t": 67,
+  "mark_t": 73,
+  "fill_close": 85.12264629302211,
+  "mark_close": 79.20790372685669,
+  "agents": {
+    "agent-one": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/paper_aef4ace3cdbf/agent-one/Submit.hs; /workspace/paper_aef4ace3cdbf/agent-one/StrategyV2.hs mode PeerCostHysteresisV2; preserved peer artifact /workspace/paper_aef4ace3cdbf/agent-one/PeerRevision.hs. SHA256 provenance:\n1377cb898e78ff4158ebe860c3a16f88c8e561f863bbf5185e2346451a593ae8  /workspace/paper_aef4ace3cdbf/agent-one/Submit.hs\n668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  /workspace/paper_aef4ace3cdbf/agent-one/StrategyV2.hs\n9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036  /workspace/paper_aef4ace3cdbf/agent-one/PeerRevision.hs\n9b09773475c1c8a37e7f7fcbd4fb8ddf795322fa6d70e074a67307197b7bf0e1  /workspace/paper_05b62b926174/agent-one/Submit.hs\n668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  /workspace/paper_05b62b926174/agent-one/StrategyV2.hs\n9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036  /workspace/paper_05b62b926174/agent-one/PeerRevision.hs\n668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  /shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/StrategyV2.hs\n9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036  /shared/competition/paper_be01d1611e99/collaboration/agent-two/Revision.hs\n5ead78223514afee4123346e38db41ac67dc4ef9c13ef55a2b85491c6b26927a  /shared/competition/paper_aef4ace3cdbf/round-1/brief.md\ne6be78c615cd110e14232f95f683e4cba38bd541e845274b6d303276c8d6123e  /shared/competition/paper_aef4ace3cdbf/round-1/bars.csv\n",
+        "approach": "Frozen reused strategy for both rounds: require 41 public bars. Enter flat only when 20- and 40-bar returns and close/SMA20-1 are all >0.003; exit held only when all three are < -0.003. Otherwise hold, no topups. Buy floor1e-10[cash/(decision_close*(1+max(0.12,4*sigma40))*(1.0005)*(1.001))], sell held quantity. Sigma40 is sample standard deviation of last 40 log returns. Only supplied public bars inform decisions; volume unused. Unknown next-close fill is not observed. Reserve cannot guarantee feasibility after an arbitrary gap. Long only, no leverage. Only routine settlement counts.",
+        "changes": "No new signal, parameter, sizing, or algorithm revision in this task. Reuse actual own sources /workspace/paper_05b62b926174/agent-one/StrategyV2.hs and Submit.hs; copy StrategyV2.hs and PeerRevision.hs byte-for-byte. Submit.hs retains prior parsing, feature generation, signal and sizing code; changes only artifact root, provenance hashes and manifest text. Preserve prior runner as PriorSubmit.hs.snapshot. Legitimate algorithm sharing previously occurred in paper_be01d1611e99: /shared/competition/paper_be01d1611e99/collaboration/agent-two/Revision.hs RevisionV1 contributed the +/-0.003 triple-condition hysteresis; the reviewed own implementation is /shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/StrategyV2.hs PeerCostHysteresisV2. Own implementation retains original max(0.12,4*sigma40) reserve and 1e-10 quantity precision (peer uses 1e-8). This revision was already present in paper_05b62b926174; it is not a new improvement here. No new peer communication or current peer submissions inspected. No external research price histories or private engine assets consumed. Policy frozen for both new rounds, not tuned to known outcomes. Prior research was mixed/negative and does not demonstrate an anonymous-index forecasting edge; no self-improvement, selection, promotion, or performance claim."
+      }
+    },
+    "agent-two": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/strategies/paper_aef4ace3cdbf/agent-two/Strategy.hs; dependency /workspace/strategies/paper_aef4ace3cdbf/agent-two/Revision.hs; preserved originals /workspace/strategies/paper_aef4ace3cdbf/agent-two/OriginalHarness.hs and /workspace/strategies/paper_aef4ace3cdbf/agent-two/OriginalPeerStrategy.hs",
+        "approach": "Experimental frozen RevisionV1: require 41 closes. When flat, buy only if arithmetic 20/40-bar returns and close/SMA20-1 all exceed 0.003. When long, sell all only if all three are below -0.003; otherwise hold, without topups. Buy units floor to 1e-8 of cash/[decisionClose*(1+max(0.12,4*sampleSD40logreturns))*1.0005*1.001]. Reserve reduces but cannot guarantee next-close feasibility. Only supplied public t,close,volume data and stated account are inputs; volume unused. decision t=66; close=84.214934603472; return20=-0.113078725; return40=-0.214043236; SMA20-distance=-0.006471979; sigma40=0.020643762; cash=1000.000000000000; units=0.000000000000; order=Hold",
+        "changes": "Reused frozen RevisionV1 without signal, sizing or parameter changes from own /workspace/strategies/paper_05b62b926174/agent-two/Strategy.hs and Revision.hs. Original harness SHA256 4271ae8a726cc1181ea6b494c8c9bbf9e0231e4020102f4b8c4c5aee3d5a8ede. Current harness changes only code_ref and manifest provenance for this authorized two-round simulation. Exact original harness and peer source preserved beside current harness as OriginalHarness.hs and OriginalPeerStrategy.hs. Revision.hs is identical to shared /shared/competition/paper_be01d1611e99/collaboration/agent-two/Revision.hs, SHA256 9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036. Actual prior algorithm sharing occurred: shared peer /shared/competition/paper_be01d1611e99/collaboration/agent-one/OriginalStrategy.hs SHA256 b4d9690941b3842d4e1738a536a5748cc61ccd15806759496815dad8a0dfc3aa supplied 20/40 confirmation and max(12%,4*sigma40) reserve; RevisionV1 adds SMA20 consensus and symmetric 0.30% hysteresis, floors units to 1e-8, and does not adopt peer disjunctive exit. No new peer exchange or algorithm revision occurred in this task; old shared source was reviewed and reused. Prior baseline own entry was 10/20 with 90% allocation and exit SMA20/10; these were already revised before paper_05b62b926174. Prior controlled retrospective proxy evidence at /shared/competition/paper_be01d1611e99/collaboration/agent-two/results-summary.json did not establish improvement: heldout mean RevisionV1 return 6.203737806%, own generalized 6.633107558%, buyhold 25.808277224%; historical dependence, survivorship and uncertain adjustments limit transfer. No promotion or self-improvement claimed. No tuning to observed outcomes, no external market data loaded, and no current peer submission or private judge assets accessed. Decisions use only current supplied public bars and authorized cash/units. Reserve cannot guarantee unknown next-close affordability. Only routine settlement counts; no P&L claimed."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 11.313409327072936,
+    "entry_price": 88.30238260807857,
+    "entry_close": 88.2582534813379,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 896.1114368013156,
+  "winner": null
+}

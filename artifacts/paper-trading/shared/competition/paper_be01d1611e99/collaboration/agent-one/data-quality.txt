@@ -1,0 +1,2 @@
+("BTCUSD",4052,"2014-11-28","2025-12-31","excluded post2025 rows",295,"non-daily intervals",[])
+("ETHUSD",2975,"2017-11-09","2025-12-31","excluded post2025 rows",295,"non-daily intervals",[])

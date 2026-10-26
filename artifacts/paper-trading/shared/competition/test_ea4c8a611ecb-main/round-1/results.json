@@ -1,0 +1,52 @@
+{
+  "round": 1,
+  "decision_t": 11,
+  "fill_t": 12,
+  "mark_t": 13,
+  "fill_close": 120,
+  "mark_close": 80,
+  "agents": {
+    "agent-one": {
+      "cash": 393.394,
+      "units": 5,
+      "equity": 793.394,
+      "round_return": -0.23960268124984427,
+      "cumulative_return": -0.20660599999999998,
+      "max_drawdown": 0.23960268124984427,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "handwritten-test",
+        "approach": "deterministic fixture, not a trading agent",
+        "changes": "test fixture"
+      }
+    },
+    "agent-two": {
+      "cash": 876.0388,
+      "units": 1,
+      "equity": 956.0388,
+      "round_return": -0.049699872410487546,
+      "cumulative_return": -0.043961199999999964,
+      "max_drawdown": 0.049699872410487546,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "handwritten-test",
+        "approach": "deterministic fixture, not a trading agent",
+        "changes": "test fixture"
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 8.242582500008243,
+    "entry_price": 121.2,
+    "entry_close": 120,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 10
+  },
+  "benchmark_equity": 659.4066000006594,
+  "winner": "agent-two"
+}

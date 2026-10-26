@@ -1,0 +1,7 @@
+beta=0.604120067953163
+alpha=1.7990086714420888
+variance=1.3500315514682125e-3
+forecast_gross_log_edge=-3.467495108499019e-2
+allocation=0.0
+planned_order=Just ("sell",7.2358441286)
+source_sha256=b15b05daefaef9f17d2b6a767c623ad7873a24f837c4bbce81df7f541fc1c784

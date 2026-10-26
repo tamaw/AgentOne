@@ -1,0 +1,3 @@
+v3-match3-metadata#sha256=4f3b4201378f02936f0397d6f1189964ca439664431509e6b535e5cd9c56784f
+Public n=60 close=77.30880040 r5=0.05013834 r10=-0.00173587; header-only cash hold.
+orders.csv and manifest.json exact-readback checked; four peer tips explicitly adopted with reasons. No new performance testing or independent verification claimed.

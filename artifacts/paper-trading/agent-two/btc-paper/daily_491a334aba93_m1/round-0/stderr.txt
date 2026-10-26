@@ -1,0 +1,7 @@
+
+/workspace/btc-paper/daily_491a334aba93_m1/round-0/Strategy.hs:60:178: warning: [GHC-53633] [-Woverlapping-patterns]
+    Pattern match is redundant
+    In a case alternative: _ -> ...
+   |
+60 |   unless (head ol == "side,quantity" && all (\r -> case split r of ["buy",q] -> case (readMaybe q :: Maybe Double) of Just n -> n>0 && not(isNaN n || isInfinite n); _ -> False; _ -> False) (tail ol)) (fail "Order readback invalid; not repaired")
+   |                                                                                                                                                                                  ^^^^^^^^^^

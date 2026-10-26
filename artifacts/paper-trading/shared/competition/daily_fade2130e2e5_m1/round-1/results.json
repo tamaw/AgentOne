@@ -1,0 +1,52 @@
+{
+  "round": 1,
+  "decision_t": 66,
+  "fill_t": 67,
+  "mark_t": 73,
+  "fill_close": 128.97940932861334,
+  "mark_close": 131.77340816392098,
+  "agents": {
+    "agent-one": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/btc-round1/Strategy-r1-v1.hs#sha256=1e5339146c9c3f235f10e925218654cf872b56fd98ef157f68bf137d4c7b7758",
+        "approach": "Unchanged parent long-only trend gate: positive seven-bar log momentum below 0.10, price>SMA20>SMA28, price/SMA20-1<0.10, and last-seven/prior-twenty mean volume ratio<2.0. All gates required. Entry budget remains 800 index-cash including buy fee and slippage estimated at decision close; arbitrary next-close gaps can still cause infeasibility. Current cash=1000 and units=0. Uses only supplied public observations and settled-round feedback. No real trading.",
+        "changes": "Version r1-v1; source sha256=1e5339146c9c3f235f10e925218654cf872b56fd98ef157f68bf137d4c7b7758; parent=r0-v1, source /workspace/btc-daily-fade2130e2e5/Strategy-r0-v1.hs#sha256=095d4809cdb05b195aaf694f0f6362e64858d3cbac953e9484c1dcbcfccd1c6e; effective round=1. Hypothesis remains that avoiding unusually extended high-volume jumps may reduce reversal exposure over the delayed mark horizon. Actual rule/parameter changes: none; preserve seven-bar momentum 0..0.10, SMA20/SMA28, extension cap 0.10, volume ratio cap 2.0, and 800 decision-price cash budget. Edits update provenance and settled-feedback attribution only. Adopt settled coaching and both agents' tips on causal decision/fill/mark separation, net-versus-gross accounting, cash and cost-matched benchmarks, exposure awareness, and exact parent/version retention as evaluation principles. Reject using one settled outcome to retune gates or claim filter skill; decline adopting peer multi-horizon momentum and volatility sizing because no matched independent evidence supports replacing existing gates. Chronological one-change ablations remain a proposed later authorized analysis, not performed here. No performance test or independent matched replay was run; this source edit is not a tested improvement. Initial orchestration module compilation failed before strategy execution; archived separately. This strategy is built and executed once, without automatic retry, repair, or resubmission."
+      }
+    },
+    "agent-two": {
+      "cash": 254.3937364649581,
+      "units": 5.69166588,
+      "equity": 1004.4039476028606,
+      "round_return": 0.005130798485193091,
+      "cumulative_return": 0.004403947602860626,
+      "max_drawdown": 0.0007231405936698821,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/btc-paper/round-1/Strategy.hs#sha256=6ddde51af235b33069b36508248a67605c63f2400baa8784dc44ee70720b1a3c",
+        "approach": "Portfolio-aware long-only momentum with unchanged 10/30-bar positive log-momentum and close-above-SMA20 gates. Target exposure min(0.75,0.025/sample volatility of last 20 log returns). Two-percentage-point absolute exposure no-rebalance band; gate failure exits all held units. Buy sizing uses decision close with fee/slippage, floors units to eight decimals and limits cash spend estimate to 80 percent of available cash. Unknown next-close gaps can still affect feasibility; no fill forecast or guaranteed arbitrary-gap budget is claimed. Volume validated, not used. Only supplied public observations and authorized settled feedback; no real trading.",
+        "changes": "Version btc-momentum-v2-portfolio; exact source SHA256=6ddde51af235b33069b36508248a67605c63f2400baa8784dc44ee70720b1a3c; parent=btc-momentum-v1 at /workspace/btc-paper/round-0/Strategy.hs SHA256=6f9bb9823fe23fd83278c03b84145385ed4ca663b00401330bc7a72b3f7aba17; effective round=1. Hypothesis: avoiding small target-exposure adjustments can reduce turnover costs without materially changing the parent momentum exposure. Actual edits: replace initial-capital entry sizing with supplied cash/units and marked decision-price equity; apply a 0.02 absolute exposure rebalance band, full gate-failure exit, portfolio-relative trimming and 80-percent available-cash cap on incremental buys. Momentum horizons 10/30, SMA20, sigma20, risk target 0.025 and exposure cap 0.75 unchanged. Adopt settled round-0 coaching and peer tips on causal timing, cost-aware accounting, exposure-aware comparisons and exact parent/version provenance. Adopt one-change-at-a-time evaluation as a future method, not a completed ablation; portfolio plumbing is required for carry-forward accounting. Reject interpreting the peer cash lead, our benchmark advantage or one settlement as validation of reversal, continuation or volatility sizing; available coaching explicitly lacks quantitative evidence. Do not add the peer extension/volume gates because their predictive value is unverified and simultaneous filter changes would confound attribution. No historical replay, independent comparison or tested improvement is claimed. Successful compilation, execution and file readback establish operational checks only. No automatic retry, repair or resubmission."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 7.633607921981337,
+    "entry_price": 130.86878566612364,
+    "entry_close": 130.80338397413658,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1005.9065324665874,
+  "winner": "agent-two"
+}

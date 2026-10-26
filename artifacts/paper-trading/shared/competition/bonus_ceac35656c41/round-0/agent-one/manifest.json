@@ -1,0 +1,5 @@
+{
+  "code_ref": "/workspace/solo-paper-bonus/Round0.hs",
+  "approach": "Public-close trend filter: buy only when 20-bar return is positive and latest close exceeds its trailing 20-bar mean. Size using 90 percent of initial cash at latest close with multiplicative 5 bp slippage and 10 bp fee; six-decimal units rounded down. The remaining cash provides an approximately 11.1 percent next-close upward-gap buffer, not a guaranteed fill-price bound. Long only; seven-bar evaluation horizon and carried positions acknowledged.",
+  "changes": "Initial round-0 offline strategy authored for this solo paper evaluation from the supplied public bars and rules. No prior strategy or feedback was available; no backtest, private data, peer submissions, baseline files, or infrastructure modifications used. Starting cash 1000 and units zero."
+}

@@ -1,0 +1,5 @@
+{
+  "code_ref": "/workspace/competition-811fe8175c96/agent-two/Strategy.hs",
+  "approach": "Independent public-price trend assessment. Buy 11 units: close exceeds 14- and 30-bar means and 14-bar momentum exceeds 2 percent. Target at most 90 percent of cash at the observed close, rounded to whole units; retain a next-close gap buffer. No leverage. Long-horizon downtrend and short-term whipsaw remain risks.",
+  "changes": "Move from the prior settled cash position to a buffered long allocation after medium-term recovery confirmation. Considered staying in cash because the 30-bar trend remains weak and fading the latest jump because the range may persist; prefer the positive 14-bar trend. No fitted parameters or peer-submission access. Settlement and fill feasibility remain unverified."
+}

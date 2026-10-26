@@ -1,0 +1,2 @@
+/workspace/paper_d9fd846d0b12-agent-two/round-0/strategy /shared/competition/paper_d9fd846d0b12/round-0/bars.csv /shared/competition/paper_d9fd846d0b12/round-0/agent-two/orders.csv 1000 0
+exit_status=ExitSuccess

@@ -1,0 +1,107 @@
+{
+  "candidate_only": true,
+  "parent_approval_required": true,
+  "canonical_save_permitted": false,
+  "engine_cutover_permitted": false,
+  "scope": "Additive guard/configuration proposal only; ORIGINAL executable definitions and source remain authoritative.",
+  "base_revisions": {
+    "routine_35c9290bc476": "643697783a4c",
+    "routine_747c806a6429": "65b474cdf302"
+  },
+  "match": {
+    "id": "routine_35c9290bc476",
+    "original_entry": "node_b50bd6aa3ba4",
+    "guard_code": "canonical-match-additive-guard-candidate.js",
+    "new_guard_output": "paper_preflight",
+    "new_condition": {
+      "output_key": "paper_execute",
+      "expression": "paper_preflight.execute",
+      "true_target": "node_b50bd6aa3ba4",
+      "false_target": "new_readonly_summary"
+    },
+    "readonly_summary_code": "canonical-guard-summary-candidate.js",
+    "readonly_exit": [
+      {
+        "kind": "eval",
+        "output_key": "report",
+        "expression": "summary.report"
+      },
+      {
+        "kind": "eval",
+        "output_key": "status",
+        "expression": "summary.status"
+      }
+    ],
+    "preserve_all_original_nodes_and_internal_edges": true,
+    "preserve_A2A": [
+      "node_91a4fb46a683",
+      "node_1038e2ad7a4c",
+      "node_d1be15040ee4",
+      "node_29877d6044b7"
+    ]
+  },
+  "batch": {
+    "id": "routine_747c806a6429",
+    "original_entry": "node_0a53eccb6e3a",
+    "guard_code": "canonical-batch-additive-guard-candidate.js",
+    "new_guard_output": "paper_preflight",
+    "new_condition": {
+      "output_key": "paper_execute",
+      "expression": "paper_preflight.execute",
+      "true_target": "node_0a53eccb6e3a",
+      "false_target": "new_readonly_summary"
+    },
+    "preserve_nested_match": "node_81ac4b14b121",
+    "preserve_A2A_reviews": [
+      "node_bcbc22fed00b",
+      "node_542f283f77a9"
+    ],
+    "validation_guard_invokes_no_routines_or_A2A": true
+  },
+  "runtime": {
+    "code": {
+      "language": "javascript",
+      "timeout": 60,
+      "retry": {
+        "max_retries": 0
+      },
+      "cache": false,
+      "filesystem": {
+        "paths": [
+          "/artifacts/trading/market/",
+          "/shared/market/"
+        ],
+        "access": "read"
+      }
+    },
+    "eval_condition": {
+      "timeout": 60,
+      "retry": {
+        "max_retries": 0
+      }
+    }
+  },
+  "schema_files": {
+    "batch": "input-schema.json",
+    "match": "match-input-schema.json"
+  },
+  "pending_before_any_engine_cutover": [
+    "Parent approval and independent review of exact delivered hashes.",
+    "Trusted replay provider/receipts; no input boolean is proof. Required replay is currently unavailable.",
+    "Exclusive namespace reservation and per-agent scoped I/O policy; current namespaces remain unreserved and cannot be reused by future writers.",
+    "Native QuickJS memory/fault/CSV integration validation.",
+    "Adapt native batch authoritative publication to /batch/track/match-N/judge journals; original old-path publication is not a candidate completion adapter.",
+    "Map every match-schema field from job and child_report/child_status outputs, not raw child text.",
+    "Preserve both real review nodes; gate enabled/cadence per track between completed matches and retain evidence/advancement guards.",
+    "Actual completion reporting must link authoritative settlement/dispatch and segregate tracks, never pool raw PnL.",
+    "Original daily-engine outputs do not become approved timestamped results; successful-path bridging is pending, not authorized here."
+  ],
+  "uncutover_engine_files": [
+    "legacy-derived-intraday-engine-candidate.txt",
+    "legacy-derived-prepare-candidate.js",
+    "legacy-derived-settle-candidate.js",
+    "legacy-derived-finalize-candidate.js"
+  ],
+  "source_relay": "legacy-engine-v3.2.txt",
+  "regression_observations": "legacy-derived-regression-observations.json"
+}

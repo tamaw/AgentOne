@@ -1,0 +1,12 @@
+Public-close momentum: 7 bars -3.1544%; 14 bars -0.6923%; 28 bars 3.1917%.
+Confirmed both own submission files absent before writing.
+Preserved executable source: /workspace/paper_33935e6cb45b_m1-agent-two/StrategyV1.hs
+Submitted and read back /shared/competition/paper_33935e6cb45b_m1/round-0/agent-two/orders.csv:
+side,quantity
+Submitted and read back /shared/competition/paper_33935e6cb45b_m1/round-0/agent-two/manifest.json:
+{
+  "code_ref": "/workspace/paper_33935e6cb45b_m1-agent-two/StrategyV1.hs",
+  "approach": "Cash-only defensive decision: require positive 14- and 28-bar close momentum before considering long exposure. Both are negative at the decision bar; the small 7-bar rebound is not confirmation. Preserve 1000 cash and zero units; no execution costs. This is a public-data heuristic, not a forecast or independently verified performance result.",
+  "changes": "Original version agent-two-v1; parent: none; effective round: 0. Uses only the supplied public bars and brief. No prior improvements or own handoff were requested by this brief. No peer tips used and no peer submissions accessed. No offline performance claims or private future data. Cash-only submission selected because medium-term momentum is negative; no code promotion or freeze implied."
+}
+PAPER submission complete: no trades; cash 1000, units 0. Future settlement remains unknown.

@@ -1,0 +1,9 @@
+{
+"hypothesis":"Fixed 10%-annualized-volatility sizing, updated at entry/weekly with immediate baseline exits, reduces drawdown without excessive resizing drag.",
+"observed":"284 evaluation days: return 11.2201%, baseline 16.8723%, buy-and-hold 35.0210%; close-marked max drawdown 5.1245%, baseline 7.4021%, buy-and-hold 18.9206%.",
+"pnl":"11220.1248 versus baseline 16872.2647 and buy-and-hold 35020.9964, on initial cash 100000.",
+"trading":"56 fills (32 buys, 24 sells) versus baseline 32; 228 valid no-trade days (132 cash, 96 invested); fees 1930.2626 and slippage 965.1348. Mean daily closing exposure 27.6206% versus baseline 47.8873%.",
+"learned":"Observed drawdown declined by 2.2775 percentage points versus baseline, but return declined by 5.6521 points and fills increased 75%. Risk reduction coincided with less exposure, not demonstrated forecasting skill; the benign-turnover part of the hypothesis was not supported. The variant lost 1.2534% in 2016 and gained 12.6319% in the partial 2017 window.",
+"failures":"No invalid-bar or infeasible-order failures; lower net return and increased turnover are substantive strategy shortcomings, not hidden execution errors.",
+"further_validation":"Not worth promoting as a return enhancement. Only potentially worth independent risk-budget validation if lower drawdown is the explicit objective; no tuning or third cycle authorized or performed."
+}

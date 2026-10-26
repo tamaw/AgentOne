@@ -1,0 +1,7 @@
+{
+  "superseded": true,
+  "current_plan": "canonical-additive-guards-candidate.json",
+  "preferred_uncutover_engine": "legacy-derived-intraday-engine-candidate.txt",
+  "canonical_save_permitted": false,
+  "engine_cutover_permitted": false
+}

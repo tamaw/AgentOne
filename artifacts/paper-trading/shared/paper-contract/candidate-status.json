@@ -1,0 +1,116 @@
+{
+  "canonical_saves": 0,
+  "canonical_execution": 0,
+  "canonical_definitions": "Preserve restored originals; no production replacement approved.",
+  "parent_reported_restored_revisions": {
+    "match": "643697783a4c",
+    "batch": "65b474cdf302"
+  },
+  "source_relay_available": true,
+  "source_relay": "legacy-engine-v3.2.txt",
+  "accounting_test_source_available": false,
+  "parent_reported_baseline_assertions": 203,
+  "parent_203_assertions_independently_reproduced": false,
+  "preferred_uncutover_candidate": "legacy-derived-intraday-engine-candidate.txt",
+  "older_independent_kernel": "intraday-engine-candidate.js is superseded as an integration target; it is not the legacy protocol adapter",
+  "production_cutover_approved": false,
+  "trusted_replay_available": false,
+  "namespace_reservation_and_scope_available": false,
+  "native_QuickJS_certified": false,
+  "independent_re_review_pending": true,
+  "engineering_supported": [
+    "Exact long-only source relay preserved.",
+    "simulate, parseOrders and submission/manifest functions are byte-identical to relayed 3.2.",
+    "180 same-price simulation comparisons had zero mismatches.",
+    "Two-round memory settlement matches baseline within <1e-10; small rounding difference is from deliberate removal of indexed-price scaling.",
+    "Deterministic UTC OHLCV windows, per-track overrides, no-future public bars, same-file mutation pinning.",
+    "Atomic per-agent submission rejection, carried round positions, reset match capital, mark-to-market without forced liquidation.",
+    "Immutable private accounting journal and per-agent snapshots recovered a synthetic pointer-loss fault without applying orders twice.",
+    "Strict complete glob/raw readFile signatures and cached six-job/three-track read-only guard."
+  ],
+  "production_pending": [
+    "Parent approval and independent review of exact delivered hashes.",
+    "Trusted replay provider/receipts; no input boolean is proof. Required replay is currently unavailable.",
+    "Exclusive namespace reservation and per-agent scoped I/O policy; current namespaces remain unreserved and cannot be reused by future writers.",
+    "Native QuickJS memory/fault/CSV integration validation.",
+    "Adapt native batch authoritative publication to /batch/track/match-N/judge journals; original old-path publication is not a candidate completion adapter.",
+    "Map every match-schema field from job and child_report/child_status outputs, not raw child text.",
+    "Preserve both real review nodes; gate enabled/cadence per track between completed matches and retain evidence/advancement guards.",
+    "Actual completion reporting must link authoritative settlement/dispatch and segregate tracks, never pool raw PnL.",
+    "Original daily-engine outputs do not become approved timestamped results; successful-path bridging is pending, not authorized here."
+  ],
+  "files": [
+    {
+      "name": "legacy-engine-v3.2.txt",
+      "sha256": "e8220d5f75c291ebbdb51df2c6fd76e048bc43fd6667bb1f64fba78e337b2447"
+    },
+    {
+      "name": "legacy-derived-intraday-engine-candidate.txt",
+      "sha256": "7cbcaf5d783ff76619c417384a4ec8314e74f110de7f2814803c49aef19b873d"
+    },
+    {
+      "name": "legacy-derived-validate-candidate.js",
+      "sha256": "6d98bf08920e7e7a758e069c6b02cb4be8c5da1ad8b850af27e011a375bad6da"
+    },
+    {
+      "name": "legacy-derived-prepare-candidate.js",
+      "sha256": "604a82ff40623818043c246021782d25893ee228df9b9af8386dfe3377d053ec"
+    },
+    {
+      "name": "legacy-derived-settle-candidate.js",
+      "sha256": "fad9a3480c9b70db8a348e758b71535e262f43faba9e9b025c319f72de4e9314"
+    },
+    {
+      "name": "legacy-derived-finalize-candidate.js",
+      "sha256": "7e53c2fa4f0b23e6d2c4fe32fa0e13fc5a77409a78f5018e8d1d2bb563d4846e"
+    },
+    {
+      "name": "canonical-match-additive-guard-candidate.js",
+      "sha256": "4ed24033a72ce1355636a78e1c2c31116a28bae288a81e365df47208ef7ec804"
+    },
+    {
+      "name": "canonical-batch-additive-guard-candidate.js",
+      "sha256": "59b1c86e5977af3a1954549b6b1439c3efb156e6c2ee0cb3285c536fc4b03e7b"
+    },
+    {
+      "name": "canonical-guard-summary-candidate.js",
+      "sha256": "a8daa5dc7c7480927181d9cf525135bd3953e2a054f022ec8fae86d72f73fcae"
+    },
+    {
+      "name": "canonical-additive-guards-candidate.json",
+      "sha256": "bc924fd33285d1c354272a160d78c2537a6280fb630fc1c26ffa7d587da702af"
+    },
+    {
+      "name": "legacy-derived-regression-observations.json",
+      "sha256": "4ae657a8df19c0b576ae5b5d683236d5455b198a5043e170b1e7dfa6f3470663"
+    },
+    {
+      "name": "input-schema.json",
+      "sha256": "33c6bfd692e8714ec78758f9f253b290be165ab4fbb6fa8fb555a63cc715ab58"
+    },
+    {
+      "name": "match-input-schema.json",
+      "sha256": "25e6f2256c81d1e8a680da180ffdf4ab8680a251c0c0cde77d2ed10e577259a0"
+    },
+    {
+      "name": "validate-match.js",
+      "sha256": "add18c56415337b5cddece868111cfe1408a1fd57359aebc8d8631fb041a5b01"
+    },
+    {
+      "name": "batch-init.js",
+      "sha256": "0c40958d5ce550e3380f28219ef9ecd949c93030e729522d2f31ef3eabeca5f7"
+    },
+    {
+      "name": "batch-next.js",
+      "sha256": "51edb9595e676130e63d917091bf5d0563fd08b85d3403e1f16db724a59581db"
+    },
+    {
+      "name": "batch-collect.js",
+      "sha256": "e08f022df165148fd8066496975ce8f75acac74ced564bb5d1327205e441c88b"
+    },
+    {
+      "name": "batch-report.js",
+      "sha256": "03905c02f551999c749757060efc015532ee8277842300c822b6ab65b28251b6"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+beta=0.7328668135511861
+alpha=1.2163887478628448
+variance=1.9356616368390932e-3
+forecast_gross_log_edge=-5.412866872651101e-2
+allocation=0.0
+planned_order=Nothing
+source_sha256=cb216427fb198c94acf808984fa9efa4fe4bf4a6e4d3b0ae233402dedcab1207

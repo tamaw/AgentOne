@@ -1,0 +1,68 @@
+{
+  "round": 0,
+  "decision_t": 59,
+  "fill_t": 60,
+  "mark_t": 66,
+  "fill_close": 119.63257260944864,
+  "mark_close": 117.85491059002351,
+  "agents": {
+    "agent-one": {
+      "cash": 116.58421319510609,
+      "units": 7.3733448024,
+      "equity": 985.5691056313726,
+      "round_return": -0.014430894368627378,
+      "cumulative_return": -0.014430894368627378,
+      "max_drawdown": 0.014430894368627378,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 7.3733448024,
+          "price": 119.69238889575337,
+          "notional": 882.5332535513426,
+          "fee": 0.8825332535513426
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/paper_be01d1611e99/agent-one/Strategy.hs; preserved round-0 source and public bars in /workspace/paper_be01d1611e99/agent-one/round-0/",
+        "approach": "Long-only trend heuristic: require positive trailing 20- and 40-bar log returns. Initially buy using cash divided by the latest close, buy slippage and fee factors, and an execution-price reserve of max(12%, four trailing-40-bar log-return standard deviations). Hold an existing long while both trends remain positive, otherwise liquidate. Unknown next-close execution means the reserve reduces but cannot eliminate infeasibility risk. Volume is not used because no reliable predictive relationship has been established.",
+        "changes": "Initial round-0 strategy, using only supplied public history and stated cash/units. No prior strategy or settlement feedback used; no claim of validated predictive advantage or self-improvement. Code and observations preserved for review and subsequent round comparison."
+      }
+    },
+    "agent-two": {
+      "cash": 109.51688699881703,
+      "units": 7.43233156,
+      "equity": 985.4536584780269,
+      "round_return": -0.01454634152197309,
+      "cumulative_return": -0.01454634152197309,
+      "max_drawdown": 0.01454634152197309,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 7.43233156,
+          "price": 119.69238889575337,
+          "notional": 889.5935194817013,
+          "fee": 0.8895935194817013
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/strategies/paper_be01d1611e99/agent-two/Round0.hs",
+        "approach": "Initial long-only trend rule using only supplied public bars: buy when both 10-bar and 20-bar close returns are positive. Size to 90% of cash at the decision close including 5bp buy slippage and 10bp fee, rounding units downward. Leave cash to accommodate an unknown next-close fill; feasibility is not guaranteed if the next close rises more than approximately 11.11%. No leverage. Signals are descriptive, not evidence of predictive performance. Only authoritative settlement determines results.",
+        "changes": "Round-0 initial implementation for this rerun; no prior-round feedback or prior strategy performance used. No self-improvement claim. Preserve this source as the reviewable submission artifact."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 8.346403712194963,
+    "entry_price": 119.69238889575337,
+    "entry_close": 119.63257260944864,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 983.6646632489777,
+  "winner": "agent-one"
+}

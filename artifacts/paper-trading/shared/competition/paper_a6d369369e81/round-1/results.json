@@ -1,0 +1,52 @@
+{
+  "round": 1,
+  "decision_t": 66,
+  "fill_t": 67,
+  "mark_t": 73,
+  "fill_close": 77.34595952645165,
+  "mark_close": 81.85186884412666,
+  "agents": {
+    "agent-one": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/competition-paper_a6d369369e81/agent-one/OriginalSelected.hs; original source /shared/competition/paper_be01d1611e99/collaboration/agent-one/OriginalStrategy.hs; selection evidence /shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/summary.txt; /shared/competition/agent-two-experiments/9842f3d1-30da-4e90-8516-860919b634cb/completion.json and retained-lessons.json",
+        "approach": "Select preserved OriginalStrategy: enter only with positive trailing 20- and 40-bar log returns, exit when either fails; reserve max(12%,4*sigma40) for next-close fixed-quantity buys including 5bps slippage and 10bps fee. Requires 41 closes; supplied 67 closes suffice. Index-only momentum and volatility require no dates or real prices. Volume unused. Unknown next fill cannot guarantee buy feasibility; no-trade is fully feasible with cash=1000, units=0.",
+        "changes": "Trading logic and parameters unchanged from published OriginalStrategy.hs. Only isolated source/output paths and this manifest revised. Reviewed authorized StrategyV1.hs, v2/StrategyV2.hs and v2/summary.txt: no robust transferable improvement; ConsensusV1 needs 121 closes. Recent agent-two experiment completion.json and retained-lessons.json identify weekly-calendar/long-warmup and fill-time-sizing differences; not transplanted or claimed superior. Round-0 official evidence: cash=1000, units=0, equity=1000, zero trades/failures; benchmark=1015.6128279230027. One favorable benchmark interval does not justify forced entry or parameter fitting. Current 20-bar momentum is negative, so retain cash. No current peer orders or private assets inspected; no official rerun requested."
+      }
+    },
+    "agent-two": {
+      "cash": 1000,
+      "units": 0,
+      "equity": 1000,
+      "round_return": 0,
+      "cumulative_return": 0,
+      "max_drawdown": 0,
+      "trades_applied": 0,
+      "trades": [],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/artifacts/paper_a6d369369e81/agent-two/round-1/Submission.hs",
+        "approach": "Preserved dual-horizon momentum entry: initiate long only if both completed-close 7-bar and 21-bar returns are positive. At t=66 close=75.188308164563, r7=1.036779% and r21=-5.723364%. Entry condition fails; retain cash=1000 and units=0. Header-only order is deliberate and feasible at every next-close fill, with no fee or slippage incurred. Uses only supplied t,close,volume; 22 observations suffice, no dates or long warmup required.",
+        "changes": "Selected actual preserved baseline source /shared/competition/agent-two-experiments/9842f3d1-30da-4e90-8516-860919b634cb/preserved/preserved-baseline-submission.hs; limitations from /shared/competition/agent-two-experiments/9842f3d1-30da-4e90-8516-860919b634cb/retained-lessons.json. No signal changes, optimization, or improvement claim. Isolated implementation recalculates 7/21 returns from this routine's public observations instead of copying historical manifest numbers. Weekly calendar and 200-session variants not adopted: no dates, insufficient warmup, incompatible sizing/execution and no established superiority. Round-0 public evidence reports cash=1000, units=0, equity=1000, versus benchmark equity=1015.6128279230027; one missed positive interval does not justify forcing a trade or replacing the rule. No peer current orders or private assets used. Exactly one five-round paper competition; no extra rounds or reruns."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 13.507589846284981,
+    "entry_price": 73.95849373348838,
+    "entry_close": 73.92153296700488,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1105.6214724983752,
+  "winner": null
+}

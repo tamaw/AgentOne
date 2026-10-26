@@ -1,0 +1,68 @@
+{
+  "round": 1,
+  "decision_t": 66,
+  "fill_t": 67,
+  "mark_t": 73,
+  "fill_close": 80.21697339688852,
+  "mark_close": 82.45280049239189,
+  "agents": {
+    "agent-one": {
+      "cash": 196.62661034529447,
+      "units": 10,
+      "equity": 1021.1546152692133,
+      "round_return": 0.02115461526921331,
+      "cumulative_return": 0.02115461526921331,
+      "max_drawdown": 0,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 10,
+          "price": 80.25708188358696,
+          "notional": 802.5708188358697,
+          "fee": 0.8025708188358696
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/match_811fe8175c96/Round1.hs",
+        "approach": "Independent public-history recovery/momentum entry. Buy 10 units: approximately 80.7% of capital including friction at the decision close. Price has reached a trailing-20-bar high with positive 5/10/20-bar momentum. Leave approximately 19.3% cash as downside exposure reduction and a next-close execution-price reserve; no leverage. Actual fill affordability depends on the unknown next close.",
+        "changes": "Move from the prior settled cash-only position to a partial long recovery position. Recent eligible forward outcomes improved, but overlapping samples are weak evidence, older short-momentum outcomes were negative, and 30-bar momentum remains negative. These conflicting signals argue against full deployment; no peer submission was inspected and no peer coordination used."
+      }
+    },
+    "agent-two": {
+      "cash": 116.28927137982396,
+      "units": 11,
+      "equity": 1023.2700767961347,
+      "round_return": 0.02327007679613473,
+      "cumulative_return": 0.02327007679613473,
+      "max_drawdown": 0,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 11,
+          "price": 80.25708188358696,
+          "notional": 882.8279007194566,
+          "fee": 0.8828279007194566
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/competition-811fe8175c96/agent-two/Strategy.hs",
+        "approach": "Independent public-price trend assessment. Buy 11 units: close exceeds 14- and 30-bar means and 14-bar momentum exceeds 2 percent. Target at most 90 percent of cash at the observed close, rounded to whole units; retain a next-close gap buffer. No leverage. Long-horizon downtrend and short-term whipsaw remain risks.",
+        "changes": "Move from the prior settled cash position to a buffered long allocation after medium-term recovery confirmation. Considered staying in cash because the 30-bar trend remains weak and fading the latest jump because the range may persist; prefer the positive 14-bar trend. No fitted parameters or peer-submission access. Settlement and fill feasibility remain unverified."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 12.941443847007612,
+    "entry_price": 77.19393684438026,
+    "entry_close": 77.15535916479787,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1067.0582876008111,
+  "winner": "agent-two"
+}

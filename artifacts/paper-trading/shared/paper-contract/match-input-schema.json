@@ -1,0 +1,395 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "paper-trading-match",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "batch_id",
+    "evaluation_start",
+    "evaluation_end",
+    "validation_as_of",
+    "run_id",
+    "track",
+    "match_index"
+  ],
+  "properties": {
+    "batch_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$(?![\\s\\S])",
+      "description": "Safe batch identifier: 1..64 ASCII letters, digits, underscore or hyphen, starting alphanumeric. The generated batch_id_track_id_mN run ID must fit the separate 128-character match-ID bound; oversized combinations are explicitly rejected before dispatch. Namespaces are planned only. Generated job run IDs use length-prefixed component encoding, not ambiguous underscore concatenation. Namespace plans remain unreserved and future writes/reuse are forbidden until a separate reservation scheme authorizes them."
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$(?![\\s\\S])",
+      "description": "Safe per-match identifier, 1..160 ASCII characters, starting alphanumeric; remaining characters alphanumeric, underscore or hyphen. Batch jobs use injective length-prefixed r_b{batch.length}_{batch}_t{track.length}_{track}_m{match_index}; full 64-character batch/track IDs fit. Identifiers and planned namespaces are not reservations or permission to write. The execution candidate requires this exact generated encoding, not an arbitrary safe string.",
+      "maxLength": 160
+    },
+    "match_index": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "One-based planned match index, 1..10 and no greater than match_count. A validation job never counts as an actual completed match."
+    },
+    "track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "track_id",
+        "interval",
+        "market",
+        "symbol",
+        "data_path"
+      ],
+      "properties": {
+        "track_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$(?![\\s\\S])",
+          "description": "Unique safe track identifier within this batch, at most 64 characters. Used in deterministic run IDs and separate planned account, artifact and strategy namespaces."
+        },
+        "interval": {
+          "type": "string",
+          "enum": [
+            "5m",
+            "15m",
+            "1h"
+          ],
+          "description": "Exactly 5m, 15m or 1h. CSV timestamps are UTC close times on interval boundaries; closed bars must be unique, ordered and strictly contiguous. Daily relabeling is rejected."
+        },
+        "market": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Nonempty market metadata, at most 64 characters; default tracks use crypto. No market data is fetched or inferred from this label."
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Nonempty symbol metadata, at most 128 characters; default tracks use BTC-USD. Filename suffixes or labels do not prove timestamped intraday data."
+        },
+        "data_path": {
+          "type": "string",
+          "maxLength": 1024,
+          "pattern": "^/(artifacts/trading/market|shared/market)/[A-Za-z0-9_-]+(?:[.][A-Za-z0-9_-]+)*(?:/[A-Za-z0-9_-]+(?:[.][A-Za-z0-9_-]+)*)*$(?![\\s\\S])",
+          "description": "Exact safe CSV path under /artifacts/trading/market/ or /shared/market/ only. No dot segments, backslashes or glob syntax. Read-only glob/readFile inspection rejects truncation, 10000 or more lines, and files reaching the conservative 2 MiB limit. Exact header: timestamp,open,high,low,close,volume,closed. Conservative exclusive read bounds: UTF-8 file size must be strictly less than 2097152 bytes (2 MiB); total physical lines including header must be strictly less than 10000. Incomplete/truncated or unknown-completeness glob results fail closed."
+        },
+        "history_bars": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 1000,
+          "description": "Optional per-track override of global history_bars, 10..1000. Includes the decision-start bar; normalized jobs echo the effective value."
+        },
+        "bars_per_round": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000,
+          "description": "Optional per-track override of global bars_per_round, 1..10000. Use overrides to make the shared evaluation duration equal round_count * effective bars_per_round * this interval_ms."
+        },
+        "agents": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$(?![\\s\\S])"
+          },
+          "description": "Optional per-track override: exactly two unique supported names, agent-one and agent-two. Other names are rejected; normalized jobs echo the effective pair."
+        }
+      },
+      "description": "Required single per-match track. Batch callers iterate their tracks and matches; inherited agents, history_bars and bars_per_round are normalized into each job."
+    },
+    "agents": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$(?![\\s\\S])"
+      },
+      "default": [
+        "agent-one",
+        "agent-two"
+      ],
+      "description": "Exactly two unique safe agent names. Only agent-one and agent-two are supported; alternate agents are explicitly rejected, including validation plans. A track may override this pair."
+    },
+    "tracks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "track_id",
+          "interval",
+          "market",
+          "symbol",
+          "data_path"
+        ],
+        "properties": {
+          "track_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$(?![\\s\\S])",
+            "description": "Unique safe track identifier within this batch, at most 64 characters. Used in deterministic run IDs and separate planned account, artifact and strategy namespaces."
+          },
+          "interval": {
+            "type": "string",
+            "enum": [
+              "5m",
+              "15m",
+              "1h"
+            ],
+            "description": "Exactly 5m, 15m or 1h. CSV timestamps are UTC close times on interval boundaries; closed bars must be unique, ordered and strictly contiguous. Daily relabeling is rejected."
+          },
+          "market": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "description": "Nonempty market metadata, at most 64 characters; default tracks use crypto. No market data is fetched or inferred from this label."
+          },
+          "symbol": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "description": "Nonempty symbol metadata, at most 128 characters; default tracks use BTC-USD. Filename suffixes or labels do not prove timestamped intraday data."
+          },
+          "data_path": {
+            "type": "string",
+            "maxLength": 1024,
+            "pattern": "^/(artifacts/trading/market|shared/market)/[A-Za-z0-9_-]+(?:[.][A-Za-z0-9_-]+)*(?:/[A-Za-z0-9_-]+(?:[.][A-Za-z0-9_-]+)*)*$(?![\\s\\S])",
+            "description": "Exact safe CSV path under /artifacts/trading/market/ or /shared/market/ only. No dot segments, backslashes or glob syntax. Read-only glob/readFile inspection rejects truncation, 10000 or more lines, and files reaching the conservative 2 MiB limit. Exact header: timestamp,open,high,low,close,volume,closed. Conservative exclusive read bounds: UTF-8 file size must be strictly less than 2097152 bytes (2 MiB); total physical lines including header must be strictly less than 10000. Incomplete/truncated or unknown-completeness glob results fail closed."
+          },
+          "history_bars": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 1000,
+            "description": "Optional per-track override of global history_bars, 10..1000. Includes the decision-start bar; normalized jobs echo the effective value."
+          },
+          "bars_per_round": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "description": "Optional per-track override of global bars_per_round, 1..10000. Use overrides to make the shared evaluation duration equal round_count * effective bars_per_round * this interval_ms."
+          },
+          "agents": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$(?![\\s\\S])"
+            },
+            "description": "Optional per-track override: exactly two unique supported names, agent-one and agent-two. Other names are rejected; normalized jobs echo the effective pair."
+          }
+        }
+      },
+      "default": [
+        {
+          "track_id": "5m",
+          "interval": "5m",
+          "market": "crypto",
+          "symbol": "BTC-USD",
+          "data_path": "/artifacts/trading/market/btc-usd-5m.csv"
+        },
+        {
+          "track_id": "15m",
+          "interval": "15m",
+          "market": "crypto",
+          "symbol": "BTC-USD",
+          "data_path": "/artifacts/trading/market/btc-usd-15m.csv"
+        },
+        {
+          "track_id": "1h",
+          "interval": "1h",
+          "market": "crypto",
+          "symbol": "BTC-USD",
+          "data_path": "/artifacts/trading/market/btc-usd-1h.csv"
+        }
+      ],
+      "description": "One to three tracks with unique track_id values, checked by the code body. Each match/track pair becomes one read-only validation job, at most 30. Use per-track bars_per_round overrides for equal-duration cross-track comparisons."
+    },
+    "evaluation_start": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]Z$(?![\\s\\S])",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Required nullable UTC timestamp YYYY-MM-DDTHH:mm:ssZ. Null produces missing_evaluation_window, not an automatically selected window. Warmup includes history_bars closed bars ending at this decision-start close; evaluation closes are strictly after it."
+    },
+    "evaluation_end": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]Z$(?![\\s\\S])",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Required nullable UTC timestamp YYYY-MM-DDTHH:mm:ssZ. Null blocks validation. Must exceed evaluation_start by exactly round_count * effective bars_per_round * interval_ms. Evaluation closes include this endpoint; the following next-fill close must also be covered."
+    },
+    "validation_as_of": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]Z$(?![\\s\\S])",
+      "format": "date-time",
+      "description": "Required explicit real UTC calendar timestamp YYYY-MM-DDTHH:mm:ssZ. Evaluation end and the next-fill close must not exceed this cutoff. This caller-supplied value is not trusted wall-clock evidence and cannot authorize execution."
+    },
+    "timezone": {
+      "type": "string",
+      "const": "UTC",
+      "default": "UTC",
+      "description": "Fixed UTC. Timestamps with offsets, fractional seconds or other time zones are not accepted."
+    },
+    "match_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 10,
+      "description": "Planned matches per track, 1..10, default 10. With at most three tracks the batch contains at most 30 validation jobs; no actual match is executed."
+    },
+    "round_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 5,
+      "description": "Planned rounds per match, 1..5, default 5. Determines the required evaluation duration with the effective per-track bars_per_round."
+    },
+    "history_bars": {
+      "type": "integer",
+      "minimum": 10,
+      "maximum": 1000,
+      "default": 60,
+      "description": "Global warmup length, 10..1000 closed bars, default 60, including the bar at evaluation_start. A track may override it. Full contiguous warmup coverage is required."
+    },
+    "bars_per_round": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000,
+      "default": 7,
+      "description": "Global closes per planned round, 1..10000, default 7. A track may override it. Required duration is round_count * effective bars_per_round * interval_ms; bounded files may not support large plans."
+    },
+    "capital": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "default": 1000,
+      "description": "Positive finite initial paper cash per agent, default 1000. Reset policy plans separate accounts per match. Used for reference benchmark arithmetic only; no cash is allocated or traded."
+    },
+    "fee_bps": {
+      "type": "number",
+      "minimum": 0,
+      "default": 10,
+      "description": "Nonnegative finite transaction fee in basis points, default 10; divide by 10000 to obtain the fee rate. Buy-and-hold entry units are capital / (1 + fee_bps/10000) / adjusted entry price. No forced-liquidation exit fee is assumed."
+    },
+    "slippage_bps": {
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMaximum": 10000,
+      "default": 5,
+      "description": "Entry slippage in basis points, at least zero and strictly below 10000, default 5. Reference buy entry price is next_close * (1 + slippage_bps/10000), not a percentage or currency amount."
+    },
+    "capital_policy": {
+      "type": "string",
+      "enum": [
+        "reset",
+        "carry"
+      ],
+      "default": "reset",
+      "description": "reset or carry, default reset. carry is schema-visible for explicit operator feedback but is unsupported by the current adapter and rejected before dispatch; no carry-capital execution is available."
+    },
+    "fill_policy": {
+      "type": "string",
+      "const": "next_close",
+      "default": "next_close",
+      "description": "Fixed next_close: the first close after a decision is the reference fill. Coverage includes all evaluation closes and the close immediately following evaluation_end. No actual fills occur."
+    },
+    "finalization_policy": {
+      "type": "string",
+      "const": "mark_to_market",
+      "default": "mark_to_market",
+      "description": "Fixed mark_to_market. Positions are valued at evaluation_end without forced liquidation or a forced exit fee. This does not execute or close any position."
+    },
+    "review_enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Default true. On the executable paper path this gates the preserved real two-agent between-match strategy review/evidence nodes, separately per track. Validation-only and pre-dispatch blocked runs perform no reviews or review tests."
+    },
+    "review_every_matches": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 1,
+      "description": "Per-track between-match review cadence, 1..10 (default 1); review after completed match indices divisible by this value only when another same-track match remains. Disabled reviews bypass the review branch. Actual evidence must pass existing advancement guards."
+    },
+    "evidence_required": {
+      "type": "boolean",
+      "const": true,
+      "default": true,
+      "description": "Fixed true. Independent matched replay and a timestamped intraday adapter are required but unavailable; synthetic validation is not real intraday evidence."
+    },
+    "bonus_rounds": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3,
+      "default": 0,
+      "description": "Planned bonus count, 0..3, default 0. Any positive value is unsupported and explicitly rejected; no bonus round or execution occurs."
+    },
+    "tie_policy": {
+      "type": "string",
+      "const": "no_bonus",
+      "default": "no_bonus",
+      "description": "Fixed no_bonus. Ties never authorize bonus rounds or additional execution."
+    },
+    "bonus_cash_comparator": {
+      "type": "string",
+      "const": "zero_return",
+      "default": "zero_return",
+      "description": "Fixed zero_return. The cash reference return is zero, not a traded result; it cannot trigger a bonus round."
+    },
+    "execution_timeout_seconds": {
+      "type": "integer",
+      "const": 60,
+      "default": 60,
+      "description": "Fixed 60-second Code-node limit. This setting cannot be increased to enable execution; actual trading is permanently disabled in this saved implementation."
+    },
+    "max_retries": {
+      "type": "integer",
+      "const": 0,
+      "default": 0,
+      "description": "Fixed zero. No automatic retries or trading dispatches are performed."
+    },
+    "failure_policy": {
+      "type": "string",
+      "const": "fail_closed",
+      "default": "fail_closed",
+      "description": "Fixed fail_closed. Invalid settings, unverifiable data or missing evidence block progress; no execution fallback is allowed."
+    },
+    "validation_only": {
+      "type": "boolean",
+      "default": true,
+      "description": "Default true: perform read-only contract/data inspection, bypass every competitor, evidence/review agent and filesystem-write node. False selects the preserved executable paper path only after trusted replay, reservation and data gates succeed; no currently supplied evidence can satisfy replay."
+    },
+    "require_matched_replay": {
+      "type": "boolean",
+      "default": true,
+      "description": "Default true: trusted independent same-window/cost/fill replay is mandatory before competitor dispatch. No provider/evidence is currently available. False does not authorize bypass. No input flag can fabricate verification."
+    },
+    "brief": {
+      "type": "string",
+      "default": "paper recursive self improvement",
+      "description": "Planning brief, default paper recursive self improvement. Preserved as input text only; it cannot authorize execution, reviews, external calls or strategy changes."
+    }
+  },
+  "description": "Canonical typed paper-competition inputs. Candidate deterministic timestamped next-close settlement is separate from the preserved real A2A competitor/review architecture. Validation-only never dispatches or writes; current non-validation runs are blocked before dispatch by missing independent matched replay and namespace reservation. No synthetic calculation constitutes independent evidence."
+}

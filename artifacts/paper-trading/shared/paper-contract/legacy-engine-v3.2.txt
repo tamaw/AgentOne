@@ -1,0 +1,208 @@
+(function () {
+  var names=['agent-one','agent-two'],NL=String.fromCharCode(10);
+  async function exists(tools,path) {
+    var roots=['/artifacts/trading/','/shared/competition/'];
+    var scope=roots.filter(function(r){return path.indexOf(r)===0;})[0];
+    if(!scope || path.indexOf('..')>=0 || /[\\*?\[\]{}]/.test(path)) throw new Error('Unsafe existence path: '+path);
+    var result=await tools.glob({path:scope,pattern:path.slice(scope.length)});
+    if(!result || !Array.isArray(result.matches)) throw new Error('Unexpected glob response for '+path);
+    if(result.matches.indexOf(path)>=0) return true;
+    if(result.truncated!==false || result.truncation_reason) throw new Error('Incomplete glob result: '+path);
+    return false;
+  }
+  async function optional(tools,path) {
+    if(!await exists(tools,path)) return null;
+    return await tools.readFile({file_path:path,limit:10000});
+  }
+  async function verify(tools,path,text) {
+    var actual=await tools.readFile({file_path:path,limit:10000});
+    if(actual!==text) throw new Error('Write readback differs: '+path);
+  }
+  async function put(tools,path,text) {
+    var old=await optional(tools,path);
+    if(old!==null) {
+      if(old!==text) throw new Error('Existing immutable file differs: '+path);
+      return;
+    }
+    await tools.writeFile({file_path:path,content:text});
+    await verify(tools,path,text);
+  }
+  async function replace(tools,path,text) {
+    if(await exists(tools,path)) await tools.deleteFile({file_path:path});
+    await tools.writeFile({file_path:path,content:text});
+    await verify(tools,path,text);
+  }
+  function valid(p,round) {
+    if(typeof p.run_id!=='string' || !/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(p.run_id) || p.run_id.indexOf('..')>=0) throw new Error('Unsafe run_id');
+    if(!Number.isInteger(p.round_count)||p.round_count<1) throw new Error('round_count must be integer >= 1');
+    if(!Number.isInteger(p.history_bars)||p.history_bars<10) throw new Error('history_bars must be integer >= 10');
+    if(!Number.isInteger(p.bars_per_round)||p.bars_per_round<1) throw new Error('bars_per_round must be integer >= 1');
+    if(!Number.isFinite(p.fee_bps)||p.fee_bps<0||!Number.isFinite(p.slippage_bps)||p.slippage_bps<0||p.slippage_bps>=10000) throw new Error('Invalid fees/slippage');
+    var c=p.capital==null?1000:p.capital;
+    if(!Number.isFinite(c)||c<=0) throw new Error('capital must be positive');
+    if(typeof p.brief!=='string') throw new Error('brief must be string');
+    if(round&&(!Number.isInteger(p.round_index)||p.round_index<0||p.round_index>=p.round_count)) throw new Error('Invalid round_index');
+    return c;
+  }
+  function root(p){return '/artifacts/trading/'+p.run_id;}
+  function pub(p){return '/shared/competition/'+p.run_id+'/round-'+p.round_index;}
+  function params(p){return {capital:valid(p,false),fee_bps:p.fee_bps,slippage_bps:p.slippage_bps,history_bars:p.history_bars,bars_per_round:p.bars_per_round,round_count:p.round_count};}
+  function match(s,p){if(s.version!=='3.2'||s.run_id!==p.run_id||JSON.stringify(s.settings)!==JSON.stringify(params(p))) throw new Error('Private state settings mismatch');}
+  function market(text) {
+    var lines=text.trim().split(NL);
+    if(lines.shift().trim()!=='date,close,volume,market_cap') throw new Error('Invalid market header');
+    return lines.map(function(line,i){
+      var a=line.trim().split(','),c=Number(a[1]),v=Number(a[2]);
+      if(a.length!==4||a[1].trim()===''||a[2].trim()===''||!Number.isFinite(c)||c<=0||!Number.isFinite(v)||v<=0) throw new Error('Invalid market row '+i);
+      return {close:c,volume:v};
+    });
+  }
+  function chooseStart(count,p,rng) {
+    var max=count-(p.history_bars+p.round_count*p.bars_per_round+1);
+    if(max<0) throw new Error('market window does not fit: need start + history_bars + round_count*bars_per_round + 1 <= row count; data_rows='+count);
+    var r=rng();if(!(r>=0&&r<1)) throw new Error('Invalid RNG');
+    return Math.floor(r*(max+1));
+  }
+  function fresh(c){return {cash:c,units:0,equity:c,peak:c,max_drawdown:0};}
+  function at(rows,s,i){if(!rows[i]) throw new Error('Market index outside rows');return rows[i].close/s.base_close*100;}
+  function decision(p,s){return s.start+p.history_bars-1+p.round_index*p.bars_per_round;}
+  function bars(rows,s,p){var lines=['t,close,volume'];for(var i=s.start;i<=decision(p,s);i++) lines.push((i-s.start)+','+at(rows,s,i)+','+(rows[i].volume/s.base_volume*100));return lines.join(NL)+NL;}
+  async function getState(ctx){var t=await optional(ctx.tools,root(ctx.input)+'/state.json');if(t===null) throw new Error('Missing private state');var s=JSON.parse(t);match(s,ctx.input);return s;}
+  function roundBrief(p) {
+    return p.brief+NL+NL+[
+      'Round '+p.round_index+' of '+p.round_count+'. Simulated capital '+valid(p,false)+'. Most simulated equity wins; ties have no winner.',
+      'You may communicate, cooperate, compete, and modify your own code freely. No version is selected or promoted by this routine.',
+      'Only t,close,volume are public. Both series start at index 100. No dates or real prices are published. All accounting uses index prices.',
+      'Orders fill at the next close after the decision bar. Buys pay close*(1+slippage_bps/10000); sells receive close*(1-slippage_bps/10000). Fee is fee_bps/10000 of notional in cash.',
+      'fee_bps='+p.fee_bps+', slippage_bps='+p.slippage_bps+'. Long only, no leverage. Buy costs including fees must fit cash; sells must fit held units.',
+      'Write orders.csv with exact header side,quantity; each row buy or sell and strictly positive numeric units. Header-only is valid no-trade.',
+      'Write manifest.json with string fields code_ref, approach, changes. Missing or invalid manifest rejects the whole submission, including no-trade.',
+      'Missing, malformed, or infeasible submission is rejected entirely before any trades are applied. Orders are validated in file order.',
+      'Equity is marked '+p.bars_per_round+' bars after the decision bar. Cash and units carry forward.',
+      'The buy-and-hold benchmark buys once at the round-0 fill with the same buy slippage and fee, and holds those units.',
+      'Agent reports and P&L are untrusted. Only this routine settlement counts.'
+    ].join(NL)+NL;
+  }
+  async function prepareRound(ctx) {
+    var p=ctx.input,t=ctx.tools,c=valid(p,true),rows=market(await t.readFile({file_path:ctx.csvPath,limit:10000}));
+    var raw=await optional(t,root(p)+'/state.json'),s;
+    if(raw===null){
+      if(p.round_index!==0) throw new Error('Cannot start after round 0');
+      var start=chooseStart(rows.length,p,ctx.rng||Math.random);
+      s={version:'3.2',run_id:p.run_id,settings:params(p),start:start,base_close:rows[start].close,base_volume:rows[start].volume,agents:{},benchmark:null,rounds:[],failures:[],notable_changes:[]};
+      names.forEach(function(n){s.agents[n]=fresh(c);});
+      await put(t,root(p)+'/state.json',JSON.stringify(s,null,2));
+    }else{s=JSON.parse(raw);match(s,p);}
+    if(p.round_index!==s.rounds.length) throw new Error('Prepare requires next unsettled round');
+    var dir=pub(p),previous=p.round_index===0?'none':'/shared/competition/'+p.run_id+'/round-'+(p.round_index-1)+'/evidence.md',brief=roundBrief(p);
+    await put(t,dir+'/bars.csv',bars(rows,s,p));await put(t,dir+'/brief.md',brief);
+    return {public_dir:dir,bars_path:dir+'/bars.csv',brief_path:dir+'/brief.md',brief_text:brief,previous_evidence:previous,agent_one_orders:dir+'/agent-one/orders.csv',agent_one_manifest:dir+'/agent-one/manifest.json',agent_two_orders:dir+'/agent-two/orders.csv',agent_two_manifest:dir+'/agent-two/manifest.json',agent_one_cash:s.agents['agent-one'].cash,agent_one_units:s.agents['agent-one'].units,agent_two_cash:s.agents['agent-two'].cash,agent_two_units:s.agents['agent-two'].units};
+  }
+  // Validate JSON syntax before parsing. No exception is consumed as business data.
+  function jsonSyntax(text) {
+    var i=0,len=text.length;
+    function ws(){while(i<len&&/[\x20\x09\x0a\x0d]/.test(text[i]))i++;}
+    function string(){
+      if(text[i++]!=='"')return false;
+      while(i<len){var ch=text[i++];if(ch==='"')return true;if(ch.charCodeAt(0)<32)return false;
+        if(ch==='\\'){if(i>=len)return false;var esc=text[i++];if(esc==='u'){if(!/^[0-9a-fA-F]{4}$/.test(text.slice(i,i+4)))return false;i+=4;}else if('"\\/bfnrt'.indexOf(esc)<0)return false;}}
+      return false;
+    }
+    function value(depth){
+      if(depth>64)return false;ws();var ch=text[i];
+      if(ch==='"')return string();
+      if(ch==='{'||ch==='['){var object=ch==='{',end=object?'}':']';i++;ws();if(text[i]===end){i++;return true;}
+        while(i<len){if(object){if(!string())return false;ws();if(text[i++]!==':')return false;}if(!value(depth+1))return false;ws();if(text[i]===end){i++;return true;}if(text[i++]!==',')return false;ws();}return false;}
+      for(var k=0;k<3;k++){var word=['true','false','null'][k];if(text.slice(i,i+word.length)===word){i+=word.length;return true;}}
+      var number=/^-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?/.exec(text.slice(i));if(!number)return false;i+=number[0].length;return true;
+    }
+    if(!value(0))return false;ws();return i===len;
+  }
+  function bad(reason){return {error:reason};}
+  function parseOrders(text) {
+    var lines=text.trim().split(NL),orders=[];
+    if(lines.shift().trim()!=='side,quantity')return bad('malformed orders: header must be side,quantity');
+    for(var i=0;i<lines.length;i++){
+      var a=lines[i].trim().split(',');if(a.length!==2)return bad('malformed orders: row '+(i+1));
+      var side=a[0].trim(),v=a[1].trim();
+      if(side!=='buy'&&side!=='sell')return bad('malformed orders: side must be buy or sell');
+      if(!/^[+]?(?:[0-9]+(?:[.][0-9]*)?|[.][0-9]+)(?:[eE][+-]?[0-9]+)?$/.test(v))return bad('malformed orders: quantity must be numeric');
+      var q=Number(v);if(!Number.isFinite(q)||q<=0)return bad('malformed orders: quantity must be > 0');orders.push({side:side,quantity:q});
+    }
+    return {orders:orders};
+  }
+  async function submission(t,dir) {
+    var orders=await optional(t,dir+'/orders.csv'),manifest=await optional(t,dir+'/manifest.json'),summary=null,errors=[],parsed=[];
+    if(manifest===null)errors.push('missing manifest.json');
+    else if(!jsonSyntax(manifest))errors.push('invalid manifest.json: invalid JSON syntax');
+    else{
+      var m=JSON.parse(manifest);
+      if(!m||Array.isArray(m)||typeof m.code_ref!=='string'||typeof m.approach!=='string'||typeof m.changes!=='string')errors.push('invalid manifest.json: required string fields code_ref, approach, changes');
+      else summary={code_ref:m.code_ref,approach:m.approach,changes:m.changes};
+    }
+    if(orders===null)errors.push('missing submission: orders.csv');
+    else{var result=parseOrders(orders);if(result.error)errors.push(result.error);else parsed=result.orders;}
+    return {orders:parsed,manifest:summary,failures:errors};
+  }
+  function simulate(prior,orders,close,p) {
+    var cash=prior.cash,units=prior.units,trades=[];
+    for(var i=0;i<orders.length;i++){
+      var o=orders[i],price=close*(1+(o.side==='buy'?1:-1)*p.slippage_bps/10000),notional=o.quantity*price,fee=notional*p.fee_bps/10000;
+      if(!Number.isFinite(notional)||!Number.isFinite(fee))return bad('infeasible order: non-finite cost');
+      if(o.side==='buy'){
+        if(notional+fee>cash)return bad('infeasible buy: total cost exceeds cash');cash=cash-notional-fee;units+=o.quantity;
+      }else{
+        if(o.quantity>units)return bad('infeasible sell: quantity exceeds units');cash=cash+notional-fee;units-=o.quantity;
+        if(cash<0)return bad('infeasible sell: fee exceeds available cash');
+      }
+      if(!Number.isFinite(cash)||!Number.isFinite(units))return bad('infeasible order: non-finite balance');
+      trades.push({side:o.side,quantity:o.quantity,price:price,notional:notional,fee:fee});
+    }
+    return {cash:cash,units:units,trades:trades};
+  }
+  function evidence(result) {
+    var lines=['Round '+result.round,'Fill t='+result.fill_t+' at blinded close '+result.fill_close+'; mark t='+result.mark_t+' at '+result.mark_close+'.','Agent-produced P&L is untrusted. Only this settlement counts.'];
+    lines.push('| Agent | Cash | Units | Equity | Round return | Cumulative return | Max drawdown | Trades | Failures |','|---|---:|---:|---:|---:|---:|---:|---:|---|');
+    names.forEach(function(n){var a=result.agents[n];lines.push('|'+n+'|'+a.cash+'|'+a.units+'|'+a.equity+'|'+a.round_return+'|'+a.cumulative_return+'|'+a.max_drawdown+'|'+a.trades_applied+'|'+a.failures.join('; ')+'|');});
+    lines.push('Buy-and-hold benchmark: equity '+result.benchmark_equity+', units '+result.benchmark.units+'. Bought once at the round-0 fill using the same buy slippage and fees.','Standing: '+(result.winner===null?'tie':result.winner+' leads')+'.');return lines.join(NL)+NL;
+  }
+  function view(r,dir,text,replayed){return {round_index:r.round,results_path:dir+'/results.json',evidence_path:dir+'/evidence.md',evidence_text:text,standing:r.winner===null?'tie':r.winner+' leads',agent_one_cash:r.agents['agent-one'].cash,agent_one_units:r.agents['agent-one'].units,agent_one_equity:r.agents['agent-one'].equity,agent_two_cash:r.agents['agent-two'].cash,agent_two_units:r.agents['agent-two'].units,agent_two_equity:r.agents['agent-two'].equity,replayed:replayed};}
+  async function settleRound(ctx) {
+    var p=ctx.input,t=ctx.tools,c=valid(p,true),dir=pub(p),s=await getState(ctx),publicText=await optional(t,dir+'/results.json');
+    if(publicText!==null){
+      var recorded=s.rounds[p.round_index];if(!recorded)throw new Error('Public results exist without private recorded settlement; refusing to apply orders');
+      if(publicText!==JSON.stringify(recorded,null,2))throw new Error('Public results differ from private settlement');
+      var recordedEvidence=evidence(recorded);
+      // A replay never rewrites an existing result or ledger; only recover absent evidence.
+      await put(t,dir+'/evidence.md',recordedEvidence);
+      return view(recorded,dir,recordedEvidence,true);
+    }
+    if(s.rounds[p.round_index]){
+      var saved=s.rounds[p.round_index],savedText=evidence(saved);
+      await put(t,dir+'/results.json',JSON.stringify(saved,null,2));await put(t,dir+'/evidence.md',savedText);return view(saved,dir,savedText,true);
+    }
+    if(s.rounds.length!==p.round_index)throw new Error('Settlement must be sequential');
+    var rows=market(await t.readFile({file_path:ctx.csvPath,limit:10000})),d=decision(p,s),fill=at(rows,s,d+1),mark=at(rows,s,d+p.bars_per_round);
+    if(s.benchmark===null){
+      if(p.round_index!==0)throw new Error('Missing benchmark entry');
+      var price=fill*(1+p.slippage_bps/10000),units=c/(price*(1+p.fee_bps/10000));
+      s.benchmark={cash:0,units:units,entry_price:price,entry_close:fill,entry_fee:c*p.fee_bps/10000/(1+p.fee_bps/10000),fill_t:d+1-s.start};
+    }
+    var result={round:p.round_index,decision_t:d-s.start,fill_t:d+1-s.start,mark_t:d+p.bars_per_round-s.start,fill_close:fill,mark_close:mark,agents:{},benchmark:s.benchmark,benchmark_equity:s.benchmark.cash+s.benchmark.units*mark,winner:null};
+    for(var i=0;i<names.length;i++){
+      var n=names[i],prior=s.agents[n],sub=await submission(t,dir+'/'+n),next={cash:prior.cash,units:prior.units,trades:[]};
+      if(sub.manifest)s.notable_changes.push({round:p.round_index,agent:n,code_ref:sub.manifest.code_ref,approach:sub.manifest.approach,changes:sub.manifest.changes});
+      if(sub.failures.length===0){var trial=simulate(prior,sub.orders,fill,p);if(trial.error)sub.failures.push(trial.error);else next=trial;}
+      var equity=next.cash+next.units*mark,peak=Math.max(prior.peak,equity),dd=Math.max(prior.max_drawdown,(peak-equity)/peak);
+      if(!Number.isFinite(equity))throw new Error('Non-finite equity');
+      result.agents[n]={cash:next.cash,units:next.units,equity:equity,round_return:prior.equity===0?null:(equity-prior.equity)/prior.equity,cumulative_return:(equity-c)/c,max_drawdown:dd,trades_applied:next.trades.length,trades:next.trades,failures:sub.failures,manifest_summary:sub.manifest};
+      s.agents[n]={cash:next.cash,units:next.units,equity:equity,peak:peak,max_drawdown:dd};sub.failures.forEach(function(reason){s.failures.push({round:p.round_index,agent:n,reason:reason});});
+    }
+    var e1=result.agents['agent-one'].equity,e2=result.agents['agent-two'].equity;result.winner=e1===e2?null:(e1>e2?'agent-one':'agent-two');s.rounds.push(result);
+    // Ledger is durable before public results: a resumed settlement republishes, never reapplies.
+    await replace(t,root(p)+'/state.json',JSON.stringify(s,null,2));
+    var text=evidence(result);await put(t,dir+'/results.json',JSON.stringify(result,null,2));await put(t,dir+'/evidence.md',text);return view(result,dir,text,false);
+  }
+  async function finalizeRun(ctx){valid(ctx.input,false);var s=await getState(ctx),last=s.rounds[s.rounds.length-1];if(s.rounds.length!==ctx.input.round_count)throw new Error('Cannot finalize incomplete run');return {final_balances:last.agents,winner:last.winner,rounds:s.rounds,failures:s.failures,notable_changes:s.notable_changes};}
+  return {version:'3.2',exists:exists,replace:replace,jsonSyntax:jsonSyntax,prepareRound:prepareRound,settleRound:settleRound,finalizeRun:finalizeRun};
+})()

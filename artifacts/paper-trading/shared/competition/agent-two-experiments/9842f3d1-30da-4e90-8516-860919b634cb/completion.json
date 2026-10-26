@@ -1,0 +1,10 @@
+{
+"task_id":"9842f3d1-30da-4e90-8516-860919b634cb",
+"completed_experiment_cycles":3,"stopped":true,"additional_search":false,"promoted_or_deployed":false,
+"public_evaluation":"2008-01-02 through 2016-03-01; 2055 close observations, five equal-initial-capital sleeves, 500000 initial aggregate cash. 2007 warmup. Eight full-year cash-reset walk-forward blocks plus partial 2016. No parameters fitted.",
+"results_source":"comparison.csv, cycle1/summary.csv, cycle2/summary.csv, cycle3/summary.csv",
+"data_and_source":"data/provenance.json, data/SHA256SUMS, common/Main.hs, common/Engine.hs, preserved/; each cycle also preserves Main.hs, frozen hypothesis-and-policy.json, run-selection.json, findings.json and all ledgers.",
+"validation":"459 simulation ledger pairs reconciled with zero accounting/cost failures; identical controls across cycles; prior AAPL baseline daily ledger exactly reproduces authorized bonus artifact. No new simulation was run during accounting/control verification.",
+"limitations":"No certified unseen data. Shared histories, correlated assets/folds and hypothesis/data-source selection effects. Unverified adjusted-like close conventions, noninvestable GSPC proxy, no market impact/taxes/interest. Next-close fractional fill-time sizing differs from official fixed-quantity orders; reused AAPL uses next-open. Ledger signal reason text inherited from baseline is misleading for public close fills; actual source references and plan govern. No official competition claim.",
+"retained_changes":"Research-only candidates separately preserved in cycle1, cycle2, cycle3. Weekly cadence warrants independent validation of cost/risk tradeoffs; long-term regime filtering only risk-focused validation; pullback gating rejected as return improvement. See retained-lessons.json. No automatic continuation."
+}

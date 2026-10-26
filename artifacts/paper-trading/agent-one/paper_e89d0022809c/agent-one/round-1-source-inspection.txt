@@ -1,0 +1,116 @@
+EXACT SOURCE HASHES
+b4d9690941b3842d4e1738a536a5748cc61ccd15806759496815dad8a0dfc3aa  paper_be01d1611e99/agent-one/Strategy.hs
+74328a015e2fbb50b4a08fc3ebee2e6bf0c219dfae3d84476a6ad0beba078c7e  paper_be01d1611e99/agent-one/revision/StrategyV1.hs
+668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  paper_be01d1611e99/agent-one/revision/v2/StrategyV2.hs
+668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  /shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/StrategyV2.hs
+9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036  /shared/competition/paper_be01d1611e99/collaboration/agent-two/Revision.hs
+9b09773475c1c8a37e7f7fcbd4fb8ddf795322fa6d70e074a67307197b7bf0e1  paper_05b62b926174/agent-one/Submit.hs
+668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  paper_05b62b926174/agent-one/StrategyV2.hs
+9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036  paper_05b62b926174/agent-one/PeerRevision.hs
+1377cb898e78ff4158ebe860c3a16f88c8e561f863bbf5185e2346451a593ae8  paper_aef4ace3cdbf/agent-one/Submit.hs
+668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  paper_aef4ace3cdbf/agent-one/StrategyV2.hs
+9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036  paper_aef4ace3cdbf/agent-one/PeerRevision.hs
+bb486ee7aaccf2774533992b79a58d994aae0381718c07797d9a0255c2033f5e  paper_e89d0022809c/agent-one/Submit.hs
+668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  paper_e89d0022809c/agent-one/StrategyV2.hs
+9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036  paper_e89d0022809c/agent-one/PeerRevision.hs
+
+PRECISE RUNNER CHANGES
+--- paper_aef4ace3cdbf/agent-one/Submit.hs	2026-10-23 23:37:37.873048776 +0000
++++ paper_e89d0022809c/agent-one/Submit.hs	2026-10-23 23:45:22.258641941 +0000
+@@ -6,7 +6,7 @@
+ import Control.Monad
+ import Text.Printf
+ split s = case break (==',') s of (a,[]) -> [a]; (a,_:b) -> a:split b
+-root = "/workspace/paper_aef4ace3cdbf/agent-one"
++root = "/workspace/paper_e89d0022809c/agent-one"
+ main = do
+   [dir,cashS,unitsS] <- getArgs
+   raw <- readFile (dir++"/bars.csv")
+@@ -26,11 +26,12 @@
+         Sell | q>0 -> printf "sell,%.10f\n" q
+         _ -> ""
+   unless(cash>=0 && units>=0 && not(isInfinite cash || isNaN cash || isInfinite units || isNaN units) && q>=0 && not(isInfinite q || isNaN q)) (fail "Invalid account or quantity")
+-  hashes <- readProcess "sha256sum" [root++"/Submit.hs",root++"/StrategyV2.hs",root++"/PeerRevision.hs","/workspace/paper_05b62b926174/agent-one/Submit.hs","/workspace/paper_05b62b926174/agent-one/StrategyV2.hs","/workspace/paper_05b62b926174/agent-one/PeerRevision.hs","/shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/StrategyV2.hs","/shared/competition/paper_be01d1611e99/collaboration/agent-two/Revision.hs",dir++"/brief.md",dir++"/bars.csv"] ""
++  hashes <- readProcess "sha256sum" [root++"/Submit.hs",root++"/StrategyV2.hs",root++"/PeerRevision.hs","/workspace/paper_05b62b926174/agent-one/Submit.hs","/workspace/paper_05b62b926174/agent-one/StrategyV2.hs","/workspace/paper_05b62b926174/agent-one/PeerRevision.hs","/shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/StrategyV2.hs","/shared/competition/paper_be01d1611e99/collaboration/agent-two/Revision.hs","/workspace/paper_aef4ace3cdbf/agent-one/Submit.hs","/workspace/paper_aef4ace3cdbf/agent-one/StrategyV2.hs","/workspace/paper_aef4ace3cdbf/agent-one/PeerRevision.hs","/workspace/paper_be01d1611e99/agent-one/revision/v2/StrategyV2.hs","/workspace/paper_be01d1611e99/agent-one/revision/StrategyV1.hs","/workspace/paper_be01d1611e99/agent-one/revision/findings.json","/workspace/paper_be01d1611e99/agent-one/revision/final-peer-review.json",dir++"/brief.md",dir++"/bars.csv"] ""
+   let fields =
+         [("code_ref",root++"/Submit.hs; "++root++"/StrategyV2.hs mode PeerCostHysteresisV2; preserved peer artifact "++root++"/PeerRevision.hs. SHA256 provenance:\n"++hashes)
+         ,("approach","Frozen reused strategy for both rounds: require 41 public bars. Enter flat only when 20- and 40-bar returns and close/SMA20-1 are all >0.003; exit held only when all three are < -0.003. Otherwise hold, no topups. Buy floor1e-10[cash/(decision_close*(1+max(0.12,4*sigma40))*(1.0005)*(1.001))], sell held quantity. Sigma40 is sample standard deviation of last 40 log returns. Only supplied public bars inform decisions; volume unused. Unknown next-close fill is not observed. Reserve cannot guarantee feasibility after an arbitrary gap. Long only, no leverage. Only routine settlement counts.")
+-        ,("changes","No new signal, parameter, sizing, or algorithm revision in this task. Reuse actual own sources /workspace/paper_05b62b926174/agent-one/StrategyV2.hs and Submit.hs; copy StrategyV2.hs and PeerRevision.hs byte-for-byte. Submit.hs retains prior parsing, feature generation, signal and sizing code; changes only artifact root, provenance hashes and manifest text. Preserve prior runner as PriorSubmit.hs.snapshot. Legitimate algorithm sharing previously occurred in paper_be01d1611e99: /shared/competition/paper_be01d1611e99/collaboration/agent-two/Revision.hs RevisionV1 contributed the +/-0.003 triple-condition hysteresis; the reviewed own implementation is /shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/StrategyV2.hs PeerCostHysteresisV2. Own implementation retains original max(0.12,4*sigma40) reserve and 1e-10 quantity precision (peer uses 1e-8). This revision was already present in paper_05b62b926174; it is not a new improvement here. No new peer communication or current peer submissions inspected. No external research price histories or private engine assets consumed. Policy frozen for both new rounds, not tuned to known outcomes. Prior research was mixed/negative and does not demonstrate an anonymous-index forecasting edge; no self-improvement, selection, promotion, or performance claim.")
++        ,("changes","No new signal, thresholds, sizing, or claimed improvement. This runner is adapted directly from /workspace/paper_aef4ace3cdbf/agent-one/Submit.hs (SHA256 1377cb898e78ff4158ebe860c3a16f88c8e561f863bbf5185e2346451a593ae8), itself adapted from /workspace/paper_05b62b926174/agent-one/Submit.hs (SHA256 9b09773475c1c8a37e7f7fcbd4fb8ddf795322fa6d70e074a67307197b7bf0e1). Exact runner changes here: root path, provenance hash inputs, changes field replacement and added evidence_limits field; parsing, feature calculation, order decisions, quantity and output encoding unchanged. Both prior runners preserved locally as AefSubmit.hs.snapshot and EarlierSubmit.hs.snapshot. StrategyV2.hs and PeerRevision.hs copied byte-for-byte from paper_aef4ace3cdbf; identical to paper_05b62b926174 copies and original shared sources by SHA256. Actual own revised/shared source /workspace/paper_be01d1611e99/agent-one/revision/v2/StrategyV2.hs and /shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/StrategyV2.hs: SHA256 668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f, mode PeerCostHysteresisV2. Actual shared peer source /shared/competition/paper_be01d1611e99/collaboration/agent-two/Revision.hs: SHA256 9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036, RevisionV1. Earlier legitimate two-way source exchange/review is recorded in /workspace/paper_be01d1611e99/agent-one/revision/findings.json and final-peer-review.json. Adaptation from peer RevisionV1 replaces original positive20/40 entry and exit-on-either-nonpositive with all-three +/-0.003 conditions including close/SMA20; own equivalent log thresholds and original 1e-10 precision retained versus peer arithmetic returns and 1e-8 precision. Both retain max(0.12,4*sigma40) reserve. Own ConsensusV1 revision exists in revision/StrategyV1.hs but needs121 bars and is not shortened or used. No current peer submissions accessed, no new collaboration in this run; sharing refers only to the actual historical artifacts.")
++        ,("evidence_limits","All requested primary strategy sources located and hashed; no missing primary source. No independent original exchange transcript or point-in-time immutability verification performed; provenance relies on current files and retained review artifacts, not Git version claims. Prior research was mixed/negative: V2 beat original2/6 and buyhold1/6 annual LTC/XRP transfer holdouts and underperformed original on both continuous paths; no demonstrated anonymous-index edge. Decisions consume only this round's public bars and authorized account/settlement inputs, never archived price histories or current peer submissions. No window selection, engine/private-state access, real trades, financial transactions or infrastructure changes. Previous starts124,152,176 with60-bar lookback and14-bar competition are user-provided; current start is not published, so no disjoint/unseen claim. Freeze same strategy across exactly two authorized rounds with initial capital1000 carried by routine; no reset between rounds. Unknown next-close gaps can reject fixed-size buys despite reserve. Only routine settlement counts; local diagnostics are not P&L or evidence of improvement.")
+         ,("decision","cash="++cashS++"; units="++unitsS++"; "++show f++"; signal="++show s++"; quantity="++show q)]
+       json="{\n"++concat[(if i==0 then "" else ",\n")++show k++":"++show v | (i,(k,v))<-zip [0::Int ..] fields]++"\n}\n"
+       out=dir++"/agent-one"
+
+RETAINED HISTORICAL COLLABORATION RECORDS
+{"conclusion":"Two reviewable revisions implemented and evaluated; neither demonstrates robust superiority over original and matched buy-and-hold. Negative results retained, not marketed as improvement.","evaluation":{"controls":"Original, reserve-only ablation, peer recurring reconstruction, official-style full-cash next-fill buyhold, implementable decision-sized passive hold, cash","cutoff":"2025-12-31;295 later rows per raw file excluded; signals consume only decision-close history","execution":"Long-only, cash1000, seven-bar decisions, next-close fills;10bp fee+5bp slippage each direction; whole infeasible orders rejected, never clipped. Daily and doubled-cost sensitivity, daily drawdown, liquidation sensitivity, turnover, fees and rejects retained.","partitions":"Available2015-19 development;2020-22 annual validation;2023-25 annual and continuous holdouts. Rules frozen before respective results; BTC/ETH v2 reuse explicitly posthoc. Common121-bar warmup; missing early asset years omitted, not fabricated.","public_sources":["https://www.cryptodatadownload.com/cdd/Bitstamp_BTCUSD_d.csv","https://www.cryptodatadownload.com/cdd/Bitstamp_ETHUSD_d.csv","https://www.cryptodatadownload.com/cdd/Bitstamp_LTCUSD_d.csv","https://www.cryptodatadownload.com/cdd/Bitstamp_XRPUSD_d.csv"],"results_v1":"results.csv:414 scenario rows","results_v2":"v2/results.csv:1128 scenario rows; full universe and unfavorable scenarios retained"},"limitations":["No anonymous-contest predictive edge demonstrated; public contest outcomes already observed, diagnostic only.","Retrospective research, not a prospective trial. Vendor history not independently verified point-in-time.","Crypto assets are correlated; transfer holdouts share market regimes with previously observed BTC/ETH periods.","Exact-fill full-cash buyhold follows official convention but is not an implementable pre-sized fixed-quantity order; decision-sized passive control also provided.","Fixed quantity reserve cannot guarantee cash feasibility; rejected orders occur, including with original12% reserve.","Annual resets and continuous paths differ materially; neither may be cherry-picked.","No statistical-significance or general improvement claim."],"official_review":{"benchmark_equity":1031.7297381297374,"interpretation":"Both agents held after initial entry; peer lead is extra exposure, not evidence of improved forecasting. Replayed own original code on public decision histories and reproduced original orders without changing official artifacts.","original_equity":1028.0305515749951,"peer_equity":1028.2547959844808},"peer_exchange":{"a2a":"Asynchronous request accepted at agent-two:8080, task12225950-5274-404c-8043-84e2a48e2088; completion not required because shared exchange succeeded. Peer reverse-port3000 failure did not block collaboration.","peer_directory":"../agent-two/","reviews":["review-agent-two.json","peer-review-response.json","final-peer-review.json","../agent-two/peer-review.json","../agent-two/findings-for-agent-one.json"],"status":"Actual round0/round1 sources exchanged; both agents reviewed actual code, evaluators and evidence via shared directory"},"revisions":[{"assessment":"Reduced trades but worse ETH performance and often worse drawdown; BTC/ETH annual holdouts beat buyhold in0/6. Not promoted. Insufficient warmup in original60/67-bar histories means abstention there.","entry":"At least two of trailing20/60/120 log returns positive","exit":"All three nonpositive; otherwise retain position","name":"ConsensusV1","sizing":"Floor1e-10 cash/(decision_close*(1+max(0.03,3*sigma40))*buy_slippage_factor*buy_fee_factor); no topups","source":"StrategyV1.hs","warmup":121},{"assessment":"On six LTC/XRP2023-25 annual transfer holdouts, beats original2/6 and buyhold1/6; continuous performance worse than original on both. Not promoted.","credit":"Agent-two RevisionV1 mechanism, independently replicated with original agent-one1e-10 quantity precision rather than peer1e-8","entry":"20/40 arithmetic returns and close/SMA20-1 all exceed0.003; implementation uses equivalent log thresholds for returns","exit":"All three below-0.003; hold otherwise","name":"PeerCostHysteresisV2","sizing":"Original max(12%,4*sigma40) reserve; no topups","source":"v2/StrategyV2.hs"}],"scope":"Offline source/evaluation artifacts only; no official competition, submission changes, real trades, private judge/accounting access, scoring or infrastructure changes.","shared_artifacts":"/shared/competition/paper_be01d1611e99/collaboration/agent-one/","status":"completed_offline_research_no_promotion","task_id":"5704c22c-66a5-4244-9f7d-26fd6547bca1","workspace":"/workspace/paper_be01d1611e99/agent-one/revision/"}{"sources_reviewed":["../agent-two/OriginalRound0.hs","../agent-two/OriginalRound1.hs","../agent-two/Revision.hs","../agent-two/Evaluate.hs","../agent-two/evaluation.csv","../agent-two/findings-for-agent-one.json"],"evaluator_review":"Peer uses history=take t prices with fill at index t, so no obvious lookahead; fee/slippage and cash rejection accounted, benchmark starts at same first fill, daily peak starts1000. OwnGeneralized is explicitly a recurrent extrapolation, not an exact original strategy. Stock adjustment and survivorship limitations are correctly disclosed. CSV header date sorting check and positive price validation present. Mean cross-asset returns are descriptive, not an independent-trial test or portfolio result.","agreement":"Neither peer fixed hysteresis candidate nor our primary candidate is demonstrated general improvement. Peer sees 6.20% mean heldout equity proxy vs own6.63% and buyhold25.81%, despite trade reduction. Independent crypto transfer replication also fails.","independent_transfer_result":"LTC 2023-25 weekly base-cost Original -25.70%, PeerCostHysteresisV2 -55.22%, buyhold +2.56%; XRP Original -35.71%, peer adaptation -53.86%, buyhold +427.26%. Adaptation beat Original in2/6 annual LTC/XRP holdout folds and buyhold1/6. No promotion. Precision adaptation remains original1e-10 rather than peer1e-8; no empirical materiality claim.","positive_but_narrow_evidence":"ConsensusV1 materially reduces turnover (e.g.12 vs34 BTC/ETH continuous trades), and BTC/LTC/XRP continuous returns improve versus Original. ETH and drawdown failures block overall improvement claims. These are heterogeneous outcomes, not proof of predictive alpha.","shared_artifacts":"v2/ has standalone Haskell model/evaluator, complete results.csv, summary, raw public data filtered by loader, and daily traces. evaluation-plan.json and transfer-plan.json preserve ex-ante candidate definitions. Thanks for the useful passive-control, precision, and continuous-path reviews.","communication_status":"Actual source exchange and two-way reviews succeeded through shared directory. agent-one to agent-two:8080 A2A accepted asynchronous task12225950-5274-404c-8043-84e2a48e2088; peer reverse:3000 attempt failed but did not block shared exchange. No need for further tasks or official runs."}
+
+CURRENT PUBLIC BARS
+t,close,volume
+0,100,100
+1,100.58626695786063,100.52738645846198
+2,98.12359734474677,128.8737550292578
+3,98.11552628817175,67.09688821582293
+4,95.86660347938613,65.36121808678526
+5,93.941116599618,96.11667968426251
+6,95.36138899346058,91.94353167710263
+7,93.70586488669377,94.4191431761135
+8,92.8941794030748,111.3055313928857
+9,95.7658113666448,98.11125305690312
+10,96.04474586448349,32.284921444508896
+11,96.39702731152292,42.97834260939555
+12,96.1985139681479,80.82874815563676
+13,95.11838104274726,91.98316122699435
+14,95.21934137467208,55.03567822559688
+15,94.78799377087866,43.37552555091997
+16,94.90845649747752,88.6907050739233
+17,95.50630703777045,29.593103739880274
+18,95.52158413799685,33.13602396433252
+19,94.74717006570657,101.97571519165768
+20,96.06153550488247,76.04838583185902
+21,95.20415384392196,75.10403229700485
+22,96.49682073860363,38.94790583912027
+23,97.81744049499196,86.11796738892825
+24,98.50828869567093,42.56500928709017
+25,99.88367450426452,49.7311069618829
+26,102.05830772188902,104.8665754274872
+27,101.80792772694336,103.35062308302057
+28,99.2384237787774,83.19899932383981
+29,98.95754914344612,86.7937915120558
+30,98.44013395902819,77.36427737506546
+31,98.29726999071528,25.03443281620152
+32,98.77153606814723,35.726967290446154
+33,99.14557813991955,84.02001914339627
+34,103.74247657665411,120.01027889075466
+35,105.34010459072218,117.03044959114466
+36,103.92092707722381,106.08726402676056
+37,103.84469678608484,65.90424181281972
+38,103.06164290416422,0.6465604295296404
+39,101.47590919996354,40.60789551377715
+40,100.6299089504481,74.54269306813003
+41,96.11933157134128,107.74400623559485
+42,97.24668934813829,110.35570554732182
+43,97.27902764423231,69.32291525004854
+44,97.32381353581641,75.86691477955303
+45,96.91626612297439,29.052548501178503
+46,94.17170447227542,70.42698103536279
+47,95.93779917645041,88.60680192249988
+48,96.90723290377206,69.35689262431427
+49,96.98393744177697,80.95846516934536
+50,92.00300704840338,124.64508461132834
+51,91.41727977788685,143.3184173343861
+52,85.49836995923044,137.13337178792523
+53,83.59435230626471,91.96118627109782
+54,85.52398437967011,141.07146450974005
+55,82.21638509860038,137.71842699922425
+56,79.4237366098455,130.36101761027334
+57,68.24714739329447,246.20483683330798
+58,76.39431905431881,240.98551506079008
+59,75.27813426912815,122.49888002280478
+60,76.53082027014257,76.43295762347194
+61,76.28846150581975,102.81241270671298
+62,74.83903801409721,79.83576514016944
+63,72.93518093365513,99.67820634215695
+64,72.03064705439262,86.50141197654867
+65,74.83437292914813,77.96483799833518
+66,75.88014485275465,70.02379357166765

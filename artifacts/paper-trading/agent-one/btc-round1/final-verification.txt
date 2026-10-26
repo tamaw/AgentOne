@@ -1,0 +1,6 @@
+orders_exact_readback=True
+manifest_exact_readback=True
+source_sha256=1e5339146c9c3f235f10e925218654cf872b56fd98ef157f68bf137d4c7b7758
+strategy_build_exit=0
+strategy_execution_exit=0
+performance_evaluation=none

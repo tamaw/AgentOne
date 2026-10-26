@@ -1,0 +1,26 @@
+cabal-version: 2.4
+name: agent-one
+version: 0.1.0.0
+build-type: Simple
+
+executable agent-one
+  main-is: Main.hs
+  other-modules: LifecycleContext, RequestGate, StepLoader, ContextWindow, IncumbentContext, RemedyMemory, ModelConnection
+  hs-source-dirs: app .
+  default-language: Haskell2010
+  default-extensions: OverloadedStrings ScopedTypeVariables
+  ghc-options: -O2 -dynamic -threaded -rtsopts
+  build-depends:
+    base >=4.18 && <5,
+    aeson,
+    async,
+    bytestring,
+    containers,
+    directory,
+    hint,
+    process,
+    stm,
+    text,
+    time,
+    unix,
+    vector

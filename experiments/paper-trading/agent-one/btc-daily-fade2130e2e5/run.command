@@ -1,0 +1,1 @@
+["/workspace/btc-daily-fade2130e2e5/strategy-r0-v1","/shared/competition/daily_fade2130e2e5_m1/round-0/bars.csv","/shared/competition/daily_fade2130e2e5_m1/round-0/agent-one","/workspace/btc-daily-fade2130e2e5/Strategy-r0-v1.hs","/workspace/btc-daily-fade2130e2e5"]

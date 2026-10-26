@@ -1,0 +1,75 @@
+{
+  "round": 0,
+  "decision_t": 9,
+  "fill_t": 10,
+  "mark_t": 11,
+  "fill_close": 120,
+  "mark_close": 130,
+  "agents": {
+    "agent-one": {
+      "cash": 393.394,
+      "units": 5,
+      "equity": 1043.394,
+      "round_return": 0.043394,
+      "cumulative_return": 0.043394,
+      "max_drawdown": 0,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 5,
+          "price": 121.2,
+          "notional": 606,
+          "fee": 0.606
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "handwritten-test",
+        "approach": "deterministic fixture, not a trading agent",
+        "changes": "test fixture"
+      }
+    },
+    "agent-two": {
+      "cash": 876.0388,
+      "units": 1,
+      "equity": 1006.0388,
+      "round_return": 0.006038800000000038,
+      "cumulative_return": 0.006038800000000038,
+      "max_drawdown": 0,
+      "trades_applied": 2,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 2,
+          "price": 121.2,
+          "notional": 242.4,
+          "fee": 0.2424
+        },
+        {
+          "side": "sell",
+          "quantity": 1,
+          "price": 118.8,
+          "notional": 118.8,
+          "fee": 0.1188
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "handwritten-test",
+        "approach": "deterministic fixture, not a trading agent",
+        "changes": "test fixture"
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 8.242582500008243,
+    "entry_price": 121.2,
+    "entry_close": 120,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 10
+  },
+  "benchmark_equity": 1071.5357250010716,
+  "winner": "agent-one"
+}

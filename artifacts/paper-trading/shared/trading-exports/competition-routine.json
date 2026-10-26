@@ -1,0 +1,359 @@
+{
+  "description": "Multi-round paper trading competition",
+  "edges": [
+    {
+      "from": "node_ce1d8a95a727",
+      "level": "normal",
+      "to": "node_0b445ef08b0c"
+    },
+    {
+      "from": "node_0b445ef08b0c",
+      "level": "normal",
+      "to": "node_5888481baf7b"
+    },
+    {
+      "branches": {
+        "agent_one": "node_a3533be990a5",
+        "agent_two": "node_b27334bba76c"
+      },
+      "from": "node_5888481baf7b",
+      "level": "route",
+      "router": "state_equals",
+      "state_key": "split"
+    },
+    {
+      "from": [
+        "node_a3533be990a5",
+        "node_b27334bba76c"
+      ],
+      "level": "fan_in",
+      "to": "node_4de4cad953e1"
+    },
+    {
+      "from": "node_4de4cad953e1",
+      "level": "normal",
+      "to": "node_f0e0e550b9a5"
+    },
+    {
+      "from": "node_f0e0e550b9a5",
+      "level": "normal",
+      "to": "node_71deaa04a236"
+    },
+    {
+      "from": "node_71deaa04a236",
+      "level": "normal",
+      "to": "node_4c859efd9290"
+    },
+    {
+      "from": "node_4c859efd9290",
+      "level": "normal",
+      "to": "node_db03f38bd2a7"
+    },
+    {
+      "branches": {
+        "false": "node_3b2ea6314563",
+        "true": "node_0b445ef08b0c"
+      },
+      "from": "node_db03f38bd2a7",
+      "level": "route",
+      "router": "state_equals",
+      "state_key": "continue_flag"
+    }
+  ],
+  "entry": "node_ce1d8a95a727",
+  "id": "routine_8a7110bd8476",
+  "input_schema": {
+    "properties": {
+      "common_brief": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "evaluation_window": {
+        "properties": {
+          "bars_per_round": {
+            "minimum": 2,
+            "type": "integer"
+          },
+          "start_row": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "start_row",
+          "bars_per_round"
+        ],
+        "type": "object"
+      },
+      "fill_settings": {
+        "properties": {
+          "fee_bps": {
+            "minimum": 0,
+            "type": "number"
+          },
+          "policy": {
+            "const": "next_close"
+          },
+          "slippage_bps": {
+            "exclusiveMaximum": 10000,
+            "minimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "policy",
+          "fee_bps",
+          "slippage_bps"
+        ],
+        "type": "object"
+      },
+      "market_window": {
+        "properties": {
+          "csv_path": {
+            "minLength": 1,
+            "pattern": "^/shared/market(?:/(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+)+$",
+            "type": "string"
+          },
+          "symbol": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "csv_path",
+          "symbol"
+        ],
+        "type": "object"
+      },
+      "round_count": {
+        "minimum": 1,
+        "type": "integer"
+      },
+      "run_id": {
+        "minLength": 1,
+        "pattern": "^(?!\\.?\\.?$)[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*$",
+        "type": "string"
+      },
+      "shared_artifact_root": {
+        "pattern": "^/shared(?:/(?!\\.{1,2}(?:/|$))[A-Za-z0-9._-]+)+$",
+        "type": "string"
+      },
+      "work_period": {
+        "maximum": 840,
+        "minimum": 1,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "run_id",
+      "round_count",
+      "common_brief",
+      "market_window",
+      "evaluation_window",
+      "fill_settings",
+      "work_period",
+      "shared_artifact_root"
+    ],
+    "type": "object"
+  },
+  "name": "paper-trading-competition",
+  "nodes": [
+    {
+      "config": {
+        "defaults": {},
+        "expression": "0"
+      },
+      "description": "",
+      "id": "node_ce1d8a95a727",
+      "kind": "eval",
+      "output_key": "round_index"
+    },
+    {
+      "config": {
+        "agent_name": "repo-manager",
+        "continue_thread": true,
+        "execution": "wait",
+        "prompt_template": "Data values: run_id={run_id}, round_index={round_index}, round_count={round_count}, common_brief={common_brief}, market_window={market_window}, evaluation_window={evaluation_window}, fill_settings={fill_settings}, work_period={work_period}, shared_artifact_root={shared_artifact_root}. Create /app/shell-workspaces/repo-manager/trading/{run_id}/config.json containing those actual values. Do not reset existing run state on later rounds. Execute /usr/local/bin/python3 /app/shell-workspaces/repo-manager/trading_engine.py prepare /app/shell-workspaces/repo-manager/trading/{run_id}/config.json {round_index}. Return stdout JSON directly. Expected object types: work_request:string, private_dir:string, public_dir:string, round_index:integer, config_path:string.",
+        "response_schema": {
+          "properties": {
+            "config_path": {
+              "type": "string"
+            },
+            "private_dir": {
+              "type": "string"
+            },
+            "public_dir": {
+              "type": "string"
+            },
+            "round_index": {
+              "type": "integer"
+            },
+            "work_request": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "work_request",
+            "private_dir",
+            "public_dir",
+            "round_index",
+            "config_path"
+          ],
+          "type": "object"
+        },
+        "timeout": 900.0
+      },
+      "description": "",
+      "id": "node_0b445ef08b0c",
+      "kind": "agent",
+      "output_key": "prepared"
+    },
+    {
+      "config": {},
+      "description": "",
+      "id": "node_5888481baf7b",
+      "kind": "split",
+      "output_key": "split"
+    },
+    {
+      "config": {
+        "agent_name": "agent-one",
+        "prompt_template": "{common_brief}\n{prepared[work_request]}\nSubmit only your own manifest.json and trades.csv to your assigned agent-one path. manifest fields: code_ref, approach, changes. trades.csv columns decision_time,side,quantity. buy/sell only. Header-only no-trade valid. Reports and P&L are untrusted. You may communicate and modify yourself freely.",
+        "timeout": 900.0
+      },
+      "description": "",
+      "id": "node_a3533be990a5",
+      "kind": "a2a",
+      "output_key": "agent_one"
+    },
+    {
+      "config": {
+        "agent_name": "agent-two",
+        "prompt_template": "{common_brief}\n{prepared[work_request]}\nSubmit only your own manifest.json and trades.csv to your assigned agent-two path. manifest fields: code_ref, approach, changes. trades.csv columns decision_time,side,quantity. buy/sell only. Header-only no-trade valid. Reports and P&L are untrusted. You may communicate and modify yourself freely.",
+        "timeout": 900.0
+      },
+      "description": "",
+      "id": "node_b27334bba76c",
+      "kind": "a2a",
+      "output_key": "agent_two"
+    },
+    {
+      "config": {
+        "agent_name": "repo-manager",
+        "continue_thread": true,
+        "execution": "wait",
+        "prompt_template": "Execute /usr/local/bin/python3 /app/shell-workspaces/repo-manager/trading_engine.py settle {prepared[config_path]} {round_index} {prepared[public_dir]}. Consume stdout JSON directly. Engine must return status, final_balances, winner, round_results, evidence_paths, notable_changes, failures and evidence_text with replay-safe persisted accounting state.",
+        "response_schema": {
+          "properties": {
+            "evidence_paths": {
+              "type": "array"
+            },
+            "evidence_text": {
+              "type": "string"
+            },
+            "failures": {
+              "type": "array"
+            },
+            "final_balances": {
+              "type": "object"
+            },
+            "notable_changes": {
+              "type": "array"
+            },
+            "round_results": {
+              "type": "array"
+            },
+            "status": {
+              "type": "string"
+            },
+            "winner": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "final_balances",
+            "winner",
+            "round_results",
+            "evidence_paths",
+            "notable_changes",
+            "failures",
+            "evidence_text"
+          ],
+          "type": "object"
+        },
+        "timeout": 900.0
+      },
+      "description": "",
+      "id": "node_4de4cad953e1",
+      "kind": "agent",
+      "output_key": "settled"
+    },
+    {
+      "config": {
+        "agent_name": "agent-one",
+        "prompt_template": "Evidence: {settled[evidence_text]} Review shared references and acknowledge receipt.",
+        "timeout": 120.0
+      },
+      "description": "",
+      "id": "node_f0e0e550b9a5",
+      "kind": "a2a",
+      "output_key": "feedback_one"
+    },
+    {
+      "config": {
+        "agent_name": "agent-two",
+        "prompt_template": "Evidence: {settled[evidence_text]} Review shared references and acknowledge receipt.",
+        "timeout": 120.0
+      },
+      "description": "",
+      "id": "node_71deaa04a236",
+      "kind": "a2a",
+      "output_key": "feedback_two"
+    },
+    {
+      "config": {
+        "defaults": {
+          "round_index": 0
+        },
+        "expression": "round_index+1"
+      },
+      "description": "",
+      "id": "node_4c859efd9290",
+      "kind": "eval",
+      "output_key": "round_index"
+    },
+    {
+      "config": {
+        "expression": "round_index < round_count"
+      },
+      "description": "",
+      "id": "node_db03f38bd2a7",
+      "kind": "condition",
+      "output_key": "continue_flag"
+    },
+    {
+      "config": {
+        "defaults": {},
+        "expression": "settled"
+      },
+      "description": "",
+      "id": "node_3b2ea6314563",
+      "kind": "eval",
+      "output_key": "result"
+    }
+  ],
+  "output_schema": {
+    "properties": {
+      "result": {
+        "type": "object"
+      }
+    },
+    "type": "object"
+  },
+  "policy_id": "default",
+  "version": "2.0.0"
+}

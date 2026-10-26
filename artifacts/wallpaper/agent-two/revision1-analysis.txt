@@ -1,0 +1,52 @@
+IMAGE artifacts/wallpaper-challenge/revision1.png (1280, 720)
+,,,,,,,::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::,,,,,,,,,
+,,,,::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::,,,,,,
+,:::::::::::::::::::::::::::::::::::::::::::::::::::::;:;::::::::::::::::::::::::::::::::::::::::,,,
+::::::::::::::::::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::::::::::::::::::::::::::::,
+:::::::::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::::::::::::::::::::::
+:::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::::::::::::::::::
+:::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::::::::::
+::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::::::
+::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iiiiiiiiiiiiiiiiiii;;;;;;;;;;;;;;;;;;;;::::
+::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii;;;;;;;;;;;;;;;;:
+:::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iiiiiiiiiiiiiiirrrrrrrrrrrrrriiiiiiiiiiiiiiiiiiiiii;;;;;;;;;;;;
+::::;;;;;;;;;;;;;;;;;;;;;;;;;;iiiiiiiiiiiiiiirrsssrrrrrrrrrrrrrrrrrrrrrrrrriiiiiiiiiiiiiiii;;;;;;;;;
+::;;;;;;;;;;;;;;;;;;;;;;iiiiiiiiiirrrrirX2hHS#9999#SHh5Asrrsssssrrrrrrrrrrrrrrrriiiiiiiiiiiiiii;;;;;
+;;;;;;;;;;;;;;;;;;;iiiiiiiiiirrrrrrrrXhSB&&&&&&&&&&&&&&B#M2sssssssssssrrrrrrrrrrrrrrriiiiiiiiiiii;;;
+;;;;;;;;;;;;;;;iiiiiiiiirrrrrrrrsrs2HB&&&&BBBBBBBBBBBBBB&&B#3Xsssssssssssssrrrrrrrrrrrrriiiiiiiiiii;
+;;;;;;;;;;;iiiiiiiiiirrrrrrrrssssAH9&&&BBBBBBBBBBBBBBBBBBBB&&#3ssXsssssssssssssrrrrrrrrrrrriiiiiiiii
+;;;;;;;;;iiiiiiiiirrrrrrrrssssss5#BBBBBBBBBBBBB&&&BBBBBBBBBBB&&HXXXXXXsssssssssssssrrrrrrrrrrriiiiii
+;;;;;;;iiiiiiiiirrrrrrrrsssssssh99BBBBBBBBBB&&&&BBBBBBBBBBBBBBB&SAXXXXXXXsssssssssssssrrrrrrrrrriiii
+;;;;;iiiiiiiiiirrrrrrrssssssXs3999BBBBBBBBBB&&BBBBBBBBB9BBBBBBB&&SXXXXXXXXXXsssssssssssssrrrrrrrrrii
+;;;iiiiiiiiiiirrrrrrrssssssXs2#999BBBBBBBBBBBB&#M5AA2hS9B9BBBBB&&&MXXXXXXXXXXXXXsssssssssssrrrrrrrrr
+;;iiiiiiiiiirrrrrrrrssssssXXXG9999BBBBBB&BBBBB3:......,sHBBBBBB&&&9AXXXXXXXXXXXXXXsssssssssssrrrrrrr
+iiiiiiiiiiirrrrrrrrsssssssXs5#9999BBBBBBB&BB&M   .,::,. .MBBBBB&&&B3XAXXXXXXXXXXXXXXXssssssssssrrrrr
+iiiiiiiiiiirrrrrrrrssssssXXXM#9999BBBBBBBB&&&Ssi2HS##SH2:i9BBBB&&&&MXAAXXXXXXXXXXXXXXXXssssssssssrrr
+iiiiiiiiiirrrrrrrrrssssssXXXG##999BBBBBBBBBBB&&BB&&&&&&B#SBBBB&&&BBMXAAAAAXXXXXXXXXXXXXXXXsssssssssr
+iiiiiiiiirrrrrrrrrrssssssssAG##9999BBBBBBBBBBBBBBBBBBBBBBBB9BB&&&BB3XAAAAAAAXXXXXXXXXXXXXXXXssssssss
+iiiiiiiiirrrrrrrrrrssssssssAGS##9999BBBBBBBBBBB999999999999BB&&BBBSAAAAAAAAAAAXXXXXXXXXXXXXXXXssssss
+iiiiiiiiirrrrrrrrrrssssssssAHSS###999BBB&B&BBBBBBBB9B9B99B9BBB99993XAAAAAAAAAAAAAAXXXXXXXXXXXXXXssss
+iiiiiiiiiirrrrrrrrrssssssssXhGSS#####99BBBBB&&B&BBBB&9BB9B9#99##S3XAAAAAAAAAAAAAAAAAAXXXXXXXXXXXXsss
+iiiiiiiiiirrrrrrrrrsssssssss5HGSSSS####99BBBBBBBBBB9B999#9#SSSGM5XAAAAAAAAAAAAAAAAAAAAAAXXXXXXXXXXss
+iiiiiiiiirrrrrrrrrssssssssssXhHGGSSSSSS#####9999#99#9SS#GSSGGG5AAAAAAAAAAAAAAAAAAAAAAAAAAXXXXXXXXXXs
+iiiiiiiirrrrrrrrrrsssssssssssAhMHHGGGSSSSSSSSSSSSSSGSGGGHHHHMM2AAAAAAAAAAAAAAAAAAAAAAAAAAAAXXXXXXXXX
+iiiiiiiirrrrrrrrrrssssssssssssA3hMHHGHGGGGGGGGGGHGHHGHMHMhMh3h2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAXXXXXXXX
+iiiiiiirrrrrrrrrrrsssssssssssssA53hhMMHHHHHHHMHHMHMMMMhMh3h355AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXXXXXXX
+iiiiiirrrrrrrrrrrrsssssssssssssrsA5533hhhMhMMhMhhMh3h3533225AAsXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXXXXXX
+iiiiiirrrrrrrrrrrrsssssssssssssrirXX2A5253533535535255A22XXAsrrXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXXXXX
+iiiiiirrrrrrrrrrrrrssssssssssssrriiisrXXAAX2AA2AX2AXAAsXXrrsriisAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXXXX
+iiiiiirrrrrrrrrrrrrssssssssssrrrrri;;;rirsrssrXsrssrssiiri;ii;;rAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXXXX
+iiiiiirrrrrrrrrrrrrsssssssssrrrrrrii;:;;;;;ii;ii;ii;;i;;;;:;;::iXXXXXXAAAAAAAAAAAAAAAAAAAAAAAAAAXXXX
+iiiiiirrrrrrrrrrrrrrssssssssrrrriiii;;::::::::;;:;;::;:::::::::iXXXXXXXXAAAAAAAAAAAAAAAAAAAAAAAAXXXX
+iiiiiirrrrrrrrrrrrrrrssssssrrrrriii;;;;::::::::::::::::::::::::;XXXXXXXXAAAAAAAAAAAAAAAAAAAAAAAAXXXX
+iiiiiirrrrrrrrrrrrrrrrsssrrrrrriii;;;;:::::::::::::::::::::::::iXXXXXXXXAAAAAAAAAAAAAAAAAAAAAAAAXXXX
+iiiiiiirrrrrrrrrrrrrrrrrrrrrrriiii;;;;:::;;;;::::::::::::::::::iXXXXXXXXXAAAAAAAAAAAAAAAAAAAAAAXXXXX
+iiiiiiirrrrrrrrrrrrrrrrrrrrrrriiii;;;;;:;;;;;;;;;;;::::::::::::rXXXXXXXXXXAAAAAAAAAAAAAAAAAAAAXXXXXX
+iiiiiiiirrrrrrrrrrrrrrrrrrrrrriiii;;;;;:;;;;;;iiiirrrrrrriiriirsXXXXXXXXXXXAAAAAAAAAAAAAAAAAAXXXXXXX
+iiiiiiiirrrrrrrrrrrrrrrrrrrrriiii;;;;;::::;;;;iiiirrrrrsssssssssssXXXXXXXXXXXAAAAAAAAAAAAAXXXXXXXXXX
+LIT_BOUNDS (0.0, 0.128, 0.997, 0.994)
+LIT_CENTROID 0.526 0.584
+COVERAGE 0.7236 BRIGHT 0.1142 CLIP 0.0083
+REGION_ROW 0 [(36.7, 47.2, 54.9), (59.9, 71.7, 79.1), (58.7, 70.8, 77.8), (42.3, 52.1, 57.4)]
+REGION_ROW 1 [(48.7, 74.7, 94.5), (190.9, 201.4, 201.8), (167.1, 175.8, 173.5), (79.4, 92.8, 98.1)]
+REGION_ROW 2 [(49.3, 79.0, 101.2), (74.4, 94.2, 102.1), (88.7, 96.3, 92.5), (101.9, 108.5, 106.0)]

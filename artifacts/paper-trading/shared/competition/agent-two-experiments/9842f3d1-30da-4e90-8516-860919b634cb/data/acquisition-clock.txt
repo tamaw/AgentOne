@@ -1,0 +1,3 @@
+2026-10-24T05:29:06Z
+Date,AAPL.Open,AAPL.High,AAPL.Low,AAPL.Close,AAPL.Volume,AAPL.Adjusted,dn,mavg,up,direction
+9.6.7

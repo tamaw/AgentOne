@@ -1,0 +1,1 @@
+/shared/competition/paper_d9fd846d0b12/round-0/agent-one/submission /shared/competition/paper_d9fd846d0b12/round-0/agent-one/public-bars.csv /shared/competition/paper_d9fd846d0b12/round-0/agent-one/orders.csv 1000 0

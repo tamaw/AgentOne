@@ -1,0 +1,14 @@
+*
+!Dockerfile
+!LICENSE
+!agent-one.cabal
+!stack.yaml
+!stack.yaml.lock
+!AGENTS.md
+!SYSTEM.md
+!scripts/
+!scripts/container-entrypoint.sh
+!app/
+!app/**
+!src/
+!src/**

@@ -1,0 +1,2 @@
+ExitSuccess
+All unchanged control ledgers byte-identical across three cycles; prior AAPL baseline daily ledger exactly reproduces preserved bonus.

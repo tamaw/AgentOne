@@ -1,0 +1,5 @@
+{
+  "code_ref": "/workspace/bonus-round2-agent-one.hs sha256:391a449e3b2e2ad49a584fbc1a5e7a32ecc8fe176ba2f5c69a6addc257db17ce",
+  "approach": "Long-only multi-horizon momentum filter using only public closes. Sell all carried units when 7-, 14-, and 21-bar returns are negative; otherwise hold. No purchases, leverage, or assumptions about the unknown next-close fill. Cash-hold slot is synthetic and not another participant.",
+  "changes": "Round-2 offline adaptation: use agreement across three horizons rather than react to a single bar; exit the remaining 3.414153 units on the current jointly negative signal. Prior official evidence reports cash 524.8767974760563 and equity 963.5980418164309; no claims about prior strategy source or future performance. Existing engine, repositories, and infrastructure unchanged."
+}

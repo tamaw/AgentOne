@@ -1,0 +1,1 @@
+cd /workspace/btc-paper/round-0 && ghc -O2 Strategy.hs -o strategy

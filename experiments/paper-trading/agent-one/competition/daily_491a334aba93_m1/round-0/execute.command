@@ -1,0 +1,1 @@
+"/workspace/competition/daily_491a334aba93_m1/round-0/strategy-v1" "/shared/competition/daily_491a334aba93_m1/round-0/bars.csv" "/shared/competition/daily_491a334aba93_m1/round-0/agent-one" "/workspace/competition/daily_491a334aba93_m1/round-0/strategy-v1.hs#sha256=7eb5f725e9185e607743fa170a1522ee2c217607d1f677832bbe085228fa9dd1"

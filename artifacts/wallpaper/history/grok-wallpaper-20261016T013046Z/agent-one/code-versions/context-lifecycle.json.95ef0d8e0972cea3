@@ -1,0 +1,1370 @@
+{
+  "version": 1,
+  "scope": "Reviewed recurring paper requests only; exact content and completed WAIT witness; uncertain clauses retained verbatim",
+  "entries": [
+    {
+      "index": 148,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it from the web and improve yourself based on it. Inspect your current code, previous improvements and relevant execution traces; choose and implement a useful change, then demonstrate that it works. Build on or improve your previous improvement where useful, rather than only accumulating unused helpers. You choose the design. Do not merely summarize the paper. Follow AGENTS.md, keep the Hacker News dashboard running, do not read .env or disclose credentials, and keep output/log inspection concise. No extra agents or benchmark infrastructure. When implemented and demonstrated, report exactly what changed and any limitations, then return False and wait for the next paper.",
+      "retained": [
+        "Do not merely summarize the paper.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, do not read .env or disclose credentials, and keep output/log inspection concise.",
+        "No extra agents or benchmark infrastructure.",
+        "When implemented and demonstrated, report exactly what changed and any limitations, then return False and wait for the next paper."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it from the web and improve yourself based on it.",
+        "Inspect your current code, previous improvements and relevant execution traces; choose and implement a useful change, then demonstrate that it works.",
+        "Build on or improve your previous improvement where useful, rather than only accumulating unused helpers.",
+        "You choose the design."
+      ],
+      "completionWitness": 156
+    },
+    {
+      "index": 157,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it from the web and improve yourself based on it. Inspect your current source, previous improvements and relevant actual execution traces; choose a useful change, implement it, and demonstrate that it works. Prefer improvements that change your actual working behavior over leaving another unused helper. You choose the design; do not merely summarize the paper. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, and keep log inspection/output concise. No extra agents, benchmark infrastructure, unit tests or documentation. Report exactly what changed and what you verified, distinguish evidence from unmeasured claims, then return False to wait for the next paper.",
+      "retained": [
+        "Prefer improvements that change your actual working behavior over leaving another unused helper.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, and keep log inspection/output concise.",
+        "No extra agents, benchmark infrastructure, unit tests or documentation.",
+        "Report exactly what changed and what you verified, distinguish evidence from unmeasured claims, then return False to wait for the next paper."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it from the web and improve yourself based on it.",
+        "Inspect your current source, previous improvements and relevant actual execution traces; choose a useful change, implement it, and demonstrate that it works.",
+        "You choose the design; do not merely summarize the paper."
+      ],
+      "completionWitness": 163
+    },
+    {
+      "index": 164,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it from the web and improve yourself based on it. Inspect your source, previous improvements and relevant real traces. Choose and implement a useful change, then demonstrate it from a subsequent step. Simplification, better use of direct execution, or improving an existing ability can count; do not add machinery merely for its own sake. You choose the design and should not merely summarize the paper. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep logs/output concise. No extra agents or benchmark infrastructure. Report concrete changes, observed evidence and remaining limitations; return False when this paper's improvement is complete.",
+      "retained": [
+        "Simplification, better use of direct execution, or improving an existing ability can count; do not add machinery merely for its own sake.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep logs/output concise.",
+        "No extra agents or benchmark infrastructure.",
+        "Report concrete changes, observed evidence and remaining limitations; return False when this paper's improvement is complete."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it from the web and improve yourself based on it.",
+        "Inspect your source, previous improvements and relevant real traces.",
+        "Choose and implement a useful change, then demonstrate it from a subsequent step.",
+        "You choose the design and should not merely summarize the paper."
+      ],
+      "completionWitness": 170
+    },
+    {
+      "index": 171,
+      "original": "Continue improving yourself. Revisit Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 , now using the code and traces of your previous paper-driven improvements as input. Read the paper and relevant current source/logs. Choose one further useful improvement or correction; implement it, use it in a later step, and show concrete evidence. Consider whether earlier changes actually help your working behavior and preserve useful previous capabilities. You choose the design; no need to manufacture a change if the evidence does not justify one. Follow AGENTS.md, preserve the running dashboard, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report changes and limitations accurately, then return False to wait for the next paper.",
+      "retained": [
+        "Follow AGENTS.md, preserve the running dashboard, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report changes and limitations accurately, then return False to wait for the next paper."
+      ],
+      "omitted": [
+        "Continue improving yourself.",
+        "Revisit Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 , now using the code and traces of your previous paper-driven improvements as input.",
+        "Read the paper and relevant current source/logs.",
+        "Choose one further useful improvement or correction; implement it, use it in a later step, and show concrete evidence.",
+        "Consider whether earlier changes actually help your working behavior and preserve useful previous capabilities.",
+        "You choose the design; no need to manufacture a change if the evidence does not justify one."
+      ],
+      "completionWitness": 177
+    },
+    {
+      "index": 178,
+      "original": "Continue improving yourself with Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read the paper again in light of your current source and real traces, including your prior improvements. Consider your whole working loop, not only the last helper. Choose a useful improvement, implement it and demonstrate it from a subsequent step; assess whether your earlier changes actually help and preserve what works. You choose the change. Do not manufacture changes or claim general gains without evidence. Follow AGENTS.md, preserve the running dashboard, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete changes and limitations, then return False to wait for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim general gains without evidence.",
+        "Follow AGENTS.md, preserve the running dashboard, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete changes and limitations, then return False to wait for the next paper."
+      ],
+      "omitted": [
+        "Continue improving yourself with Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read the paper again in light of your current source and real traces, including your prior improvements.",
+        "Consider your whole working loop, not only the last helper.",
+        "Choose a useful improvement, implement it and demonstrate it from a subsequent step; assess whether your earlier changes actually help and preserve what works.",
+        "You choose the change."
+      ],
+      "completionWitness": 184
+    },
+    {
+      "index": 185,
+      "original": "Continue improving yourself based on An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read the paper with your current source, actual traces and previous improvements in mind. Consider your whole working loop. Choose one useful improvement or simplification, implement it, and demonstrate its use from a later step while preserving useful earlier behavior. You choose the design; do not manufacture a change or merely summarize the paper. Follow AGENTS.md, preserve the running Hacker News dashboard, never read .env or disclose credentials, keep logs/output concise. No extra agents, benchmark infrastructure, unit tests or documentation. Report concrete evidence and limitations; return False when ready for the next paper.",
+      "retained": [
+        "Follow AGENTS.md, preserve the running Hacker News dashboard, never read .env or disclose credentials, keep logs/output concise.",
+        "No extra agents, benchmark infrastructure, unit tests or documentation.",
+        "Report concrete evidence and limitations; return False when ready for the next paper."
+      ],
+      "omitted": [
+        "Continue improving yourself based on An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read the paper with your current source, actual traces and previous improvements in mind.",
+        "Consider your whole working loop.",
+        "Choose one useful improvement or simplification, implement it, and demonstrate its use from a later step while preserving useful earlier behavior.",
+        "You choose the design; do not manufacture a change or merely summarize the paper."
+      ],
+      "completionWitness": 191
+    },
+    {
+      "index": 192,
+      "original": "Continue improving yourself with How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it in light of your current code and real traces, including previous paper-driven changes. Consider your whole working loop and whether any existing machinery should be simplified, corrected or better used. Choose a useful change, implement it and demonstrate it from a subsequent step; do not merely summarize the paper or manufacture changes. You choose the design. Follow AGENTS.md, preserve the running dashboard, never read .env or disclose credentials, keep log inspection/output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and remaining limitations, then return False for the next paper.",
+      "retained": [
+        "Follow AGENTS.md, preserve the running dashboard, never read .env or disclose credentials, keep log inspection/output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and remaining limitations, then return False for the next paper."
+      ],
+      "omitted": [
+        "Continue improving yourself with How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it in light of your current code and real traces, including previous paper-driven changes.",
+        "Consider your whole working loop and whether any existing machinery should be simplified, corrected or better used.",
+        "Choose a useful change, implement it and demonstrate it from a subsequent step; do not merely summarize the paper or manufacture changes.",
+        "You choose the design."
+      ],
+      "completionWitness": 198
+    },
+    {
+      "index": 199,
+      "original": "Keep improving yourself. Read Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 , with your current code and actual execution traces, including your earlier improvements. Choose a useful next improvement or correction to how you work, implement it, and demonstrate real use from a subsequent step. Consider the whole agent, not only the last helper, and preserve useful earlier behavior. You choose the change; do not manufacture changes or claim general gains without evidence. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmark infrastructure, unit tests or documentation. Report concrete evidence and limitations, then return False for the next paper.",
+      "retained": [
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmark infrastructure, unit tests or documentation.",
+        "Report concrete evidence and limitations, then return False for the next paper."
+      ],
+      "omitted": [
+        "Keep improving yourself.",
+        "Read Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 , with your current code and actual execution traces, including your earlier improvements.",
+        "Choose a useful next improvement or correction to how you work, implement it, and demonstrate real use from a subsequent step.",
+        "Consider the whole agent, not only the last helper, and preserve useful earlier behavior.",
+        "You choose the change; do not manufacture changes or claim general gains without evidence."
+      ],
+      "completionWitness": 205
+    },
+    {
+      "index": 206,
+      "original": "Next: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it and improve yourself using your current code and actual traces, including previous paper-driven changes. Consider your whole working loop; you are free to improve your strategy or its implementation, not only your most recent helper. Choose a useful change, implement it, demonstrate it in a subsequent step, and preserve useful earlier behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and limitations, then return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and limitations, then return False for the next paper."
+      ],
+      "omitted": [
+        "Next: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it and improve yourself using your current code and actual traces, including previous paper-driven changes.",
+        "Consider your whole working loop; you are free to improve your strategy or its implementation, not only your most recent helper.",
+        "Choose a useful change, implement it, demonstrate it in a subsequent step, and preserve useful earlier behavior."
+      ],
+      "completionWitness": 212
+    },
+    {
+      "index": 213,
+      "original": "Next: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it and improve yourself using your current source and actual execution traces, including previous improvements. Consider your whole working loop. Choose a useful improvement or simplification, implement it and demonstrate its real use in a later step while preserving what works. You choose the design; do not merely summarize the paper or manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep logs/output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report observed evidence and limitations, then return False for the next paper.",
+      "retained": [
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep logs/output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report observed evidence and limitations, then return False for the next paper."
+      ],
+      "omitted": [
+        "Next: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it and improve yourself using your current source and actual execution traces, including previous improvements.",
+        "Consider your whole working loop.",
+        "Choose a useful improvement or simplification, implement it and demonstrate its real use in a later step while preserving what works.",
+        "You choose the design; do not merely summarize the paper or manufacture changes."
+      ],
+      "completionWitness": 219
+    },
+    {
+      "index": 220,
+      "original": "Next: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it again and improve yourself based on your current source and actual traces, including earlier improvements. Consider the whole agent and whether existing machinery should be simplified, corrected or better used. Choose a useful change, implement it and demonstrate it in a subsequent step while preserving what works. Do not merely summarize the paper or manufacture changes; you choose the design. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and limitations, then return False for the next paper.",
+      "retained": [
+        "Do not merely summarize the paper or manufacture changes; you choose the design.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and limitations, then return False for the next paper."
+      ],
+      "omitted": [
+        "Next: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it again and improve yourself based on your current source and actual traces, including earlier improvements.",
+        "Consider the whole agent and whether existing machinery should be simplified, corrected or better used.",
+        "Choose a useful change, implement it and demonstrate it in a subsequent step while preserving what works."
+      ],
+      "completionWitness": 226
+    },
+    {
+      "index": 227,
+      "original": "Keep improving yourself with Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it with your current code and real traces, including your previous improvements. Consider the whole agent and how it works, not only the last helper. Choose one useful improvement or correction, implement it and demonstrate actual use from a subsequent step while preserving useful capabilities. You choose the design; do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and limitations, then return False for the next paper.",
+      "retained": [
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and limitations, then return False for the next paper."
+      ],
+      "omitted": [
+        "Keep improving yourself with Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it with your current code and real traces, including your previous improvements.",
+        "Consider the whole agent and how it works, not only the last helper.",
+        "Choose one useful improvement or correction, implement it and demonstrate actual use from a subsequent step while preserving useful capabilities.",
+        "You choose the design; do not manufacture changes or claim unmeasured gains."
+      ],
+      "completionWitness": 233
+    },
+    {
+      "index": 234,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it and improve yourself based on your current source, real traces and earlier improvements. Consider the actual agent loop and strategy, not only log formatting. You may improve your own agent source as well as helpers; earlier requests to leave the supervisor unchanged applied to those earlier tasks. You choose the design. Implement one useful improvement and demonstrate it from a later step; preserve working behavior and do not manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence, limitations, and whether any source change still requires restart to take effect. Return False for the next paper.",
+      "retained": [
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence, limitations, and whether any source change still requires restart to take effect."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it and improve yourself based on your current source, real traces and earlier improvements.",
+        "Consider the actual agent loop and strategy, not only log formatting.",
+        "You may improve your own agent source as well as helpers; earlier requests to leave the supervisor unchanged applied to those earlier tasks.",
+        "You choose the design.",
+        "Implement one useful improvement and demonstrate it from a later step; preserve working behavior and do not manufacture changes.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 236
+    },
+    {
+      "index": 241,
+      "original": "Next: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it and improve yourself using current source, real execution traces and previous improvements. Consider the whole working loop and verify how your previous changes interact with it, including any source-only change that is not yet active. You may improve your own agent source as well as helpers; you choose the design. Implement one useful correction or improvement, demonstrate it from a later step and preserve useful behavior. Do not merely summarize or manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and limitations, and clearly distinguish a compiled source change from active runtime behavior. Return False for the next paper.",
+      "retained": [
+        "Do not merely summarize or manufacture changes.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and limitations, and clearly distinguish a compiled source change from active runtime behavior."
+      ],
+      "omitted": [
+        "Next: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it and improve yourself using current source, real execution traces and previous improvements.",
+        "Consider the whole working loop and verify how your previous changes interact with it, including any source-only change that is not yet active.",
+        "You may improve your own agent source as well as helpers; you choose the design.",
+        "Implement one useful correction or improvement, demonstrate it from a later step and preserve useful behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 247
+    },
+    {
+      "index": 248,
+      "original": "Next: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it and improve yourself using current source, actual traces and prior improvements. Consider the whole agent and whether existing control machinery should be simplified, corrected or better used. You may change your own source as well as helpers; choose the design yourself. Implement one useful change and demonstrate it from a later step while preserving working behavior. Do not merely summarize or manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence, limitations, and whether any source changes still require restart to become active. Return False for the next paper.",
+      "retained": [
+        "Do not merely summarize or manufacture changes.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence, limitations, and whether any source changes still require restart to become active."
+      ],
+      "omitted": [
+        "Next: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it and improve yourself using current source, actual traces and prior improvements.",
+        "Consider the whole agent and whether existing control machinery should be simplified, corrected or better used.",
+        "You may change your own source as well as helpers; choose the design yourself.",
+        "Implement one useful change and demonstrate it from a later step while preserving working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 250
+    },
+    {
+      "index": 259,
+      "original": "Keep improving yourself with Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it with your current source and actual traces, including previous paper-driven improvements. Consider the whole working loop, your strategy and the interaction of prior changes. You may improve your own source as well as helpers; choose a useful next change yourself. Implement it and demonstrate actual use from a later step while preserving working capabilities; do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report evidence and limitations, clearly distinguishing active behavior from source changes requiring restart. Return False for the next paper.",
+      "retained": [
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report evidence and limitations, clearly distinguishing active behavior from source changes requiring restart."
+      ],
+      "omitted": [
+        "Keep improving yourself with Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it with your current source and actual traces, including previous paper-driven improvements.",
+        "Consider the whole working loop, your strategy and the interaction of prior changes.",
+        "You may improve your own source as well as helpers; choose a useful next change yourself.",
+        "Implement it and demonstrate actual use from a later step while preserving working capabilities; do not manufacture changes or claim unmeasured gains.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 261
+    },
+    {
+      "index": 266,
+      "original": "Next: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it and improve yourself using current source and actual execution traces, including your previous improvements. Consider the whole loop, strategy and interactions of earlier changes. You may improve your own source or helpers; choose a useful change yourself, implement it and demonstrate it from a subsequent step while preserving what works. Do not merely summarize or manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and limitations, clearly distinguishing live behavior from compiled source requiring restart. Return False for the next paper.",
+      "retained": [
+        "Do not merely summarize or manufacture changes.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and limitations, clearly distinguishing live behavior from compiled source requiring restart."
+      ],
+      "omitted": [
+        "Next: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it and improve yourself using current source and actual execution traces, including your previous improvements.",
+        "Consider the whole loop, strategy and interactions of earlier changes.",
+        "You may improve your own source or helpers; choose a useful change yourself, implement it and demonstrate it from a subsequent step while preserving what works.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 268
+    },
+    {
+      "index": 273,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it and improve yourself using current source, real traces and previous improvements. Consider your whole working loop and how earlier changes interact. You may change your own agent source or helpers; choose one useful improvement or simplification, implement it and demonstrate it from a subsequent step while preserving what works. Do not merely summarize or manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep logs/output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and limitations; distinguish active behavior from source changes requiring restart. Return False for the next paper.",
+      "retained": [
+        "Do not merely summarize or manufacture changes.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep logs/output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and limitations; distinguish active behavior from source changes requiring restart."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it and improve yourself using current source, real traces and previous improvements.",
+        "Consider your whole working loop and how earlier changes interact.",
+        "You may change your own agent source or helpers; choose one useful improvement or simplification, implement it and demonstrate it from a subsequent step while preserving what works.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 279
+    },
+    {
+      "index": 280,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it and improve yourself using current code and actual traces, including previous improvements. Consider the whole loop, strategy and interactions of existing machinery. You may improve your own source or helpers; choose a useful change yourself, implement it and demonstrate actual use from a later step while preserving what works. Do not merely summarize or manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report evidence and limitations, distinguishing active behavior from compiled source requiring restart. Return False for the next paper.",
+      "retained": [
+        "Do not merely summarize or manufacture changes.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report evidence and limitations, distinguishing active behavior from compiled source requiring restart."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it and improve yourself using current code and actual traces, including previous improvements.",
+        "Consider the whole loop, strategy and interactions of existing machinery.",
+        "You may improve your own source or helpers; choose a useful change yourself, implement it and demonstrate actual use from a later step while preserving what works.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 288
+    },
+    {
+      "index": 289,
+      "original": "Keep improving yourself with Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it using your current source and actual traces, including previous paper-driven improvements. Consider the whole agent, strategy and interactions between earlier changes. You may improve your source or helpers; choose a useful improvement yourself, implement it and demonstrate actual use from a later step while preserving what works. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and limitations, distinguishing live behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and limitations, distinguishing live behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Keep improving yourself with Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it using your current source and actual traces, including previous paper-driven improvements.",
+        "Consider the whole agent, strategy and interactions between earlier changes.",
+        "You may improve your source or helpers; choose a useful improvement yourself, implement it and demonstrate actual use from a later step while preserving what works.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 295
+    },
+    {
+      "index": 296,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it and improve yourself based on current source and actual execution traces, including earlier improvements. Consider the whole agent, strategy and interactions of existing mechanisms. You may improve your source or helpers; choose a useful change yourself, implement it and demonstrate it from a subsequent step while preserving working behavior. Do not merely summarize or manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and limitations, distinguishing live behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not merely summarize or manufacture changes.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and limitations, distinguishing live behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it and improve yourself based on current source and actual execution traces, including earlier improvements.",
+        "Consider the whole agent, strategy and interactions of existing mechanisms.",
+        "You may improve your source or helpers; choose a useful change yourself, implement it and demonstrate it from a subsequent step while preserving working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 304
+    },
+    {
+      "index": 305,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it and improve yourself using your current source, actual traces and previous improvements. Consider the whole working loop, strategy and how prior changes interact. You may improve your source or helpers; choose a useful change yourself, implement it and demonstrate it from a later step while preserving useful behavior. Do not merely summarize or manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep logs/output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report evidence and limitations, clearly distinguishing active runtime behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not merely summarize or manufacture changes.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep logs/output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report evidence and limitations, clearly distinguishing active runtime behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it and improve yourself using your current source, actual traces and previous improvements.",
+        "Consider the whole working loop, strategy and how prior changes interact.",
+        "You may improve your source or helpers; choose a useful change yourself, implement it and demonstrate it from a later step while preserving useful behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 311
+    },
+    {
+      "index": 312,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it and improve yourself using current source and actual traces, including earlier improvements. Consider the whole agent, strategy and interactions of existing machinery. You may change your source or helpers; choose one useful improvement or simplification yourself, implement it and demonstrate it from a subsequent step while preserving working behavior. Do not merely summarize or manufacture changes. Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation. Report concrete evidence and limitations, distinguishing live behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not merely summarize or manufacture changes.",
+        "Follow AGENTS.md, keep the dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents, benchmarks, unit tests or documentation.",
+        "Report concrete evidence and limitations, distinguishing live behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it and improve yourself using current source and actual traces, including earlier improvements.",
+        "Consider the whole agent, strategy and interactions of existing machinery.",
+        "You may change your source or helpers; choose one useful improvement or simplification yourself, implement it and demonstrate it from a subsequent step while preserving working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 318
+    },
+    {
+      "index": 319,
+      "original": "Continue improving yourself based on Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read the paper, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step. Build on previous improvements where useful and preserve working behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False when ready for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Continue improving yourself based on Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read the paper, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False when ready for the next paper."
+      ],
+      "completionWitness": 325
+    },
+    {
+      "index": 326,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it, inspect your current source and relevant actual traces, choose a useful improvement yourself, implement it and demonstrate it from a later step. Build on earlier improvements where useful and preserve working behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it, inspect your current source and relevant actual traces, choose a useful improvement yourself, implement it and demonstrate it from a later step.",
+        "Build on earlier improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 328
+    },
+    {
+      "index": 333,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it, inspect your current source and relevant real traces, choose a useful improvement yourself, implement it and demonstrate it from a later step. Build on previous improvements where useful and preserve working behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it, inspect your current source and relevant real traces, choose a useful improvement yourself, implement it and demonstrate it from a later step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 335
+    },
+    {
+      "index": 340,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it, inspect your current source and relevant actual traces, choose a useful improvement yourself, implement it and demonstrate it from a later step. Build on previous improvements where useful and preserve working behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it, inspect your current source and relevant actual traces, choose a useful improvement yourself, implement it and demonstrate it from a later step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 342
+    },
+    {
+      "index": 347,
+      "original": "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step. Build on previous improvements where useful and preserve working behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 353
+    },
+    {
+      "index": 354,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it, inspect your current source and relevant real execution traces, choose a useful improvement yourself, implement it and demonstrate it from a later step. Build on previous improvements where useful and preserve working behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it, inspect your current source and relevant real execution traces, choose a useful improvement yourself, implement it and demonstrate it from a later step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 360
+    },
+    {
+      "index": 361,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step. Build on previous improvements where useful and preserve working behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 367
+    },
+    {
+      "index": 368,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step. Build on previous improvements where useful and preserve working behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 376
+    },
+    {
+      "index": 377,
+      "original": "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step. Build on previous improvements where useful and preserve working behavior. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, keep the Hacker News dashboard running, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it, inspect your current source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 383
+    },
+    {
+      "index": 396,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it, inspect your current Haskell agent source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The removed dashboard was only a test: do not recreate or depend on it; focus on the Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The removed dashboard was only a test: do not recreate or depend on it; focus on the Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it, inspect your current Haskell agent source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 402
+    },
+    {
+      "index": 403,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it, inspect your own Haskell source and relevant actual traces, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it, inspect your own Haskell source and relevant actual traces, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 409
+    },
+    {
+      "index": 410,
+      "original": "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The removed dashboard was only a test: do not recreate or depend on it; focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The removed dashboard was only a test: do not recreate or depend on it; focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 416
+    },
+    {
+      "index": 417,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 423
+    },
+    {
+      "index": 424,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 432
+    },
+    {
+      "index": 433,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 439
+    },
+    {
+      "index": 440,
+      "original": "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 446
+    },
+    {
+      "index": 447,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 457
+    },
+    {
+      "index": 458,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 464
+    },
+    {
+      "index": 465,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 471
+    },
+    {
+      "index": 472,
+      "original": "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 478
+    },
+    {
+      "index": 479,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 487
+    },
+    {
+      "index": 488,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 496
+    },
+    {
+      "index": 497,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 507
+    },
+    {
+      "index": 508,
+      "original": "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 514
+    },
+    {
+      "index": 515,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 521
+    },
+    {
+      "index": 522,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 528
+    },
+    {
+      "index": 529,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 535
+    },
+    {
+      "index": 536,
+      "original": "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Recursive self-improvement of AI research agents (AIDE²), https://arxiv.org/html/2609.26457v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 542
+    },
+    {
+      "index": 543,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step. Build on previous improvements where useful and preserve working behavior. The dashboard was only a test and is removed; do not recreate or depend on it. Focus on your Haskell agent/runtime/strategy. Do not manufacture changes or claim unmeasured gains. Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure. Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart. Return False for the next paper.",
+      "retained": [
+        "The dashboard was only a test and is removed; do not recreate or depend on it.",
+        "Focus on your Haskell agent/runtime/strategy.",
+        "Do not manufacture changes or claim unmeasured gains.",
+        "Follow AGENTS.md, never read .env or disclose credentials, keep output concise, and do not create extra agents or benchmark infrastructure.",
+        "Report concrete changes, evidence and limitations, distinguishing active behavior from compiled source awaiting restart."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it, inspect your current Haskell source and relevant actual execution logs, choose a useful improvement yourself, implement it and demonstrate it from a later Haskell step.",
+        "Build on previous improvements where useful and preserve working behavior.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 555
+    },
+    {
+      "index": 556,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it, inspect your current Haskell source and actual execution logs, and choose a useful improvement yourself. Implement it and demonstrate it from a later Haskell step, building on previous improvements where useful. Preserve working behavior. Focus on your own Haskell agent/runtime/strategy; the dashboard was a removed test, do not recreate or depend on it. Follow AGENTS.md: no unit tests and no documentation. Never read .env or disclose credentials. Keep output concise. No extra agents or benchmark infrastructure. Do not manufacture changes or claim unmeasured gains; report if no useful change is justified. Distinguish active behavior from source awaiting a build/restart, and demonstrate any changed failure path when practical. Return False for the next paper.",
+      "retained": [
+        "Preserve working behavior.",
+        "Focus on your own Haskell agent/runtime/strategy; the dashboard was a removed test, do not recreate or depend on it.",
+        "Follow AGENTS.md: no unit tests and no documentation.",
+        "Never read .env or disclose credentials.",
+        "Keep output concise.",
+        "No extra agents or benchmark infrastructure.",
+        "Do not manufacture changes or claim unmeasured gains; report if no useful change is justified.",
+        "Distinguish active behavior from source awaiting a build/restart, and demonstrate any changed failure path when practical."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it, inspect your current Haskell source and actual execution logs, and choose a useful improvement yourself.",
+        "Implement it and demonstrate it from a later Haskell step, building on previous improvements where useful.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 562
+    },
+    {
+      "index": 563,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it and inspect your Haskell source plus relevant actual execution logs. Decide what would usefully improve your own agent, including simplifying existing machinery if evidence supports it. Implement a justified improvement yourself and demonstrate it from a later Haskell Step. Preserve working behavior. Do not manufacture changes merely to make a change: an evidence-based no-change conclusion is acceptable. Follow AGENTS.md: no unit tests, no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure. The dashboard was removed and is not part of this task. Keep output concise, distinguish active behavior from source awaiting build/restart, report evidence and limitations, and do not claim unmeasured performance gains. Return False for the next paper.",
+      "retained": [
+        "Decide what would usefully improve your own agent, including simplifying existing machinery if evidence supports it.",
+        "Preserve working behavior.",
+        "Do not manufacture changes merely to make a change: an evidence-based no-change conclusion is acceptable.",
+        "Follow AGENTS.md: no unit tests, no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure.",
+        "The dashboard was removed and is not part of this task.",
+        "Keep output concise, distinguish active behavior from source awaiting build/restart, report evidence and limitations, and do not claim unmeasured performance gains."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it and inspect your Haskell source plus relevant actual execution logs.",
+        "Implement a justified improvement yourself and demonstrate it from a later Haskell Step.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 567
+    },
+    {
+      "index": 568,
+      "original": "Next paper: AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 . Read it, inspect your own Haskell source and relevant real execution history, and choose a meaningful improvement to your agent's ability to solve work or improve itself. Let observed limitations guide your choice; assess whether the recent small diagnostic changes actually address the largest useful opportunity. Implement justified changes yourself and demonstrate use from a later Haskell Step. Preserve existing behavior and distinguish functional evidence from measured performance improvement. An evidence-based no-change conclusion is acceptable. Follow AGENTS.md: no unit tests, no documentation. Do not read .env or disclose credentials. No extra agents or benchmark infrastructure. Dashboard is removed and irrelevant. Keep output concise and report changes, evidence, limitations, and whether each change is active or needs build/restart. Return False for the next paper.",
+      "retained": [
+        "Read it, inspect your own Haskell source and relevant real execution history, and choose a meaningful improvement to your agent's ability to solve work or improve itself.",
+        "Let observed limitations guide your choice; assess whether the recent small diagnostic changes actually address the largest useful opportunity.",
+        "Preserve existing behavior and distinguish functional evidence from measured performance improvement.",
+        "An evidence-based no-change conclusion is acceptable.",
+        "Follow AGENTS.md: no unit tests, no documentation.",
+        "Do not read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure.",
+        "Dashboard is removed and irrelevant.",
+        "Keep output concise and report changes, evidence, limitations, and whether each change is active or needs build/restart."
+      ],
+      "omitted": [
+        "Next paper: AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 .",
+        "Implement justified changes yourself and demonstrate use from a later Haskell Step.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 570
+    },
+    {
+      "index": 577,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it, inspect your own Haskell source and relevant actual traces, and improve yourself using what previous passes produced. The last AIDE² pass added ContextWindow request-time elision and demonstrated a character reduction; consider the real implications and remaining limitations when selecting your next improvement. Choose and implement the change yourself, and demonstrate its use from a later Haskell Step. Preserve working behavior and full stored history. Do not manufacture changes; an evidence-based no-change conclusion is acceptable. Follow AGENTS.md: no unit tests and no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure. Dashboard remains removed and irrelevant. Keep output concise. Report changes, evidence and limitations, distinguishing active behavior from source awaiting build/restart and avoiding unmeasured performance claims. Return False for the next paper.",
+      "retained": [
+        "The last AIDE² pass added ContextWindow request-time elision and demonstrated a character reduction; consider the real implications and remaining limitations when selecting your next improvement.",
+        "Preserve working behavior and full stored history.",
+        "Do not manufacture changes; an evidence-based no-change conclusion is acceptable.",
+        "Follow AGENTS.md: no unit tests and no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure.",
+        "Dashboard remains removed and irrelevant.",
+        "Keep output concise.",
+        "Report changes, evidence and limitations, distinguishing active behavior from source awaiting build/restart and avoiding unmeasured performance claims."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it, inspect your own Haskell source and relevant actual traces, and improve yourself using what previous passes produced.",
+        "Choose and implement the change yourself, and demonstrate its use from a later Haskell Step.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 583
+    },
+    {
+      "index": 584,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it and inspect your current Haskell agent and actual logs; choose a useful improvement yourself, implement it and demonstrate it from a later Step. One concrete concern to assess: ContextWindow now imports Data.Vector, but vector is not in agent-one.cabal build-depends. Bare ghc -fno-code checks may not prove that Stack/Cabal can build the app with declared dependencies. Inspect and resolve any real build or verification gap yourself; avoid changing files just to manufacture activity. Preserve working behavior and full stored history. Follow AGENTS.md: no unit tests, no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure; do not recreate the dashboard. Keep output concise, distinguish source checks, actual build results and live behavior, and avoid unmeasured gains. Do not restart the supervisor during an in-flight Step. Return False for the next paper.",
+      "retained": [
+        "One concrete concern to assess: ContextWindow now imports Data.Vector, but vector is not in agent-one.cabal build-depends.",
+        "Bare ghc -fno-code checks may not prove that Stack/Cabal can build the app with declared dependencies.",
+        "Preserve working behavior and full stored history.",
+        "Follow AGENTS.md: no unit tests, no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure; do not recreate the dashboard.",
+        "Keep output concise, distinguish source checks, actual build results and live behavior, and avoid unmeasured gains.",
+        "Do not restart the supervisor during an in-flight Step."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Read it and inspect your current Haskell agent and actual logs; choose a useful improvement yourself, implement it and demonstrate it from a later Step.",
+        "Inspect and resolve any real build or verification gap yourself; avoid changing files just to manufacture activity.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 590
+    },
+    {
+      "index": 591,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it and inspect your Haskell agent and actual execution logs. Choose a useful improvement or simplification yourself; implement a justified change and demonstrate use from a later Haskell Step. Last pass fixed a real undeclared vector dependency and added an explicit buildAgent helper; avoid adding more machinery without evidence. An evidence-based no-change result is acceptable. Preserve working behavior and full stored history. Follow AGENTS.md: no unit tests and no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure, no dashboard. Keep output concise and distinguish source checks, successful builds and actual running behavior. Do not restart the supervisor from inside an in-flight Step. Report evidence and limitations without unmeasured performance claims. Return False for the next paper.",
+      "retained": [
+        "Last pass fixed a real undeclared vector dependency and added an explicit buildAgent helper; avoid adding more machinery without evidence.",
+        "An evidence-based no-change result is acceptable.",
+        "Preserve working behavior and full stored history.",
+        "Follow AGENTS.md: no unit tests and no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure, no dashboard.",
+        "Keep output concise and distinguish source checks, successful builds and actual running behavior.",
+        "Do not restart the supervisor from inside an in-flight Step.",
+        "Report evidence and limitations without unmeasured performance claims."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it and inspect your Haskell agent and actual execution logs.",
+        "Choose a useful improvement or simplification yourself; implement a justified change and demonstrate use from a later Haskell Step.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 595
+    },
+    {
+      "index": 596,
+      "original": "Next paper: AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 . Read it and use your current Haskell source and real execution history to choose a meaningful self-improvement. Recent passes added reversible context elision, indexed history recovery and a dependency-aware build helper; inspect what actually remains useful rather than repeating checks alone or manufacturing small changes. Implement a justified improvement yourself and demonstrate its use from a later Haskell Step. An evidence-based no-change conclusion is acceptable. Preserve working behavior and full stored conversation history. Follow AGENTS.md: no unit tests and no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure; dashboard remains removed and irrelevant. Keep output concise. Report evidence and limitations; distinguish source checks, builds and live behavior, and avoid unmeasured performance claims. Do not restart your supervisor inside an in-flight Step. Return False for the next paper.",
+      "retained": [
+        "Read it and use your current Haskell source and real execution history to choose a meaningful self-improvement.",
+        "Recent passes added reversible context elision, indexed history recovery and a dependency-aware build helper; inspect what actually remains useful rather than repeating checks alone or manufacturing small changes.",
+        "An evidence-based no-change conclusion is acceptable.",
+        "Preserve working behavior and full stored conversation history.",
+        "Follow AGENTS.md: no unit tests and no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure; dashboard remains removed and irrelevant.",
+        "Keep output concise.",
+        "Report evidence and limitations; distinguish source checks, builds and live behavior, and avoid unmeasured performance claims.",
+        "Do not restart your supervisor inside an in-flight Step."
+      ],
+      "omitted": [
+        "Next paper: AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 .",
+        "Implement a justified improvement yourself and demonstrate its use from a later Haskell Step.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 604
+    },
+    {
+      "index": 605,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it and inspect your current Haskell code plus actual traces. Build on prior improvements to choose and implement a meaningful self-improvement yourself, demonstrating use from a later Haskell Step. Last AIDE² pass extended context elision to stale execution feedback, measured 1004966 -> 446424 outgoing characters on actual history, and passed an actual Stack build; supervisor has not restarted onto that new policy. Assess real limitations and preserve working behavior and full stored history. Evidence-based no-change is acceptable. Follow AGENTS.md: no unit tests and no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure, no dashboard. Keep output concise. Distinguish source checks, builds, dynamically loaded helper behavior and live supervisor behavior; avoid unmeasured performance claims. Do not restart your supervisor inside an in-flight Step. Return False for the next paper.",
+      "retained": [
+        "Last AIDE² pass extended context elision to stale execution feedback, measured 1004966 -> 446424 outgoing characters on actual history, and passed an actual Stack build; supervisor has not restarted onto that new policy.",
+        "Assess real limitations and preserve working behavior and full stored history.",
+        "Evidence-based no-change is acceptable.",
+        "Follow AGENTS.md: no unit tests and no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure, no dashboard.",
+        "Keep output concise.",
+        "Distinguish source checks, builds, dynamically loaded helper behavior and live supervisor behavior; avoid unmeasured performance claims.",
+        "Do not restart your supervisor inside an in-flight Step."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it and inspect your current Haskell code plus actual traces.",
+        "Build on prior improvements to choose and implement a meaningful self-improvement yourself, demonstrating use from a later Haskell Step.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 609
+    },
+    {
+      "index": 613,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it, inspect your current Haskell source and actual execution history, and choose a useful self-improvement. The container was externally restarted while idle after your successful build: both live executable hashes match installed, and the actual outgoing request now contains 453853 history characters versus 1020125 stored, with 276 elision markers. Your request policy is now active. Use real evidence to assess remaining gaps and implement a justified improvement yourself, demonstrating use from a later Haskell Step. Evidence-based no-change is acceptable. Preserve working behavior and full stored history. Follow AGENTS.md: no unit tests and no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure, no dashboard. Keep output concise; distinguish functional checks, build success and live behavior. No unmeasured gains. Do not restart your supervisor inside a Step. Return False for the next paper.",
+      "retained": [
+        "Read it, inspect your current Haskell source and actual execution history, and choose a useful self-improvement.",
+        "The container was externally restarted while idle after your successful build: both live executable hashes match installed, and the actual outgoing request now contains 453853 history characters versus 1020125 stored, with 276 elision markers.",
+        "Your request policy is now active.",
+        "Use real evidence to assess remaining gaps and implement a justified improvement yourself, demonstrating use from a later Haskell Step.",
+        "Evidence-based no-change is acceptable.",
+        "Preserve working behavior and full stored history.",
+        "Follow AGENTS.md: no unit tests and no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure, no dashboard.",
+        "Keep output concise; distinguish functional checks, build success and live behavior.",
+        "No unmeasured gains.",
+        "Do not restart your supervisor inside a Step."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 621
+    },
+    {
+      "index": 622,
+      "original": "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 . Read it and inspect your own Haskell agent and relevant actual traces. Choose a useful self-improvement or simplification, implement it yourself when justified, and demonstrate its use in a later Haskell Step. Prior pass confirmed real outgoing context elision and exact recovery from a marker in a live request; avoid merely repeating that verification or adding wrappers without need. An evidence-based no-change conclusion is acceptable. Preserve working behavior and full stored history. Follow AGENTS.md: no unit tests and no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure; no dashboard. Keep output concise; distinguish source checks, builds, helper demonstrations and actual live behavior. Do not claim unmeasured gains or restart your supervisor inside a Step. Return False for the next paper.",
+      "retained": [
+        "Prior pass confirmed real outgoing context elision and exact recovery from a marker in a live request; avoid merely repeating that verification or adding wrappers without need.",
+        "An evidence-based no-change conclusion is acceptable.",
+        "Preserve working behavior and full stored history.",
+        "Follow AGENTS.md: no unit tests and no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure; no dashboard.",
+        "Keep output concise; distinguish source checks, builds, helper demonstrations and actual live behavior.",
+        "Do not claim unmeasured gains or restart your supervisor inside a Step."
+      ],
+      "omitted": [
+        "Next paper: How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 .",
+        "Read it and inspect your own Haskell agent and relevant actual traces.",
+        "Choose a useful self-improvement or simplification, implement it yourself when justified, and demonstrate its use in a later Haskell Step.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 626
+    },
+    {
+      "index": 627,
+      "original": "Next paper: AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 . Read it and inspect your own current Haskell source and actual traces. Continue improving yourself where evidence justifies it. Recent passes correctly declined speculative machinery; don't merely repeat completed checks. Look for a concrete limitation in doing useful work or applying your own improvements, choose the improvement yourself, implement it and demonstrate the resulting capability from a later Haskell Step. An evidence-based no-change conclusion remains acceptable. Preserve working behavior and full stored conversation history. Follow AGENTS.md: no unit tests, no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure; no dashboard. Keep output concise and distinguish functional evidence, build success and actual live behavior; avoid unmeasured performance claims. Do not restart your supervisor inside a Step. Return False for the next paper.",
+      "retained": [
+        "Recent passes correctly declined speculative machinery; don't merely repeat completed checks.",
+        "Look for a concrete limitation in doing useful work or applying your own improvements, choose the improvement yourself, implement it and demonstrate the resulting capability from a later Haskell Step.",
+        "An evidence-based no-change conclusion remains acceptable.",
+        "Preserve working behavior and full stored conversation history.",
+        "Follow AGENTS.md: no unit tests, no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure; no dashboard.",
+        "Keep output concise and distinguish functional evidence, build success and actual live behavior; avoid unmeasured performance claims.",
+        "Do not restart your supervisor inside a Step."
+      ],
+      "omitted": [
+        "Next paper: AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 .",
+        "Read it and inspect your own current Haskell source and actual traces.",
+        "Continue improving yourself where evidence justifies it.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 633
+    },
+    {
+      "index": 634,
+      "original": "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 . Read it and assess your own Haskell agent using current code and actual traces. Choose and implement a useful self-improvement if justified, and demonstrate its use from a later Haskell Step. Recent passes have found diminishing returns and no demonstrated task failure requiring further machinery. Take that evidence seriously: avoid repeating completed checks or manufacturing changes; a concise no-change conclusion is acceptable. Preserve working behavior and full stored history. Follow AGENTS.md: no unit tests and no documentation. Never read .env or disclose credentials. No extra agents or benchmark infrastructure; no dashboard. Keep output concise and distinguish observed functional improvements from unmeasured task-success gains. Do not restart your supervisor inside a Step. Return False for the next paper.",
+      "retained": [
+        "Recent passes have found diminishing returns and no demonstrated task failure requiring further machinery.",
+        "Take that evidence seriously: avoid repeating completed checks or manufacturing changes; a concise no-change conclusion is acceptable.",
+        "Preserve working behavior and full stored history.",
+        "Follow AGENTS.md: no unit tests and no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents or benchmark infrastructure; no dashboard.",
+        "Keep output concise and distinguish observed functional improvements from unmeasured task-success gains.",
+        "Do not restart your supervisor inside a Step."
+      ],
+      "omitted": [
+        "Next paper: Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 .",
+        "Read it and assess your own Haskell agent using current code and actual traces.",
+        "Choose and implement a useful self-improvement if justified, and demonstrate its use from a later Haskell Step.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 636
+    },
+    {
+      "index": 637,
+      "original": "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 . Read it and improve yourself where justified by your current Haskell code and actual execution history. Choose the change yourself, implement it and demonstrate its use in a later Step. Recent passes found diminishing returns: avoid redoing completed checks or making speculative changes just to produce a diff. A concise evidence-based no-change conclusion is acceptable. Preserve working behavior and full stored history. Follow AGENTS.md: no unit tests, no documentation. Never read .env or disclose credentials. No extra agents, benchmark infrastructure or dashboard. Keep output concise, distinguish actual live behavior from source/build evidence, and do not claim unmeasured gains. Do not restart the supervisor inside a Step. Return False for the next paper.",
+      "retained": [
+        "Read it and improve yourself where justified by your current Haskell code and actual execution history.",
+        "Recent passes found diminishing returns: avoid redoing completed checks or making speculative changes just to produce a diff.",
+        "A concise evidence-based no-change conclusion is acceptable.",
+        "Preserve working behavior and full stored history.",
+        "Follow AGENTS.md: no unit tests, no documentation.",
+        "Never read .env or disclose credentials.",
+        "No extra agents, benchmark infrastructure or dashboard.",
+        "Keep output concise, distinguish actual live behavior from source/build evidence, and do not claim unmeasured gains.",
+        "Do not restart the supervisor inside a Step."
+      ],
+      "omitted": [
+        "Next paper: An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 .",
+        "Choose the change yourself, implement it and demonstrate its use in a later Step.",
+        "Return False for the next paper."
+      ],
+      "completionWitness": 639
+    },
+    {
+      "index": 640,
+      "original": "Read How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering? https://arxiv.org/html/2609.40303v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and any remaining limitations. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and any remaining limitations."
+      ],
+      "omitted": [
+        "Read How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?",
+        "https://arxiv.org/html/2609.40303v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 648
+    },
+    {
+      "index": 649,
+      "original": "Read AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 655
+    },
+    {
+      "index": 656,
+      "original": "Read Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 662
+    },
+    {
+      "index": 663,
+      "original": "Read An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 669
+    },
+    {
+      "index": 670,
+      "original": "Read How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 676
+    },
+    {
+      "index": 677,
+      "original": "Read AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 683
+    },
+    {
+      "index": 684,
+      "original": "Read Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 692
+    },
+    {
+      "index": 693,
+      "original": "Read An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 699
+    },
+    {
+      "index": 700,
+      "original": "Read How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?, https://arxiv.org/html/2609.40303v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 706
+    },
+    {
+      "index": 707,
+      "original": "Read AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read AIDE² — Recursive self-improvement of AI research agents, https://arxiv.org/html/2609.26457v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 711
+    },
+    {
+      "index": 712,
+      "original": "Read Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read Metaⁿ: Recursive Self-Improvement through Emergent Depth, https://arxiv.org/html/2608.24735v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 716
+    },
+    {
+      "index": 717,
+      "original": "Read An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 and improve yourself based on it. Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step. Build on previous useful changes where appropriate. Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials. Keep this minimal: no extra agents, benchmark infrastructure or dashboard. Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains. Return False when ready for the next paper; do not restart the supervisor inside a Step.",
+      "retained": [
+        "Follow AGENTS.md, preserve full stored conversation history, never read .env or disclose credentials.",
+        "Keep this minimal: no extra agents, benchmark infrastructure or dashboard.",
+        "Report what changed, what you actually demonstrated and remaining limitations; do not claim unmeasured gains."
+      ],
+      "omitted": [
+        "Read An Empirical Study of Harness Design for Coding Agents, https://arxiv.org/html/2609.20804v1 and improve yourself based on it.",
+        "Read your Haskell source and relevant logs, choose what to improve yourself, make the change and use it in a subsequent Step.",
+        "Build on previous useful changes where appropriate.",
+        "Return False when ready for the next paper; do not restart the supervisor inside a Step."
+      ],
+      "completionWitness": 721
+    }
+  ]
+}

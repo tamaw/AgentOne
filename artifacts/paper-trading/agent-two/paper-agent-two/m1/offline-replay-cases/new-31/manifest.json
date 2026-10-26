@@ -1,0 +1,7 @@
+{
+"code_ref":"/shared/competition/paper_1c0f5ea46b22/match-1/agent-two/new.hs#sha256=e1e4655d99e0ab51f9dfd4cdac881a624d34ddac01402209c459b727b055b4b2",
+"approach":"v2-candidate long-only short-horizon momentum gate: enter only if trailing 7-bar log return exceeds 0.003+0.25*20-return population volatility*sqrt(6). Removes both long-trend confirmations; all other execution assumptions unchanged. Otherwise retain cash. Entry uses 85% of decision-close cost-adjusted cash, reserving 15% for uncertain next-close fills; this buffer is not a guaranteed feasibility bound. No leverage or shorting.",
+"changes":"source_version=momentum-v2-candidate; parent=momentum-v1; parent_sha256=a3f09a28bb1cbd4a25224422f4cff1541b1747002c675241174cf0c2d3194e04; evaluation_only=true; removes_21bar_positive_and_above_20close_mean_confirmations; retains_7bar_volatility_hurdle_and_85percent_budget; paired_public_history_replay_is_not_independent_judge_verification; no_live_orders_or_match_settlement_claim; candidate_sha256=e1e4655d99e0ab51f9dfd4cdac881a624d34ddac01402209c459b727b055b4b2",
+"peer_tip_decisions":[],
+"peer_tip_context":"First match; no previous improvement documents supplied and no peer tips available."
+}

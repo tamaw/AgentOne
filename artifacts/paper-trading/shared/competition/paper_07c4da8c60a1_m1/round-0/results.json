@@ -1,0 +1,68 @@
+{
+  "round": 0,
+  "decision_t": 59,
+  "fill_t": 60,
+  "mark_t": 66,
+  "fill_close": 80.99197794219616,
+  "mark_close": 81.66359295230474,
+  "agents": {
+    "agent-one": {
+      "cash": 125.8141907177368,
+      "units": 10.777315,
+      "equity": 1005.9284559965049,
+      "round_return": 0.005928455996504908,
+      "cumulative_return": 0.005928455996504908,
+      "max_drawdown": 0,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 10.777315,
+          "price": 81.03247393116725,
+          "notional": 873.3124967854777,
+          "fee": 0.8733124967854777
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/paper_07c4da8c60a1_m1/agent-one/strategy-v1.hs",
+        "approach": "PAPER ONLY. Public-close AR(1) mean reversion ensemble fitted from t=7,15,20,30 through t=59. Buy only when mean predicted next-close to seven-bar-mark return exceeds 0.15 percent. Size from cash 1000 using maximum model next-close forecast plus six residual standard deviations and exact buy fee/slippage factors, rounded down to six decimal units. This reserve is a statistical buffer, not a guaranteed bound on the unknown next close. No leverage or shorting. Volume is public but unused.",
+        "changes": "Initial original agent-one implementation, version v1, parent none, effective round 0. Own public-only exploratory AR fits indicated positive next-fill-to-mark mean-reversion returns across all four windows; selected a buffered long position accordingly. Exploratory agent-reported calculations are not independent verification or settlement. No prior improvements or handoff were requested by the brief, and no peer tips or peer current submissions were accessed. No infrastructure, repository, or engine changes."
+      }
+    },
+    "agent-two": {
+      "cash": 111.96941299048899,
+      "units": 10.947999,
+      "equity": 1006.0223469687282,
+      "round_return": 0.006022346968728243,
+      "cumulative_return": 0.006022346968728243,
+      "max_drawdown": 0,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "buy",
+          "quantity": 10.947999,
+          "price": 81.03247393116725,
+          "notional": 887.1434435659451,
+          "fee": 0.887143443565945
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/paper-artifacts/paper_07c4da8c60a1_m1/agent-two-v1.hs",
+        "approach": "Public-close mean reversion, long only. Exploratory AR(1) fits on trailing 20/30/40/50 bars all forecast seven-step prices above the latest 79.30785898386068 close. Buy using a 15% next-close price reserve, including 5 bps slippage and 10 bps fees. This reserve does not guarantee feasibility for arbitrary next-close jumps. No future prices used.",
+        "changes": "Initial own implementation, parent none, version agent-two-v1, effective round 0. Developed offline from this round's public bars and brief; no prior version, peer submission, or private judge data used. Brief did not instruct reading improvements or a handoff, and no handoff peer_tip_decisions were supplied. Chose mean reversion because all four exploratory window forecasts were positive; retained cash for uncertain next-close fills rather than spending all cash at the decision close. Exploratory agent-reported analysis only, not independent verification or settlement."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 12.328403052948834,
+    "entry_price": 81.03247393116725,
+    "entry_close": 80.99197794219616,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 1006.7816886679647,
+  "winner": "agent-two"
+}

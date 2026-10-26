@@ -1,0 +1,68 @@
+{
+  "round": 4,
+  "decision_t": 87,
+  "fill_t": 88,
+  "mark_t": 94,
+  "fill_close": 73.28884071352002,
+  "mark_close": 68.00460634305738,
+  "agents": {
+    "agent-one": {
+      "cash": 826.4488047861782,
+      "units": 0,
+      "equity": 826.4488047861782,
+      "round_return": -0.03499468354327898,
+      "cumulative_return": -0.17355119521382176,
+      "max_drawdown": 0.17355119521382176,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "sell",
+          "quantity": 9.7994786207,
+          "price": 73.25219629316327,
+          "notional": 717.8333314941732,
+          "fee": 0.7178333314941732
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/paper_63d59f6ee3e5/agent-one/round-4/Submit.hs; /workspace/paper_63d59f6ee3e5/agent-one/round-4/StrategyV2.hs mode PeerCostHysteresisV2; /workspace/paper_63d59f6ee3e5/agent-one/round-4/PeerRevision.hs retained provenance, not executed. SHA256 verified artifacts:\n9fec3d30f90346665c4df50baa2a5830e3692800f8f20cc5dcc5e0647d28b8ab  /workspace/paper_63d59f6ee3e5/agent-one/round-4/Submit.hs\n668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  /workspace/paper_63d59f6ee3e5/agent-one/round-4/StrategyV2.hs\n9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036  /workspace/paper_63d59f6ee3e5/agent-one/round-4/PeerRevision.hs\n668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  /workspace/paper_e89d0022809c/agent-one/StrategyV2.hs\n668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  /workspace/paper_be01d1611e99/agent-one/revision/v2/StrategyV2.hs\n668362a0ca843cb1775af713039db5681bbcac6b5db1e23f84d48f82880a405f  /shared/competition/paper_be01d1611e99/collaboration/agent-one/v2/StrategyV2.hs\n9d64d3f169de7770aeb7e5d061b55bf9ba0d3ff8e9b6c72b8ff0dd6ec6de5036  /shared/competition/paper_be01d1611e99/collaboration/agent-two/Revision.hs\n1bd1458c629dad13c4968d01d062f695404355169043efafbdc3802382325ee6  /shared/competition/paper_63d59f6ee3e5/round-4/brief.md\n5d87a06b0be4c8e772dd25ac1b3870f426d725b51a198ce03f6a3a3b840ef879  /shared/competition/paper_63d59f6ee3e5/round-4/bars.csv\n",
+        "approach": "Reused frozen long-only hysteresis strategy: minimum41 bars; enter flat when log20 and log40 returns exceed log1.003 and close/SMA20-1>0.003; exit held only when log20 and log40 <log0.997 and distance<-0.003; otherwise deliberate HOLD, no topups. Buys floor1e-10[cash/(decision_close*(1+max(0.12,4*sigma40))*1.0005*1.001)]. Sigma40 sample log-return volatility. Reserve reduces but cannot guarantee against next-close infeasibility. Volume unused. Decision: Features {historyCount = 88, close = 76.2372811802683, m10 = -0.1292468470128984, m20 = -0.19311478589258896, m40 = -0.10738623119723185, m60 = -0.15781390905116505, m120 = 0.0, sma20 = 85.8073373891267, sigma40 = 2.0640459073805028e-2}; signal=Sell; quantity=9.7994786207; cash=109.33330662349921; units=9.7994786207. Five-round independent run; capital starts1000 once and routine cash/units carry. Only routine settlement counts.",
+        "changes": "No changes to signal, thresholds or sizing. Independently read actual original/revised/local and shared source, matched SHA256 of StrategyV2 across preserved later-run and original shared sources, and peer Revision.hs to preserved PeerRevision.hs. Historical review reports successful collaboration and mixed/negative transfer results; original exchange transcript not independently verified, no proven improvement or predictive advantage claimed. New runner adapts prior Submit.hs parsing/order logic but replaces stale two-round narrative with five-round scope, current paths, round snapshots and mandatory post-write existence/readback/schema validation for BOTH own files, including HOLD. Own snapshots hashed each round. No peer current submissions read or modified. Window overlap/unseen status not verified. Public feedback use: Round4: Read authorized round-3/evidence.md: own equity856.4189136498329, cash109.33330662349921, units9.7994786207; round return -9.602063244019259%, cumulative -14.35810863501671%, zero trades, no failures. Matched buy-and-hold equity838.793695309461; own equity17.6252183403719 higher despite an absolute loss, not profit or proof of improvement. Agent-two leads by about1.03e-8 equity. Retain frozen hysteresis without threshold tuning to one loss; current public bars now independently determine whether the joint exit conditions trigger. No strategy or runner source changes this round: fresh round4 snapshots and own assigned submissions only. Earlier runner-change and collaboration-review statements are historical, not new round4 modifications. Independently read preserved revised/local strategy this round, and verified identical SHA256 against original public shared collaboration and later-run paper_e89d0022809c own code. Peer historical source hash is provenance only, not execution; original exchange transcript and historical performance claims not independently reverified this round. No peer current submissions accessed and cannot certify peer files. No claim of nonoverlap/unseen history. A sale is deliberate risk reduction after negative momentum confirmation, not a promise of favorable next-close proceeds or future outperformance."
+      }
+    },
+    "agent-two": {
+      "cash": 826.4488047985753,
+      "units": 0,
+      "equity": 826.4488047985753,
+      "round_return": -0.03499468354036001,
+      "cumulative_return": -0.17355119520142467,
+      "max_drawdown": 0.17355119520142467,
+      "trades_applied": 1,
+      "trades": [
+        {
+          "side": "sell",
+          "quantity": 9.79947862,
+          "price": 73.25219629316327,
+          "notional": 717.8333314428967,
+          "fee": 0.7178333314428966
+        }
+      ],
+      "failures": [],
+      "manifest_summary": {
+        "code_ref": "/workspace/strategies/paper_63d59f6ee3e5/agent-two/Strategy.hs; dependency Revision.hs; source hashes: provenance.sha256 in same directory",
+        "approach": "Frozen experimental RevisionV1 on supplied public closes only: flat entry requires arithmetic returns20 and40 and close/SMA20-1 all >0.003; existing long exits only when all three <-0.003; otherwise deliberate hold, no topups. Buy allocation reserves max(12%,4*sampleSD40logreturns), includes 5bps slippage and 10bps fee, floors units to 1e-8. Unknown next close can still make a buy infeasible. Sell never exceeds stated holdings. round=4; t=87; close=76.2372811803; return20=-0.17561266; return40=-0.10182130; SMA20-distance=-0.11152958; cash=109.333306687122; units=9.799478620000; decision=Sell 9.79947862",
+        "changes": "Actual Revision.hs read and copied byte-for-byte from /workspace/strategies/paper_e89d0022809c/agent-two/Revision.hs, verified against /workspace/strategies/paper_be01d1611e99/agent-two/offline-v1/Revision.hs and historical shared collaboration/agent-two/Revision.hs plus later own 05b62b926174 and aef4ace3cdbf copies. Hashes recorded in provenance.sha256. Prior harness reported peer-derived 20/40 confirmation and volatility reserve; this run independently verifies frozen shared code equality, not all historical claims or improved performance. Algorithm, thresholds and sizing unchanged. New Haskell submission harness explicitly creates and writes BOTH assigned files for every decision including HOLD, reads both back and checks equality; external JSON/CSV schema validation follows execution. This is an operational change, not proven trading improvement. Five-round independent run starts with 1000 once; later balances come only from routine. No claim of unseen/nonoverlapping history. No peer current submissions accessed. Evidence reviewed for this round: Round-3 public evidence reviewed: agent-two equity 856.4189136600891, round return -9.602063243295283%, cumulative return -14.358108633991093%, zero trades and no failures. Benchmark equity 838.793695309461; agent-one equity 856.4189136498329. Agent-two leads by approximately 1.03e-8 equity, a rounding-scale difference. Relative outperformance is not profit or proof of improvement. Round-4 algorithm, thresholds, sizing and harness unchanged. All provenance.sha256 entries independently verified this round against historical shared/offline code and later own copies. No peer current submissions accessed. Executor retries were necessary because runghc was absent from PATH and Stack initially required allow-different-user. No file-creation or readiness claim was made for failed attempts."
+      }
+    }
+  },
+  "benchmark": {
+    "cash": 0,
+    "units": 11.00240830107878,
+    "entry_price": 90.79839355744029,
+    "entry_close": 90.75301704891584,
+    "entry_fee": 0.9990009990009991,
+    "fill_t": 60
+  },
+  "benchmark_equity": 748.2144453404492,
+  "winner": "agent-two"
+}

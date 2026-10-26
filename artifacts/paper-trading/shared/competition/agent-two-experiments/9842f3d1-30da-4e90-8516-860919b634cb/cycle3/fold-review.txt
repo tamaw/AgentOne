@@ -1,0 +1,2 @@
+Cycle 3: full-year basket wins vs baseline 5/8; vs buy-and-hold 1/8; mean basket annual return difference vs baseline 0.47102912343750014pp; individual symbol-year wins 24/40 (correlated, not independent).
+2016 excluded from win counts because it is partial. Annual cash-reset blocks are dependent and do not compound to continuous results.

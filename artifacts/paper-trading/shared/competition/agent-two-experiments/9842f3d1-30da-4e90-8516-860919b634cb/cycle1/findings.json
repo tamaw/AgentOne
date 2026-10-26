@@ -1,0 +1,9 @@
+{
+"hypothesis":"200-session regime filter limits prolonged bear-market exposure beyond dual-horizon momentum.",
+"public_basket":{"initial_cash":500000,"candidate_profit":-59294.8826192173,"candidate_return_pct":-11.8589765238,"baseline_return_pct":-13.9888858035,"buy_hold_return_pct":207.4562290698,"candidate_drawdown_pct":18.9719911467,"baseline_drawdown_pct":20.8860265492,"buy_hold_drawdown_pct":49.9044974752,"candidate_fills":1190,"candidate_turnover_initial_equity":229.1310556550},
+"already_viewed_AAPL":{"candidate_return_pct":16.8589894722,"baseline_return_pct":16.8722646847,"buy_hold_return_pct":35.0209963545,"candidate_drawdown_pct":5.2138071932},
+"assessment":"Risk reduction direction merits independent validation only. Reject as an established profit improvement: negative basket return after costs and severe lag to matched buy-and-hold. No parameter revisions or promotion.",
+"failures":"Zero simulation failures. Public input price-adjustment semantics remain unverified; GSPC not directly investable.",
+"ledger_reason_caveat":"Preserved Engine.rebalance emits legacy reason signal_at_next_open for every signal trade, including public stockdata next-close trades. Actual reference is cl(t) in source for public data; only prior AAPL uses op(t). Reason text is not execution-policy evidence; arithmetic and timing are set in frozen plan/source.",
+"provenance_and_limitations":"See task plan.json and data/provenance.json; source in Main.hs dispatch cycle=1 and common/Engine.hs. Shared sample, correlated sleeves, no untouched holdout. Fold metrics in summary.csv; not independent trials."
+}

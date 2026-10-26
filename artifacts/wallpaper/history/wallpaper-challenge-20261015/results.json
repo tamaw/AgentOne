@@ -1,0 +1,134 @@
+{
+  "challenge": {
+    "started_utc": "2026-10-15T07:17:30Z",
+    "deadline_utc": "2026-10-15T07:47:30Z",
+    "judged_utc": "2026-10-15T07:45:42.125842+00:00",
+    "requirement": "Each agent creates a native 3840x2160 mathematical wallpaper, collaborates with peer, and preserves self-improvement evidence."
+  },
+  "submissions": {
+    "agent-one": {
+      "title": "The Gilded Fibration",
+      "image": "agent-one-final.png",
+      "dimensions": [
+        3840,
+        2160
+      ],
+      "sha256": "564b78f4da123583c653a6c090976055699a5def2fef862950ab4b6fbc1733d8",
+      "source_and_artifacts": "agent-one/work-output",
+      "code_versions": "agent-one/code-history",
+      "execution_trace": "agent-one-traces.json",
+      "self_improvement_events": "agent-one-self-improvement-events.json",
+      "changed_existing_runtime_files": [],
+      "new_root_source_files": []
+    },
+    "agent-two": {
+      "title": "Pelagic — A Logarithmic Reliquary",
+      "image": "agent-two-final.png",
+      "dimensions": [
+        3840,
+        2160
+      ],
+      "sha256": "826a3a12a7711497ece421844c0e4c141f2f7cb891967d7ee148e521d9f09b4e",
+      "source_and_artifacts": "agent-two/work-output",
+      "code_versions": "agent-two/code-history",
+      "execution_trace": "agent-two-traces.json",
+      "self_improvement_events": "agent-two-self-improvement-events.json",
+      "changed_existing_runtime_files": [],
+      "new_root_source_files": []
+    }
+  },
+  "judgement": {
+    "winner": "agent-one",
+    "type": "Subjective visual judgement by coordinator, not an objective benchmark",
+    "criteria": [
+      "composition",
+      "mathematical interest",
+      "colour and depth",
+      "polish",
+      "wallpaper suitability"
+    ],
+    "rationale": "Agent One has stronger three-dimensional interlacing, crisp material hierarchy and controlled framing. Agent Two has a cohesive teal/copper palette and clear logarithmic winding, but its final reads flatter and has more mottled highlights. Both provide usable dark negative space.",
+    "token_reward": "Winner identified for the user's promised additional tokens; no numeric token quota was specified or changed."
+  },
+  "observed_improvements": [
+    {
+      "agent": "agent-one",
+      "limitation": "Debian Blender render failed on unsupported OpenImageDenoise",
+      "change": "Reusable render_support.configure_cycles configuration",
+      "subsequent_use": "Initial render recovered; final renderer reused compatibility setup",
+      "evidence": [
+        "agent-one-traces.json steps 91,97,138",
+        "agent-one/work-output/render_support.py",
+        "agent-one/work-output/final_scene.py"
+      ]
+    },
+    {
+      "agent": "agent-one",
+      "limitation": "Lit floor competed with the intended dark wallpaper background",
+      "change": "Independent transparent-geometry compositor",
+      "subsequent_use": "Reused for revisions and native 4K final; median luminance reported .259 to .068 after early revision",
+      "evidence": [
+        "agent-one-traces.json steps 98,103,138",
+        "agent-one/work-output/compose.py",
+        "agent-one/work-output/final-quality.json"
+      ]
+    },
+    {
+      "agent": "agent-one",
+      "limitation": "Repeated camera guesses put silhouette too close to edge",
+      "change": "Evaluated-mesh projection and safe framing, adapted after direct peer code exchange",
+      "subsequent_use": "Revision4 and final reused helper; final lit vertical bounds .140 to .859",
+      "evidence": [
+        "agent-one-traces.json steps 113,118,138",
+        "agent-one/work-output/frame_geometry.py",
+        "agent-one/work-output/final-quality.json"
+      ]
+    },
+    {
+      "agent": "agent-two",
+      "limitation": "Adjacent logarithmic shell coils overlapped",
+      "change": "Growth constraint and rib/lip-inclusive clearance audit",
+      "subsequent_use": "Revised shell and final reused rule; final conservative gap after lips .03123",
+      "evidence": [
+        "agent-two/work-output/geometry_audit.py",
+        "agent-two/work-output/clearance-audit.json",
+        "agent-two/work-output/improvement-evidence.json"
+      ]
+    },
+    {
+      "agent": "agent-two",
+      "limitation": "Overbright background/opal and almost cropped lower tail",
+      "change": "Regional image audit, independently controlled backdrop and vertex-based framing shared with peer",
+      "subsequent_use": "Multiple revisions and 4K final used tools; final mesh audit found zero out-of-camera vertices",
+      "evidence": [
+        "agent-two-traces.json steps 38,42,73",
+        "agent-two/work-output/framing.py",
+        "agent-two/work-output/compose.py",
+        "agent-two/work-output/mesh-audit.json"
+      ]
+    }
+  ],
+  "collaboration": {
+    "transport": "Agent-authored Haskell inboxes and artifact services over Docker network",
+    "activities": [
+      "Directly exchanged algorithms and PNGs",
+      "Model-authored critiques delivered through inboxes and read into subsequent calls",
+      "Exchanged framing source and applied peer feedback",
+      "Both final artifacts downloaded and reviewed by peer models"
+    ],
+    "coordinator_role": [
+      "Assigned shared brief and deadline",
+      "Captured source/artwork versions and execution evidence",
+      "Visually inspected submissions",
+      "Provided wake-ups for idle agents and reported a listener outage caused by interrupting an active step",
+      "Did not write either artwork or its rendering tools"
+    ]
+  },
+  "limits": [
+    "Core Haskell runtime files did not change during this challenge; demonstrated self-improvement concerns reusable artwork tools and strategy.",
+    "Agents reviewed algorithms, pixel statistics and ASCII/spatial summaries; native multimodal model viewing was not established. Coordinator visually inspected PNGs.",
+    "Numerical geometry checks are sampled or conservative, not general formal intersection proofs.",
+    "No controlled measurement of general agent performance or task-efficiency gains.",
+    "Idle-agent wake-up still required coordinator assistance."
+  ]
+}

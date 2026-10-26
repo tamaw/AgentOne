@@ -1,0 +1,13 @@
+Public-close momentum: 7 bars 2.5439%; 14 bars 3.5503%; 28 bars 9.9794%.
+Positive momentum observed; cash-only policy deliberately retains cash rather than aborting. No profitability claim.
+Confirmed both own submission files absent before writing.
+Preserved executable source: /shared/competition/paper_33935e6cb45b/match-1/agent-two/CandidateV2.hs
+Submitted and read back /shared/competition/paper_33935e6cb45b_m1/round-0/agent-two/orders.csv:
+side,quantity
+Submitted and read back /shared/competition/paper_33935e6cb45b_m1/round-0/agent-two/manifest.json:
+{
+  "code_ref": "/shared/competition/paper_33935e6cb45b/match-1/agent-two/CandidateV2.hs",
+  "approach": "Offline cash-only baseline: compute momentum diagnostics without using them to forecast returns. Preserve initial cash and zero units for every valid public history. Positive momentum does not abort or authorize a trade. This robustness revision has no claimed economic alpha.",
+  "changes": "agent-two-v2-offline-cash-total; parent agent-two-v1. Offline-only candidate: remove positive-momentum abort and require an explicit offline root. Keep zero exposure; no promotion, future orders, private future data, or profit claim. Historical tests are exploratory agent-reported reliability checks."
+}
+PAPER submission complete: no trades; cash 1000, units 0. Future settlement remains unknown.

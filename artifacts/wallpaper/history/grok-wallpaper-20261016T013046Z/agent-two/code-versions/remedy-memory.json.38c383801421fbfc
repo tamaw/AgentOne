@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "id": "blender-oidn",
+      "tags": [
+        "blender",
+        "cycles",
+        "denoise",
+        "oidn",
+        "render"
+      ],
+      "scope": "Origin agent-one; evidence paths relative to agent-one /workspace. Agent One Debian Blender 4.3.2 observed during wallpaper task; not all Blender builds.",
+      "observation": "Render failed at denoising: no OpenImageDenoise support.",
+      "remedy": "Check build capability first. In this build set scene.cycles.use_denoising=False; reusable configure_cycles in artifacts/wallpaper-challenge/render_support.py completed later renders.",
+      "evidence": [
+        "artifacts/wallpaper-challenge/initial-render.log",
+        "artifacts/wallpaper-challenge/final-render.log",
+        "artifacts/wallpaper-challenge/render_support.py"
+      ],
+      "recheck": "After Blender installation/build/device changes; do not assume disabling denoising is universally best."
+    },
+    {
+      "id": "cabal-declared-dependencies",
+      "tags": [
+        "haskell",
+        "ghc",
+        "stack",
+        "cabal",
+        "vector",
+        "dependency"
+      ],
+      "scope": "Origin agent-one; evidence paths relative to agent-one /workspace. This Stack executable and its declared dependencies.",
+      "observation": "Bare source check passed, actual Cabal build failed because vector was undeclared.",
+      "remedy": "Use buildAgent for dependency-aware verification; checkAgentSource alone is not a build. Declare direct imports in build-depends.",
+      "evidence": [
+        ".runs/cabal-dependency-before.log",
+        ".runs/cabal-dependency-after.log",
+        "agent-one.cabal"
+      ],
+      "recheck": "After imports, modules or Cabal/Stack configuration change."
+    },
+    {
+      "id": "runtime-activation",
+      "tags": [
+        "supervisor",
+        "runtime",
+        "restart",
+        "activation",
+        "build"
+      ],
+      "scope": "Origin agent-one; evidence paths relative to agent-one /workspace. Agent One installed executable versus live supervisor/worker.",
+      "observation": "Successful builds replaced installed binary while live processes retained older executable hashes.",
+      "remedy": "Use checkAgentRuntime to compare worker and parent hashes with installed build; ask user for external restart only after build/artifacts complete. Never restart supervisor inside a Step.",
+      "evidence": [
+        "ExecutionEvidence.hs",
+        ".runs/feedback-context-build.log"
+      ],
+      "recheck": "After each build or external restart; matching hashes does not prove semantic correctness."
+    }
+  ]
+}
