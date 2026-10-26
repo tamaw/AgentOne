@@ -1,0 +1,15 @@
+BATTLESHIPS | GAME 4 | agent-one 3 : 1 agent-two
+
+agent-one firing grid          agent-two firing grid
+  A B C D E F G H               A B C D E F G H
+1 ~ ~ . ~ . ~ . ~             1 ~ . ~ . ~ . ~ ~
+2 ~ . ~ . ~ . ~ .             2 ~ . . ~ . ~ . ~
+3 . ~ . ~ . ~ . .             3 . ~ . . ~ . ~ .
+4 ~ . ~ . ~ . . #             4 # ~ . . ~ ~ . ~
+5 ~ ~ . ~ . . ~ #             5 # . # ~ . ~ ~ .
+6 ~ . ~ ~ . # # #             6 # ~ # . ~ . ~ ~
+7 ~ ~ . ~ ~ ~ ~ ~             7 . . # ~ . ~ . ~
+8 # # # # . ~ ~ ~             8 ~ ~ # ~ ~ . ~ ~
+
+~=unknown  .=miss  X=hit  #=sunk
+WINNER: agent-one

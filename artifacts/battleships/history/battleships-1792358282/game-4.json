@@ -1,0 +1,392 @@
+{
+  "round": 4,
+  "winner": "agent-one",
+  "score": [
+    3,
+    1
+  ],
+  "shots": {
+    "agent-one": [
+      {
+        "cell": 36,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 27,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 45,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 44,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 37,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 46,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 47,
+        "result": "sunk",
+        "sunk": [
+          45,
+          46,
+          47
+        ]
+      },
+      {
+        "cell": 18,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 50,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 59,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 60,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 58,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 57,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 56,
+        "result": "sunk",
+        "sunk": [
+          56,
+          57,
+          58,
+          59
+        ]
+      },
+      {
+        "cell": 9,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 11,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 13,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 20,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 22,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 25,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 34,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 41,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 2,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 4,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 6,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 15,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 16,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 29,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 31,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 23,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 30,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 39,
+        "result": "sunk",
+        "sunk": [
+          31,
+          39
+        ]
+      }
+    ],
+    "agent-two": [
+      {
+        "cell": 36,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 27,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 18,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 45,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 12,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 21,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 30,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 33,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 42,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 50,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 34,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 26,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 58,
+        "result": "sunk",
+        "sunk": [
+          34,
+          42,
+          50,
+          58
+        ]
+      },
+      {
+        "cell": 9,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 54,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 39,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 3,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 16,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 40,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 48,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 32,
+        "result": "hit",
+        "sunk": []
+      },
+      {
+        "cell": 24,
+        "result": "sunk",
+        "sunk": [
+          24,
+          32,
+          40
+        ]
+      },
+      {
+        "cell": 14,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 52,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 43,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 61,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 23,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 5,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 1,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 49,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 19,
+        "result": "miss",
+        "sunk": []
+      },
+      {
+        "cell": 10,
+        "result": "miss",
+        "sunk": []
+      }
+    ]
+  },
+  "fleets": {
+    "agent-one": [
+      [
+        34,
+        42,
+        50,
+        58
+      ],
+      [
+        24,
+        32,
+        40
+      ],
+      [
+        28,
+        29
+      ]
+    ],
+    "agent-two": [
+      [
+        56,
+        57,
+        58,
+        59
+      ],
+      [
+        45,
+        46,
+        47
+      ],
+      [
+        31,
+        39
+      ]
+    ]
+  },
+  "error": null
+}
