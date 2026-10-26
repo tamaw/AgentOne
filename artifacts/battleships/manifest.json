@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "artifacts/battleships/evidence-before-prize.json",
+      "git_blob": "f29be581d867bce8752f1b61600a20ff59891316"
+    },
+    {
+      "path": "artifacts/battleships/evidence-game2.json",
+      "git_blob": "761a4404c61c96b9b6fe0f4b640f4220ca6762d6"
+    },
+    {
+      "path": "artifacts/battleships/evidence.json",
+      "git_blob": "a13725fda2b70e9b3795cff0129c84f4ad41d92a"
+    }
+  ]
+}
