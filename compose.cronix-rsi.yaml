@@ -1,0 +1,27 @@
+# Cronix paper-trading credentials stay in the existing private env files.
+services:
+  agent:
+    image: local/agent-one:rsi
+    dns: [192.168.0.100]
+    env_file:
+      - /home/tama/source/tickforge/.runtime/agent-one.env
+    environment:
+      AGENT_BOOTSTRAP_STEP: /workspace/tickforge-agent-one/Bootstrap.hs
+      A2A_MAX_STEPS: "8"
+  agent-two:
+    image: local/agent-one:rsi
+    dns: [192.168.0.100]
+    env_file:
+      - /home/tama/source/tickforge/.runtime/agent-two.env
+    environment:
+      AGENT_BOOTSTRAP_STEP: /workspace/tickforge-agent-two/Bootstrap.hs
+      A2A_MAX_STEPS: "8"
+      TICKFORGE_WARMSTART_FILE: /workspace/tickforge-agent-two/quote-warmstart.json
+networks:
+  progenitor_network:
+    external: true
+    name: progena_network
+volumes:
+  shared:
+    external: true
+    name: progena-shared

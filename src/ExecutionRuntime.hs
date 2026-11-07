@@ -21,6 +21,7 @@ import Data.Time.Clock.POSIX
 import GHC.IO.Handle (hDuplicate, hDuplicateTo)
 import StepLoader (loadStep)
 import ModelConnection (askModel)
+import System.FilePath (takeDirectory)
 import ContextWindow (prepareContext)
 import System.Directory
 import System.Environment
@@ -29,6 +30,7 @@ import System.IO
 import System.IO.Error (isEOFError)
 import System.Posix.Signals
 import System.Posix.Process (getParentProcessID, getProcessID)
+import System.Posix.Files (setFileCreationMask)
 import System.Process
 import System.Timeout
 import Text.Read (readMaybe)
@@ -36,6 +38,18 @@ import Text.Read (readMaybe)
 type Worker = (Handle, ProcessHandle)
 type Memory = IORef (M.Map String String)
 type Actions = IORef (M.Map String (IO ()))
+
+data WorkerCommand = WorkerCommand
+  { workerSourceFile :: FilePath
+  , workerOutputBase :: FilePath
+  , workerConversationFile :: FilePath
+  }
+instance ToJSON WorkerCommand where
+  toJSON (WorkerCommand source output conversation) = object
+    [ "source" .= source, "output" .= output, "conversation" .= conversation ]
+instance FromJSON WorkerCommand where
+  parseJSON = withObject "worker command" $ \o ->
+    WorkerCommand <$> o .: "source" <*> o .: "output" <*> o .: "conversation"
 
 data Conversation = Conversation { conversationMessages :: [Value], executionPending :: Bool }
 instance ToJSON Conversation where
@@ -62,8 +76,19 @@ capture file action = bracket ((,) <$> hDuplicate stdout <*> hDuplicate stderr)
       hDuplicateTo h stderr
       action `finally` (hFlush stdout >> hFlush stderr)
 
+withConversationFile :: FilePath -> IO a -> IO a
+withConversationFile path action =
+  bracket
+    (do
+      previous <- lookupEnv "AGENT_CONVERSATION_FILE"
+      setEnv "AGENT_CONVERSATION_FILE" path
+      pure previous)
+    (\previous -> maybe (unsetEnv "AGENT_CONVERSATION_FILE") (setEnv "AGENT_CONVERSATION_FILE") previous)
+    (const action)
+
 worker :: IO ()
 worker = do
+  void $ setFileCreationMask 0o077
   parent <- getParentProcessID
   self <- getProcessID
   void $ forkIO $ forever $ do
@@ -73,28 +98,43 @@ worker = do
   memory <- newIORef M.empty :: IO Memory
   actions <- newIORef M.empty :: IO Actions
   forever $ do
-    file <- getLine
-    outcome <- trySync $ capture (file ++ ".output") $ do
-      compiled <- loadStep file
+    commandLine <- getLine
+    command <- either (ioError . userError) pure $ eitherDecodeStrict' $ TE.encodeUtf8 $ T.pack commandLine
+    let source = workerSourceFile command
+        output = workerOutputBase command
+    outcome <- trySync $ withConversationFile (workerConversationFile command) $ capture (output ++ ".output") $ do
+      compiled <- loadStep source
       case compiled of
         Left err -> ioError $ userError $ show err
         Right action -> do
           finished <- timeout 60000000 (action memory actions)
           maybe (ioError $ userError "Execution timed out after 60 seconds.") pure finished
-    writeFile (file ++ ".result.tmp") $ either displayException (\again -> if again then "CONTINUE" else "WAIT") outcome
-    renameFile (file ++ ".result.tmp") (file ++ ".result")
+    writeFile (output ++ ".result.tmp") $ either displayException (\again -> if again then "CONTINUE" else "WAIT") outcome
+    renameFile (output ++ ".result.tmp") (output ++ ".result")
 
 startWorker :: IO Worker
 startWorker = startWorkerFor ".runs/conversation.json"
 
 startWorkerFor :: FilePath -> IO Worker
-startWorkerFor conversationPath = do
+startWorkerFor bootstrapConversation = mask $ \restore -> do
   executable <- getExecutablePath
-  environment <- filter (\(name, _) -> not $ any (`isInfixOf` map toUpper name) ["KEY", "TOKEN", "SECRET", "PASSWORD", "LLM_"]) <$> getEnvironment
+  environment <- filter (\(name, _) -> name == "TICKFORGE_API_KEY" || not (any (`isInfixOf` map toUpper name) ["KEY", "TOKEN", "SECRET", "PASSWORD", "LLM_"])) <$> getEnvironment
   (Just input, _, _, child) <- createProcess (proc executable ["--worker"])
-    { std_in = CreatePipe, create_group = True, env = Just (("AGENT_CONVERSATION_FILE",conversationPath) : filter ((/= "AGENT_CONVERSATION_FILE") . fst) environment) }
+    { std_in = CreatePipe, create_group = True, env = Just (filter ((/= "AGENT_CONVERSATION_FILE") . fst) environment) }
   hSetBuffering input LineBuffering
-  pure (input, child)
+  let started = (input, child)
+  restore (bootstrapWorker started bootstrapConversation) `onException` stopWorker started
+  pure started
+
+bootstrapWorker :: Worker -> FilePath -> IO ()
+bootstrapWorker started conversation = do
+  bootstrap <- lookupEnv "AGENT_BOOTSTRAP_STEP"
+  forM_ bootstrap $ \source -> do
+    let output = takeDirectory conversation ++ "/worker-bootstrap"
+    createDirectoryIfMissing True (takeDirectory output)
+    result <- executeWorker started conversation source output
+    unless (executionSucceeded result) $ ioError $ userError "AGENT_BOOTSTRAP_STEP failed."
+    when (executionContinue result) $ ioError $ userError "AGENT_BOOTSTRAP_STEP must return False; bootstrap cannot request a model loop."
 
 stopWorker :: Worker -> IO ()
 stopWorker (input, child) = do
@@ -109,15 +149,21 @@ message role content = object ["role" .= role, "content" .= content]
 ask :: String -> String -> String -> FilePath -> T.Text -> [Value] -> IO (T.Text, Value)
 ask = askModel
 
-execute :: MVar Worker -> FilePath -> T.Text -> IO ExecutionResult
-execute workers file source = withMVar workers $ \(input, child) -> do
+clearFile :: FilePath -> IO ()
+clearFile path = do
+  exists <- doesFileExist path
+  when exists $ removeFile path
+
+executeWorker :: Worker -> FilePath -> FilePath -> FilePath -> IO ExecutionResult
+executeWorker (input, child) conversation source output = do
   status <- getProcessExitCode child
-  when (status /= Nothing) $ ioError $ userError "Worker exited; /pause then /resume to restart it."
-  T.writeFile file source
-  hPutStrLn input file
-  let outputFile = file ++ ".output"
-      resultFile = file ++ ".result"
-      stream offset = do
+  when (status /= Nothing) $ ioError $ userError "Worker exited."
+  let outputFile = output ++ ".output"
+      resultFile = output ++ ".result"
+  clearFile outputFile
+  clearFile resultFile
+  hPutStrLn input $ T.unpack $ TE.decodeUtf8 $ BL.toStrict $ encode (WorkerCommand source output conversation)
+  let stream offset = do
         exists <- doesFileExist outputFile
         next <- if not exists || offset >= 16000 then pure offset else withBinaryFile outputFile ReadMode $ \h -> do
           hSeek h AbsoluteSeek (fromIntegral offset)
@@ -127,11 +173,11 @@ execute workers file source = withMVar workers $ \(input, child) -> do
         ready <- doesFileExist resultFile
         if ready then pure next else do
           exit <- getProcessExitCode child
-          when (exit /= Nothing) $ ioError $ userError "Worker crashed; pause/resume to restart."
+          when (exit /= Nothing) $ ioError $ userError "Worker crashed."
           threadDelay 50000
           stream next
   completed <- timeout 90000000 $ stream 0
-  when (completed == Nothing) $ ioError $ userError "Worker timed out; pause/resume to restart."
+  when (completed == Nothing) $ ioError $ userError "Worker timed out."
   result <- T.readFile resultFile
   when (result /= "CONTINUE" && result /= "WAIT") $ T.putStrLn $ "[execution error] " <> result
   bytes <- withBinaryFile outputFile ReadMode $ \h -> B.hGet h 16000
@@ -139,22 +185,26 @@ execute workers file source = withMVar workers $ \(input, child) -> do
   forM_ completed $ \offset -> B.hPut stdout $ B.drop offset bytes
   pure $ ExecutionResult (result <> "\n" <> TE.decodeUtf8With TE.lenientDecode bytes <> (if truncated then "\n[Output truncated at 16000 bytes.]" else "")) (result /= "WAIT") (result == "WAIT" || result == "CONTINUE") (TE.decodeUtf8With TE.lenientDecode bytes)
 
+execute :: MVar Worker -> FilePath -> FilePath -> T.Text -> IO () -> IO ExecutionResult
+execute workers conversation file source beforeExecute = do
+  T.writeFile file source
+  withMVar workers $ \started -> beforeExecute >> executeWorker started conversation file file
+
 data ExecutionResult = ExecutionResult { executionFeedback :: T.Text, executionContinue :: Bool, executionSucceeded :: Bool, executionOutput :: T.Text }
 data ModelConfig = ModelConfig String String String FilePath
 systemInstructions :: T.Text -> T.Text -> T.Text
 systemInstructions standing rules = standing <> "\nProject rules from AGENTS.md:\n" <> rules <>
   "\nOutput discipline: Follow supplied instructions silently. Unless explicitly requested, do not echo SYSTEM.md, AGENTS.md, full directory listings, or unchanged startup checks. Perform required checks and retain their artifacts; report required observations concisely. Keep stdout and A2A replies focused on useful results, actual errors, and materially relevant observations needed for execution feedback and reflection. Omit routine self-reflection paragraphs.\n"
 
-modelStep :: ModelConfig -> MVar Worker -> [Value] -> FilePath -> FilePath -> IO () -> (Value -> IO ()) -> (Value -> IO ()) -> IO ExecutionResult
-modelStep (ModelConfig endpoint key model instructionFile) workers history file requestFile beforeExecute saveAssistant saveFeedback = do
+modelStep :: ModelConfig -> MVar Worker -> FilePath -> [Value] -> FilePath -> FilePath -> IO () -> (Value -> IO ()) -> (Value -> IO ()) -> IO ExecutionResult
+modelStep (ModelConfig endpoint key model instructionFile) workers conversation history file requestFile beforeExecute saveAssistant saveFeedback = do
   standing <- T.readFile instructionFile
   when (T.null (T.strip standing)) $ ioError $ userError "Empty instructions"
   hasRules <- doesFileExist "AGENTS.md"
   rules <- if hasRules then T.readFile "AGENTS.md" else pure ""
   (source, assistant) <- ask endpoint key model requestFile (systemInstructions standing rules) (prepareContext history)
-  beforeExecute
   saveAssistant assistant
-  outcome <- execute workers file source
+  outcome <- execute workers conversation file source beforeExecute
   saveFeedback $ message "user" $ "Execution feedback:\n" <> executionFeedback outcome <>
     (if executionContinue outcome then "\nThe step requested another model call to continue." else "\nThe step is waiting for new user input.")
   pure outcome

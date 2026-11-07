@@ -98,7 +98,7 @@ supervisor = do
         executionStarted <- newTVarIO False
         outcome <- race (atomically $ awaitSuperseded paused generation requestGeneration) $ trySync $ do
           putStrLn $ "\n[step " ++ show n ++ "]"
-          result <- modelStep (ModelConfig endpoint key model instructionFile) workers context file (session ++ "/llm-" ++ show n ++ ".request.json")
+          result <- modelStep (ModelConfig endpoint key model instructionFile) workers ".runs/conversation.json" context file (session ++ "/llm-" ++ show n ++ ".request.json")
             (void $ atomically $ beginExecution paused generation requestGeneration executionStarted)
             (record conversation (Just True)) (record conversation (Just False))
           let feedback = executionFeedback result; again = executionContinue result
