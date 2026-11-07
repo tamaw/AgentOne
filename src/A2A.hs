@@ -182,20 +182,23 @@ handleRPC db locks hub running model endpoint key version raw = case eitherDecod
                     forM_ job cancel
                     pure (rpcOK i canceled)
         _ -> err (-32601) "Method not found"
-agentCard = object ["name" .= ("Agent One"::T.Text),"description" .= ("Haskell engineering agent with model-backed contextual text tasks"::T.Text),"version" .= ("1.0.0"::T.Text),"supportedInterfaces" .= [object ["url" .= ("http://agent-one:8080/rpc"::T.Text),"protocolBinding" .= ("JSONRPC"::T.Text),"protocolVersion" .= ("1.0"::T.Text)]],"capabilities" .= object ["streaming" .= False,"pushNotifications" .= False],"defaultInputModes" .= ["text/plain"::T.Text],"defaultOutputModes" .= ["text/plain"::T.Text],"skills" .= [object ["id" .= ("engineering"::T.Text),"name" .= ("Engineering review"::T.Text),"description" .= ("Contextual model-composed engineering analysis"::T.Text),"tags" .= ["haskell"::T.Text,"review"]]]]
+agentCard name url = object ["name" .= name,"description" .= ("Haskell engineering agent with model-backed contextual text tasks"::T.Text),"version" .= ("1.0.0"::T.Text),"supportedInterfaces" .= [object ["url" .= url,"protocolBinding" .= ("JSONRPC"::T.Text),"protocolVersion" .= ("1.0"::T.Text)]],"capabilities" .= object ["streaming" .= False,"pushNotifications" .= False],"defaultInputModes" .= ["text/plain"::T.Text],"defaultOutputModes" .= ["text/plain"::T.Text],"skills" .= [object ["id" .= ("engineering"::T.Text),"name" .= ("Engineering review"::T.Text),"description" .= ("Contextual model-composed engineering analysis"::T.Text),"tags" .= ["haskell"::T.Text,"review"]]]]
 serve = withSocketsDo $ do
   createDirectoryIfMissing True root
   exists <- doesFileExist (root++"state.json")
   d <- if exists then L.readFile (root++"state.json") >>= either (ioError . userError) pure . eitherDecode else pure (DB M.empty M.empty)
   db <- newMVar d; locks <- newMVar M.empty; logLock <- newMVar (); hub <- newHub; running <- newMVar M.empty
   endpoint <- fromMaybe "" <$> lookupEnv "LLM_ENDPOINT"; key <- fromMaybe "" <$> lookupEnv "LLM_API_KEY"; model <- getEnv "LLM_MODEL"
+  publicName <- T.pack . fromMaybe "Agent One" <$> lookupEnv "A2A_AGENT_NAME"
+  publicUrl <- T.pack . fromMaybe "http://agent-one:8080/rpc" <$> lookupEnv "A2A_PUBLIC_URL"
+  let card = agentCard (publicName :: T.Text) (publicUrl :: T.Text)
   sock <- socket AF_INET Stream defaultProtocol
   setSocketOption sock ReuseAddr 1; bind sock (SockAddrInet 8080 0); listen sock 128
   forM_ (M.toList (tasks d)) $ \(tid,t) -> unless (terminal t) $ do
     tm <- stamp
     msg <- agentMessage (txt (field "contextId" t)) tid "Server restarted during this task. Execution may have partially occurred; live worker memory/actions reset. Submit a new message after inspecting effects."
     change db $ \current -> (current {tasks=M.adjust (set "status" (status "TASK_STATE_FAILED" (Just msg) tm)) tid (tasks current)},())
-  L.writeFile (root++"ready.json") (encode (object ["ready" .= True,"url" .= ("http://agent-one:8080/rpc"::T.Text)]))
+  L.writeFile (root++"ready.json") (encode (object ["ready" .= True,"url" .= publicUrl]))
   forever $ do
     (s,_) <- accept sock
     void $ forkIO $ (do
@@ -207,8 +210,8 @@ serve = withSocketsDo $ do
         let parts=C.words line; method=if null parts then "" else head parts; path=if length parts<2 then "" else parts!!1
             n=fromMaybe 0 (lookup "content-length" hs >>= readMaybeInt . T.unpack)
             respond code body = do C.hPutStr h (C.pack ("HTTP/1.1 "++code++"\r\nContent-Type: application/json\r\nA2A-Version: 1.0\r\nConnection: close\r\nContent-Length: "++show (L.length body)++"\r\n\r\n")); L.hPut h body
-        if method=="GET" && path=="/.well-known/agent-card.json" then respond "200 OK" (encode agentCard)
-        else if method=="GET" && path=="/a2a/v0.3/.well-known/agent-card.json" then respond "200 OK" (encode (legacyCard agentCard))
+        if method=="GET" && path=="/.well-known/agent-card.json" then respond "200 OK" (encode card)
+        else if method=="GET" && path=="/a2a/v0.3/.well-known/agent-card.json" then respond "200 OK" (encode (legacyCard card))
         else if method=="GET" && path `elem` ["/health","/a2a/v0.3/health"] then respond "200 OK" (encode (object ["status" .= ("ok"::T.Text)]))
         else if method=="GET" && path=="/implementation" then do source <- T.readFile "src/A2A.hs"; runtime <- T.readFile "src/ExecutionRuntime.hs"; adapter <- T.readFile "src/A2AExecution.hs"; respond "200 OK" (encode (object ["source" .= source,"runtime" .= runtime,"adapter" .= adapter]))
         else if method=="POST" && path `elem` ["/rpc","/a2a/v0.3/rpc"] && n>=0 && n<=1048576 then do

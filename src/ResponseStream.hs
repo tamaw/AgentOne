@@ -5,6 +5,7 @@ import Data.Aeson.Types (parseMaybe)
 import qualified Data.Aeson.KeyMap as K
 import qualified Data.ByteString as B
 import qualified Data.IntMap.Strict as M
+import qualified Data.Set as S
 import qualified Data.Text as T
 import System.IO
 import System.IO.Error (isEOFError)
@@ -19,7 +20,11 @@ readResponseStream handle = loop [] Nothing Nothing M.empty
       _ -> "Responses stream failed or was incomplete"
     finish items (Object o) =
       let existing=maybe [] id (parseMaybe (withObject "response" (.: "output")) (Object o) :: Maybe [Value])
-      in Object $ K.insert "output" (toJSON $ M.elems $ M.union items (M.fromList $ zip [0..] existing)) o
+          streamed=M.elems items
+          itemId value=case field "id" value of Just (String ident) -> Just ident; _ -> Nothing
+          streamedIds=S.fromList [ident | value<-streamed,Just ident<-[itemId value]]
+          missing value=case itemId value of Just ident -> S.notMember ident streamedIds; Nothing -> value `notElem` streamed
+      in Object $ K.insert "output" (toJSON (streamed ++ filter missing existing)) o
     finish _ value = value
     consume [] completed failure items = (completed,failure,items)
     consume parts completed failure items =

@@ -8,6 +8,8 @@ services:
     environment:
       AGENT_BOOTSTRAP_STEP: /workspace/tickforge-agent-one/Bootstrap.hs
       A2A_MAX_STEPS: "8"
+      A2A_AGENT_NAME: Agent One
+      A2A_PUBLIC_URL: http://agent-one:8080/rpc
   agent-two:
     image: local/agent-one:rsi
     dns: [192.168.0.100]
@@ -16,6 +18,8 @@ services:
     environment:
       AGENT_BOOTSTRAP_STEP: /workspace/tickforge-agent-two/Bootstrap.hs
       A2A_MAX_STEPS: "8"
+      A2A_AGENT_NAME: Agent Two
+      A2A_PUBLIC_URL: http://agent-two:8080/rpc
       TICKFORGE_WARMSTART_FILE: /workspace/tickforge-agent-two/quote-warmstart.json
 networks:
   progenitor_network:
