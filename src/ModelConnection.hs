@@ -120,7 +120,8 @@ askModelAttempt retried endpoint configuredKey model file instructions history =
       items <- o .: "output" :: Parser [Value]
       chunks <- forM items $ withObject "output" $ \item -> do
         kind <- item .: "type" :: Parser T.Text
-        if kind /= "message" then pure [] else do
+        phase <- item .:? "phase" :: Parser (Maybe T.Text)
+        if kind /= "message" || maybe False (/= "final_answer") phase then pure [] else do
           parts <- item .: "content"
           forM parts $ withObject "content" $ \part -> do
             kind' <- part .: "type" :: Parser T.Text
